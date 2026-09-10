@@ -5,9 +5,6 @@ import { ShieldCheck, MapPin, Clock } from "lucide-react";
 export const BrandIntro: React.FC = () => {
   return (
     <section id="about" className="relative w-full bg-dark-950 py-24 sm:py-32 border-b border-white/10 overflow-hidden">
-      {/* Subtle background ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-72 bg-gradient-to-b from-white/5 to-transparent blur-3xl pointer-events-none" />
-
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="flex items-center space-x-2.5 mb-6">

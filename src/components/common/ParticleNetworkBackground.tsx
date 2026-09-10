@@ -17,6 +17,7 @@ interface PointerPosition {
 
 const CONNECTION_DISTANCE = 125;
 const POINTER_DISTANCE = 160;
+const DEFAULT_PARTICLE_ALPHA: [number, number] = [0.35, 0.55];
 
 interface ParticleNetworkBackgroundProps {
   particleColor?: string;
@@ -28,7 +29,7 @@ interface ParticleNetworkBackgroundProps {
 
 export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps> = ({
   particleColor = "180, 140, 30",
-  particleAlpha = [0.35, 0.55],
+  particleAlpha = DEFAULT_PARTICLE_ALPHA,
   connectionAlpha = 0.15,
   mouseConnectionAlpha = 0.3,
   canvasOpacity = 0.75,
@@ -196,7 +197,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
       window.removeEventListener("mouseleave", handleMouseLeave);
       reducedMotionQuery.removeEventListener("change", handleMotionPreferenceChange);
     };
-  }, []);
+  }, [connectionAlpha, mouseConnectionAlpha, particleAlpha, particleColor]);
 
   return (
     <canvas

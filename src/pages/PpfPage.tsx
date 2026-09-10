@@ -111,7 +111,6 @@ export const PpfPage: React.FC = () => {
 
       {/* Hero Banner */}
       <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-dark-900 overflow-hidden">
-        <div className="absolute inset-0 bg-radial-gradient from-white/5 via-transparent to-transparent pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center space-x-2.5 mb-4">
             <span className="w-6 h-[1px] bg-brand-red" />

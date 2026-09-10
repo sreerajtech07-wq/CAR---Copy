@@ -27,6 +27,10 @@
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   }
 
+  .font-tamil {
+    font-family: "Nirmala UI", "Noto Sans Tamil", "Latha", sans-serif;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -60,15 +64,6 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--cta-amber);
   }
-}
-
-.text-gold-glow {
-  color: var(--cta-amber);
-  text-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
-}
-
-.glow-gold {
-  box-shadow: 0 0 30px -5px rgba(245, 158, 11, 0.3);
 }
 
 .glass-nightingale {
@@ -106,18 +101,6 @@
 
 .border-metallic-edge {
   border-color: rgba(226, 232, 240, 0.12);
-}
-
-.surface-carbon {
-  background: radial-gradient(circle at 50% 0%, rgba(30, 34, 43, 0.4) 0%, rgba(9, 10, 13, 0.95) 100%);
-}
-
-.glow-red {
-  box-shadow: 0 0 35px -5px rgba(220, 38, 38, 0.25);
-}
-
-.glow-headlights {
-  box-shadow: 0 0 80px 20px rgba(255, 255, 255, 0.15);
 }
 
 /* Subtle Film Grain Overlay */

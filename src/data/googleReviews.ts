@@ -5,6 +5,7 @@ export interface GoogleReview {
   text: string;
   date: string;
   profileImage?: string;
+  language?: "en" | "ta";
 }
 
 export const DEMO_GOOGLE_REVIEWS: GoogleReview[] = [
@@ -49,5 +50,29 @@ export const DEMO_GOOGLE_REVIEWS: GoogleReview[] = [
     rating: 5,
     text: "Anti-rust treatment for my SUV was done thoroughly. The team explained the coastal corrosion risks and their solution was comprehensive. The underbody coating looks professional and well-applied. Great investment for vehicle longevity.",
     date: "3 months ago",
+  },
+  {
+    id: "7",
+    reviewerName: "அருண் குமார்",
+    rating: 5,
+    text: "என் காருக்கு Ceramic Coating செய்து கொண்டேன். வேலை மிகவும் neat-ஆகவும் professional-ஆகவும் இருந்தது. காரின் finish இப்போது இன்னும் premium-ஆக தெரிகிறது. Service-ம் customer support-ம் மிகவும் நன்றாக இருந்தது.",
+    date: "Demo review",
+    language: "ta",
+  },
+  {
+    id: "8",
+    reviewerName: "பிரவீன் ராஜ்",
+    rating: 5,
+    text: "PPF installation மிகவும் சிறப்பாக இருந்தது. ஒவ்வொரு detailing-ஐயும் மிகவும் கவனமாக செய்தார்கள். Team மிகவும் friendly மற்றும் professional. என் காரை கொடுத்தது முதல் delivery வரை முழு experience-ம் மிகவும் திருப்தியாக இருந்தது.",
+    date: "Demo review",
+    language: "ta",
+  },
+  {
+    id: "9",
+    reviewerName: "கார்த்திக் எஸ்.",
+    rating: 5,
+    text: "முதல் முறையாக இந்த detailing studio-க்கு வந்தேன். Interior & Exterior detailing இரண்டுமே மிகவும் நன்றாக செய்திருந்தார்கள். Car புதிதாக வாங்கிய மாதிரி இருந்தது. Quality மற்றும் finishing மிகவும் impressive.",
+    date: "Demo review",
+    language: "ta",
   },
 ];

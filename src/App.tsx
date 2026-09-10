@@ -2,6 +2,7 @@ import React from "react";
 import { CursorEffect } from "./components/common/CursorEffect";
 import { Background3D } from "./components/common/Background3D";
 import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
+import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
 import { StatsSection } from "./components/sections/StatsSection";
@@ -32,6 +33,8 @@ export const App: React.FC = () => {
       <Navbar />
 
       <main className="relative z-10">
+        <CinematicScroll />
+
         {/* 01. CINEMATIC HERO */}
         <HeroSection />
 

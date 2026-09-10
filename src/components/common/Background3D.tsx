@@ -91,21 +91,6 @@ export const Background3D: React.FC = () => {
     const particles = new THREE.Points(geometry, material);
     scene.add(particles);
 
-    // 2. 3D Studio Floor Grid Plane (Subtle perspective grid)
-    const gridHelper = new THREE.GridHelper(2000, 40, 0xf59e0b, 0xe2e8f0);
-    gridHelper.position.y = -120;
-    // Adjust opacity
-    if (Array.isArray(gridHelper.material)) {
-      gridHelper.material.forEach((m) => {
-        m.transparent = true;
-        m.opacity = 0.15;
-      });
-    } else {
-      gridHelper.material.transparent = true;
-      gridHelper.material.opacity = 0.15;
-    }
-    scene.add(gridHelper);
-
     // Mouse & Scroll interaction
     let mouseX = 0;
     let mouseY = 0;
@@ -159,9 +144,6 @@ export const Background3D: React.FC = () => {
         // Rotate particles slowly in 3D
         particles.rotation.y = elapsedTime * 0.03 + mouseX * 0.0003;
         particles.rotation.x = elapsedTime * 0.015 - mouseY * 0.0003;
-
-        // Animate grid forward slowly
-        gridHelper.position.z = (elapsedTime * 25) % 50;
 
         // Camera responds to scroll and mouse
         camera.position.x = mouseX * 0.4;

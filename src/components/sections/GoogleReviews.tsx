@@ -22,8 +22,8 @@ export const GoogleReviews: React.FC = () => {
     ));
   };
 
-  const averageRating = 4.9;
-  const totalReviews = 128;
+  const averageRating = DEMO_GOOGLE_REVIEWS.reduce((sum, review) => sum + review.rating, 0) / DEMO_GOOGLE_REVIEWS.length;
+  const totalReviews = DEMO_GOOGLE_REVIEWS.length;
 
   return (
     <section className="relative w-full bg-white py-20 sm:py-28 border-b border-gray-100 overflow-hidden">
@@ -33,7 +33,7 @@ export const GoogleReviews: React.FC = () => {
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-8 h-[1px] bg-amber-500" />
             <span className="font-mono text-xs text-amber-600 tracking-widest uppercase">
-              Customer Reviews
+              DEMO / LOCAL REVIEW SET
             </span>
             <span className="w-8 h-[1px] bg-amber-500" />
           </div>
@@ -41,7 +41,7 @@ export const GoogleReviews: React.FC = () => {
             Google Reviews
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-            What our customers say about their experience at 3M Car Care Studio
+            Sample review content for presentation. A verified Google review feed can be connected later.
           </p>
         </div>
 
@@ -55,13 +55,13 @@ export const GoogleReviews: React.FC = () => {
               {renderStars(Math.round(averageRating))}
             </div>
             <div className="text-sm text-gray-500 font-medium">
-              {totalReviews} reviews
+              {totalReviews} sample reviews
             </div>
           </div>
           <div className="hidden sm:block w-px h-16 bg-gray-200" />
           <div className="text-center sm:text-left">
             <div className="text-sm text-gray-600 mb-2">
-              Based on {totalReviews} Google reviews
+              {totalReviews} local demo reviews
             </div>
             <div className="flex items-center gap-2">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -89,20 +89,28 @@ export const GoogleReviews: React.FC = () => {
 
         {/* Featured Review */}
         <div className="max-w-4xl mx-auto">
-          <div className="relative bg-gray-50 rounded-2xl p-8 sm:p-12 border border-gray-100">
+          <div className="relative bg-gray-50 rounded-sm p-8 sm:p-12 border border-gray-100">
             <div className="relative">
               <div className="flex items-center gap-1 mb-4">
                 {renderStars(DEMO_GOOGLE_REVIEWS[activeIndex].rating)}
               </div>
               
-              <p className="text-gray-800 text-lg sm:text-xl leading-relaxed mb-6 font-medium">
+              <p
+                lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
+                className={`text-gray-800 text-lg sm:text-xl leading-relaxed mb-6 font-medium ${DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}`}
+              >
                 "{DEMO_GOOGLE_REVIEWS[activeIndex].text}"
               </p>
               
               <div className="flex items-center justify-between">
                 <div>
                   <div className="font-semibold text-gray-900 text-base sm:text-lg">
-                    {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
+                    <span
+                      lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
+                      className={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}
+                    >
+                      {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
+                    </span>
                   </div>
                   <div className="text-sm text-gray-500 mt-1">
                     {DEMO_GOOGLE_REVIEWS[activeIndex].date}
@@ -136,19 +144,25 @@ export const GoogleReviews: React.FC = () => {
 
         {/* Review Grid */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {DEMO_GOOGLE_REVIEWS.slice(0, 6).map((review) => (
+          {DEMO_GOOGLE_REVIEWS.map((review) => (
             <div
               key={review.id}
-              className="bg-white border border-gray-100 rounded-xl p-6 hover:border-amber-200 hover:shadow-lg transition-all duration-300"
+              className="bg-white border border-gray-100 rounded-sm p-6 hover:border-amber-200 transition-all duration-300"
             >
               <div className="flex items-center gap-1 mb-3">
                 {renderStars(review.rating)}
               </div>
-              <p className="text-gray-700 text-sm leading-relaxed mb-4 line-clamp-4">
+              <p
+                lang={review.language === "ta" ? "ta" : "en"}
+                className={`text-gray-700 text-sm leading-relaxed mb-4 line-clamp-4 ${review.language === "ta" ? "font-tamil" : ""}`}
+              >
                 {review.text}
               </p>
               <div className="flex items-center justify-between">
-                <div className="font-medium text-gray-900 text-sm">
+                <div
+                  lang={review.language === "ta" ? "ta" : "en"}
+                  className={`font-medium text-gray-900 text-sm ${review.language === "ta" ? "font-tamil" : ""}`}
+                >
                   {review.reviewerName}
                 </div>
                 <div className="text-xs text-gray-400">
@@ -185,7 +199,7 @@ export const GoogleReviews: React.FC = () => {
                 d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
               />
             </svg>
-            Read More Reviews
+            View Google Maps
           </a>
         </div>
       </div>
