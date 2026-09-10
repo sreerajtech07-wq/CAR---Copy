@@ -38,13 +38,13 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-studio-canvas"
+      className="relative w-full bg-white"
       style={{ height: `${scrollDistance}px` }}
       id="hero"
     >
       <div
         ref={pinTargetRef}
-        className="sticky top-0 w-full h-[100dvh] overflow-hidden select-none bg-studio-canvas"
+        className="sticky top-0 w-full h-[100dvh] overflow-hidden select-none bg-white"
       >
         <HeroCanvas progress={progress} quality={quality} />
       </div>

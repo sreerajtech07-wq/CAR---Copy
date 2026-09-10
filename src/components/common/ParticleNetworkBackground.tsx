@@ -15,9 +15,8 @@ interface PointerPosition {
   active: boolean;
 }
 
-const PARTICLE_COLOR = "212, 175, 55";
-const CONNECTION_DISTANCE = 150;
-const POINTER_DISTANCE = 170;
+const CONNECTION_DISTANCE = 125;
+const POINTER_DISTANCE = 160;
 
 interface ParticleNetworkBackgroundProps {
   particleColor?: string;
@@ -28,11 +27,11 @@ interface ParticleNetworkBackgroundProps {
 }
 
 export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps> = ({
-  particleColor = PARTICLE_COLOR,
-  particleAlpha = [0.08, 0.18],
-  connectionAlpha = 0.045,
-  mouseConnectionAlpha = 0.09,
-  canvasOpacity = 0.42,
+  particleColor = "180, 140, 30",
+  particleAlpha = [0.35, 0.55],
+  connectionAlpha = 0.15,
+  mouseConnectionAlpha = 0.3,
+  canvasOpacity = 0.75,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -53,8 +52,8 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     const getParticleCount = () => {
       const area = width * height;
       const baseCount = Math.round(area / 15000);
-      const maximum = width < 768 ? 42 : width < 1024 ? 72 : 108;
-      const minimum = width < 768 ? 24 : width < 1024 ? 38 : 58;
+      const maximum = width < 768 ? 45 : width < 1024 ? 70 : 100;
+      const minimum = width < 768 ? 30 : width < 1024 ? 50 : 70;
       return Math.min(maximum, Math.max(minimum, baseCount));
     };
 
@@ -131,7 +130,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
           context.moveTo(particle.x, particle.y);
           context.lineTo(other.x, other.y);
           context.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-          context.lineWidth = 0.55;
+          context.lineWidth = 1.0;
           context.stroke();
         }
 
@@ -147,7 +146,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
             context.moveTo(particle.x, particle.y);
             context.lineTo(pointer.x, pointer.y);
             context.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-            context.lineWidth = 0.65;
+            context.lineWidth = 1.2;
             context.stroke();
           }
         }

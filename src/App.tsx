@@ -12,21 +12,21 @@ import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
 import { WhyProfessional } from "./components/sections/WhyProfessional";
 import { ProcessTimeline } from "./components/sections/ProcessTimeline";
+import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
 
 export const App: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-studio-canvas text-studio-ink selection:bg-brand-amber selection:text-studio-ink antialiased overflow-x-hidden">
+    <div className="relative min-h-screen bg-white text-studio-ink selection:bg-brand-amber selection:text-studio-ink antialiased overflow-x-hidden">
       {/* GSAP Cursor & 3D Three.js Perspective Background */}
       <CursorEffect />
       <Background3D />
       <ParticleNetworkBackground />
 
-      {/* Fixed Ambient Film Grain & Grid Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-40" />
-      <div className="fixed inset-0 pointer-events-none z-0 bg-grid-pattern opacity-25" />
+      {/* Fixed Ambient Film Grain Overlay */}
+      <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-5" />
 
       {/* Global Navigation */}
       <Navbar />
@@ -55,14 +55,17 @@ export const App: React.FC = () => {
         {/* 07. EXISTING WORK / RESULTS - Process workflow */}
         <ProcessTimeline />
 
-        {/* 08. CTA / BOOKING */}
+        {/* 08. CUSTOMER REVIEWS */}
+        <GoogleReviews />
+
+        {/* 09. CTA / BOOKING */}
         <FinalCTA />
 
-        {/* 09. CONTACT */}
+        {/* 10. CONTACT */}
         <LocationSection />
       </main>
 
-      {/* 10. FOOTER */}
+      {/* 11. FOOTER */}
       <Footer />
     </div>
   );

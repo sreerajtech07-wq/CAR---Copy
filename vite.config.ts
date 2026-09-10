@@ -25,7 +25,6 @@ export default defineConfig({
         'sun-film': resolve(import.meta.dirname, 'sun-film.html'),
         'anti-rust': resolve(import.meta.dirname, 'anti-rust.html'),
         'additional-services': resolve(import.meta.dirname, 'additional-services.html'),
-        'particle-preview': resolve(import.meta.dirname, 'particle-preview.html'),
       },
     },
   },

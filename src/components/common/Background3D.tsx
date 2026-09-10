@@ -13,7 +13,7 @@ export const Background3D: React.FC = () => {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0xf8fafc, 0.0018);
+    scene.fog = new THREE.FogExp2(0xffffff, 0.0018);
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
@@ -32,7 +32,7 @@ export const Background3D: React.FC = () => {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xf8fafc, 0);
+    renderer.setClearColor(0xffffff, 0);
     container.appendChild(renderer.domElement);
 
     // 1. 3D floating inspection particles
@@ -193,14 +193,11 @@ export const Background3D: React.FC = () => {
   }, []);
 
   return (
-    <>
-      <div className="studio-inspection-layer" aria-hidden="true" />
-      <div
-        ref={mountRef}
-        className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-        style={{ opacity: 0.2 }}
-        aria-hidden="true"
-      />
-    </>
+    <div
+      ref={mountRef}
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      style={{ opacity: 0.04 }}
+      aria-hidden="true"
+    />
   );
 };

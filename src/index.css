@@ -5,11 +5,12 @@
 @layer base {
   :root {
     color-scheme: light;
-    --bg-canvas: #F8FAFC;
+    --bg-canvas: #FFFFFF;
     --bg-card: #FFFFFF;
     --border-subtle: #E2E8F0;
-    --text-primary: #0F172A;
-    --text-secondary: #64748B;
+    --text-primary: #111111;
+    --text-secondary: #333333;
+    --text-muted: #555555;
     --accent-blue: #1D4ED8;
     --accent-blue-hover: #1E40AF;
     --cta-amber: #F59E0B;
@@ -61,26 +62,6 @@
   }
 }
 
-.studio-inspection-layer {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background:
-    radial-gradient(850px circle at var(--cursor-x) var(--cursor-y), rgba(29, 78, 216, 0.11) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 80%),
-    radial-gradient(circle at 50% 50%, transparent 0%, rgba(248, 250, 252, 0.68) 100%),
-    linear-gradient(to right, rgba(15, 23, 42, 0.055) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(15, 23, 42, 0.055) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 75px 75px, 75px 75px;
-}
-
-.studio-inspection-layer::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(220px circle at var(--cursor-x) var(--cursor-y), rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0.18) 40%, transparent 100%);
-}
-
 .text-gold-glow {
   color: var(--cta-amber);
   text-shadow: 0 0 20px rgba(245, 158, 11, 0.35);
@@ -103,6 +84,12 @@
 .text-white { color: var(--text-primary) !important; }
 .bg-brand-red.text-white, .bg-brand-crimson.text-white, .bg-green-600.text-white { color: #FFFFFF !important; }
 .border-white\/10 { border-color: var(--border-subtle) !important; }
+
+/* Update metallic text colors for better contrast */
+.text-metallic-300 { color: #333333 !important; }
+.text-metallic-400 { color: #444444 !important; }
+.text-metallic-500 { color: #555555 !important; }
+.text-metallic-200 { color: #222222 !important; }
 
 /* Precision luxury styling utilities */
 .text-metallic-silver {
@@ -136,14 +123,6 @@
 /* Subtle Film Grain Overlay */
 .film-grain {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
-}
-
-/* Subtle grid line overlay */
-.bg-grid-pattern { 
-  background-size: 60px 60px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
 }
 
 /* Sparkle particle effects (Nightingale-inspired custom cursor) */

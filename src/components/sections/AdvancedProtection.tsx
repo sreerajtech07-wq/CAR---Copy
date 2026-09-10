@@ -98,7 +98,6 @@ export const AdvancedProtection: React.FC = () => {
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/40 to-transparent" />
                 <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 rounded-sm bg-dark-950/80 backdrop-blur-md border border-white/15 text-white tracking-widest uppercase">
                   {tier.badge}
                 </div>

@@ -7,6 +7,8 @@ import {
   ChevronDown,
   Navigation,
 } from "lucide-react";
+import { CursorEffect } from "../components/common/CursorEffect";
+import { Background3D } from "../components/common/Background3D";
 import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
 
 export const SunFilmPage: React.FC = () => {
@@ -65,7 +67,9 @@ export const SunFilmPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-studio-canvas text-studio-ink antialiased overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-white text-studio-ink antialiased overflow-x-hidden font-sans">
+      <CursorEffect />
+      <Background3D />
       <ParticleNetworkBackground />
       {/* Top Sticky Header */}
       <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-studio-border py-3.5 px-4 sm:px-8">
@@ -236,7 +240,6 @@ export const SunFilmPage: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/30 to-transparent opacity-90" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="font-mono text-[10px] text-brand-amber tracking-widest uppercase">
                     {img.category}

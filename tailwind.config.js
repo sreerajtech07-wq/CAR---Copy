@@ -8,7 +8,7 @@ export default {
     extend: {
       colors: {
         dark: {
-          950: '#F8FAFC',
+          950: '#FFFFFF',
           900: '#FFFFFF',
           850: '#F1F5F9',
           800: '#E2E8F0',
@@ -18,10 +18,10 @@ export default {
         },
         metallic: {
           100: '#F8FAFC',
-          200: '#E2E8F0',
-          300: '#CBD5E1',
-          400: '#94A3B8',
-          500: '#64748B',
+          200: '#333333',
+          300: '#444444',
+          400: '#666666',
+          500: '#888888',
         },
         brand: {
           red: '#1D4ED8',

@@ -74,14 +74,14 @@ export const ProcessTimeline: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="p-6 sm:p-8 rounded-sm bg-dark-900 border border-white/10 flex flex-col justify-between group hover:border-white/20 transition-all duration-300"
+                className="p-6 sm:p-8 rounded-sm bg-white border border-gray-200 flex flex-col justify-between group hover:border-brand-red/30 transition-all duration-300"
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-xl font-bold text-metallic-500 group-hover:text-brand-red transition-colors">
+                    <span className="font-mono text-xl font-bold text-gray-900 group-hover:text-brand-red transition-colors">
                       {step.num}
                     </span>
-                    <div className="p-2.5 rounded-sm bg-white/5 border border-white/10 text-metallic-200">
+                    <div className="p-2.5 rounded-sm bg-gray-100 border border-gray-200 text-gray-700">
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
@@ -89,15 +89,15 @@ export const ProcessTimeline: React.FC = () => {
                   <div className="font-mono text-[10px] text-brand-red tracking-widest uppercase mb-1">
                     {step.subtitle}
                   </div>
-                  <h3 className="font-display text-lg sm:text-xl font-bold text-white tracking-wide">
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-gray-900 tracking-wide">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">
+                  <p className="mt-3 text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
                     {step.detail}
                   </p>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-white/5 font-mono text-[10px] text-metallic-500">
+                <div className="mt-6 pt-4 border-t border-gray-200 font-mono text-[10px] text-gray-600">
                   PHASE {step.num} // STUDIO MIGRATION
                 </div>
               </div>
@@ -105,22 +105,22 @@ export const ProcessTimeline: React.FC = () => {
           })}
 
           {/* Bay Scheduling Info Card */}
-          <div className="p-6 sm:p-8 rounded-sm bg-gradient-to-br from-dark-850 to-dark-900 border border-brand-red/30 flex flex-col justify-between">
+          <div className="p-6 sm:p-8 rounded-sm bg-white border border-gray-200 flex flex-col justify-between">
             <div>
               <span className="font-mono text-xs text-brand-red tracking-widest uppercase">
                 STUDIO ADMISSION
               </span>
-              <h3 className="mt-2 font-display text-xl font-bold text-white uppercase">
+              <h3 className="mt-2 font-display text-xl font-bold text-gray-900 uppercase">
                 Reserved Bay Detailing
               </h3>
-              <p className="mt-3 text-xs sm:text-sm text-metallic-300 font-light leading-relaxed">
+              <p className="mt-3 text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
                 To guarantee maximum attention to detail and unhurried clearcoat curing, all major coating and PPF treatments are allocated dedicated bay time.
               </p>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <div className="font-mono text-xs text-metallic-400 mb-2">Operating 7 Days a Week</div>
-              <div className="font-mono text-sm text-white font-semibold">9:30 AM – 8:00 PM</div>
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="font-mono text-xs text-gray-600 mb-2">Operating 7 Days a Week</div>
+              <div className="font-mono text-sm text-gray-900 font-semibold">9:30 AM – 8:00 PM</div>
             </div>
           </div>
         </div>

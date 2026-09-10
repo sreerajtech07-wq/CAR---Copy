@@ -71,7 +71,6 @@ export const DetailingExperience: React.FC = () => {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between font-mono text-[11px] text-white">
                 <span>INSPECTION LIGHTBAY // OMR STUDIO</span>
                 <span className="text-brand-amber">CALIBRATED SURFACE RESTORATION</span>

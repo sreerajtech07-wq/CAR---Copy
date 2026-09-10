@@ -71,7 +71,7 @@ export const CeramicPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-studio-canvas text-studio-ink antialiased overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-white text-studio-ink antialiased overflow-x-hidden font-sans">
       <CursorEffect />
       <Background3D />
       <ParticleNetworkBackground />
@@ -236,7 +236,6 @@ export const CeramicPage: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950 via-dark-950/30 to-transparent opacity-90" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <span className="font-mono text-[10px] text-brand-amber tracking-widest uppercase">
                     {img.category}

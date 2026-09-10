@@ -36,8 +36,7 @@ export const PpfSunFilm: React.FC = () => {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 bg-dark-950/80 backdrop-blur-md border border-white/15 text-white tracking-widest uppercase">
+              <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 bg-white/80 backdrop-blur-md border border-gray-200 text-gray-900 tracking-widest uppercase">
                 PHYSICAL STONE-CHIP ARMOR
               </div>
             </div>
@@ -98,8 +97,7 @@ export const PpfSunFilm: React.FC = () => {
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent" />
-              <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 bg-dark-950/80 backdrop-blur-md border border-white/15 text-white tracking-widest uppercase">
+              <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 bg-white/80 backdrop-blur-md border border-gray-200 text-gray-900 tracking-widest uppercase">
                 SOLAR OPTICAL CONTROL
               </div>
             </div>
