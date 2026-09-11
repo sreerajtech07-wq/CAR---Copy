@@ -9,9 +9,12 @@ import { StatsSection } from "./components/sections/StatsSection";
 import { BrandIntro } from "./components/sections/BrandIntro";
 import { ServicesSection } from "./components/sections/ServicesSection";
 import { DetailingExperience } from "./components/sections/DetailingExperience";
+import { OriginalServicesSection } from "./components/sections/OriginalServicesSection";
+import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
 import { WhyProfessional } from "./components/sections/WhyProfessional";
+import { TrustSection } from "./components/sections/TrustSection";
 import { ProcessTimeline } from "./components/sections/ProcessTimeline";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
@@ -49,26 +52,31 @@ export const App: React.FC = () => {
 
         {/* 05. VISUAL SHOWCASE - Gallery of work, detailing, protection */}
         <DetailingExperience />
+        <OriginalServicesSection />
+        <BeforeAfter />
         <AdvancedProtection />
         <PpfSunFilm />
 
         {/* 06. EXISTING BUSINESS CONTENT - Standards */}
         <WhyProfessional />
 
-        {/* 07. EXISTING WORK / RESULTS - Process workflow */}
+        {/* 07. TRUST - Approved studio metrics and service catalogue */}
+        <TrustSection />
+
+        {/* 08. EXISTING WORK / RESULTS - Process workflow */}
         <ProcessTimeline />
 
-        {/* 08. CUSTOMER REVIEWS */}
+        {/* 09. CUSTOMER REVIEWS */}
         <GoogleReviews />
 
-        {/* 09. CTA / BOOKING */}
+        {/* 10. CTA / BOOKING */}
         <FinalCTA />
 
-        {/* 10. CONTACT */}
+        {/* 11. CONTACT */}
         <LocationSection />
       </main>
 
-      {/* 11. FOOTER */}
+      {/* 12. FOOTER */}
       <Footer />
     </div>
   );

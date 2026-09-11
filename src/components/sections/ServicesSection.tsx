@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { OFFICIAL_SERVICES } from "../../data/services";
 import { ArrowRight } from "lucide-react";
 
@@ -13,104 +13,27 @@ const SERVICE_PAGE_MAP: Record<string, string> = {
   "additional-services": "/additional-services.html",
 };
 
-const ServiceMarquee: React.FC<{ onSelect: (id: string) => void }> = ({ onSelect }) => {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const offsetRef = useRef(0);
-  const lastXRef = useRef(0);
-  const frameRef = useRef<number | null>(null);
-  const isPausedRef = useRef(false);
-  const isDraggingRef = useRef(false);
-  const didDragRef = useRef(false);
-  const suppressClickRef = useRef(false);
-  const pointerDownXRef = useRef(0);
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const wrapOffset = () => {
-      const loopWidth = track.scrollWidth / 2;
-      if (!loopWidth) return;
-      while (offsetRef.current <= -loopWidth) offsetRef.current += loopWidth;
-      while (offsetRef.current > 0) offsetRef.current -= loopWidth;
-    };
-
-    const render = () => {
-      if (!isPausedRef.current && !isDraggingRef.current) offsetRef.current -= 0.45;
-      wrapOffset();
-      track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`;
-      frameRef.current = window.requestAnimationFrame(render);
-    };
-
-    frameRef.current = window.requestAnimationFrame(render);
-    return () => {
-      if (frameRef.current !== null) window.cancelAnimationFrame(frameRef.current);
-    };
-  }, []);
-
-  const pause = () => { isPausedRef.current = true; };
-  const resume = () => {
-    if (!isDraggingRef.current) isPausedRef.current = false;
-  };
-  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
-    isDraggingRef.current = true;
-    isPausedRef.current = true;
-    didDragRef.current = false;
-    lastXRef.current = event.clientX;
-    pointerDownXRef.current = event.clientX;
-  };
-  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current) return;
-    const distance = event.clientX - lastXRef.current;
-    if (Math.abs(distance) > 2) didDragRef.current = true;
-    offsetRef.current += distance;
-    lastXRef.current = event.clientX;
-  };
-  const handlePointerUp = () => {
-    if (!isDraggingRef.current) return;
-    isDraggingRef.current = false;
-    suppressClickRef.current = didDragRef.current;
-    resume();
-  };
-  const handleCardClick = (event: React.MouseEvent<HTMLAnchorElement>, serviceId: string) => {
-    const moved = Math.abs(lastXRef.current - pointerDownXRef.current);
-    if (suppressClickRef.current || moved > 8) event.preventDefault();
-    suppressClickRef.current = false;
-    onSelect(serviceId);
-  };
-
+const ServiceShowcase: React.FC = () => {
   return (
-    <div
-      className="service-marquee-track flex w-max cursor-grab gap-5 touch-pan-y active:cursor-grabbing"
-      ref={trackRef}
-      onPointerEnter={pause}
-      onPointerLeave={resume}
-      onPointerDown={handlePointerDown}
-      onPointerMove={handlePointerMove}
-      onPointerUp={handlePointerUp}
-      onPointerCancel={handlePointerUp}
-      onFocusCapture={pause}
-      onBlurCapture={resume}
-    >
-      {[...OFFICIAL_SERVICES, ...OFFICIAL_SERVICES].map((service, index) => {
+    <div className="service-showcase flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:gap-6 lg:block lg:overflow-visible lg:pb-0">
+      {OFFICIAL_SERVICES.map((service, index) => {
         const servicePageUrl = SERVICE_PAGE_MAP[service.id];
         return (
           <a
-            key={`${service.id}-${index}`}
+            key={service.id}
             href={servicePageUrl}
-            onClick={(event) => handleCardClick(event, service.id)}
             draggable={false}
-            className="group relative flex h-[21rem] w-[17rem] shrink-0 select-none flex-col overflow-hidden rounded-sm border border-white/10 bg-dark-950 shadow-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
+            className="group relative flex min-h-[25rem] w-[min(86vw,30rem)] shrink-0 snap-start flex-col overflow-hidden border border-white/10 bg-dark-950/70 transition-colors duration-500 hover:border-brand-red/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red focus-visible:outline-offset-4 lg:min-h-0 lg:w-full lg:flex-row lg:items-stretch lg:border-x-0 lg:border-t-0 lg:bg-transparent lg:py-8 first:lg:border-t"
           >
-            <div className="relative h-36 shrink-0 overflow-hidden bg-dark-900">
-              <img src={service.image} alt={service.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading={index < OFFICIAL_SERVICES.length ? "eager" : "lazy"} />
-              <span className="absolute left-3 top-3 border border-white/15 bg-dark-950/80 px-2 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
+            <div className="order-2 relative h-48 shrink-0 overflow-hidden bg-dark-900 lg:order-1 lg:h-52 lg:w-1/2">
+              <img src={service.image} alt={`${service.title} service showcase`} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]" loading={index < 2 ? "eager" : "lazy"} />
+              <span className="absolute left-4 top-4 border border-white/20 bg-dark-950/80 px-2.5 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
             </div>
-            <div className="flex flex-1 flex-col p-4">
-              <span className="font-mono text-[10px] tracking-widest text-brand-red">0{(index % OFFICIAL_SERVICES.length) + 1} / SERVICES</span>
-              <h3 className="mt-2 font-display text-xl font-bold leading-tight tracking-wide text-white">{service.title}</h3>
-              <p className="mt-2 line-clamp-3 text-xs leading-relaxed text-metallic-400">{service.shortDescription}</p>
-              <span className="mt-auto inline-flex items-center gap-1.5 pt-3 font-mono text-[10px] uppercase tracking-wider text-white transition-colors group-hover:text-brand-red">View service <ArrowRight className="h-3.5 w-3.5" /></span>
+            <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
+              <span className="font-mono text-[10px] tracking-[0.28em] text-brand-red">{String(index + 1).padStart(2, "0")} / SERVICES</span>
+              <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-none tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">{service.categoryName}</h3>
+              <p className="mt-3 max-w-xl text-xs leading-relaxed text-metallic-400 transition-colors duration-500 group-hover:text-metallic-200 lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-20 lg:group-hover:opacity-100">{service.shortDescription}</p>
+              <span className="mt-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-white transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
             </div>
           </a>
         );
@@ -141,8 +64,8 @@ export const ServicesSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="relative -mx-4 overflow-hidden py-4 px-4 [mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)] sm:-mx-6 sm:px-6 lg:-mx-4 lg:px-4">
-          <ServiceMarquee onSelect={() => undefined} />
+        <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
+          <ServiceShowcase />
         </div>
       </div>
     </section>
