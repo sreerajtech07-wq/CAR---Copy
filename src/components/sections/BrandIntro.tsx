@@ -4,7 +4,7 @@ import { ShieldCheck, MapPin, Clock } from "lucide-react";
 
 export const BrandIntro: React.FC = () => {
   return (
-    <section id="about" className="relative w-full bg-dark-950 py-24 sm:py-32 border-b border-white/10 overflow-hidden">
+    <section id="about" className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10 overflow-hidden">
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="flex items-center space-x-2.5 mb-6">
@@ -29,7 +29,7 @@ export const BrandIntro: React.FC = () => {
           </div>
 
           <div className="lg:col-span-5 grid grid-cols-1 gap-4 font-mono text-xs">
-            <div className="p-5 rounded-sm bg-dark-900/90 border border-white/10 backdrop-blur-sm">
+            <div className="p-5 rounded-sm bg-white/[0.03] border border-white/10 backdrop-blur-md">
               <div className="flex items-center space-x-3 text-metallic-400 mb-2">
                 <MapPin className="w-4 h-4 text-brand-red" />
                 <span className="tracking-widest uppercase">STUDIO LOCATION</span>
@@ -42,7 +42,7 @@ export const BrandIntro: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-5 rounded-sm bg-dark-900/90 border border-white/10 backdrop-blur-sm">
+            <div className="p-5 rounded-sm bg-white/[0.03] border border-white/10 backdrop-blur-md">
               <div className="flex items-center space-x-3 text-metallic-400 mb-2">
                 <Clock className="w-4 h-4 text-brand-amber" />
                 <span className="tracking-widest uppercase">OPERATING HOURS</span>
@@ -55,7 +55,7 @@ export const BrandIntro: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-5 rounded-sm bg-dark-900/90 border border-white/10 backdrop-blur-sm">
+            <div className="p-5 rounded-sm bg-white/[0.03] border border-white/10 backdrop-blur-md">
               <div className="flex items-center space-x-3 text-metallic-400 mb-2">
                 <ShieldCheck className="w-4 h-4 text-metallic-300" />
                 <span className="tracking-widest uppercase">AUTHORITATIVE STANDARDS</span>

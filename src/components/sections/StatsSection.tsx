@@ -64,7 +64,7 @@ export const StatsSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="trust" aria-labelledby="trust-title" className="relative w-full overflow-hidden border-b border-white/10 bg-dark-950/80 backdrop-blur-none py-24 sm:py-32">
+    <section ref={sectionRef} id="trust" aria-labelledby="trust-title" className="relative w-full overflow-hidden border-b border-white/10 bg-transparent py-24 sm:py-32">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="trust-reveal mb-14 flex flex-col justify-between border-b border-white/10 pb-7 md:flex-row md:items-end">
           <div>
@@ -74,9 +74,9 @@ export const StatsSection: React.FC = () => {
           <p className="mt-5 max-w-lg text-sm leading-relaxed text-metallic-300 md:mt-0 md:text-right">Professional automotive care in OMR, Chennai, built around precise detailing, advanced protection and consistent studio craft.</p>
         </div>
 
-        <div className="trust-reveal grid grid-cols-1 border-y border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="trust-reveal grid grid-cols-1 rounded-sm bg-white/[0.02] backdrop-blur-md border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST_METRICS.map((metric) => (
-            <div key={metric.id} className="group border-b border-white/10 px-1 py-8 sm:px-7 sm:py-10 sm:[&:nth-child(even)]:border-l lg:border-b-0 lg:border-l lg:px-8 first:lg:border-l-0 last:border-b-0">
+            <div key={metric.id} className="group border-b border-white/10 px-6 py-8 sm:px-7 sm:py-10 sm:[&:nth-child(even)]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0 last:border-b-0">
               <div className="flex items-baseline gap-1"><span className={`font-display font-bold tracking-tight text-white ${metric.isRating ? "text-6xl sm:text-7xl" : "text-5xl sm:text-6xl"}`}>{metric.isRating ? (visibleValues[metric.id] ?? 0).toFixed(1) : (visibleValues[metric.id] ?? 0).toLocaleString()}</span><span className="font-display text-3xl font-bold text-brand-red">{metric.suffix}</span></div>
               {metric.isRating && <div className="mt-3 flex items-center gap-1" aria-label="Five star customer rating">{Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-4 w-4 fill-brand-red text-brand-red" aria-hidden="true" />)}</div>}
               <div className="mt-4 font-mono text-xs font-semibold tracking-[0.16em] text-metallic-200">{metric.label}</div>
@@ -85,7 +85,7 @@ export const StatsSection: React.FC = () => {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {STUDIO_STANDARDS.map((standard) => <div key={standard.title} className="trust-reveal border-l border-brand-red/60 pl-5"><h3 className="font-mono text-xs font-semibold tracking-[0.2em] text-brand-red">{standard.title}</h3><p className="mt-3 text-sm leading-relaxed text-metallic-300">{standard.copy}</p></div>)}
+          {STUDIO_STANDARDS.map((standard) => <div key={standard.title} className="trust-reveal p-6 rounded-sm bg-white/[0.02] backdrop-blur-md border border-white/10 border-l-2 border-l-brand-red"><h3 className="font-mono text-xs font-semibold tracking-[0.2em] text-brand-red">{standard.title}</h3><p className="mt-3 text-sm leading-relaxed text-metallic-300">{standard.copy}</p></div>)}
         </div>
       </div>
     </section>

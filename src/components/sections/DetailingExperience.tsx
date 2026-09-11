@@ -1,16 +1,23 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Lightbox, type LightboxImage } from "../common/Lightbox";
-import { Maximize2, Camera } from "lucide-react";
+import { BUSINESS } from "../../data/business";
+import { InstagramIcon } from "../common/Icons";
+import { ArrowUpRight, Camera } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+export interface GalleryItem {
+  src: string;
+  title: string;
+  category?: string;
+  description?: string;
+}
+
 export const DetailingExperience: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
-  const galleryImages: LightboxImage[] = [
+  const galleryImages: GalleryItem[] = [
     {
       src: "/assets/services/detailing.jpg",
       title: "Paint Correction & Dual-Action Polishing",
@@ -74,7 +81,7 @@ export const DetailingExperience: React.FC = () => {
       ref={sectionRef}
       id="detailing"
       aria-labelledby="gallery-title"
-      className="relative w-full border-b border-white/10 bg-dark-950/90 py-24 sm:py-32 overflow-hidden"
+      className="relative w-full border-b border-white/10 bg-transparent py-24 sm:py-32 overflow-hidden"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Editorial Section Header */}
@@ -92,7 +99,7 @@ export const DetailingExperience: React.FC = () => {
           </div>
           <div className="mt-4 flex items-center space-x-2 font-mono text-xs text-metallic-400 md:mt-0">
             <Camera className="w-4 h-4 text-brand-amber" />
-            <span>METTUKUPPAM, OMR STUDIO BAYS • CLICK PHOTO TO VIEW LIGHTBOX</span>
+            <span>METTUKUPPAM, OMR STUDIO BAYS • OFFICIAL GALLERY</span>
           </div>
         </div>
 
@@ -101,49 +108,37 @@ export const DetailingExperience: React.FC = () => {
           {/* Top Row: 1 Large Hero Featured Image (70%) + 1 Tall Card (30%) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Featured Hero Photo */}
-            <div
-              onClick={() => setActiveLightboxIndex(0)}
-              className="lg:col-span-8 group relative rounded-sm overflow-hidden border border-white/15 bg-dark-900 aspect-[16/10] sm:aspect-[16/9] cursor-pointer shadow-2xl"
-            >
+            <div className="lg:col-span-8 group relative rounded-sm overflow-hidden border border-white/15 bg-dark-900 aspect-[16/10] sm:aspect-[16/9] shadow-2xl">
               <img
                 src={galleryImages[0].src}
                 alt={galleryImages[0].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                loading="lazy"
+                loading="eager"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-950/95 via-dark-950/20 to-transparent opacity-85 group-hover:opacity-65 transition-opacity duration-300" />
-              <div className="absolute top-4 right-4 p-2.5 rounded-full bg-dark-950/80 border border-white/20 text-white group-hover:bg-brand-red group-hover:border-brand-red transition-all duration-300 shadow-lg">
-                <Maximize2 className="w-4 h-4" />
-              </div>
-              <div className="absolute bottom-6 left-6 right-6">
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute bottom-6 left-6 right-6 z-10">
                 <span className="font-mono text-xs text-brand-red tracking-super-wide uppercase block mb-1">
                   FEATURED WORK // {galleryImages[0].category}
                 </span>
                 <h3 className="font-cinematic text-xl sm:text-3xl font-bold uppercase tracking-tight text-white">
                   {galleryImages[0].title}
                 </h3>
-                <p className="mt-1 text-xs sm:text-sm text-metallic-300 font-light max-w-xl hidden sm:block">
+                <p className="mt-1 text-xs sm:text-sm text-metallic-200 font-light max-w-xl hidden sm:block">
                   {galleryImages[0].description}
                 </p>
               </div>
             </div>
 
             {/* Secondary Asymmetric Card */}
-            <div
-              onClick={() => setActiveLightboxIndex(1)}
-              className="lg:col-span-4 group relative rounded-sm overflow-hidden border border-white/15 bg-dark-900 aspect-[4/3] lg:aspect-auto cursor-pointer shadow-xl"
-            >
+            <div className="lg:col-span-4 group relative rounded-sm overflow-hidden border border-white/15 bg-dark-900 aspect-[4/3] lg:aspect-auto shadow-xl">
               <img
                 src={galleryImages[1].src}
                 alt={galleryImages[1].title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/30 to-transparent opacity-85 group-hover:opacity-65 transition-opacity duration-300" />
-              <div className="absolute top-4 right-4 p-2.5 rounded-full bg-dark-950/80 border border-white/20 text-white group-hover:bg-brand-red group-hover:border-brand-red transition-all duration-300 shadow-lg">
-                <Maximize2 className="w-4 h-4" />
-              </div>
-              <div className="absolute bottom-5 left-5 right-5">
+              <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute bottom-5 left-5 right-5 z-10">
                 <span className="font-mono text-[10px] text-brand-amber tracking-widest uppercase block mb-1">
                   {galleryImages[1].category}
                 </span>
@@ -159,8 +154,7 @@ export const DetailingExperience: React.FC = () => {
             {galleryImages.slice(2).map((img, i) => (
               <div
                 key={i}
-                onClick={() => setActiveLightboxIndex(i + 2)}
-                className="group relative rounded-sm overflow-hidden border border-white/10 bg-dark-900 aspect-[4/3] cursor-pointer shadow-lg hover:border-brand-red/50 transition-all duration-300"
+                className="group relative rounded-sm overflow-hidden border border-white/10 bg-dark-900 aspect-[4/3] shadow-lg hover:border-brand-red/50 transition-all duration-300"
               >
                 <img
                   src={img.src}
@@ -168,11 +162,8 @@ export const DetailingExperience: React.FC = () => {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/90 via-dark-950/20 to-transparent opacity-85 group-hover:opacity-50 transition-opacity duration-300" />
-                <div className="absolute top-3 right-3 p-2 rounded-full bg-dark-950/70 text-white/80 group-hover:text-white group-hover:bg-brand-red transition-all duration-300">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </div>
-                <div className="absolute bottom-4 left-4 right-4">
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-950/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none" />
+                <div className="absolute bottom-4 left-4 right-4 z-10">
                   <span className="font-mono text-[9px] text-brand-amber tracking-widest uppercase block mb-0.5">
                     {img.category}
                   </span>
@@ -184,15 +175,21 @@ export const DetailingExperience: React.FC = () => {
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Fullscreen Lightbox Modal */}
-      <Lightbox
-        images={galleryImages}
-        currentIndex={activeLightboxIndex}
-        onClose={() => setActiveLightboxIndex(null)}
-        onNavigate={(idx) => setActiveLightboxIndex(idx)}
-      />
+        {/* View Gallery Instagram CTA Button */}
+        <div className="editorial-gallery-reveal mt-12 flex justify-center">
+          <a
+            href={BUSINESS.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2.5 px-8 py-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs font-bold tracking-widest uppercase transition-all duration-300 shadow-xl shadow-red-950/40 hover:scale-105"
+          >
+            <InstagramIcon className="w-4 h-4 text-white" />
+            <span>VIEW GALLERY ON INSTAGRAM</span>
+            <ArrowUpRight className="w-4 h-4 text-white" />
+          </a>
+        </div>
+      </div>
     </section>
   );
 };

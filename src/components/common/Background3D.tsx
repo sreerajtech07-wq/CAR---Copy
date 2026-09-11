@@ -178,7 +178,7 @@ export const Background3D: React.FC = () => {
     <div
       ref={mountRef}
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
-      style={{ opacity: 0.04 }}
+      style={{ opacity: 0.12 }}
       aria-hidden="true"
     />
   );

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote, ExternalLink } from "lucide-react";
 import { DEMO_GOOGLE_REVIEWS } from "../../data/googleReviews";
+import { BUSINESS } from "../../data/business";
 
 export const GoogleReviews: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -42,7 +43,7 @@ export const GoogleReviews: React.FC = () => {
   };
 
   return (
-    <section id="reviews" className="relative w-full bg-dark-950/90 py-24 sm:py-32 border-b border-white/10 overflow-hidden">
+    <section id="reviews" className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10">
@@ -80,53 +81,51 @@ export const GoogleReviews: React.FC = () => {
           </div>
         </div>
 
-        {/* Featured Editorial Testimonial Stage */}
-        <div className="relative max-w-4xl mx-auto mb-14">
-          <div className="relative bg-dark-900/80 border border-white/10 rounded-sm p-8 sm:p-12 shadow-2xl backdrop-blur-md">
-            <Quote className="absolute top-6 right-6 w-12 h-12 text-brand-red/15 pointer-events-none" />
-
-            <div className="flex items-center gap-1 mb-6">
+        {/* Highlight Featured Review */}
+        <div className="relative bg-dark-900/90 border border-white/10 p-6 sm:p-10 mb-8 overflow-hidden rounded-sm group hover:border-brand-red/40 transition-colors duration-500">
+          <Quote className="absolute top-6 right-6 w-20 h-20 text-white/5 group-hover:text-brand-red/10 transition-colors duration-500 pointer-events-none" />
+          
+          <div className="relative z-10">
+            <div className="flex items-center gap-1 mb-4">
               {renderStars(DEMO_GOOGLE_REVIEWS[activeIndex].rating)}
             </div>
 
             <p
               lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
-              className={`text-white text-lg sm:text-2xl leading-relaxed mb-8 font-light italic ${
-                DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil not-italic" : ""
+              className={`text-lg sm:text-2xl text-white font-light leading-relaxed mb-6 ${
+                DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""
               }`}
             >
               "{DEMO_GOOGLE_REVIEWS[activeIndex].text}"
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-white/10">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-white/10">
               <div>
-                <div className="font-display font-bold text-white text-base sm:text-lg tracking-wide">
-                  —{" "}
-                  <span className={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}>
-                    {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
-                  </span>
+                <div
+                  className={`font-display font-bold text-white text-base sm:text-lg ${
+                    DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""
+                  }`}
+                >
+                  {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
                 </div>
-                <div className="font-mono text-xs text-brand-amber mt-0.5">
+                <div className="font-mono text-xs text-metallic-400 mt-0.5">
                   {DEMO_GOOGLE_REVIEWS[activeIndex].vehicle} • {DEMO_GOOGLE_REVIEWS[activeIndex].service}
                 </div>
               </div>
 
-              {/* Navigation Controls */}
-              <div className="flex items-center gap-3">
+              {/* Controls */}
+              <div className="flex items-center gap-2">
                 <button
                   onClick={prevReview}
-                  className="p-3 rounded-full bg-white/5 border border-white/15 text-white hover:border-brand-red hover:bg-brand-red transition-all duration-300"
-                  aria-label="Previous testimonial"
+                  aria-label="Previous review"
+                  className="p-3 bg-dark-950 border border-white/10 hover:border-brand-red text-white hover:text-brand-red transition-all duration-300 rounded-sm"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
-                <span className="font-mono text-xs text-metallic-400">
-                  {activeIndex + 1} / {totalReviews}
-                </span>
                 <button
                   onClick={nextReview}
-                  className="p-3 rounded-full bg-white/5 border border-white/15 text-white hover:border-brand-red hover:bg-brand-red transition-all duration-300"
-                  aria-label="Next testimonial"
+                  aria-label="Next review"
+                  className="p-3 bg-dark-950 border border-white/10 hover:border-brand-red text-white hover:text-brand-red transition-all duration-300 rounded-sm"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -135,12 +134,12 @@ export const GoogleReviews: React.FC = () => {
           </div>
         </div>
 
-        {/* Horizontal Track Carousel / Grid */}
+        {/* Carousel Track Cards */}
         <div
           ref={trackRef}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="flex gap-5 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-brand-red/40 scrollbar-track-transparent snap-x snap-mandatory"
+          className="flex gap-4 overflow-x-auto pb-4 pt-2 scrollbar-none snap-x snap-mandatory"
         >
           {DEMO_GOOGLE_REVIEWS.map((review, idx) => {
             const isSelected = idx === activeIndex;
@@ -181,6 +180,19 @@ export const GoogleReviews: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* WRITE A REVIEW CTA */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href={BUSINESS.mapQueryUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 px-8 py-4 bg-transparent border border-brand-red/80 hover:border-brand-red text-white hover:bg-brand-red/10 font-mono text-xs sm:text-sm tracking-wider uppercase transition-all duration-300 rounded-sm shadow-lg shadow-brand-red/10 hover:shadow-brand-red/20 group"
+          >
+            <span>WRITE A REVIEW</span>
+            <ExternalLink className="w-4 h-4 text-brand-red group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300" />
+          </a>
         </div>
       </div>
     </section>

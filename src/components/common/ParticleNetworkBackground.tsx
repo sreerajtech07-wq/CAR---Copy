@@ -141,17 +141,17 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
         // Draw Particle
         const particleAlpha = particle.opacity * (isReducedMotion ? 0.6 : 1.0);
         context.beginPath();
-        context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+        context.arc(particle.x, particle.y, particle.radius * 1.35, 0, Math.PI * 2);
         
         if (particle.layer === 2 && Math.random() < 0.15) {
           // Subtle warm-white highlight for foreground depth
-          context.fillStyle = `rgba(255, 235, 235, ${particleAlpha * 0.8})`;
+          context.fillStyle = `rgba(255, 235, 235, ${particleAlpha * 0.9})`;
         } else {
-          context.fillStyle = `rgba(${particleColor}, ${particleAlpha})`;
+          context.fillStyle = `rgba(${particleColor}, ${particleAlpha * 1.15})`;
         }
         context.fill();
 
-        // Connect to nearby particles with subtle burgundy lines
+        // Connect to nearby particles with light-trace 3D geometry lines
         for (let otherIndex = index + 1; otherIndex < particles.length; otherIndex += 1) {
           const other = particles[otherIndex];
           const dx = other.x - particle.x;
@@ -161,16 +161,19 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
           if (distSq >= connectionDist * connectionDist) continue;
 
           const dist = Math.sqrt(distSq);
-          const lineAlpha = (1 - dist / connectionDist) * 0.18 * (particle.opacity * other.opacity);
+          const lineAlpha = (1 - dist / connectionDist) * 0.38 * (particle.opacity * other.opacity);
           context.beginPath();
           context.moveTo(particle.x, particle.y);
           context.lineTo(other.x, other.y);
           context.strokeStyle = `rgba(${lineColor}, ${lineAlpha})`;
-          context.lineWidth = 0.8;
+          context.lineWidth = 2.2;
+          context.shadowBlur = 6;
+          context.shadowColor = `rgba(${particleColor}, 0.5)`;
           context.stroke();
+          context.shadowBlur = 0;
         }
 
-        // Connect to Mouse Cursor with faint burgundy line
+        // Connect to Mouse Cursor with 3D light-trace line
         if (pointer.active && !coarsePointerQuery.matches && !isReducedMotion) {
           const pointerDx = pointer.x - particle.x;
           const pointerDy = pointer.y - particle.y;
@@ -178,13 +181,16 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
 
           if (pointerDistSq < pointerDist * pointerDist) {
             const dist = Math.sqrt(pointerDistSq);
-            const lineAlpha = (1 - dist / pointerDist) * 0.25;
+            const lineAlpha = (1 - dist / pointerDist) * 0.45;
             context.beginPath();
             context.moveTo(particle.x, particle.y);
             context.lineTo(pointer.x, pointer.y);
             context.strokeStyle = `rgba(${particleColor}, ${lineAlpha})`;
-            context.lineWidth = 1.0;
+            context.lineWidth = 2.5;
+            context.shadowBlur = 8;
+            context.shadowColor = `rgba(${particleColor}, 0.6)`;
             context.stroke();
+            context.shadowBlur = 0;
           }
         }
       }

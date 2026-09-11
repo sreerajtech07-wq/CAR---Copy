@@ -64,7 +64,7 @@ export const AdvancedProtection: React.FC = () => {
   ];
 
   return (
-    <section id="protection" className="relative w-full bg-dark-900 py-24 sm:py-32 border-b border-white/10">
+    <section id="protection" className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">
@@ -89,7 +89,7 @@ export const AdvancedProtection: React.FC = () => {
           {protectionTiers.map((tier) => (
             <div
               key={tier.id}
-              className="rounded-sm bg-dark-950 border border-white/10 overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all duration-300"
+              className="rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all duration-300"
             >
               <div className="relative h-60 w-full overflow-hidden bg-dark-850">
                 <img

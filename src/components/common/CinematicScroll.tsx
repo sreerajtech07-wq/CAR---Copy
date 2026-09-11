@@ -12,7 +12,7 @@ export const CinematicScroll: React.FC = () => {
     const context = gsap.context(() => {
       // The trust section owns its own counter and reveal sequence. Keeping it
       // out of this generic animation prevents competing initial states.
-      const sections = gsap.utils.toArray<HTMLElement>("main > section:not(#hero, #trust)");
+      const sections = gsap.utils.toArray<HTMLElement>("main > section:not(#hero, #trust, #detailing)");
 
       sections.forEach((section) => {
         const content = Array.from(section.children).find((child) => {

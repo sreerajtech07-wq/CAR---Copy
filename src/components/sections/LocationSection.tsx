@@ -5,7 +5,7 @@ import { InstagramIcon } from "../common/Icons";
 
 export const LocationSection: React.FC = () => {
   return (
-    <section id="location" className="relative w-full bg-dark-900 py-24 sm:py-32 border-b border-white/10">
+    <section id="location" className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex items-center space-x-2.5 mb-3">
@@ -29,7 +29,7 @@ export const LocationSection: React.FC = () => {
         {/* Location & Map Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Studio Details Card */}
-          <div className="lg:col-span-5 p-6 sm:p-8 rounded-sm bg-dark-950 border border-white/10 flex flex-col justify-between">
+          <div className="lg:col-span-5 p-6 sm:p-8 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 flex flex-col justify-between">
             <div>
               <div className="flex items-center space-x-2 text-brand-red font-mono text-xs uppercase tracking-widest mb-3">
                 <MapPin className="w-4 h-4" />

@@ -64,5 +64,5 @@ export const BUSINESS: BusinessData = {
   brandMessage: "Premium Car Care. Advanced Protection.",
   shortDescription:
     "Professional automotive care and protection services in OMR, Chennai, offering premium detailing, ceramic coating, graphene coating, PPF, sun film and anti-rust protection solutions.",
-  mapQueryUrl: "https://maps.google.com/?q=3/452E,+Rajiv+Gandhi+Salai,+OMR,+Mettukuppam,+Chennai+600097+Opposite+AKDR+Golf+Village",
+  mapQueryUrl: "https://maps.app.goo.gl/rrcJvyfwn5pHncew6",
 };

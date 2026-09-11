@@ -19,7 +19,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   }, []);
 
   const navLinks = [
-    { label: "WHY US", href: "#trust" },
     { label: "ABOUT", href: "#about" },
     { label: "SERVICES", href: "#services" },
     { label: "PROTECTION", href: "#protection" },

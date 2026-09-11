@@ -4,7 +4,7 @@ import { BUSINESS } from "../../data/business";
 
 export const PpfSunFilm: React.FC = () => {
   return (
-    <section className="relative w-full bg-dark-950 py-24 sm:py-32 border-b border-white/10">
+    <section className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="flex items-center space-x-2.5 mb-3">
@@ -28,7 +28,7 @@ export const PpfSunFilm: React.FC = () => {
         {/* Dual Split Panels */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* PPF Card */}
-          <div className="rounded-sm bg-dark-900 border border-white/10 overflow-hidden flex flex-col justify-between">
+          <div className="rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 overflow-hidden flex flex-col justify-between">
             <div className="relative h-72 w-full overflow-hidden bg-dark-850">
               <img
                 src="/assets/services/ppf.jpg"
@@ -89,7 +89,7 @@ export const PpfSunFilm: React.FC = () => {
           </div>
 
           {/* Sun Film Card */}
-          <div className="rounded-sm bg-dark-900 border border-white/10 overflow-hidden flex flex-col justify-between">
+          <div className="rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 overflow-hidden flex flex-col justify-between">
             <div className="relative h-72 w-full overflow-hidden bg-dark-850">
               <img
                 src="/assets/services/sunfilm.jpg"

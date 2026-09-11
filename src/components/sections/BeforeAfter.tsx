@@ -117,7 +117,7 @@ export const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-dark-950/90 py-24 sm:py-32">
+    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="before-after-reveal mb-12 flex flex-col justify-between border-b border-white/10 pb-6 md:flex-row md:items-end">
           <div>

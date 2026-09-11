@@ -74,7 +74,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex flex-col justify-between bg-dark-950/95 backdrop-blur-xl p-4 sm:p-8 animate-fade-in text-white select-none"
+      className="fixed inset-0 z-[99999] flex flex-col justify-between bg-dark-950/95 backdrop-blur-xl p-4 sm:p-8 animate-fade-in text-white select-none pointer-events-auto"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -82,7 +82,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
     >
       {/* Top Header Bar */}
       <div
-        className="flex items-center justify-between z-10 w-full max-w-7xl mx-auto"
+        className="flex items-center justify-between z-[99999] w-full max-w-7xl mx-auto pointer-events-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-center space-x-3">
@@ -97,7 +97,8 @@ export const Lightbox: React.FC<LightboxProps> = ({
 
         <button
           onClick={onClose}
-          className="flex items-center space-x-2 px-4 py-2 rounded-sm bg-brand-red hover:bg-brand-crimson text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-red font-mono text-xs font-bold uppercase tracking-wider border border-white/20 shadow-lg cursor-pointer"
+          style={{ zIndex: 99999, pointerEvents: "auto" }}
+          className="flex items-center space-x-2 px-4 py-2 rounded-sm bg-brand-red hover:bg-brand-crimson text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-red font-mono text-xs font-bold uppercase tracking-wider border border-white/20 shadow-2xl cursor-pointer pointer-events-auto relative z-[99999]"
           aria-label="Close fullscreen lightbox"
         >
           <X className="w-4 h-4" />

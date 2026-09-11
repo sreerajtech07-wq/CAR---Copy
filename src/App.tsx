@@ -9,7 +9,6 @@ import { StatsSection } from "./components/sections/StatsSection";
 import { BrandIntro } from "./components/sections/BrandIntro";
 import { ServicesSection } from "./components/sections/ServicesSection";
 import { DetailingExperience } from "./components/sections/DetailingExperience";
-import { OriginalServicesSection } from "./components/sections/OriginalServicesSection";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
@@ -17,7 +16,6 @@ import { ProcessTimeline } from "./components/sections/ProcessTimeline";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
 import { FinalCTA } from "./components/sections/FinalCTA";
-import { Footer } from "./components/sections/Footer";
 import { BookingModal } from "./components/common/BookingModal";
 import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
 
@@ -70,9 +68,6 @@ export const App: React.FC = () => {
         {/* 11. CONTACT */}
         <LocationSection />
       </main>
-
-      {/* 12. FOOTER */}
-      <Footer />
 
       {/* Multi-Step Booking Modal */}
       <BookingModal
