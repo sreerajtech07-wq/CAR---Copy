@@ -1,6 +1,7 @@
 import React from "react";
 import { BUSINESS } from "../../data/business";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { OFFICIAL_SERVICES } from "../../data/services";
+import { Phone, Mail, MapPin, Clock, ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "../common/Icons";
 
 export const Footer: React.FC = () => {
@@ -9,7 +10,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
           {/* Studio Identity */}
-          <div className="md:col-span-6 flex flex-col justify-between">
+          <div className="md:col-span-4 flex flex-col justify-between">
             <div>
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-8 h-8 rounded-sm bg-brand-red flex items-center justify-center text-white font-black text-xs">
@@ -22,7 +23,7 @@ export const Footer: React.FC = () => {
               <div className="font-cinematic text-sm text-metallic-200 uppercase tracking-widest mb-4">
                 {BUSINESS.brandMessage}
               </div>
-              <p className="text-metallic-400 font-sans text-xs sm:text-sm max-w-lg leading-relaxed">
+              <p className="text-metallic-400 font-sans text-xs sm:text-sm leading-relaxed">
                 {BUSINESS.shortDescription}
               </p>
             </div>
@@ -31,8 +32,28 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Verified Contact & Info */}
+          {/* Main Services */}
           <div className="md:col-span-3 space-y-4">
+            <div className="text-white font-semibold tracking-wider uppercase text-xs">
+              MAIN SERVICES
+            </div>
+            <ul className="space-y-2 text-metallic-300">
+              {OFFICIAL_SERVICES.map((s) => (
+                <li key={s.id}>
+                  <a
+                    href={`/${s.id}.html`}
+                    className="hover:text-white transition-colors flex items-center gap-1 group"
+                  >
+                    <ArrowUpRight className="w-3 h-3 text-brand-red opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>{s.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Quick Contact & Hours */}
+          <div className="md:col-span-2 space-y-4">
             <div className="text-white font-semibold tracking-wider uppercase text-xs">
               CONTACT & HOURS
             </div>

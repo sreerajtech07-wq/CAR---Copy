@@ -14,7 +14,9 @@ export const HeroSection: React.FC = () => {
   const scrollCueRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState<number>(0);
   const quality = useResponsiveQuality();
-  const scrollDistance = quality.isMobile ? 3200 : 5000;
+  // One cinematic pin, with a contained travel distance that leaves anchors
+  // and the next section responsive instead of creating a long blank gap.
+  const scrollDistance = quality.isMobile ? 1700 : 2600;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -29,10 +31,10 @@ export const HeroSection: React.FC = () => {
     const trigger = ScrollTrigger.create({
       trigger: container,
       start: "top top",
-      end: `+=${scrollDistance}`,
+      end: "bottom bottom",
       pin: pinTarget,
-      pinSpacing: !quality.isMobile,
-      scrub: quality.isMobile ? 1 : 1.2,
+      pinSpacing: false,
+      scrub: quality.isMobile ? 0.8 : 1,
       anticipatePin: 1,
       onUpdate: (self) => {
         setProgress(self.progress);
@@ -68,25 +70,26 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-white"
+      className="relative w-full bg-dark-950"
       style={{ height: `${scrollDistance}px` }}
       id="hero"
     >
       <div
         ref={pinTargetRef}
-        className="sticky top-0 w-full h-[100dvh] overflow-hidden select-none bg-white md:aspect-auto max-md:aspect-video max-md:h-auto"
+        className="relative top-0 h-[100dvh] w-full overflow-hidden select-none bg-dark-950"
       >
         <HeroCanvas progress={progress} quality={quality} />
+        <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_58%_56%_at_72%_38%,rgba(122,12,20,0.25),transparent_72%),linear-gradient(180deg,rgba(5,5,5,0.2),transparent_42%,rgba(5,5,5,0.76))]" aria-hidden="true" />
         <div
           ref={heroContentRef}
           className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex items-end justify-between gap-8 px-5 pb-4 text-[#F8FAFC] md:px-12 md:pb-12"
         >
           <div className="max-w-md drop-shadow-[0_2px_12px_rgba(0,0,0,0.7)]">
-            <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.22em] text-[#F8FAFC]/80 md:mb-3 md:text-[10px] md:tracking-[0.28em]">
-              {BUSINESS.category}
+            <p className="mb-2 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#F8FAFC]/80 md:mb-3 md:text-[10px] md:tracking-[0.38em]">
+              Precision in motion
             </p>
-            <h1 className="max-w-[18rem] text-2xl font-semibold leading-[1.02] tracking-normal md:max-w-sm md:text-5xl">
-              {BUSINESS.brandMessage}
+            <h1 className="max-w-[18rem] font-cinematic text-3xl font-bold uppercase leading-[0.94] tracking-tight md:max-w-md md:text-6xl">
+              Precision.<br />In motion.
             </h1>
             <p className="mt-2 max-w-[19rem] text-[11px] leading-[1.35] text-[#F8FAFC]/85 md:mt-4 md:max-w-sm md:text-base md:leading-relaxed">
               {BUSINESS.shortDescription}

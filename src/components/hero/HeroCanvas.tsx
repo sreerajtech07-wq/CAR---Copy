@@ -18,8 +18,10 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imagesRef = useRef<(HTMLImageElement | null)[]>(new Array(TOTAL_FRAMES).fill(null));
   const loadedCountRef = useRef<number>(0);
-  const [, setLoadTick] = useState<number>(0);
+  const [loadTick, setLoadTick] = useState<number>(0);
   const lastDrawnIndexRef = useRef<number>(-1);
+
+  const currentTargetIndexRef = useRef<number>(0);
 
   // Progressive frame preloading
   useEffect(() => {
@@ -47,8 +49,8 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
           if (!isCancelled) {
             images[index] = img;
             loadedCountRef.current++;
-            // Force first frame render immediately once loaded
-            if (index === 0 && lastDrawnIndexRef.current === -1) {
+            // Force redraw if target index frame or initial batch frame arrives
+            if (index === currentTargetIndexRef.current || index === 0 || loadedCountRef.current <= 5) {
               setLoadTick((t) => t + 1);
             }
           }
@@ -111,6 +113,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
     // Determine target frame index
     const targetIndex = Math.min(TOTAL_FRAMES - 1, Math.max(0, Math.floor(progress * (TOTAL_FRAMES - 1))));
+    currentTargetIndexRef.current = targetIndex;
 
     // Find nearest loaded frame
     let frameToDraw: HTMLImageElement | null = imagesRef.current[targetIndex];
@@ -132,7 +135,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
     if (!frameToDraw) {
       // If still nothing, fill background with dark studio
-      ctx.fillStyle = "#F8FAFC";
+      ctx.fillStyle = "#050505";
       ctx.fillRect(0, 0, width, height);
       return;
     }
@@ -167,7 +170,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       }
     }
 
-    ctx.fillStyle = "#F8FAFC";
+    ctx.fillStyle = "#050505";
     ctx.fillRect(0, 0, width, height);
 
     const dx = (width - drawW) / 2;
@@ -196,7 +199,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
     bottomGrad.addColorStop(1, "rgba(5, 6, 7, 0.95)");
     ctx.fillStyle = bottomGrad;
     ctx.fillRect(0, height * 0.85, width, height * 0.15);
-  }, [progress, quality]);
+  }, [progress, quality, loadTick]);
 
   // Handle Canvas Resize & DPI
   useEffect(() => {

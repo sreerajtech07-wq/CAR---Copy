@@ -13,7 +13,7 @@ export const Background3D: React.FC = () => {
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0xffffff, 0.0018);
+    scene.fog = new THREE.FogExp2(0x050505, 0.0018);
 
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
@@ -32,18 +32,18 @@ export const Background3D: React.FC = () => {
     });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setClearColor(0xffffff, 0);
+    renderer.setClearColor(0x050505, 0);
     container.appendChild(renderer.domElement);
 
     // 1. 3D floating inspection particles
-    const particleCount = window.innerWidth < 768 ? 200 : 450;
+    const particleCount = window.innerWidth < 768 ? 70 : 150;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
-    const colorAmber = new THREE.Color(0xf59e0b);
-    const colorBlue = new THREE.Color(0x1d4ed8);
-    const colorWhite = new THREE.Color(0xffffff);
+    const colorRed = new THREE.Color(0xb5121b);
+    const colorDeepRed = new THREE.Color(0x7a0c14);
+    const colorWhite = new THREE.Color(0xf5f5f5);
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
@@ -52,9 +52,9 @@ export const Background3D: React.FC = () => {
       positions[i3 + 1] = (Math.random() - 0.3) * 800;
       positions[i3 + 2] = (Math.random() - 0.5) * 1200;
 
-      // Color distribution: mostly blue and white, with amber highlights
+      // Restrained red and white highlights keep the atmosphere automotive, not technical.
       const rand = Math.random();
-      const chosenColor = rand > 0.72 ? colorAmber : rand > 0.32 ? colorBlue : colorWhite;
+      const chosenColor = rand > 0.75 ? colorRed : rand > 0.4 ? colorDeepRed : colorWhite;
       colors[i3] = chosenColor.r;
       colors[i3 + 1] = chosenColor.g;
       colors[i3 + 2] = chosenColor.b;
@@ -83,7 +83,7 @@ export const Background3D: React.FC = () => {
       vertexColors: true,
       map: texture,
       transparent: true,
-      opacity: 0.75,
+      opacity: 0.24,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
     });
@@ -129,12 +129,12 @@ export const Background3D: React.FC = () => {
 
     // Animation loop
     let animationFrameId: number;
-    let clock = new THREE.Clock();
+    const startTime = performance.now();
 
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate);
 
-      const elapsedTime = clock.getElapsedTime();
+      const elapsedTime = (performance.now() - startTime) / 1000;
 
       // Smooth mouse damping
       mouseX += (targetMouseX - mouseX) * 0.05;

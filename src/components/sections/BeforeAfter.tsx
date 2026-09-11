@@ -13,6 +13,7 @@ export const BeforeAfter: React.FC = () => {
   const positionRef = useRef(50);
   const isDraggingRef = useRef(false);
   const item = BEFORE_AFTER_ITEMS[0];
+  const [containerWidth, setContainerWidth] = useState<number>(0);
 
   useLayoutEffect(() => {
     const context = gsap.context(() => {
@@ -22,6 +23,7 @@ export const BeforeAfter: React.FC = () => {
         {
           y: 0,
           autoAlpha: 1,
+          immediateRender: false,
           duration: 0.85,
           stagger: 0.08,
           ease: "power2.out",
@@ -41,6 +43,14 @@ export const BeforeAfter: React.FC = () => {
     const comparison = comparisonRef.current;
     if (!comparison) return;
 
+    const observer = new ResizeObserver((entries) => {
+      if (entries[0]) {
+        setContainerWidth(entries[0].contentRect.width);
+      }
+    });
+    observer.observe(comparison);
+    setContainerWidth(comparison.clientWidth);
+
     const updatePosition = (clientX: number) => {
       const bounds = comparison.getBoundingClientRect();
       const nextPosition = Math.min(100, Math.max(0, ((clientX - bounds.left) / bounds.width) * 100));
@@ -48,14 +58,6 @@ export const BeforeAfter: React.FC = () => {
       setPosition(nextPosition);
     };
 
-    const handlePointerMove = (event: PointerEvent) => {
-      if (isDraggingRef.current) updatePosition(event.clientX);
-    };
-    const handlePointerUp = () => {
-      isDraggingRef.current = false;
-      if (activePointerId !== -1) comparison.releasePointerCapture?.(activePointerId);
-      activePointerId = -1;
-    };
     let activePointerId = -1;
 
     const handlePointerDown = (event: PointerEvent) => {
@@ -65,12 +67,23 @@ export const BeforeAfter: React.FC = () => {
       updatePosition(event.clientX);
     };
 
+    const handlePointerMove = (event: PointerEvent) => {
+      if (isDraggingRef.current) updatePosition(event.clientX);
+    };
+
+    const handlePointerUp = () => {
+      isDraggingRef.current = false;
+      if (activePointerId !== -1) comparison.releasePointerCapture?.(activePointerId);
+      activePointerId = -1;
+    };
+
     comparison.addEventListener("pointerdown", handlePointerDown);
     comparison.addEventListener("pointermove", handlePointerMove);
     comparison.addEventListener("pointerup", handlePointerUp);
     comparison.addEventListener("pointercancel", handlePointerUp);
 
     return () => {
+      observer.disconnect();
       comparison.removeEventListener("pointerdown", handlePointerDown);
       comparison.removeEventListener("pointermove", handlePointerMove);
       comparison.removeEventListener("pointerup", handlePointerUp);
@@ -104,7 +117,7 @@ export const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-dark-950 py-24 sm:py-32">
+    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-dark-950/90 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="before-after-reveal mb-12 flex flex-col justify-between border-b border-white/10 pb-6 md:flex-row md:items-end">
           <div>
@@ -133,14 +146,20 @@ export const BeforeAfter: React.FC = () => {
             aria-valuemax={100}
             aria-valuenow={Math.round(position)}
             onKeyDown={handleKeyDown}
-            className="group relative aspect-[16/9] touch-none select-none overflow-hidden border border-white/15 bg-dark-900 outline-none focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/50"
+            className="group relative aspect-[16/9] touch-none select-none overflow-hidden border border-white/15 bg-dark-900 outline-none focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/50 cursor-ew-resize"
           >
-            <img src={item.afterImage} alt={item.afterAlt} className="absolute inset-0 h-full w-full object-cover" draggable={false} />
+            <img src={item.afterImage} alt={item.afterAlt} className="absolute inset-0 h-full w-full object-cover brightness-[1.05] contrast-[1.05]" draggable={false} />
             <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${position}%` }}>
-              <img src={item.beforeImage} alt={item.beforeAlt} className="h-full w-full max-w-none object-cover" style={{ width: comparisonRef.current?.clientWidth || "100%" }} draggable={false} />
+              <img
+                src={item.beforeImage}
+                alt={item.beforeAlt}
+                className="h-full max-w-none object-cover brightness-[0.88] contrast-[0.92] saturate-[0.85]"
+                style={{ width: containerWidth ? `${containerWidth}px` : "100%" }}
+                draggable={false}
+              />
             </div>
-            <span className="absolute left-4 top-4 border border-white/25 bg-dark-950/80 px-2 py-1 font-mono text-[10px] tracking-widest text-white">BEFORE</span>
-            <span className="absolute right-4 top-4 border border-white/25 bg-dark-950/80 px-2 py-1 font-mono text-[10px] tracking-widest text-white">AFTER</span>
+            <span className="absolute left-4 top-4 border border-white/25 bg-dark-950/80 px-2.5 py-1 font-mono text-[10px] tracking-widest text-white">BEFORE</span>
+            <span className="absolute right-4 top-4 border border-white/25 bg-dark-950/80 px-2.5 py-1 font-mono text-[10px] tracking-widest text-white">AFTER</span>
             <div className="absolute inset-y-0 w-px bg-white" style={{ left: `${position}%` }} aria-hidden="true">
               <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white bg-brand-red text-white shadow-lg">
                 <ArrowLeftRight className="h-5 w-5" />

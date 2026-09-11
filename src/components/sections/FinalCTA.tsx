@@ -1,10 +1,14 @@
 import React from "react";
 import { BUSINESS } from "../../data/business";
-import { Phone, Mail, Navigation, ShieldCheck } from "lucide-react";
+import { Phone, Mail, Navigation, ShieldCheck, Calendar } from "lucide-react";
 
-export const FinalCTA: React.FC = () => {
+export interface FinalCTAProps {
+  onOpenBooking?: () => void;
+}
+
+export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
   return (
-    <section id="contact" className="relative w-full bg-dark-950 py-28 sm:py-36 border-b border-white/10 overflow-hidden">
+    <section id="contact" className="relative w-full bg-dark-950/90 py-28 sm:py-36 border-b border-white/10 overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-metallic-300 font-mono text-xs tracking-widest uppercase mb-6">
           <ShieldCheck className="w-3.5 h-3.5 text-brand-red" />
@@ -22,20 +26,30 @@ export const FinalCTA: React.FC = () => {
 
         {/* Action Buttons */}
         <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          {onOpenBooking && (
+            <button
+              onClick={onOpenBooking}
+              className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-medium text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-red-950/50 hover:scale-105"
+            >
+              <Calendar className="w-4 h-4" />
+              <span>Book Studio Consultation</span>
+            </button>
+          )}
+
           <a
             href={`tel:${BUSINESS.phoneClean}`}
-            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-medium text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-red-950/50 hover:scale-105"
+            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-medium text-sm tracking-wider uppercase backdrop-blur-md transition-all duration-300 hover:scale-105"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4 text-brand-amber" />
             <span>Call Studio: {BUSINESS.phone}</span>
           </a>
 
           <a
             href={`mailto:${BUSINESS.email}`}
-            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-medium text-sm tracking-wider uppercase backdrop-blur-md transition-all duration-300 hover:scale-105"
+            className="flex items-center space-x-3 px-6 py-4 rounded-sm bg-dark-900 hover:bg-dark-850 text-metallic-200 hover:text-white border border-white/10 font-medium text-sm tracking-wider uppercase transition-all duration-300"
           >
             <Mail className="w-4 h-4" />
-            <span>Send Email Inquiry</span>
+            <span>Send Email</span>
           </a>
 
           <a
@@ -45,7 +59,7 @@ export const FinalCTA: React.FC = () => {
             className="flex items-center space-x-3 px-6 py-4 rounded-sm bg-dark-900 hover:bg-dark-850 text-metallic-200 hover:text-white border border-white/10 font-medium text-sm tracking-wider uppercase transition-all duration-300"
           >
             <Navigation className="w-4 h-4 text-brand-amber" />
-            <span>Visit Studio</span>
+            <span>Get Directions</span>
           </a>
         </div>
 

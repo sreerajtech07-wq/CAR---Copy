@@ -10,7 +10,9 @@ export const CinematicScroll: React.FC = () => {
     if (!main || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const context = gsap.context(() => {
-      const sections = gsap.utils.toArray<HTMLElement>("main > section:not(#hero)");
+      // The trust section owns its own counter and reveal sequence. Keeping it
+      // out of this generic animation prevents competing initial states.
+      const sections = gsap.utils.toArray<HTMLElement>("main > section:not(#hero, #trust)");
 
       sections.forEach((section) => {
         const content = Array.from(section.children).find((child) => {
@@ -30,6 +32,7 @@ export const CinematicScroll: React.FC = () => {
           gsap.from(groups, {
             y: 32,
             autoAlpha: 0,
+            immediateRender: false,
             duration: 0.8,
             stagger: 0.08,
             ease: "power2.out",

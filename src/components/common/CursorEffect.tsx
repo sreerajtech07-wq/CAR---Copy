@@ -17,8 +17,8 @@ export const CursorEffect: React.FC = () => {
       sparkle.className = "sparkle-particle";
       sparkle.style.left = `${x}px`;
       sparkle.style.top = `${y}px`;
-      sparkle.style.background = "rgba(245, 158, 11, 0.8)";
-      sparkle.style.boxShadow = "0 0 10px rgba(245, 158, 11, 0.8)";
+      sparkle.style.background = "rgba(215, 25, 32, 0.8)";
+      sparkle.style.boxShadow = "0 0 10px rgba(215, 25, 32, 0.55)";
       sparkleContainer.appendChild(sparkle);
 
       gsap.to(sparkle, {
@@ -76,7 +76,7 @@ export const CursorEffect: React.FC = () => {
           width: "8px",
           height: "8px",
           backgroundColor: "#ffffff",
-          boxShadow: "0 0 15px #fff, 0 0 20px rgba(245, 158, 11, 0.4)",
+          boxShadow: "0 0 15px #fff, 0 0 20px rgba(181, 18, 27, 0.4)",
         }}
       />
       <div ref={sparkleContainerRef} className="fixed inset-0 pointer-events-none z-[9998]" />

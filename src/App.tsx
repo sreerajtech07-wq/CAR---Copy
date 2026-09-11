@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { CursorEffect } from "./components/common/CursorEffect";
-import { Background3D } from "./components/common/Background3D";
-import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
+import { FlowBackground } from "./components/common/FlowBackground";
 import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
@@ -13,27 +12,28 @@ import { OriginalServicesSection } from "./components/sections/OriginalServicesS
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
-import { WhyProfessional } from "./components/sections/WhyProfessional";
-import { TrustSection } from "./components/sections/TrustSection";
 import { ProcessTimeline } from "./components/sections/ProcessTimeline";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
+import { BookingModal } from "./components/common/BookingModal";
+import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
 
 export const App: React.FC = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
+
   return (
-    <div className="relative min-h-screen bg-white text-studio-ink selection:bg-brand-amber selection:text-studio-ink antialiased overflow-x-hidden">
-      {/* GSAP Cursor & 3D Three.js Perspective Background */}
+    <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
+      {/* Cursor and a single shared atmospheric background */}
       <CursorEffect />
-      <Background3D />
-      <ParticleNetworkBackground />
+      <FlowBackground />
 
       {/* Fixed Ambient Film Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-5" />
 
       {/* Global Navigation */}
-      <Navbar />
+      <Navbar onOpenBooking={() => setIsBookingOpen(true)} />
 
       <main className="relative z-10">
         <CinematicScroll />
@@ -41,7 +41,7 @@ export const App: React.FC = () => {
         {/* 01. CINEMATIC HERO */}
         <HeroSection />
 
-        {/* 02. STUDIO METRICS - By the numbers */}
+        {/* 02. WHY CHOOSE US - Unified proof and studio standards */}
         <StatsSection />
 
         {/* 03. INTRODUCTION - Studio profile & about */}
@@ -57,20 +57,14 @@ export const App: React.FC = () => {
         <AdvancedProtection />
         <PpfSunFilm />
 
-        {/* 06. EXISTING BUSINESS CONTENT - Standards */}
-        <WhyProfessional />
-
-        {/* 07. TRUST - Approved studio metrics and service catalogue */}
-        <TrustSection />
-
-        {/* 08. EXISTING WORK / RESULTS - Process workflow */}
+        {/* 06. EXISTING WORK / RESULTS - Process workflow */}
         <ProcessTimeline />
 
         {/* 09. CUSTOMER REVIEWS */}
         <GoogleReviews />
 
         {/* 10. CTA / BOOKING */}
-        <FinalCTA />
+        <FinalCTA onOpenBooking={() => setIsBookingOpen(true)} />
 
         {/* 11. CONTACT */}
         <LocationSection />
@@ -78,6 +72,15 @@ export const App: React.FC = () => {
 
       {/* 12. FOOTER */}
       <Footer />
+
+      {/* Multi-Step Booking Modal */}
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+      />
+
+      {/* Intelligent Floating WhatsApp Access */}
+      <FloatingWhatsApp />
     </div>
   );
 };

@@ -10,6 +10,7 @@ import {
 import { CursorEffect } from "../components/common/CursorEffect";
 import { Background3D } from "../components/common/Background3D";
 import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
+import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 
 export const GraphenePage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -345,6 +346,7 @@ export const GraphenePage: React.FC = () => {
           Operating Hours: {BUSINESS.businessHours.display} • Phone: {BUSINESS.phone}
         </p>
       </footer>
+      <FloatingWhatsApp />
     </div>
   );
 };

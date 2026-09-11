@@ -1,21 +1,25 @@
 import React, { useState, useEffect } from "react";
+import { Phone, Menu, X, Calendar } from "lucide-react";
 import { BUSINESS } from "../../data/business";
-import { Phone, Menu, X } from "lucide-react";
 
-export const Navbar: React.FC = () => {
+export interface NavbarProps {
+  onOpenBooking?: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 80);
+      setScrolled(window.scrollY > 40);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { label: "METRICS", href: "#studio-metrics" },
+    { label: "WHY US", href: "#trust" },
     { label: "ABOUT", href: "#about" },
     { label: "SERVICES", href: "#services" },
     { label: "PROTECTION", href: "#protection" },
@@ -26,15 +30,15 @@ export const Navbar: React.FC = () => {
 
   const navbarTone = scrolled
     ? {
-        header: "bg-white/95 border-slate-200 shadow-xl",
-        brand: "text-slate-900",
-        subBrand: "text-slate-500",
-        link: "text-slate-600 hover:text-slate-950",
-        phone: "bg-slate-900/5 hover:bg-slate-900/10 border-slate-300 text-slate-900",
-        menu: "text-slate-600 hover:text-slate-950",
-        drawer: "bg-white/95 border-slate-200",
-        drawerLink: "text-slate-600 hover:text-slate-950 border-slate-200",
-        drawerMeta: "text-slate-500",
+        header: "bg-dark-950/95 border-white/10 shadow-xl shadow-black/20",
+        brand: "text-white",
+        subBrand: "text-metallic-400",
+        link: "text-metallic-300 hover:text-white",
+        phone: "bg-white/5 hover:bg-white/10 border-white/15 text-white",
+        menu: "text-metallic-300 hover:text-white",
+        drawer: "bg-dark-950/95 border-white/10",
+        drawerLink: "text-metallic-300 hover:text-white border-white/10",
+        drawerMeta: "text-metallic-400",
       }
     : {
         header: "bg-slate-950/35 border-white/10 shadow-none",
@@ -51,7 +55,7 @@ export const Navbar: React.FC = () => {
   return (
     <header
       className={`fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b py-3 transition-all duration-300 ${navbarTone.header} ${
-        scrolled ? "" : "md:py-5"
+        scrolled ? "" : "md:py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -71,7 +75,7 @@ export const Navbar: React.FC = () => {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
@@ -83,8 +87,18 @@ export const Navbar: React.FC = () => {
           ))}
         </nav>
 
-        {/* Action Button: Call Direct */}
-        <div className="hidden lg:flex items-center space-x-4">
+        {/* Desktop Action Buttons */}
+        <div className="hidden lg:flex items-center space-x-3">
+          {onOpenBooking && (
+            <button
+              onClick={onOpenBooking}
+              className="flex items-center space-x-2 px-4 py-2 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all duration-200 shadow-md shadow-red-950/40"
+            >
+              <Calendar className="w-3.5 h-3.5" />
+              <span>BOOK NOW</span>
+            </button>
+          )}
+
           <a
             href={`tel:${BUSINESS.phoneClean}`}
             className={`flex items-center space-x-2 px-4 py-2 rounded-sm border font-mono text-xs tracking-wider transition-all duration-200 ${navbarTone.phone}`}
@@ -94,12 +108,20 @@ export const Navbar: React.FC = () => {
           </a>
         </div>
 
-        {/* Mobile Menu Toggle */}
+        {/* Mobile Actions & Toggle */}
         <div className="flex md:hidden items-center space-x-2">
+          {onOpenBooking && (
+            <button
+              onClick={onOpenBooking}
+              className="px-3 py-1.5 rounded-sm bg-brand-red text-white font-mono text-[11px] font-semibold tracking-wider uppercase"
+            >
+              BOOK
+            </button>
+          )}
           <a
             href={`tel:${BUSINESS.phoneClean}`}
             aria-label="Call studio"
-            className="p-2 rounded-sm bg-brand-red text-slate-50"
+            className="p-2 rounded-sm bg-white/10 text-slate-50 border border-white/20"
           >
             <Phone className="w-4 h-4" />
           </a>
@@ -129,9 +151,21 @@ export const Navbar: React.FC = () => {
               </a>
             ))}
             <div className="pt-4 flex flex-col space-y-3">
+              {onOpenBooking && (
+                <button
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    onOpenBooking();
+                  }}
+                  className="flex items-center justify-center space-x-2 py-3 rounded-sm bg-brand-red text-white font-mono text-xs tracking-wider uppercase shadow-lg"
+                >
+                  <Calendar className="w-4 h-4" />
+                  <span>Book Studio Consultation</span>
+                </button>
+              )}
               <a
                 href={`tel:${BUSINESS.phoneClean}`}
-                className="flex items-center justify-center space-x-2 py-3 rounded-sm bg-brand-red text-slate-50 font-mono text-xs tracking-wider uppercase"
+                className="flex items-center justify-center space-x-2 py-3 rounded-sm bg-white/10 border border-white/20 text-slate-50 font-mono text-xs tracking-wider uppercase"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call {BUSINESS.phone}</span>

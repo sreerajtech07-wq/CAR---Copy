@@ -10,15 +10,15 @@ export const BrandIntro: React.FC = () => {
         <div className="flex items-center space-x-2.5 mb-6">
           <span className="w-6 h-[1px] bg-brand-red" />
           <span className="font-mono text-xs text-metallic-400 tracking-super-wide uppercase">
-            STUDIO PROFILE // ARCHITECTURE
+            THE STUDIO
           </span>
         </div>
 
         {/* Large Cinematic Editorial Typography */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7">
-            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight uppercase">
-              {BUSINESS.name}
+            <h2 className="max-w-3xl font-cinematic text-4xl font-bold leading-[0.95] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              CRAFTED FOR THE<br />DETAIL-OBSESSED.
             </h2>
             <div className="mt-3 font-mono text-sm tracking-widest text-brand-red uppercase">
               {BUSINESS.category}

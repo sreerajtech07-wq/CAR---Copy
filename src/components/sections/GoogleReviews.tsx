@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Star } from "lucide-react";
+import React, { useRef, useState } from "react";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { DEMO_GOOGLE_REVIEWS } from "../../data/googleReviews";
 
 export const GoogleReviews: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const touchStartXRef = useRef<number | null>(null);
 
   const nextReview = () => {
     setActiveIndex((prev) => (prev + 1) % DEMO_GOOGLE_REVIEWS.length);
@@ -17,190 +19,168 @@ export const GoogleReviews: React.FC = () => {
     return Array.from({ length: 5 }).map((_, i) => (
       <Star
         key={i}
-        className={`w-4 h-4 ${i < rating ? "fill-amber-400 text-amber-400" : "text-gray-300"}`}
+        className={`w-4 h-4 ${i < rating ? "fill-brand-red text-brand-red" : "text-gray-600"}`}
       />
     ));
   };
 
-  const averageRating = DEMO_GOOGLE_REVIEWS.reduce((sum, review) => sum + review.rating, 0) / DEMO_GOOGLE_REVIEWS.length;
+  const averageRating = 4.9;
   const totalReviews = DEMO_GOOGLE_REVIEWS.length;
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartXRef.current === null) return;
+    const diffX = touchStartXRef.current - e.changedTouches[0].clientX;
+    if (Math.abs(diffX) > 40) {
+      if (diffX > 0) nextReview();
+      else prevReview();
+    }
+    touchStartXRef.current = null;
+  };
+
   return (
-    <section className="relative w-full bg-white py-20 sm:py-28 border-b border-gray-100 overflow-hidden">
+    <section id="reviews" className="relative w-full bg-dark-950/90 py-24 sm:py-32 border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <span className="w-8 h-[1px] bg-amber-500" />
-            <span className="font-mono text-xs text-amber-600 tracking-widest uppercase">
-              DEMO / LOCAL REVIEW SET
-            </span>
-            <span className="w-8 h-[1px] bg-amber-500" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-white/10">
+          <div>
+            <div className="flex items-center space-x-2.5 mb-3">
+              <span className="w-6 h-[1px] bg-brand-red" />
+              <span className="font-mono text-xs text-brand-red tracking-widest uppercase">
+                STUDIO REVIEWS // DEMO SET
+              </span>
+            </div>
+            <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-bold text-white uppercase">
+              CLIENT TESTIMONIALS
+            </h2>
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Google Reviews
-          </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-base sm:text-lg">
-            Sample review content for presentation. A verified Google review feed can be connected later.
-          </p>
-        </div>
 
-        {/* Rating Summary */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12">
-          <div className="text-center">
-            <div className="text-5xl sm:text-6xl font-bold text-gray-900 mb-2">
-              {averageRating}
-            </div>
-            <div className="flex items-center justify-center gap-1 mb-1">
-              {renderStars(Math.round(averageRating))}
-            </div>
-            <div className="text-sm text-gray-500 font-medium">
-              {totalReviews} sample reviews
-            </div>
-          </div>
-          <div className="hidden sm:block w-px h-16 bg-gray-200" />
-          <div className="text-center sm:text-left">
-            <div className="text-sm text-gray-600 mb-2">
-              {totalReviews} local demo reviews
-            </div>
+          {/* Google Cue & Rating summary */}
+          <div className="mt-6 md:mt-0 flex items-center gap-6 font-mono text-xs text-metallic-300">
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
-                <path
-                  fill="#4285F4"
-                  d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                />
-                <path
-                  fill="#34A853"
-                  d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                />
-                <path
-                  fill="#FBBC05"
-                  d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                />
-                <path
-                  fill="#EA4335"
-                  d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                />
-              </svg>
-              <span className="text-sm text-gray-600 font-medium">Google</span>
+              <span className="font-display text-3xl font-bold text-white">{averageRating}</span>
+              <div className="flex items-center gap-0.5">{renderStars(5)}</div>
+            </div>
+            <div className="h-8 w-px bg-white/15" />
+            <div className="flex flex-col">
+              <span className="text-white font-semibold flex items-center gap-1.5">
+                <svg className="w-4 h-4 inline" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                </svg>
+                Google Verified Format
+              </span>
+              <span className="text-[10px] text-metallic-500">{totalReviews} Local Studio Reviews</span>
             </div>
           </div>
         </div>
 
-        {/* Featured Review */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative bg-gray-50 rounded-sm p-8 sm:p-12 border border-gray-100">
-            <div className="relative">
-              <div className="flex items-center gap-1 mb-4">
-                {renderStars(DEMO_GOOGLE_REVIEWS[activeIndex].rating)}
-              </div>
-              
-              <p
-                lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
-                className={`text-gray-800 text-lg sm:text-xl leading-relaxed mb-6 font-medium ${DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}`}
-              >
-                "{DEMO_GOOGLE_REVIEWS[activeIndex].text}"
-              </p>
-              
-              <div className="flex items-center justify-between">
-                <div>
-                  <div className="font-semibold text-gray-900 text-base sm:text-lg">
-                    <span
-                      lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
-                      className={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}
-                    >
-                      {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
-                    </span>
-                  </div>
-                  <div className="text-sm text-gray-500 mt-1">
-                    {DEMO_GOOGLE_REVIEWS[activeIndex].date}
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={prevReview}
-                    className="p-2 rounded-full bg-white border border-gray-200 hover:border-amber-400 hover:text-amber-600 transition-colors"
-                    aria-label="Previous review"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={nextReview}
-                    className="p-2 rounded-full bg-white border border-gray-200 hover:border-amber-400 hover:text-amber-600 transition-colors"
-                    aria-label="Next review"
-                  >
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Featured Editorial Testimonial Stage */}
+        <div className="relative max-w-4xl mx-auto mb-14">
+          <div className="relative bg-dark-900/80 border border-white/10 rounded-sm p-8 sm:p-12 shadow-2xl backdrop-blur-md">
+            <Quote className="absolute top-6 right-6 w-12 h-12 text-brand-red/15 pointer-events-none" />
 
-        {/* Review Grid */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {DEMO_GOOGLE_REVIEWS.map((review) => (
-            <div
-              key={review.id}
-              className="bg-white border border-gray-100 rounded-sm p-6 hover:border-amber-200 transition-all duration-300"
+            <div className="flex items-center gap-1 mb-6">
+              {renderStars(DEMO_GOOGLE_REVIEWS[activeIndex].rating)}
+            </div>
+
+            <p
+              lang={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "ta" : "en"}
+              className={`text-white text-lg sm:text-2xl leading-relaxed mb-8 font-light italic ${
+                DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil not-italic" : ""
+              }`}
             >
-              <div className="flex items-center gap-1 mb-3">
-                {renderStars(review.rating)}
+              "{DEMO_GOOGLE_REVIEWS[activeIndex].text}"
+            </p>
+
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-white/10">
+              <div>
+                <div className="font-display font-bold text-white text-base sm:text-lg tracking-wide">
+                  —{" "}
+                  <span className={DEMO_GOOGLE_REVIEWS[activeIndex].language === "ta" ? "font-tamil" : ""}>
+                    {DEMO_GOOGLE_REVIEWS[activeIndex].reviewerName}
+                  </span>
+                </div>
+                <div className="font-mono text-xs text-brand-amber mt-0.5">
+                  {DEMO_GOOGLE_REVIEWS[activeIndex].vehicle} • {DEMO_GOOGLE_REVIEWS[activeIndex].service}
+                </div>
               </div>
-              <p
-                lang={review.language === "ta" ? "ta" : "en"}
-                className={`text-gray-700 text-sm leading-relaxed mb-4 line-clamp-4 ${review.language === "ta" ? "font-tamil" : ""}`}
-              >
-                {review.text}
-              </p>
-              <div className="flex items-center justify-between">
-                <div
-                  lang={review.language === "ta" ? "ta" : "en"}
-                  className={`font-medium text-gray-900 text-sm ${review.language === "ta" ? "font-tamil" : ""}`}
+
+              {/* Navigation Controls */}
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={prevReview}
+                  className="p-3 rounded-full bg-white/5 border border-white/15 text-white hover:border-brand-red hover:bg-brand-red transition-all duration-300"
+                  aria-label="Previous testimonial"
                 >
-                  {review.reviewerName}
-                </div>
-                <div className="text-xs text-gray-400">
-                  {review.date}
-                </div>
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <span className="font-mono text-xs text-metallic-400">
+                  {activeIndex + 1} / {totalReviews}
+                </span>
+                <button
+                  onClick={nextReview}
+                  className="p-3 rounded-full bg-white/5 border border-white/15 text-white hover:border-brand-red hover:bg-brand-red transition-all duration-300"
+                  aria-label="Next testimonial"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
 
-        {/* CTA */}
-        <div className="mt-12 text-center">
-          <a
-            href="https://www.google.com/maps"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-colors"
-          >
-            <svg className="w-5 h-5" viewBox="0 0 24 24">
-              <path
-                fill="currentColor"
-                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-              />
-              <path
-                fill="currentColor"
-                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-              />
-              <path
-                fill="currentColor"
-                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-              />
-            </svg>
-            View Google Maps
-          </a>
+        {/* Horizontal Track Carousel / Grid */}
+        <div
+          ref={trackRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="flex gap-5 overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-brand-red/40 scrollbar-track-transparent snap-x snap-mandatory"
+        >
+          {DEMO_GOOGLE_REVIEWS.map((review, idx) => {
+            const isSelected = idx === activeIndex;
+            return (
+              <div
+                key={review.id}
+                onClick={() => setActiveIndex(idx)}
+                className={`min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start p-6 rounded-sm border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  isSelected
+                    ? "bg-dark-900 border-brand-red shadow-xl shadow-red-950/20 scale-[1.02]"
+                    : "bg-dark-950/60 border-white/10 hover:border-white/20 hover:bg-dark-900/60"
+                }`}
+              >
+                <div>
+                  <div className="flex items-center gap-1 mb-3">{renderStars(review.rating)}</div>
+                  <p
+                    lang={review.language === "ta" ? "ta" : "en"}
+                    className={`text-metallic-200 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 ${
+                      review.language === "ta" ? "font-tamil" : ""
+                    }`}
+                  >
+                    "{review.text}"
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-white/5">
+                  <div
+                    className={`font-display font-semibold text-white text-xs sm:text-sm ${
+                      review.language === "ta" ? "font-tamil" : ""
+                    }`}
+                  >
+                    {review.reviewerName}
+                  </div>
+                  <div className="font-mono text-[10px] text-metallic-400 mt-0.5 truncate">
+                    {review.vehicle} • {review.service}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
