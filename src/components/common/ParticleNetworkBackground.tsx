@@ -6,7 +6,9 @@ interface Particle {
   vx: number;
   vy: number;
   radius: number;
+  baseRadius: number;
   opacity: number;
+  layer: number; // 0: background (slow, small), 1: mid, 2: foreground (faster, larger)
 }
 
 interface PointerPosition {
@@ -15,22 +17,16 @@ interface PointerPosition {
   active: boolean;
 }
 
-const CONNECTION_DISTANCE = 125;
-const POINTER_DISTANCE = 160;
 interface ParticleNetworkBackgroundProps {
-  particleColor?: string;
-  particleAlpha?: [number, number];
-  connectionAlpha?: number;
-  mouseConnectionAlpha?: number;
+  particleColor?: string; // RGB values e.g. "138, 21, 37"
+  lineColor?: string;     // RGB values e.g. "103, 13, 26"
   canvasOpacity?: number;
 }
 
 export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps> = ({
-  particleColor = "181, 18, 27",
-  particleAlpha = [0.12, 0.24],
-  connectionAlpha = 0.06,
-  mouseConnectionAlpha = 0.12,
-  canvasOpacity = 0.32,
+  particleColor = "138, 21, 37",
+  lineColor = "103, 13, 26",
+  canvasOpacity = 0.85,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -49,22 +45,51 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     let isReducedMotion = reducedMotionQuery.matches;
 
     const getParticleCount = () => {
-      const area = width * height;
-      const baseCount = Math.round(area / 15000);
-      const maximum = width < 768 ? 45 : width < 1024 ? 70 : 100;
-      const minimum = width < 768 ? 30 : width < 1024 ? 50 : 70;
-      return Math.min(maximum, Math.max(minimum, baseCount));
+      const w = width;
+      if (w < 768) return 45;       // Mobile: 30-60
+      if (w < 1024) return 75;      // Tablet: 60-90
+      return 110;                   // Desktop: 80-120
     };
 
     const createParticles = () => {
-      particles = Array.from({ length: getParticleCount() }, () => ({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.12,
-        vy: (Math.random() - 0.5) * 0.12,
-        radius: 0.7 + Math.random() * 0.7,
-        opacity: particleAlpha[0] + Math.random() * (particleAlpha[1] - particleAlpha[0]),
-      }));
+      const count = getParticleCount();
+      particles = Array.from({ length: count }, () => {
+        // Conceptual depth layers: 0 (bg), 1 (mid), 2 (fg)
+        const rand = Math.random();
+        const layer = rand < 0.5 ? 0 : rand < 0.85 ? 1 : 2;
+
+        let radius = 1.0;
+        let speedMult = 0.08;
+        let opacity = 0.35;
+
+        if (layer === 0) {
+          // Background layer: small, slow, low opacity
+          radius = 0.8 + Math.random() * 0.5;
+          speedMult = 0.06;
+          opacity = 0.25 + Math.random() * 0.2;
+        } else if (layer === 1) {
+          // Mid layer: medium size & speed
+          radius = 1.4 + Math.random() * 0.8;
+          speedMult = 0.12;
+          opacity = 0.45 + Math.random() * 0.25;
+        } else {
+          // Foreground layer: slightly larger, brighter, warm highlight potential
+          radius = 2.2 + Math.random() * 1.0;
+          speedMult = 0.20;
+          opacity = 0.65 + Math.random() * 0.25;
+        }
+
+        return {
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * speedMult,
+          vy: (Math.random() - 0.5) * speedMult,
+          radius,
+          baseRadius: radius,
+          opacity,
+          layer,
+        };
+      });
     };
 
     const resize = () => {
@@ -83,6 +108,9 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     const draw = () => {
       context.clearRect(0, 0, width, height);
 
+      const connectionDist = width < 768 ? 95 : 125;
+      const pointerDist = 150;
+
       for (let index = 0; index < particles.length; index += 1) {
         const particle = particles[index];
 
@@ -96,56 +124,66 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
           if (particle.y > height + 20) particle.y = -20;
         }
 
-        if (pointer.active && !coarsePointerQuery.matches) {
+        // Mouse interaction (Desktop only)
+        if (pointer.active && !coarsePointerQuery.matches && !isReducedMotion) {
           const pointerDx = pointer.x - particle.x;
           const pointerDy = pointer.y - particle.y;
-          const pointerDistanceSquared = pointerDx * pointerDx + pointerDy * pointerDy;
+          const pointerDistSq = pointerDx * pointerDx + pointerDy * pointerDy;
 
-          if (pointerDistanceSquared < POINTER_DISTANCE * POINTER_DISTANCE && pointerDistanceSquared > 1) {
-            const distance = Math.sqrt(pointerDistanceSquared);
-            const influence = (1 - distance / POINTER_DISTANCE) * 0.008;
-            particle.vx -= (pointerDx / distance) * influence;
-            particle.vy -= (pointerDy / distance) * influence;
+          if (pointerDistSq < pointerDist * pointerDist && pointerDistSq > 1) {
+            const dist = Math.sqrt(pointerDistSq);
+            const influence = (1 - dist / pointerDist) * 0.005 * (particle.layer + 1);
+            particle.vx -= (pointerDx / dist) * influence;
+            particle.vy -= (pointerDy / dist) * influence;
           }
         }
 
-        const particleAlpha = particle.opacity * (isReducedMotion ? 0.7 : 1);
+        // Draw Particle
+        const particleAlpha = particle.opacity * (isReducedMotion ? 0.6 : 1.0);
         context.beginPath();
         context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-        context.fillStyle = `rgba(${particleColor}, ${particleAlpha})`;
+        
+        if (particle.layer === 2 && Math.random() < 0.15) {
+          // Subtle warm-white highlight for foreground depth
+          context.fillStyle = `rgba(255, 235, 235, ${particleAlpha * 0.8})`;
+        } else {
+          context.fillStyle = `rgba(${particleColor}, ${particleAlpha})`;
+        }
         context.fill();
 
+        // Connect to nearby particles with subtle burgundy lines
         for (let otherIndex = index + 1; otherIndex < particles.length; otherIndex += 1) {
           const other = particles[otherIndex];
           const dx = other.x - particle.x;
           const dy = other.y - particle.y;
-          const distanceSquared = dx * dx + dy * dy;
+          const distSq = dx * dx + dy * dy;
 
-          if (distanceSquared >= CONNECTION_DISTANCE * CONNECTION_DISTANCE) continue;
+          if (distSq >= connectionDist * connectionDist) continue;
 
-          const distance = Math.sqrt(distanceSquared);
-          const opacity = (1 - distance / CONNECTION_DISTANCE) * connectionAlpha;
+          const dist = Math.sqrt(distSq);
+          const lineAlpha = (1 - dist / connectionDist) * 0.18 * (particle.opacity * other.opacity);
           context.beginPath();
           context.moveTo(particle.x, particle.y);
           context.lineTo(other.x, other.y);
-          context.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-          context.lineWidth = 1.0;
+          context.strokeStyle = `rgba(${lineColor}, ${lineAlpha})`;
+          context.lineWidth = 0.8;
           context.stroke();
         }
 
-        if (pointer.active && !coarsePointerQuery.matches) {
+        // Connect to Mouse Cursor with faint burgundy line
+        if (pointer.active && !coarsePointerQuery.matches && !isReducedMotion) {
           const pointerDx = pointer.x - particle.x;
           const pointerDy = pointer.y - particle.y;
-          const pointerDistanceSquared = pointerDx * pointerDx + pointerDy * pointerDy;
+          const pointerDistSq = pointerDx * pointerDx + pointerDy * pointerDy;
 
-          if (pointerDistanceSquared < POINTER_DISTANCE * POINTER_DISTANCE) {
-            const distance = Math.sqrt(pointerDistanceSquared);
-            const opacity = (1 - distance / POINTER_DISTANCE) * mouseConnectionAlpha;
+          if (pointerDistSq < pointerDist * pointerDist) {
+            const dist = Math.sqrt(pointerDistSq);
+            const lineAlpha = (1 - dist / pointerDist) * 0.25;
             context.beginPath();
             context.moveTo(particle.x, particle.y);
             context.lineTo(pointer.x, pointer.y);
-            context.strokeStyle = `rgba(${particleColor}, ${opacity})`;
-            context.lineWidth = 1.2;
+            context.strokeStyle = `rgba(${particleColor}, ${lineAlpha})`;
+            context.lineWidth = 1.0;
             context.stroke();
           }
         }
@@ -195,7 +233,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
       window.removeEventListener("mouseleave", handleMouseLeave);
       reducedMotionQuery.removeEventListener("change", handleMotionPreferenceChange);
     };
-  }, [connectionAlpha, mouseConnectionAlpha, particleAlpha, particleColor]);
+  }, [canvasOpacity, lineColor, particleColor]);
 
   return (
     <canvas

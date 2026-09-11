@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CursorEffect } from "./components/common/CursorEffect";
 import { FlowBackground } from "./components/common/FlowBackground";
+import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
 import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
@@ -25,9 +26,10 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
-      {/* Cursor and a single shared atmospheric background */}
+      {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
       <FlowBackground />
+      <ParticleNetworkBackground />
 
       {/* Fixed Ambient Film Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-5" />
@@ -52,7 +54,6 @@ export const App: React.FC = () => {
 
         {/* 05. VISUAL SHOWCASE - Gallery of work, detailing, protection */}
         <DetailingExperience />
-        <OriginalServicesSection />
         <BeforeAfter />
         <AdvancedProtection />
         <PpfSunFilm />
