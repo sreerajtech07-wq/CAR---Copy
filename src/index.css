@@ -100,23 +100,11 @@
   background: #080809;
 }
 
-/* Each part of the story receives the same field with a different composition. */
-.studio-atmosphere main > section:nth-of-type(2),
-.studio-atmosphere main > section:nth-of-type(5),
-.studio-atmosphere main > section:nth-of-type(9) {
-  background-image: radial-gradient(ellipse 78% 75% at 82% 15%, rgba(126, 14, 22, 0.16), transparent 58%), linear-gradient(145deg, rgba(8, 8, 9, 0.93), rgba(21, 21, 26, 0.94)) !important;
-}
-
-.studio-atmosphere main > section:nth-of-type(3),
-.studio-atmosphere main > section:nth-of-type(7),
-.studio-atmosphere main > section:nth-of-type(11) {
-  background-image: radial-gradient(ellipse 72% 66% at 12% 48%, rgba(104, 12, 18, 0.13), transparent 62%), linear-gradient(180deg, rgba(5, 5, 5, 0.94), rgba(13, 13, 16, 0.95)) !important;
-}
-
-.studio-atmosphere main > section:nth-of-type(4),
-.studio-atmosphere main > section:nth-of-type(8),
-.studio-atmosphere main > section:nth-of-type(12) {
-  background-image: radial-gradient(ellipse 80% 62% at 68% 84%, rgba(143, 15, 24, 0.12), transparent 64%), linear-gradient(135deg, rgba(13, 13, 16, 0.95), rgba(5, 5, 5, 0.96)) !important;
+/* Transparent section backgrounds for seamless continuous background visibility */
+.studio-atmosphere main > section {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
 }
 
 .atmospheric-flow {
@@ -145,17 +133,17 @@
 
 .atmospheric-flow__light--rear {
   background:
-    radial-gradient(ellipse 52% 42% at 70% 24%, rgba(150, 18, 27, 0.18), transparent 72%),
-    radial-gradient(ellipse 48% 38% at 20% 76%, rgba(93, 12, 19, 0.13), transparent 76%);
+    radial-gradient(ellipse 65% 55% at 70% 24%, rgba(185, 22, 32, 0.35), transparent 75%),
+    radial-gradient(ellipse 58% 48% at 20% 76%, rgba(135, 16, 25, 0.28), transparent 78%);
   animation: atmospheric-drift-rear 28s ease-in-out infinite alternate;
 }
 
 .atmospheric-flow__light--front {
   inset: -18%;
   background:
-    radial-gradient(ellipse 45% 34% at 38% 28%, rgba(180, 30, 37, 0.09), transparent 72%),
-    radial-gradient(ellipse 52% 32% at 72% 68%, rgba(122, 12, 20, 0.12), transparent 76%);
-  opacity: 0.42;
+    radial-gradient(ellipse 55% 42% at 38% 28%, rgba(210, 30, 42, 0.22), transparent 75%),
+    radial-gradient(ellipse 60% 42% at 72% 68%, rgba(160, 18, 28, 0.26), transparent 78%);
+  opacity: 0.72;
   animation: atmospheric-drift-front 21s ease-in-out infinite alternate;
 }
 
@@ -216,3 +204,18 @@
   filter: blur(1px);
   box-shadow: 0 0 10px var(--cta-amber);
 }
+
+/* Infinite Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+

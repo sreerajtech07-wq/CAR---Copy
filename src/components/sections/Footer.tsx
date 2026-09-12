@@ -1,110 +1,119 @@
 import React from "react";
-import { BUSINESS } from "../../data/business";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { InstagramIcon } from "../common/Icons";
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-transparent text-metallic-400 py-16 border-t border-white/10 font-mono text-xs backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-white/10">
-          {/* Studio Identity */}
-          <div className="md:col-span-6 flex flex-col justify-between">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 rounded-sm bg-brand-red flex items-center justify-center text-white font-black text-xs">
-                  3M
-                </div>
-                <div className="font-display text-lg font-bold text-white tracking-wider">
-                  {BUSINESS.name}
-                </div>
-              </div>
-              <div className="font-cinematic text-sm text-metallic-200 uppercase tracking-widest mb-4">
-                {BUSINESS.brandMessage}
-              </div>
-              <p className="text-metallic-400 font-sans text-xs sm:text-sm max-w-lg leading-relaxed">
-                {BUSINESS.shortDescription}
-              </p>
-            </div>
-            <div className="mt-6 text-[11px] text-metallic-500">
-              Landmark: {BUSINESS.landmark}
-            </div>
-          </div>
+    <footer
+      className="relative z-10 w-full text-neutral-400 font-sans m-0 pt-12 pb-8 px-6 sm:px-12 md:px-16 overflow-hidden"
+      style={{
+        background: "linear-gradient(180deg, rgba(20, 4, 7, 0.85) 0%, #000000 35%, #000000 100%)",
+      }}
+    >
+      {/* Subtle Top Ambient Glow Overlay */}
+      <div className="pointer-events-none absolute top-0 left-0 right-0 h-28 w-full bg-gradient-to-b from-red-950/20 via-black/80 to-black" />
 
-          {/* Quick Verified Contact & Info */}
-          <div className="md:col-span-3 space-y-4">
-            <div className="text-white font-semibold tracking-wider uppercase text-xs">
-              CONTACT & HOURS
-            </div>
-            <div className="space-y-2.5 text-metallic-300">
-              <div className="flex items-center space-x-2">
-                <Phone className="w-3.5 h-3.5 text-brand-red" />
-                <a href={`tel:${BUSINESS.phoneClean}`} className="hover:text-white transition-colors">
-                  {BUSINESS.phone}
-                </a>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="w-3.5 h-3.5 text-brand-red" />
-                <a href={`mailto:${BUSINESS.email}`} className="hover:text-white transition-colors break-all">
-                  {BUSINESS.email}
-                </a>
-              </div>
-              <div className="flex items-center space-x-2">
-                <InstagramIcon className="w-3.5 h-3.5 text-brand-red" />
-                <a
-                  href={BUSINESS.instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  {BUSINESS.instagram}
-                </a>
-              </div>
-              <div className="flex items-center space-x-2 pt-2 text-xs">
-                <Clock className="w-3.5 h-3.5 text-brand-amber" />
-                <span>{BUSINESS.businessHours.display}</span>
-              </div>
-            </div>
-          </div>
+      {/* Ambient Deep-Red Radial Vignette */}
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-full h-[350px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-red-950/25 via-black to-black opacity-90"
+        aria-hidden="true"
+      />
 
-          {/* Location */}
-          <div className="md:col-span-3 space-y-4">
-            <div className="text-white font-semibold tracking-wider uppercase text-xs">
-              STUDIO LOCATION
-            </div>
-            <div className="text-metallic-300 leading-relaxed text-xs">
-              <div className="flex items-start space-x-2">
-                <MapPin className="w-4 h-4 text-brand-red shrink-0 mt-0.5" />
-                <div>
-                  <p>{BUSINESS.address.street}</p>
-                  <p>{BUSINESS.address.area}, {BUSINESS.address.city} – {BUSINESS.address.pincode}</p>
-                  <p>{BUSINESS.address.state}, {BUSINESS.address.country}</p>
-                </div>
-              </div>
-            </div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        {/* Main 3-Column Customized Editorial Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-16 pb-10">
+          {/* Left Column - Brand Info */}
+          <div className="md:col-span-6 lg:col-span-6 space-y-3">
+            <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-[0.25em] text-white uppercase">
+              CAR CARE STUDIO
+            </h2>
+            <p className="text-xs sm:text-sm font-mono tracking-widest text-neutral-400 uppercase">
+              PRECISION IN EVERY DETAIL.
+            </p>
             <div className="pt-2">
-              <a
-                href={BUSINESS.mapQueryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block text-brand-red hover:text-white transition-colors text-xs font-semibold"
-              >
-                Open in Google Maps →
-              </a>
+              <span className="inline-block px-3.5 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] font-mono text-[11px] font-bold tracking-widest uppercase rounded-sm">
+                AUTHORIZED STUDIO CENTER
+              </span>
             </div>
+          </div>
+
+          {/* Column 2 - TREATMENTS */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+            <h3 className="text-white font-mono font-bold text-xs tracking-widest uppercase border-b border-neutral-900 pb-2">
+              TREATMENTS
+            </h3>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-400">
+              <li>
+                <a href="/ppf.html" className="hover:text-white transition-colors duration-200">
+                  Paint Protection Film
+                </a>
+              </li>
+              <li>
+                <a href="/ceramic-coating.html" className="hover:text-white transition-colors duration-200">
+                  Ceramic Coating
+                </a>
+              </li>
+              <li>
+                <a href="/car-detailing.html" className="hover:text-white transition-colors duration-200">
+                  Paint Correction
+                </a>
+              </li>
+              <li>
+                <a href="/additional-services.html" className="hover:text-white transition-colors duration-200">
+                  Interior Detailing
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3 - STUDIO */}
+          <div className="md:col-span-3 lg:col-span-3 space-y-4">
+            <h3 className="text-white font-mono font-bold text-xs tracking-widest uppercase border-b border-neutral-900 pb-2">
+              STUDIO
+            </h3>
+            <ul className="space-y-2.5 text-xs sm:text-sm text-neutral-400">
+              <li>
+                <a href="#about" className="hover:text-white transition-colors duration-200">
+                  About Atelier
+                </a>
+              </li>
+              <li>
+                <a href="#trust" className="hover:text-white transition-colors duration-200">
+                  Studio Standards
+                </a>
+              </li>
+              <li>
+                <a href="#location" className="hover:text-white transition-colors duration-200">
+                  OMR, Chennai
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+917904506926"
+                  className="text-neutral-300 hover:text-white font-mono font-semibold transition-colors duration-200"
+                >
+                  +91 79045 06926
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Legal & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-metallic-500 gap-4">
+        {/* Bottom Sub-Footer Bar */}
+        <div className="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
           <div>
-            © {new Date().getFullYear()} {BUSINESS.name}. All rights reserved.
+            © 2026 Car Care Studio. All rights reserved.
           </div>
-          <div className="text-center sm:text-right">
-            Official Studio: {BUSINESS.website}
+          <div>
+            <a
+              href="#developers"
+              className="text-neutral-500 hover:text-neutral-300 transition-colors duration-200"
+            >
+              meet the developers
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
 };
+
+

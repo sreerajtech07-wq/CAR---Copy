@@ -1,26 +1,24 @@
 import React from "react";
-import { MessageSquare } from "lucide-react";
-import { BUSINESS } from "../../data/business";
 
 export const FloatingWhatsApp: React.FC = () => {
-  // Clean phone number format for WhatsApp URL (digits only, e.g. 919167048826)
-  const cleanNumber = BUSINESS.phoneClean.replace(/\D/g, "");
-  const whatsappUrl = `https://wa.me/${cleanNumber}?text=Hello%203M%20Car%20Care%20Studio%20OMR,%20I%20would%20like%20to%20inquire%20about%20your%20detailing%20and%20protection%20services.`;
+  const whatsappUrl =
+    "https://wa.me/917601933555?text=Hi%20Car%20Care%20Studio%2C%20I%20would%20like%20to%20inquire%20about%20your%20detailing%20and%20paint%20protection%20services.";
 
   return (
     <a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-mono text-xs font-semibold tracking-wider uppercase shadow-2xl transition-all duration-300 hover:scale-105 group border border-white/20 select-none"
-      aria-label="Chat on WhatsApp with 3M Car Care Studio OMR"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-2xl shadow-black/50 hover:scale-110 active:scale-95 transition-all duration-300 group select-none"
+      aria-label="Chat on WhatsApp (+91 76019 33555)"
     >
-      <div className="relative flex items-center justify-center">
-        <span className="absolute inline-flex h-full w-full rounded-full bg-white opacity-40 animate-ping" />
-        <MessageSquare className="w-4 h-4 fill-current text-white relative z-10" />
-      </div>
-      <span className="hidden sm:inline">WhatsApp</span>
-      <span className="sm:hidden">WhatsApp</span>
+      <svg
+        className="w-7 h-7 fill-current text-white transition-transform duration-300 group-hover:scale-105"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.67-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.197 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.99c-.002 5.45-4.437 9.884-9.885 9.884m0-18.274a11.332 11.332 0 00-8.029 3.328 11.333 11.333 0 00-3.326 8.026c0 2.25.64 4.397 1.854 6.257l-1.97 7.197 7.365-1.932a11.307 11.307 0 005.807 1.587h.005c6.255 0 11.345-5.089 11.348-11.346.002-3.033-1.18-5.884-3.33-8.037a11.296 11.296 0 00-8.024-3.321" />
+      </svg>
     </a>
   );
 };

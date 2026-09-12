@@ -68,24 +68,56 @@ export const StatsSection: React.FC = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="trust-reveal mb-14 flex flex-col justify-between border-b border-white/10 pb-7 md:flex-row md:items-end">
           <div>
-            <div className="mb-3 flex items-center space-x-2.5"><span className="h-px w-6 bg-brand-red" /><span className="font-mono text-xs tracking-super-wide text-metallic-400">THE DIFFERENCE</span></div>
-            <h2 id="trust-title" className="font-cinematic text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">Precision in every detail.</h2>
+            <div className="mb-3 flex items-center space-x-2.5">
+              <span className="h-px w-6 bg-brand-red" />
+              <span className="font-mono text-xs font-semibold tracking-super-wide text-brand-red uppercase">THE DIFFERENCE</span>
+            </div>
+            <h2 id="trust-title" className="font-cinematic text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl uppercase">
+              Precision in every detail.
+            </h2>
           </div>
-          <p className="mt-5 max-w-lg text-sm leading-relaxed text-metallic-300 md:mt-0 md:text-right">Professional automotive care in OMR, Chennai, built around precise detailing, advanced protection and consistent studio craft.</p>
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-gray-200 md:mt-0 md:text-right font-light">
+            Professional automotive care in OMR, Chennai, built around precise detailing, advanced protection and consistent studio craft.
+          </p>
         </div>
 
-        <div className="trust-reveal grid grid-cols-1 rounded-sm bg-white/[0.02] backdrop-blur-md border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="trust-reveal grid grid-cols-1 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST_METRICS.map((metric) => (
-            <div key={metric.id} className="group border-b border-white/10 px-6 py-8 sm:px-7 sm:py-10 sm:[&:nth-child(even)]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0 last:border-b-0">
-              <div className="flex items-baseline gap-1"><span className={`font-display font-bold tracking-tight text-white ${metric.isRating ? "text-6xl sm:text-7xl" : "text-5xl sm:text-6xl"}`}>{metric.isRating ? (visibleValues[metric.id] ?? 0).toFixed(1) : (visibleValues[metric.id] ?? 0).toLocaleString()}</span><span className="font-display text-3xl font-bold text-brand-red">{metric.suffix}</span></div>
-              {metric.isRating && <div className="mt-3 flex items-center gap-1" aria-label="Five star customer rating">{Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-4 w-4 fill-brand-red text-brand-red" aria-hidden="true" />)}</div>}
-              <div className="mt-4 font-mono text-xs font-semibold tracking-[0.16em] text-metallic-200">{metric.label}</div>
+            <div key={metric.id} className="group border-b border-white/10 px-6 py-8 sm:px-7 sm:py-10 sm:[&:nth-child(even)]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0 last:border-b-0 flex flex-col items-start justify-between">
+              <div>
+                <div className="flex items-baseline gap-1">
+                  <span className="font-sans text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-none">
+                    {metric.isRating ? (visibleValues[metric.id] ?? 0).toFixed(1) : (visibleValues[metric.id] ?? 0).toLocaleString()}
+                  </span>
+                  <span className="font-sans text-2xl sm:text-3xl font-bold text-brand-red leading-none">{metric.suffix}</span>
+                </div>
+                {metric.isRating && (
+                  <div className="mt-2.5 flex items-center gap-1" aria-label="Five star customer rating">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} className="h-3.5 w-3.5 fill-brand-red text-brand-red" aria-hidden="true" />
+                    ))}
+                  </div>
+                )}
+              </div>
+              <div className="mt-4 inline-block px-3 py-1 bg-brand-red/15 border border-brand-red/30 rounded-sm font-mono text-[11px] sm:text-xs font-bold tracking-widest text-brand-red uppercase">
+                {metric.label}
+              </div>
             </div>
           ))}
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {STUDIO_STANDARDS.map((standard) => <div key={standard.title} className="trust-reveal p-6 rounded-sm bg-white/[0.02] backdrop-blur-md border border-white/10 border-l-2 border-l-brand-red"><h3 className="font-mono text-xs font-semibold tracking-[0.2em] text-brand-red">{standard.title}</h3><p className="mt-3 text-sm leading-relaxed text-metallic-300">{standard.copy}</p></div>)}
+          {STUDIO_STANDARDS.map((standard) => (
+            <div key={standard.title} className="trust-reveal p-6 sm:p-7 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 border-l-2 border-l-brand-red">
+              <h3 className="font-mono text-xs sm:text-sm font-bold tracking-widest text-white uppercase flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
+                <span>{standard.title}</span>
+              </h3>
+              <p className="mt-3 text-sm md:text-base leading-relaxed text-gray-200 font-light">
+                {standard.copy}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

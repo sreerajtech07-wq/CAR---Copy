@@ -33,17 +33,20 @@ export const HeroSection: React.FC = () => {
       start: "top top",
       end: "bottom bottom",
       pin: pinTarget,
-      pinSpacing: false,
-      scrub: quality.isMobile ? 0.8 : 1,
+      pinSpacing: true,
       anticipatePin: 1,
+      invalidateOnRefresh: true,
+      refreshPriority: 10,
+      scrub: quality.isMobile ? 0.8 : 1,
       onUpdate: (self) => {
         setProgress(self.progress);
+        const fadeOut = self.progress > 0.85 ? 1 - (self.progress - 0.85) / 0.15 : 1;
         gsap.set(heroContent, {
           y: self.progress * -48,
-          autoAlpha: 1 - Math.min(Math.max((self.progress - 0.68) * 2.5, 0), 0.72),
+          autoAlpha: (1 - Math.min(Math.max((self.progress - 0.68) * 2.5, 0), 0.72)) * fadeOut,
         });
         gsap.set(scrollCue, {
-          autoAlpha: 1 - Math.min(self.progress * 2.5, 1),
+          autoAlpha: (1 - Math.min(self.progress * 2.5, 1)) * fadeOut,
         });
       },
     });
@@ -70,13 +73,13 @@ export const HeroSection: React.FC = () => {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-dark-950"
+      className="relative w-full bg-transparent"
       style={{ height: `${scrollDistance}px` }}
       id="hero"
     >
       <div
         ref={pinTargetRef}
-        className="relative top-0 h-[100dvh] w-full overflow-hidden select-none bg-dark-950"
+        className="relative top-0 h-[100dvh] w-full overflow-hidden select-none bg-transparent"
       >
         <HeroCanvas progress={progress} quality={quality} />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_58%_56%_at_72%_38%,rgba(122,12,20,0.25),transparent_72%),linear-gradient(180deg,rgba(5,5,5,0.2),transparent_42%,rgba(5,5,5,0.76))]" aria-hidden="true" />

@@ -6,17 +6,18 @@ import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
 import { StatsSection } from "./components/sections/StatsSection";
-import { BrandIntro } from "./components/sections/BrandIntro";
 import { ServicesSection } from "./components/sections/ServicesSection";
-import { DetailingExperience } from "./components/sections/DetailingExperience";
+import { StudioMarqueeGallery } from "./components/sections/StudioMarqueeGallery";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
 import { ProcessTimeline } from "./components/sections/ProcessTimeline";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
+import { Footer } from "./components/sections/Footer";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { BookingModal } from "./components/common/BookingModal";
+import { CallbackModal } from "./components/common/CallbackModal";
 import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
 
 export const App: React.FC = () => {
@@ -24,6 +25,9 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
+      {/* On-Load Call-Back Popup Modal */}
+      <CallbackModal />
+
       {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
       <FlowBackground />
@@ -44,14 +48,11 @@ export const App: React.FC = () => {
         {/* 02. WHY CHOOSE US - Unified proof and studio standards */}
         <StatsSection />
 
-        {/* 03. INTRODUCTION - Studio profile & about */}
-        <BrandIntro />
-
-        {/* 04. EXISTING CONTENT / SERVICES - Service matrix */}
+        {/* 03. EXISTING CONTENT / SERVICES - Service matrix */}
         <ServicesSection />
 
-        {/* 05. VISUAL SHOWCASE - Gallery of work, detailing, protection */}
-        <DetailingExperience />
+        {/* 04. INFINITE MARQUEE GALLERY - Showcase of studio detail work */}
+        <StudioMarqueeGallery />
         <BeforeAfter />
         <AdvancedProtection />
         <PpfSunFilm />
@@ -68,6 +69,9 @@ export const App: React.FC = () => {
         {/* 11. CONTACT */}
         <LocationSection />
       </main>
+
+      {/* Modern Minimalist Footer */}
+      <Footer />
 
       {/* Multi-Step Booking Modal */}
       <BookingModal

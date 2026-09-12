@@ -139,25 +139,46 @@ export const GoogleReviews: React.FC = () => {
           ref={trackRef}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
-          className="flex gap-4 overflow-x-auto pb-4 pt-2 scrollbar-none snap-x snap-mandatory"
+          className="flex gap-6 overflow-x-auto pb-4 pt-8 scrollbar-none snap-x snap-mandatory"
         >
           {DEMO_GOOGLE_REVIEWS.map((review, idx) => {
             const isSelected = idx === activeIndex;
+            const firstInitial = review.reviewerName.trim().charAt(0).toUpperCase() || "C";
+            // Palette of rich dynamic avatar background colors
+            const bgColors = [
+              "bg-[#B5121B]", // Warm Red / Ochre Accent
+              "bg-[#1E3A8A]", // Navy Blue
+              "bg-[#14532D]", // Forest Green
+              "bg-[#B45309]", // Warm Ochre / Amber
+              "bg-[#475569]", // Slate / Charcoal
+              "bg-[#6B21A8]", // Royal Purple
+            ];
+            const avatarBg = bgColors[idx % bgColors.length];
+
             return (
               <div
                 key={review.id}
                 onClick={() => setActiveIndex(idx)}
-                className={`min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start p-6 rounded-sm border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                className={`relative min-w-[280px] sm:min-w-[340px] max-w-[360px] snap-start p-6 pt-7 rounded-sm border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                   isSelected
                     ? "bg-dark-900 border-brand-red shadow-xl shadow-red-950/20 scale-[1.02]"
                     : "bg-dark-950/60 border-white/10 hover:border-white/20 hover:bg-dark-900/60"
                 }`}
               >
+                {/* Initial Badge overlapping top border */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+                  <div
+                    className={`w-10 h-10 rounded-full border-2 border-white ${avatarBg} text-white font-display font-extrabold text-sm flex items-center justify-center shadow-lg uppercase select-none`}
+                  >
+                    {firstInitial}
+                  </div>
+                </div>
+
                 <div>
-                  <div className="flex items-center gap-1 mb-3">{renderStars(review.rating)}</div>
+                  <div className="flex items-center justify-center gap-1 mb-3 pt-2">{renderStars(review.rating)}</div>
                   <p
                     lang={review.language === "ta" ? "ta" : "en"}
-                    className={`text-metallic-200 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 ${
+                    className={`text-metallic-200 text-xs sm:text-sm leading-relaxed mb-4 line-clamp-3 text-center ${
                       review.language === "ta" ? "font-tamil" : ""
                     }`}
                   >
@@ -165,7 +186,7 @@ export const GoogleReviews: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/5">
+                <div className="pt-3 border-t border-white/5 text-center">
                   <div
                     className={`font-display font-semibold text-white text-xs sm:text-sm ${
                       review.language === "ta" ? "font-tamil" : ""
