@@ -64,7 +64,12 @@ export const StatsSection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="trust" aria-labelledby="trust-title" className="relative w-full overflow-hidden border-b border-white/10 bg-transparent py-24 sm:py-32">
+    <section
+      ref={sectionRef}
+      id="trust"
+      aria-labelledby="trust-title"
+      className="relative w-full overflow-hidden bg-transparent py-20 sm:py-28"
+    >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="trust-reveal mb-14 flex flex-col justify-between border-b border-white/10 pb-7 md:flex-row md:items-end">
           <div>

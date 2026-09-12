@@ -43,6 +43,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     if (step === 1 && !selectedService) return;
     if (step === 4) {
       if (!validateStep4()) return;
+
+      // Direct lead ingestion via formatted WhatsApp message
+      const vehicleInfo = vehicle.brand ? `${vehicle.brand} ${vehicle.model} (${vehicle.year})` : "Not specified";
+      const message = `New Inquiry from Website:\nName: ${contact.name}\nPhone: ${contact.phone}\nService: ${selectedService}\nVehicle: ${vehicleInfo}\nPreferred Date: ${bookingDate || "Flexible"}`;
+      const waUrl = `https://wa.me/917601933555?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, "_blank", "noopener,noreferrer");
     }
     setStep((prev) => Math.min(prev + 1, 5));
   };

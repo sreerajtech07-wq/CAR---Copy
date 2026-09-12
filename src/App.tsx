@@ -11,13 +11,12 @@ import { StudioMarqueeGallery } from "./components/sections/StudioMarqueeGallery
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
-import { ProcessTimeline } from "./components/sections/ProcessTimeline";
+import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
 import { Footer } from "./components/sections/Footer";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { BookingModal } from "./components/common/BookingModal";
-import { CallbackModal } from "./components/common/CallbackModal";
 import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
 
 export const App: React.FC = () => {
@@ -25,8 +24,6 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
-      {/* On-Load Call-Back Popup Modal */}
-      <CallbackModal />
 
       {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
@@ -57,8 +54,8 @@ export const App: React.FC = () => {
         <AdvancedProtection />
         <PpfSunFilm />
 
-        {/* 06. EXISTING WORK / RESULTS - Process workflow */}
-        <ProcessTimeline />
+        {/* 06. FREQUENTLY ASKED QUESTIONS */}
+        <FAQSection />
 
         {/* 09. CUSTOMER REVIEWS */}
         <GoogleReviews />

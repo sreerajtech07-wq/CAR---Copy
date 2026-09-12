@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Calendar } from "lucide-react";
+import logoImg from "../../assets/logo/IMG_5288.PNG";
 import { BUSINESS } from "../../data/business";
 
 export interface NavbarProps {
@@ -22,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     { label: "ABOUT", href: "#about" },
     { label: "SERVICES", href: "#services" },
     { label: "PROTECTION", href: "#protection" },
-    { label: "PROCESS", href: "#process" },
+    { label: "FAQ", href: "#faq" },
     { label: "LOCATION", href: "#location" },
     { label: "CONTACT", href: "#contact" },
   ];
@@ -58,17 +59,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand Link */}
-        <a href="#hero" className="flex items-center space-x-3 group">
-          <div className="w-8 h-8 rounded-sm bg-brand-red flex items-center justify-center text-slate-50 font-black text-xs tracking-tighter shadow-md">
-            3M
-          </div>
+        {/* Brand Link (Local 3M Logo Asset + Text Lockup) */}
+        <a href="#hero" className="flex items-center gap-3 shrink-0 mr-6 md:mr-10 select-none group">
+          <img
+            src={logoImg}
+            alt="3M Logo"
+            style={{ mixBlendMode: "screen" }}
+            className="h-8 md:h-9 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-200"
+            loading="eager"
+          />
           <div className="flex flex-col">
-            <span className={`font-display text-sm font-bold tracking-wider group-hover:text-brand-amber transition-colors ${navbarTone.brand}`}>
+            <span className="text-base md:text-lg font-extrabold tracking-wider text-white uppercase leading-none font-display group-hover:text-brand-amber transition-colors">
               CAR CARE STUDIO
             </span>
-            <span className={`font-mono text-[9px] tracking-super-wide uppercase ${navbarTone.subBrand}`}>
-              OMR / ECR • CHENNAI
+            <span className="text-[10px] tracking-widest text-neutral-400 uppercase font-semibold mt-1 font-mono">
+              OMR • CHENNAI
             </span>
           </div>
         </a>
