@@ -83,33 +83,6 @@ export const HeroSection: React.FC = () => {
       >
         <HeroCanvas progress={progress} quality={quality} />
         <div className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_58%_56%_at_72%_38%,rgba(122,12,20,0.25),transparent_72%),linear-gradient(180deg,rgba(5,5,5,0.2),transparent_42%,rgba(5,5,5,0.76))]" aria-hidden="true" />
-<<<<<<< Updated upstream
-        
-        {/* Main Content Area */}
-        <div
-          ref={heroContentRef}
-          className="pointer-events-none absolute inset-0 z-20"
-        >
-          {/* Mobile View / Desktop Left-Hand Info Block */}
-          <div className="w-full h-full flex flex-col items-center justify-end px-6 pb-20 text-center md:text-left md:items-start md:justify-end md:absolute md:bottom-10 md:left-10 lg:bottom-12 lg:left-14 md:px-0 md:pb-0 md:w-auto text-[#F8FAFC]">
-            <div className="w-full max-w-sm md:max-w-md items-center md:items-start flex flex-col drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)]">
-              <p className="mb-1.5 text-[9px] font-semibold uppercase tracking-[0.3em] text-[#F8FAFC]/80 md:mb-3 md:text-[10px] md:tracking-[0.38em]">
-                Precision in motion
-              </p>
-              <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase leading-snug md:leading-[0.96] tracking-tight font-cinematic text-white">
-                Precision.<br className="hidden md:inline" /> In motion.
-              </h1>
-              <p className="text-xs md:text-sm text-neutral-300 font-light leading-relaxed mt-2 text-center md:text-left max-w-sm font-sans">
-                {BUSINESS.shortDescription}
-              </p>
-
-              {/* Direct Action Button */}
-              <a
-                href="#services"
-                className="pointer-events-auto mt-4 inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-red-600/30 transition-all active:scale-95"
-              >
-                Explore Treatments
-=======
         {/* Main Content Area */}
         <div
           ref={heroContentRef}
@@ -124,7 +97,6 @@ export const HeroSection: React.FC = () => {
                 className="pointer-events-auto inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-red-600 hover:bg-red-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-red-600/30 transition-all active:scale-95"
               >
                 EXPLORE SERVICES
->>>>>>> Stashed changes
               </a>
 
               {/* Micro Social-Proof Ticker / Badges */}

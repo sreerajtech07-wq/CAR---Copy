@@ -61,13 +61,8 @@ const VERIFIED_REVIEWS: VerifiedReview[] = [
     initial: "K",
     avatarBg: "bg-[#d9532f]",
     rating: 5,
-<<<<<<< Updated upstream
     headline: "Delivered on Time",
     body: "Good experience overall. Dropped my Thar for underbody anti-rust and full body wash. Punctual commitment, delivered exactly on committed time before our weekend trip.",
-=======
-    headline: "Mahindra Thar - Thoraipakkam",
-    body: "3M OMR-ல் என் வண்டிக்கு PPF செய்தேன். வேலை மிக நேர்த்தியாகவும் ஃபினிஷிங் பிரமாதமாகவும் உள்ளது. டீமின் அணுகுமுறை அருமை!",
->>>>>>> Stashed changes
     author: "Karthik Raja",
     subtitle: "Mahindra Thar · Thoraipakkam",
   },
@@ -76,13 +71,8 @@ const VERIFIED_REVIEWS: VerifiedReview[] = [
     initial: "S",
     avatarBg: "bg-[#d4a017]",
     rating: 5,
-<<<<<<< Updated upstream
     headline: "Proper Detailing Studio",
     body: "Worth every single rupee! Dust-free bay la vechu work pandratha camera live feed la kaatinanga. Genuine 3M materials only. Car delivery edukumbothu showroom pudhu vandi maadhiri irunthathu.",
-=======
-    headline: "Kia Seltos - Navalur",
-    body: "செராமிக் கோட்டிங் செய்த பிறகு வண்டியின் பளபளப்பு புதுசு போல் மின்னுகிறது. 3M மெட்டீரியல் தரம் மற்றும் வாடிக்கையாளர் சேவைக்கு முழு திருப்தி.",
->>>>>>> Stashed changes
     author: "Saravanan P.",
     subtitle: "Kia Seltos Facelift · Navalur",
   },
@@ -101,13 +91,8 @@ const VERIFIED_REVIEWS: VerifiedReview[] = [
     initial: "K",
     avatarBg: "bg-[#287a55]",
     rating: 5,
-<<<<<<< Updated upstream
     headline: "Best PPF Work in OMR",
     body: "Got pre-cut PPF installed for door edges, ORVMs, and bonnet. Computer plotter cutting nala clearcoat mela blade touch aagama safe ah pannanga. Clean workmanship.",
-=======
-    headline: "Volkswagen Virtus GT - OMR",
-    body: "கிராபீன் மேட்ரிக்ஸ் கோட்டிங் ஃபினிஷ் அருமை. பெயிண்ட் ப்ரொடக்ஷன் மற்றும் வாட்டர் ரிப்பல்லன்சி சூப்பராக வேலை செய்கிறது.",
->>>>>>> Stashed changes
     author: "Kishore Kumar",
     subtitle: "Volkswagen Virtus GT · OMR",
   },
@@ -137,11 +122,7 @@ export const GoogleReviews: React.FC = () => {
           </div>
 
           {/* Rating Summary */}
-<<<<<<< Updated upstream
           <div className="mt-6 md:mt-0 flex items-center gap-4 font-mono text-xs text-metallic-300">
-=======
-          <div className="mt-4 md:mt-0 flex items-center gap-4 font-mono text-xs text-metallic-300">
->>>>>>> Stashed changes
             <div className="flex items-center gap-2">
               <span className="font-display text-3xl font-extrabold text-white">4.9</span>
               <div className="flex items-center gap-0.5">{renderStars(5)}</div>
@@ -162,13 +143,8 @@ export const GoogleReviews: React.FC = () => {
           </div>
         </div>
 
-<<<<<<< Updated upstream
         {/* 8-Card Grid (2 rows x 4 columns) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 pt-6">
-=======
-        {/* 8-Card Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-10 pt-4">
->>>>>>> Stashed changes
           {VERIFIED_REVIEWS.map((review) => (
             <div
               key={review.id}
@@ -214,11 +190,7 @@ export const GoogleReviews: React.FC = () => {
         </div>
 
         {/* Section Footer Link */}
-<<<<<<< Updated upstream
         <div className="mt-14 flex justify-center">
-=======
-        <div className="mt-12 flex justify-center">
->>>>>>> Stashed changes
           <a
             href={BUSINESS.mapQueryUrl}
             target="_blank"
