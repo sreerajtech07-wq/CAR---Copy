@@ -20,11 +20,6 @@ const TRUST_METRICS: readonly TrustMetric[] = [
   { id: "attention", value: 100, suffix: "%", label: "ATTENTION TO DETAIL" },
 ];
 
-const STUDIO_STANDARDS = [
-  { title: "PRECISION", copy: "Calibrated inspection and paint correction preserve clearcoat integrity." },
-  { title: "PROTECTION", copy: "Coatings, films and underbody treatments are selected for the vehicle and its environment." },
-  { title: "CRAFT", copy: "Dedicated studio bays give every surface the time and attention it requires." },
-];
 
 export const StatsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -107,20 +102,6 @@ export const StatsSection: React.FC = () => {
               <div className="mt-4 inline-block px-3 py-1 bg-brand-red/15 border border-brand-red/30 rounded-sm font-mono text-[11px] sm:text-xs font-bold tracking-widest text-brand-red uppercase">
                 {metric.label}
               </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-14 grid grid-cols-1 gap-8 sm:grid-cols-3">
-          {STUDIO_STANDARDS.map((standard) => (
-            <div key={standard.title} className="trust-reveal p-6 sm:p-7 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 border-l-2 border-l-brand-red">
-              <h3 className="font-mono text-xs sm:text-sm font-bold tracking-widest text-white uppercase flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-red" />
-                <span>{standard.title}</span>
-              </h3>
-              <p className="mt-3 text-sm md:text-base leading-relaxed text-gray-200 font-light">
-                {standard.copy}
-              </p>
             </div>
           ))}
         </div>

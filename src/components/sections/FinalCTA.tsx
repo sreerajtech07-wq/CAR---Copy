@@ -9,7 +9,7 @@ export interface FinalCTAProps {
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
   return (
-    <section id="contact" className="relative w-full bg-transparent py-28 sm:py-36 border-b border-white/10 overflow-hidden">
+    <section id="contact" className="relative w-full bg-transparent pt-20 sm:pt-28 pb-8 md:pb-12 border-b border-white/10 overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-metallic-300 font-mono text-xs tracking-widest uppercase mb-6">
           <ShieldCheck className="w-3.5 h-3.5 text-brand-red" />

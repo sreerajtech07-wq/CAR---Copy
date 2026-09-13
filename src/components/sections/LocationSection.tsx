@@ -5,7 +5,7 @@ import { InstagramIcon } from "../common/Icons";
 
 export const LocationSection: React.FC = () => {
   return (
-    <section id="location" className="relative w-full bg-transparent py-24 sm:py-32">
+    <section id="location" className="relative w-full bg-transparent pt-6 md:pt-10 pb-20 sm:pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex items-center space-x-2.5 mb-3">
