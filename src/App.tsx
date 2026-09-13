@@ -6,15 +6,19 @@ import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
 import { StatsSection } from "./components/sections/StatsSection";
-import { BrandIntro } from "./components/sections/BrandIntro";
+import { StudioMarqueeGallery } from "./components/sections/StudioMarqueeGallery";
 import { ServicesSection } from "./components/sections/ServicesSection";
-import { DetailingExperience } from "./components/sections/DetailingExperience";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
-import { ProcessTimeline } from "./components/sections/ProcessTimeline";
+<<<<<<< Updated upstream
+=======
+import { BookingSection } from "./components/sections/BookingSection";
+>>>>>>> Stashed changes
+import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
+import { Footer } from "./components/sections/Footer";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { BookingModal } from "./components/common/BookingModal";
 import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
@@ -24,6 +28,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
+
       {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
       <FlowBackground />
@@ -44,30 +49,38 @@ export const App: React.FC = () => {
         {/* 02. WHY CHOOSE US - Unified proof and studio standards */}
         <StatsSection />
 
-        {/* 03. INTRODUCTION - Studio profile & about */}
-        <BrandIntro />
+        {/* 03. 3M OMR GALLERY - Studio Work in Motion */}
+        <StudioMarqueeGallery />
 
-        {/* 04. EXISTING CONTENT / SERVICES - Service matrix */}
+        {/* 04. CORE SERVICES & TREATMENTS */}
         <ServicesSection />
-
-        {/* 05. VISUAL SHOWCASE - Gallery of work, detailing, protection */}
-        <DetailingExperience />
         <BeforeAfter />
         <AdvancedProtection />
         <PpfSunFilm />
 
-        {/* 06. EXISTING WORK / RESULTS - Process workflow */}
-        <ProcessTimeline />
+<<<<<<< Updated upstream
+        {/* 06. FREQUENTLY ASKED QUESTIONS */}
+        <FAQSection />
+=======
+        {/* 06. STUDIO PROTOCOL / BOOKING DIRECTIVE FORM */}
+        <BookingSection />
+>>>>>>> Stashed changes
 
-        {/* 09. CUSTOMER REVIEWS */}
+        {/* 07. FREQUENTLY ASKED QUESTIONS */}
+        <FAQSection />
+
+        {/* 08. CUSTOMER REVIEWS */}
         <GoogleReviews />
 
-        {/* 10. CTA / BOOKING */}
+        {/* 09. CTA / BOOKING */}
         <FinalCTA onOpenBooking={() => setIsBookingOpen(true)} />
 
-        {/* 11. CONTACT */}
+        {/* 10. CONTACT */}
         <LocationSection />
       </main>
+
+      {/* Modern Minimalist Footer */}
+      <Footer />
 
       {/* Multi-Step Booking Modal */}
       <BookingModal

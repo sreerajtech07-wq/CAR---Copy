@@ -30,10 +30,10 @@ const ServiceShowcase: React.FC = () => {
               <span className="absolute left-4 top-4 border border-white/20 bg-dark-950/80 px-2.5 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
             </div>
             <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
-              <span className="font-mono text-[10px] tracking-[0.28em] text-brand-red">{String(index + 1).padStart(2, "0")} / SERVICES</span>
+              <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
               <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-none tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">{service.categoryName}</h3>
-              <p className="mt-3 max-w-xl text-xs leading-relaxed text-metallic-400 transition-colors duration-500 group-hover:text-metallic-200 lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-20 lg:group-hover:opacity-100">{service.shortDescription}</p>
-              <span className="mt-5 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-wider text-white transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
+              <p className="mt-3 max-w-xl text-sm md:text-base leading-relaxed text-gray-200 font-light transition-colors duration-500 group-hover:text-white lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-24 lg:group-hover:opacity-100">{service.shortDescription}</p>
+              <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-semibold transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
             </div>
           </a>
         );
@@ -44,7 +44,7 @@ const ServiceShowcase: React.FC = () => {
 
 export const ServicesSection: React.FC = () => {
   return (
-    <section id="services" className="relative w-full bg-transparent py-16 sm:py-24 md:py-32 border-b border-white/10 overflow-hidden">
+    <section id="services" className="relative w-full bg-transparent py-12 md:py-16 border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 lg:mb-16 pb-6 border-b border-white/10">

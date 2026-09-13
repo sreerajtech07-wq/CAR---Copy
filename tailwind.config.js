@@ -34,8 +34,8 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Syne"', '"Space Grotesk"', 'sans-serif'],
-        cinematic: ['"Cinzel"', 'serif'],
+        display: ['"Outfit"', '"Syne"', '"Space Grotesk"', 'sans-serif'],
+        cinematic: ['"Outfit"', '"Syne"', 'sans-serif'],
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },

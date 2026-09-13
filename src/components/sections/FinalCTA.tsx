@@ -37,11 +37,11 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
           )}
 
           <a
-            href={`tel:${BUSINESS.phoneClean}`}
-            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-medium text-sm tracking-wider uppercase backdrop-blur-md transition-all duration-300 hover:scale-105"
+            href="tel:+917601933555"
+            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/40 font-medium text-sm tracking-wider uppercase backdrop-blur-md transition-all duration-300 hover:scale-105 shadow-lg min-h-[44px]"
           >
-            <Phone className="w-4 h-4 text-brand-amber" />
-            <span>Call Studio: {BUSINESS.phone}</span>
+            <Phone className="w-4 h-4 text-white animate-pulse" />
+            <span>Call Studio: +91 76019 33555</span>
           </a>
 
           <a
