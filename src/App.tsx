@@ -11,10 +11,7 @@ import { ServicesSection } from "./components/sections/ServicesSection";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
-<<<<<<< Updated upstream
-=======
 import { BookingSection } from "./components/sections/BookingSection";
->>>>>>> Stashed changes
 import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
@@ -58,15 +55,10 @@ export const App: React.FC = () => {
         <AdvancedProtection />
         <PpfSunFilm />
 
-<<<<<<< Updated upstream
-        {/* 06. FREQUENTLY ASKED QUESTIONS */}
-        <FAQSection />
-=======
-        {/* 06. STUDIO PROTOCOL / BOOKING DIRECTIVE FORM */}
+        {/* 05. STUDIO PROTOCOL / BOOKING DIRECTIVE FORM */}
         <BookingSection />
->>>>>>> Stashed changes
 
-        {/* 07. FREQUENTLY ASKED QUESTIONS */}
+        {/* 06. FREQUENTLY ASKED QUESTIONS */}
         <FAQSection />
 
         {/* 08. CUSTOMER REVIEWS */}
