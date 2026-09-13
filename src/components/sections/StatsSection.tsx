@@ -68,7 +68,11 @@ export const StatsSection: React.FC = () => {
       ref={sectionRef}
       id="trust"
       aria-labelledby="trust-title"
+<<<<<<< Updated upstream
       className="relative w-full overflow-hidden bg-transparent py-20 sm:py-28"
+=======
+      className="relative w-full overflow-hidden bg-transparent py-12 md:py-16"
+>>>>>>> Stashed changes
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="trust-reveal mb-14 flex flex-col justify-between border-b border-white/10 pb-7 md:flex-row md:items-end">

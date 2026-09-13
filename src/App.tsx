@@ -6,11 +6,15 @@ import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
 import { StatsSection } from "./components/sections/StatsSection";
-import { ServicesSection } from "./components/sections/ServicesSection";
 import { StudioMarqueeGallery } from "./components/sections/StudioMarqueeGallery";
+import { ServicesSection } from "./components/sections/ServicesSection";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
+<<<<<<< Updated upstream
+=======
+import { BookingSection } from "./components/sections/BookingSection";
+>>>>>>> Stashed changes
 import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
 import { LocationSection } from "./components/sections/LocationSection";
@@ -45,25 +49,33 @@ export const App: React.FC = () => {
         {/* 02. WHY CHOOSE US - Unified proof and studio standards */}
         <StatsSection />
 
-        {/* 03. EXISTING CONTENT / SERVICES - Service matrix */}
-        <ServicesSection />
-
-        {/* 04. INFINITE MARQUEE GALLERY - Showcase of studio detail work */}
+        {/* 03. 3M OMR GALLERY - Studio Work in Motion */}
         <StudioMarqueeGallery />
+
+        {/* 04. CORE SERVICES & TREATMENTS */}
+        <ServicesSection />
         <BeforeAfter />
         <AdvancedProtection />
         <PpfSunFilm />
 
+<<<<<<< Updated upstream
         {/* 06. FREQUENTLY ASKED QUESTIONS */}
         <FAQSection />
+=======
+        {/* 06. STUDIO PROTOCOL / BOOKING DIRECTIVE FORM */}
+        <BookingSection />
+>>>>>>> Stashed changes
 
-        {/* 09. CUSTOMER REVIEWS */}
+        {/* 07. FREQUENTLY ASKED QUESTIONS */}
+        <FAQSection />
+
+        {/* 08. CUSTOMER REVIEWS */}
         <GoogleReviews />
 
-        {/* 10. CTA / BOOKING */}
+        {/* 09. CTA / BOOKING */}
         <FinalCTA onOpenBooking={() => setIsBookingOpen(true)} />
 
-        {/* 11. CONTACT */}
+        {/* 10. CONTACT */}
         <LocationSection />
       </main>
 

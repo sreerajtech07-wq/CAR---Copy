@@ -117,8 +117,9 @@ export const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-24 sm:py-32">
+    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-10 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<<<<<<< Updated upstream
         <div className="before-after-reveal mb-12 flex flex-col justify-between border-b border-white/10 pb-6 md:flex-row md:items-end">
           <div>
             <div className="mb-3 flex items-center space-x-2.5">
@@ -131,6 +132,14 @@ export const BeforeAfter: React.FC = () => {
           </div>
           <p className="mt-4 max-w-md font-mono text-xs tracking-wider text-metallic-400 md:mt-0 md:text-right uppercase">
             DRAG THE SLIDER TO INSPECT PAINT RECOVERY & CERAMIC ARMOR
+=======
+        <div className="before-after-reveal mb-6 flex flex-col md:flex-row md:items-center justify-between border-b border-neutral-900 pb-4">
+          <span className="font-mono text-xs font-bold tracking-widest text-red-500 uppercase">
+            3-STAGE PAINT RESTORATION & CERAMIC ARMOR
+          </span>
+          <p className="font-mono text-[11px] tracking-wider text-neutral-400 uppercase mt-1 md:mt-0">
+            DRAG SLIDER TO INSPECT SWIRL RECOVERY & OPTICAL GLOSS
+>>>>>>> Stashed changes
           </p>
         </div>
 
