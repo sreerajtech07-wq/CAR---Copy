@@ -117,23 +117,8 @@ export const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-10 md:py-16">
+    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent pt-6 pb-16 sm:pt-8 sm:pb-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="before-after-reveal mb-12 flex flex-col justify-between border-b border-white/10 pb-6 md:flex-row md:items-end">
-          <div>
-            <div className="mb-3 flex items-center space-x-2.5">
-              <span className="h-px w-6 bg-brand-red" />
-              <span className="font-mono text-xs font-semibold tracking-super-wide text-brand-red uppercase">THE TRANSFORMATION</span>
-            </div>
-            <h2 className="font-cinematic text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
-              CRAFT & PAINT CORRECTION
-            </h2>
-          </div>
-          <p className="mt-4 max-w-md font-mono text-xs tracking-wider text-neutral-400 md:mt-0 md:text-right uppercase">
-            DRAG THE SLIDER TO INSPECT SWIRL RECOVERY & OPTICAL GLOSS
-          </p>
-        </div>
-
         <div className="before-after-reveal grid gap-8 lg:grid-cols-[0.32fr_1fr] lg:items-center">
           <div>
             <span className="inline-block px-3 py-1 bg-brand-red/15 border border-brand-red/30 text-brand-red font-mono text-xs font-bold tracking-widest uppercase rounded-sm mb-3">
@@ -174,10 +159,10 @@ export const BeforeAfter: React.FC = () => {
 
             {/* Floating Pill Tags */}
             <span className="absolute left-4 top-4 border border-white/30 bg-dark-950/85 px-3 py-1.5 font-mono text-xs font-bold tracking-widest text-white rounded-full shadow-lg backdrop-blur-md">
-              BEFORE: HEAVY SWIRLS
+              BEFORE
             </span>
             <span className="absolute right-4 top-4 border border-brand-red/40 bg-dark-950/85 px-3 py-1.5 font-mono text-xs font-bold tracking-widest text-brand-red rounded-full shadow-lg backdrop-blur-md">
-              AFTER: CERAMIC ARMOR
+              AFTER
             </span>
 
             {/* Vertical Divider & Circular Handle */}

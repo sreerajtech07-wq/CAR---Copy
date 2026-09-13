@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { BUSINESS } from "../data/business";
 import {
   Phone,
-  ArrowLeft,
+  Compass,
   ChevronDown,
-  Navigation,
 } from "lucide-react";
 import { CursorEffect } from "../components/common/CursorEffect";
 import { Background3D } from "../components/common/Background3D";
 import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
+import { ServiceHeader } from "../components/common/ServiceHeader";
+import { ServiceBottomCTA } from "../components/common/ServiceBottomCTA";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 
 export const DetailingPage: React.FC = () => {
@@ -77,33 +78,11 @@ export const DetailingPage: React.FC = () => {
       <ParticleNetworkBackground />
 
       {/* Top Sticky Header */}
-      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-studio-border py-3.5 px-4 sm:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a
-            href="/"
-            className="inline-flex items-center space-x-2 text-xs font-mono uppercase tracking-wider text-metallic-300 hover:text-white transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4 text-brand-red" />
-            <span>Back to Home</span>
-          </a>
-
-          <div className="flex items-center space-x-4">
-            <a
-              href="/ceramic-coating.html"
-              className="hidden sm:inline-block text-xs font-mono uppercase tracking-wider text-metallic-400 hover:text-white transition-colors"
-            >
-              Ceramic Coating →
-            </a>
-            <a
-              href={`tel:${BUSINESS.phoneClean}`}
-              className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs uppercase tracking-wider transition-colors"
-            >
-              <Phone className="w-3.5 h-3.5" />
-              <span>{BUSINESS.phone}</span>
-            </a>
-          </div>
-        </div>
-      </header>
+      <ServiceHeader
+        serviceName="Car Detailing"
+        nextServiceHref="/ceramic-coating.html"
+        nextServiceLabel="Ceramic Coating"
+      />
 
       {/* Hero Banner */}
       <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-dark-900 overflow-hidden">
@@ -138,7 +117,7 @@ export const DetailingPage: React.FC = () => {
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
             >
-              <Navigation className="w-4 h-4 text-brand-amber" />
+              <Compass className="w-4 h-4 text-brand-amber" />
               <span>Get Studio Directions</span>
             </a>
           </div>
@@ -234,34 +213,8 @@ export const DetailingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Location & Contact Bar */}
-      <section className="py-16 bg-dark-900 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
-          <h2 className="font-cinematic text-2xl sm:text-3xl font-bold text-white uppercase">
-            Schedule a Detailing Consultation
-          </h2>
-          <p className="mt-2 text-sm text-metallic-300 max-w-lg font-light">
-            Visit our dedicated inspection bay opposite AKDR Golf Village on Rajiv Gandhi Salai, OMR.
-          </p>
-
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href={`tel:${BUSINESS.phoneClean}`}
-              className="px-6 py-3 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs uppercase tracking-wider"
-            >
-              Call {BUSINESS.phone}
-            </a>
-            <a
-              href={BUSINESS.mapQueryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs uppercase tracking-wider"
-            >
-              Open Maps
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Bottom CTA Section */}
+      <ServiceBottomCTA serviceName="Car Detailing" />
 
       {/* Footer */}
       <footer className="py-8 bg-dark-950 text-center font-mono text-xs text-metallic-500">

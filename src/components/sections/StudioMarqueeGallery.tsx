@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { BUSINESS } from "../../data/business";
-import { ArrowUpRight, X } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "../common/Icons";
 
 interface GalleryMediaItem {
@@ -258,18 +258,47 @@ export const StudioMarqueeGallery: React.FC = () => {
           className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 md:p-8 animate-fadeIn"
           onClick={() => setSelectedMedia(null)}
         >
-          {/* Prominent Dismissal / Back Button */}
+          {/* Top-Left BACK Button */}
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               setSelectedMedia(null);
             }}
-            className="fixed top-5 right-5 z-[10000] flex items-center gap-2 px-4 py-2 bg-neutral-900/90 hover:bg-red-600 text-white rounded-full border border-neutral-700 shadow-2xl transition-all cursor-pointer group"
-            aria-label="Close Lightbox Modal"
+            className="fixed top-5 left-5 z-[10000] flex items-center gap-2 px-5 py-2.5 bg-neutral-900/90 hover:bg-red-600 text-white rounded-full border border-neutral-700 shadow-2xl transition-all cursor-pointer group"
+            aria-label="Back to Gallery"
           >
-            <X className="w-4 h-4 text-white" />
-            <span className="text-xs font-mono font-bold tracking-widest text-white">✕ CLOSE</span>
+            <span className="text-sm font-bold text-white group-hover:-translate-x-1 transition-transform">←</span>
+            <span className="text-xs font-mono font-bold tracking-widest text-white">BACK</span>
+          </button>
+
+          {/* Previous / Next Controls */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = GALLERY_ITEMS.findIndex((item) => item.id === selectedMedia.id);
+              const prevIndex = (currentIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
+              setSelectedMedia(GALLERY_ITEMS[prevIndex]);
+            }}
+            className="fixed left-4 top-1/2 -translate-y-1/2 z-[10000] p-3 bg-neutral-900/80 hover:bg-red-600 text-white rounded-full border border-neutral-700 transition-all cursor-pointer hidden sm:flex"
+            aria-label="Previous Media"
+          >
+            <span className="text-lg font-bold">‹</span>
+          </button>
+
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              const currentIndex = GALLERY_ITEMS.findIndex((item) => item.id === selectedMedia.id);
+              const nextIndex = (currentIndex + 1) % GALLERY_ITEMS.length;
+              setSelectedMedia(GALLERY_ITEMS[nextIndex]);
+            }}
+            className="fixed right-4 top-1/2 -translate-y-1/2 z-[10000] p-3 bg-neutral-900/80 hover:bg-red-600 text-white rounded-full border border-neutral-700 transition-all cursor-pointer hidden sm:flex"
+            aria-label="Next Media"
+          >
+            <span className="text-lg font-bold">›</span>
           </button>
 
           {/* Active Media Container */}

@@ -1,4 +1,5 @@
 import React from "react";
+import { BUSINESS } from "../../data/business";
 
 export const Footer: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ export const Footer: React.FC = () => {
           {/* Left Column - Brand Info */}
           <div className="md:col-span-6 lg:col-span-6 space-y-3">
             <h2 className="font-display text-2xl sm:text-3xl font-extrabold tracking-[0.25em] text-white uppercase">
-              CAR CARE STUDIO
+              3M CAR CARE STUDIO
             </h2>
             <p className="text-xs sm:text-sm font-mono tracking-widest text-neutral-400 uppercase">
               PRECISION IN EVERY DETAIL.
@@ -87,10 +88,10 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href="tel:+917904506926"
+                  href={`tel:${BUSINESS.phoneClean}`}
                   className="text-neutral-300 hover:text-white font-mono font-semibold transition-colors duration-200"
                 >
-                  +91 79045 06926
+                  {BUSINESS.phone}
                 </a>
               </li>
             </ul>
@@ -100,7 +101,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Sub-Footer Bar */}
         <div className="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
           <div>
-            © 2026 Car Care Studio. All rights reserved.
+            © 2026 3M Car Care Studio. All rights reserved.
           </div>
           <div>
             <a

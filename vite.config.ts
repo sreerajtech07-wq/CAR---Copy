@@ -1,10 +1,29 @@
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { resolve } from 'node:path'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    ViteImageOptimizer({
+      png: {
+        quality: 80,
+      },
+      jpeg: {
+        quality: 80,
+      },
+      jpg: {
+        quality: 80,
+      },
+      webp: {
+        lossless: false,
+        quality: 80,
+      },
+      logStats: true, // ബിൽഡ് ചെയ്യുമ്പോൾ എത്ര സൈസ് കുറഞ്ഞു എന്ന് ടെർമിനലിൽ കാണിക്കും
+    }),
+  ],
   server: {
     host: true,
     allowedHosts: true,
@@ -29,5 +48,3 @@ export default defineConfig({
     },
   },
 })
-
-
