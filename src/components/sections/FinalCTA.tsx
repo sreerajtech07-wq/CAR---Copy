@@ -1,6 +1,7 @@
 import React from "react";
 import { BUSINESS } from "../../data/business";
-import { Phone, Mail, Navigation, ShieldCheck, Calendar } from "lucide-react";
+import { Phone, Mail, Navigation, ShieldCheck, Calendar, Clock, MapPin } from "lucide-react";
+import { InstagramIcon } from "../common/Icons";
 
 export interface FinalCTAProps {
   onOpenBooking?: () => void;
@@ -64,21 +65,24 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Authoritative Studio Details Bar */}
-        <div className="mt-14 pt-8 border-t border-white/10 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs text-metallic-400">
-          <div>
-            <div className="text-white font-semibold">HOURS</div>
-            <div className="mt-1">{BUSINESS.businessHours.hours}</div>
-            <div className="text-metallic-500">7 Days a Week</div>
+        <div className="mt-14 pt-8 border-t border-white/10 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
+          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
+            <Clock className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">HOURS</div>
+            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.businessHours.hours}</div>
+            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">7 Days a Week</div>
           </div>
-          <div>
-            <div className="text-white font-semibold">LOCATION</div>
-            <div className="mt-1">Rajiv Gandhi Salai, OMR</div>
-            <div className="text-metallic-500">Opposite AKDR Golf Village</div>
+          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
+            <MapPin className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">LOCATION</div>
+            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">Rajiv Gandhi Salai, OMR</div>
+            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">Opposite AKDR Golf Village</div>
           </div>
-          <div>
-            <div className="text-white font-semibold">INSTAGRAM</div>
-            <div className="mt-1">{BUSINESS.instagram}</div>
-            <div className="text-metallic-500">Official Studio Feed</div>
+          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
+            <InstagramIcon className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">INSTAGRAM</div>
+            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.instagram}</div>
+            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">Official Studio Feed</div>
           </div>
         </div>
       </div>
