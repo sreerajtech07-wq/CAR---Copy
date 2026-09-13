@@ -117,36 +117,58 @@ export const BeforeAfter: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-24 sm:py-32">
+    <section ref={sectionRef} id="transformation" className="relative w-full border-b border-white/10 bg-transparent py-10 md:py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<<<<<<< Updated upstream
         <div className="before-after-reveal mb-12 flex flex-col justify-between border-b border-white/10 pb-6 md:flex-row md:items-end">
           <div>
             <div className="mb-3 flex items-center space-x-2.5">
               <span className="h-px w-6 bg-brand-red" />
-              <span className="font-mono text-xs tracking-super-wide text-metallic-400">THE TRANSFORMATION</span>
+              <span className="font-mono text-xs font-semibold tracking-super-wide text-brand-red uppercase">THE TRANSFORMATION</span>
             </div>
-            <h2 className="font-cinematic text-3xl font-bold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">BEFORE / AFTER</h2>
+            <h2 className="font-cinematic text-3xl font-extrabold uppercase tracking-tight text-white sm:text-4xl md:text-5xl">
+              CRAFT & PAINT CORRECTION
+            </h2>
           </div>
-          <p className="mt-4 max-w-md font-mono text-xs tracking-wider text-metallic-400 md:mt-0 md:text-right">DRAG THE DIVIDER TO INSPECT THE STUDIO REFERENCE</p>
+          <p className="mt-4 max-w-md font-mono text-xs tracking-wider text-metallic-400 md:mt-0 md:text-right uppercase">
+            DRAG THE SLIDER TO INSPECT PAINT RECOVERY & CERAMIC ARMOR
+=======
+        <div className="before-after-reveal mb-6 flex flex-col md:flex-row md:items-center justify-between border-b border-neutral-900 pb-4">
+          <span className="font-mono text-xs font-bold tracking-widest text-red-500 uppercase">
+            3-STAGE PAINT RESTORATION & CERAMIC ARMOR
+          </span>
+          <p className="font-mono text-[11px] tracking-wider text-neutral-400 uppercase mt-1 md:mt-0">
+            DRAG SLIDER TO INSPECT SWIRL RECOVERY & OPTICAL GLOSS
+>>>>>>> Stashed changes
+          </p>
         </div>
 
-        <div className="before-after-reveal grid gap-8 lg:grid-cols-[0.32fr_1fr] lg:items-end">
+        <div className="before-after-reveal grid gap-8 lg:grid-cols-[0.32fr_1fr] lg:items-center">
           <div>
-            <h3 className="font-display text-2xl font-bold uppercase tracking-wide text-white">{item.title}</h3>
-            <p className="mt-4 text-sm font-light leading-relaxed text-metallic-300">{item.description}</p>
-            <p className="mt-6 font-mono text-[10px] tracking-[0.18em] text-brand-amber">{item.status}</p>
+            <span className="inline-block px-3 py-1 bg-brand-red/15 border border-brand-red/30 text-brand-red font-mono text-xs font-bold tracking-widest uppercase rounded-sm mb-3">
+              3-STAGE PAINT RESTORATION
+            </span>
+            <h3 className="font-display text-2xl sm:text-3xl font-extrabold uppercase tracking-wide text-white">
+              Before: Swirled & Oxidized Paint vs After: 3-Stage Corrected & Ceramic Coated Mirror Finish
+            </h3>
+            <p className="mt-4 text-sm md:text-base font-light leading-relaxed text-gray-200">
+              Deep swirl mark elimination and optical clarity restoration locked permanently under SiO2 ceramic quartz matrix armor.
+            </p>
+            <p className="mt-6 font-mono text-xs font-bold tracking-widest text-brand-amber uppercase">
+              STATUS: DUAL-ACTION COMPOUNDED & CERAMIC CURING COMPLETE
+            </p>
           </div>
 
           <div
             ref={comparisonRef}
             role="slider"
             tabIndex={0}
-            aria-label="Before and after image comparison"
+            aria-label="Before and after image comparison slider"
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={Math.round(position)}
             onKeyDown={handleKeyDown}
-            className="group relative aspect-[16/9] touch-none select-none overflow-hidden border border-white/15 bg-dark-900 outline-none focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/50 cursor-ew-resize"
+            className="group relative aspect-[16/9] sm:aspect-[21/9] touch-none select-none overflow-hidden border border-white/15 bg-dark-900 rounded-sm outline-none focus-visible:border-brand-red focus-visible:ring-2 focus-visible:ring-brand-red/50 cursor-ew-resize shadow-2xl"
           >
             <img src={item.afterImage} alt={item.afterAlt} className="absolute inset-0 h-full w-full object-cover brightness-[1.05] contrast-[1.05]" draggable={false} />
             <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${position}%` }}>
@@ -158,10 +180,18 @@ export const BeforeAfter: React.FC = () => {
                 draggable={false}
               />
             </div>
-            <span className="absolute left-4 top-4 border border-white/25 bg-dark-950/80 px-2.5 py-1 font-mono text-[10px] tracking-widest text-white">BEFORE</span>
-            <span className="absolute right-4 top-4 border border-white/25 bg-dark-950/80 px-2.5 py-1 font-mono text-[10px] tracking-widest text-white">AFTER</span>
-            <div className="absolute inset-y-0 w-px bg-white" style={{ left: `${position}%` }} aria-hidden="true">
-              <span className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white bg-brand-red text-white shadow-lg">
+
+            {/* Floating Pill Tags */}
+            <span className="absolute left-4 top-4 border border-white/30 bg-dark-950/85 px-3 py-1.5 font-mono text-xs font-bold tracking-widest text-white rounded-full shadow-lg backdrop-blur-md">
+              BEFORE: HEAVY SWIRLS
+            </span>
+            <span className="absolute right-4 top-4 border border-brand-red/40 bg-dark-950/85 px-3 py-1.5 font-mono text-xs font-bold tracking-widest text-brand-red rounded-full shadow-lg backdrop-blur-md">
+              AFTER: CERAMIC ARMOR
+            </span>
+
+            {/* Vertical Divider & Circular Handle */}
+            <div className="absolute inset-y-0 w-0.5 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]" style={{ left: `${position}%` }} aria-hidden="true">
+              <span className="absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-brand-red text-white shadow-2xl transition-transform group-hover:scale-110">
                 <ArrowLeftRight className="h-5 w-5" />
               </span>
             </div>
