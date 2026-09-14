@@ -142,42 +142,34 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
     lastDrawnIndexRef.current = targetIndex;
 
-    // Contain portrait frames on tall screens and cover landscape screens.
     const imgW = frameToDraw.naturalWidth || 1280;
     const imgH = frameToDraw.naturalHeight || 720;
-    const imgAspect = imgW / imgH;
-    const canvasAspect = width / height;
-    const isPortrait = height > width;
 
-    let drawW: number;
-    let drawH: number;
+    // Adaptive focal-point cover scaling: Math.max ensures full-bleed viewport coverage
+    const hRatio = width / imgW;
+    const vRatio = height / imgH;
+    const ratio = Math.max(hRatio, vRatio);
 
-    if (isPortrait) {
-      if (canvasAspect < imgAspect) {
-        drawW = width;
-        drawH = width / imgAspect;
-      } else {
-        drawH = height;
-        drawW = height * imgAspect;
-      }
-    } else {
-      if (canvasAspect > imgAspect) {
-        drawW = width;
-        drawH = width / imgAspect;
-      } else {
-        drawH = height;
-        drawW = height * imgAspect;
-      }
-    }
+    const renderWidth = imgW * ratio;
+    const renderHeight = imgH * ratio;
+    const offsetX = (width - renderWidth) / 2;
+    const offsetY = (height - renderHeight) / 2;
 
     ctx.fillStyle = "#050505";
     ctx.fillRect(0, 0, width, height);
 
-    const dx = (width - drawW) / 2;
-    const dy = (height - drawH) / 2;
-
-    // Draw frame
-    ctx.drawImage(frameToDraw, dx, dy, drawW, drawH);
+    // Draw frame centered with exact focal alignment
+    ctx.drawImage(
+      frameToDraw,
+      0,
+      0,
+      imgW,
+      imgH,
+      offsetX,
+      offsetY,
+      renderWidth,
+      renderHeight
+    );
 
     // Subtle edge vignette to blend with dark page background
     const gradVignette = ctx.createRadialGradient(
@@ -224,7 +216,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
   }, [quality.dpr]);
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-studio-canvas">
+    <div className="relative w-full h-[100svh] min-h-[600px] overflow-hidden flex items-center justify-center bg-studio-canvas">
       <canvas
         ref={canvasRef}
         className="w-full h-full object-cover block"
