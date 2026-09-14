@@ -101,7 +101,7 @@ ${scopeText}
 
   return (
     <section id="booking" className="relative w-full bg-black py-10 md:py-16 px-4 sm:px-6 overflow-hidden border-t border-neutral-900 font-sans">
-      <div className="max-w-3xl w-full mx-auto p-5 sm:p-8 md:p-10 my-4 md:my-8 bg-[#0d0d0d] border border-neutral-800/90 rounded-2xl shadow-2xl">
+      <div className="max-w-3xl w-full mx-auto p-5 sm:p-8 md:p-10 my-0 bg-[#0d0d0d] border border-neutral-800/90 rounded-2xl shadow-2xl">
         {/* Header */}
         <div className="text-left mb-6 sm:mb-8 pb-4 border-b border-neutral-900">
           <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-red-500 uppercase block mb-1">

@@ -24,7 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     { label: "SERVICES", href: "#services" },
     { label: "PROTECTION", href: "#protection" },
     { label: "FAQ", href: "#faq" },
-    { label: "LOCATION", href: "#location" },
+    { label: "LOCATION", href: "#footer" },
     { label: "CONTACT", href: "#contact" },
   ];
 

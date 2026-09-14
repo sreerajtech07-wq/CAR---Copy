@@ -8,9 +8,11 @@ import {
 } from "lucide-react";
 import { CursorEffect } from "../components/common/CursorEffect";
 import { Background3D } from "../components/common/Background3D";
+import { FlowBackground } from "../components/common/FlowBackground";
 import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
 import { ServiceHeader } from "../components/common/ServiceHeader";
 import { ServiceBottomCTA } from "../components/common/ServiceBottomCTA";
+import { ServiceReviews } from "../components/common/ServiceReviews";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 
 export const PpfPage: React.FC = () => {
@@ -69,19 +71,21 @@ export const PpfPage: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-studio-ink antialiased overflow-x-hidden font-sans">
+    <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden">
       <CursorEffect />
       <Background3D />
+      <FlowBackground />
       <ParticleNetworkBackground />
       {/* Top Sticky Header */}
       <ServiceHeader
-        serviceName="PPF Protection"
-        nextServiceHref="/sun-film.html"
-        nextServiceLabel="Sun Film Shield"
+        serviceName="Paint Protection Film (PPF)"
+        nextServiceHref="/ceramic-coating.html"
+        nextServiceLabel="Ceramic Coating"
       />
 
-      {/* Hero Banner */}
-      <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-dark-900 overflow-hidden">
+      <main className="relative z-10">
+        {/* Hero Banner */}
+        <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex items-center space-x-2.5 mb-4">
             <span className="w-6 h-[1px] bg-brand-red" />
@@ -121,7 +125,7 @@ export const PpfPage: React.FC = () => {
       </section>
 
       {/* Official Capabilities Breakdown */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-dark-950">
+      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
@@ -161,7 +165,7 @@ export const PpfPage: React.FC = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 sm:p-6 rounded-sm bg-dark-900 border border-white/10 flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-sm bg-[#121212]/80 backdrop-blur-sm relative z-10 border border-white/10 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center space-x-2 text-brand-red mb-3">
@@ -182,7 +186,7 @@ export const PpfPage: React.FC = () => {
       </section>
 
       {/* PPF Photo Gallery */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-dark-900">
+      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-white/10">
             <div>
@@ -202,7 +206,7 @@ export const PpfPage: React.FC = () => {
             {galleryImages.map((img, i) => (
               <div
                 key={i}
-                className="group relative rounded-sm overflow-hidden bg-dark-950 border border-white/10 aspect-video sm:aspect-square"
+                className="group relative rounded-sm overflow-hidden bg-[#121212]/80 backdrop-blur-sm relative z-10 border border-white/10 aspect-video sm:aspect-square"
               >
                 <img
                   src={img.src}
@@ -225,7 +229,7 @@ export const PpfPage: React.FC = () => {
       </section>
 
       {/* PPF FAQs */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-dark-950">
+      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
@@ -242,7 +246,7 @@ export const PpfPage: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="rounded-sm bg-dark-900 border border-white/10 overflow-hidden transition-colors"
+                  className="rounded-sm bg-[#121212]/80 backdrop-blur-md border border-white/10 overflow-hidden transition-colors relative z-10"
                 >
                   <button
                     type="button"
@@ -270,16 +274,20 @@ export const PpfPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Category Verified Reviews */}
+      <ServiceReviews category="ppf" />
+
       {/* Bottom CTA Section */}
       <ServiceBottomCTA serviceName="PPF Protection" />
+      </main>
 
       {/* Footer */}
-      <footer className="py-8 bg-dark-950 text-center font-mono text-xs text-metallic-500">
+      <footer className="py-8 bg-transparent relative z-10 text-center font-mono text-xs text-metallic-500">
         <p>
           {BUSINESS.name} • {BUSINESS.address.full}
         </p>
         <p className="mt-1">
-          Operating Hours: {BUSINESS.businessHours.display} • Phone: {BUSINESS.phone}
+          Operating Hours: {BUSINESS.businessHours.display} • Phone: +91 76019 33555 / 666
         </p>
       </footer>
       <FloatingWhatsApp />

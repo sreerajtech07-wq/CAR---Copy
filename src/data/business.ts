@@ -64,5 +64,5 @@ export const BUSINESS: BusinessData = {
   brandMessage: "Premium Car Care. Advanced Protection.",
   shortDescription:
     "Professional automotive care and protection services in OMR, Chennai, offering premium detailing, ceramic coating, graphene coating, PPF, sun film and anti-rust protection solutions.",
-  mapQueryUrl: "https://maps.app.goo.gl/rrcJvyfwn5pHncew6",
+  mapQueryUrl: "https://maps.app.goo.gl/RJH95HUy9Wpaapd46",
 };

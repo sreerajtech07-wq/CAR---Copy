@@ -9,7 +9,7 @@ export interface FinalCTAProps {
 
 export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
   return (
-    <section id="contact" className="relative w-full bg-transparent pt-20 sm:pt-28 pb-8 md:pb-12 border-b border-white/10 overflow-hidden">
+    <section id="contact" className="relative w-full bg-transparent py-10 md:py-14 border-b border-white/10 overflow-hidden">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-white/5 border border-white/10 text-metallic-300 font-mono text-xs tracking-widest uppercase mb-6">
           <ShieldCheck className="w-3.5 h-3.5 text-brand-red" />
@@ -54,7 +54,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
           </a>
 
           <a
-            href={BUSINESS.mapQueryUrl}
+            href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center space-x-3 px-6 py-4 rounded-sm bg-dark-900 hover:bg-dark-850 text-metallic-200 hover:text-white border border-white/10 font-medium text-sm tracking-wider uppercase transition-all duration-300"
@@ -65,25 +65,52 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
         </div>
 
         {/* Authoritative Studio Details Bar */}
-        <div className="mt-14 pt-8 border-t border-white/10 w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
-          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
-            <Clock className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">HOURS</div>
-            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.businessHours.hours}</div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">7 Days a Week</div>
+        <div className="mt-12 pt-8 border-t border-white/10 w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono">
+          {/* Card 1: HOURS (Static) */}
+          <div className="text-center flex flex-col items-center justify-center group cursor-default">
+            <div className="w-14 h-14 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:border-red-500/50 group-hover:bg-red-500/10 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+              <Clock className="w-6 h-6 text-red-500 group-hover:text-red-400 transition-colors" />
+            </div>
+            <div className="text-sm sm:text-base font-black uppercase tracking-widest text-white mb-1.5">HOURS</div>
+            <div className="text-base sm:text-lg font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.businessHours.hours}</div>
+            <div className="text-xs font-medium text-neutral-400 font-mono mt-1 tracking-wide">7 Days a Week</div>
           </div>
-          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
-            <MapPin className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">LOCATION</div>
-            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">Rajiv Gandhi Salai, OMR</div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">Opposite AKDR Golf Village</div>
-          </div>
-          <div className="text-center flex flex-col items-center justify-center group transition-all duration-300 hover:scale-105 cursor-default">
-            <InstagramIcon className="w-6 h-6 text-brand-red text-red-500 mb-2.5 drop-shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-            <div className="text-sm sm:text-base md:text-lg font-black uppercase tracking-widest text-white mb-2 drop-shadow-sm">INSTAGRAM</div>
-            <div className="text-base sm:text-lg md:text-xl font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.instagram}</div>
-            <div className="text-xs sm:text-sm font-medium text-neutral-400 font-mono mt-1 tracking-wide">Official Studio Feed</div>
-          </div>
+
+          {/* Card 2: LOCATION (Directly Clickable Google Maps Link) */}
+          <a
+            href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center flex flex-col items-center justify-center group cursor-pointer transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="w-14 h-14 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:border-red-500/50 group-hover:bg-red-500/10 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+              <MapPin className="w-6 h-6 text-red-500 group-hover:text-red-400 transition-colors" />
+            </div>
+            <div className="text-sm sm:text-base font-black uppercase tracking-widest text-white mb-1.5 flex items-center gap-1">
+              <span>LOCATION</span>
+              <span className="text-red-400 text-xs font-normal">↗</span>
+            </div>
+            <div className="text-base sm:text-lg font-bold text-neutral-100 font-mono tracking-tight leading-snug">Rajiv Gandhi Salai, OMR</div>
+            <div className="text-xs font-medium text-neutral-400 font-mono mt-1 tracking-wide max-w-xs">Opposite AKDR Golf Village, Mettukuppam, Chennai 600097</div>
+          </a>
+
+          {/* Card 3: INSTAGRAM (Directly Clickable Profile Link) */}
+          <a
+            href="https://www.instagram.com/3mcarcareomr"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-center flex flex-col items-center justify-center group cursor-pointer transition-all duration-300 hover:-translate-y-1"
+          >
+            <div className="w-14 h-14 rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-md flex items-center justify-center mx-auto mb-3 transition-all duration-300 group-hover:scale-110 group-hover:border-red-500/50 group-hover:bg-red-500/10 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.3)]">
+              <InstagramIcon className="w-6 h-6 text-red-500 group-hover:text-red-400 transition-colors" />
+            </div>
+            <div className="text-sm sm:text-base font-black uppercase tracking-widest text-white mb-1.5 flex items-center gap-1">
+              <span>INSTAGRAM</span>
+              <span className="text-red-400 text-xs font-normal">↗</span>
+            </div>
+            <div className="text-base sm:text-lg font-bold text-neutral-100 font-mono tracking-tight leading-snug">{BUSINESS.instagram}</div>
+            <div className="text-xs font-medium text-neutral-400 font-mono mt-1 tracking-wide">Official Studio Feed</div>
+          </a>
         </div>
       </div>
     </section>

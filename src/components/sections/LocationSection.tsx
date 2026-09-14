@@ -22,7 +22,7 @@ export const LocationSection: React.FC = () => {
             </h2>
           </div>
           <p className="mt-4 md:mt-0 font-mono text-xs text-metallic-400 max-w-md md:text-right tracking-wider">
-            RAJIV GANDHI SALAI (OMR) • OPPOSITE AKDR GOLF VILLAGE
+            RAJIV GANDHI SALAI (OMR), CHENNAI • OPPOSITE AKDR GOLF VILLAGE
           </p>
         </div>
 
@@ -31,42 +31,55 @@ export const LocationSection: React.FC = () => {
           {/* Studio Details Card */}
           <div className="lg:col-span-5 p-6 sm:p-8 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 flex flex-col justify-between">
             <div>
-              <div className="flex items-center space-x-2 text-brand-red font-mono text-xs uppercase tracking-widest mb-3">
-                <MapPin className="w-4 h-4" />
-                <span>STUDIO ADDRESS</span>
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-brand-red shadow-lg hover:scale-110 hover:border-brand-red/50 transition-all duration-300">
+                  <MapPin className="w-5 h-5 text-brand-red" />
+                </div>
+                <div>
+                  <span className="text-brand-red font-mono text-[10px] uppercase tracking-widest block">
+                    STUDIO ADDRESS
+                  </span>
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">
+                    Rajiv Gandhi Salai (OMR), Chennai
+                  </h3>
+                </div>
               </div>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-white leading-snug">
-                {BUSINESS.name}
-              </h3>
-              <div className="mt-4 text-sm text-metallic-300 font-light leading-relaxed">
+
+              <div className="text-sm text-metallic-300 font-light leading-relaxed space-y-1">
+                <p className="font-medium text-white">{BUSINESS.name}</p>
                 <p>{BUSINESS.address.street}</p>
                 <p>{BUSINESS.address.area}, {BUSINESS.address.city} – {BUSINESS.address.pincode}</p>
-                <p>{BUSINESS.address.state}, {BUSINESS.address.country}</p>
               </div>
 
               <div className="mt-4 p-3.5 rounded-sm bg-dark-900 border border-white/10 font-mono text-xs">
                 <span className="text-metallic-400">Landmark: </span>
-                <span className="text-brand-amber font-medium">{BUSINESS.landmark}</span>
+                <span className="text-brand-amber font-medium">Opposite AKDR Golf Village, Mettukuppam, Chennai 600097</span>
               </div>
 
-              {/* Hours */}
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <div className="flex items-center space-x-2 text-metallic-400 font-mono text-xs uppercase mb-2">
-                  <Clock className="w-4 h-4 text-brand-red" />
-                  <span>OPERATING SCHEDULE</span>
+              {/* Operating Hours Card */}
+              <div className="mt-6 pt-6 border-t border-white/10 flex items-center space-x-3">
+                <div className="w-12 h-12 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-brand-red shadow-lg shrink-0 hover:scale-110 hover:border-brand-red/50 transition-all duration-300">
+                  <Clock className="w-5 h-5 text-brand-red" />
                 </div>
-                <div className="text-sm font-semibold text-white">
-                  {BUSINESS.businessHours.days}
-                </div>
-                <div className="text-xs font-mono text-metallic-300 mt-0.5">
-                  {BUSINESS.businessHours.hours}
+                <div>
+                  <div className="text-metallic-400 font-mono text-[10px] uppercase tracking-widest mb-0.5">
+                    OPERATING SCHEDULE
+                  </div>
+                  <div className="text-sm font-semibold text-white">
+                    {BUSINESS.businessHours.days}
+                  </div>
+                  <div className="text-xs font-mono text-metallic-300 mt-0.5">
+                    {BUSINESS.businessHours.hours}
+                  </div>
                 </div>
               </div>
 
-              {/* Contact Channels */}
-              <div className="mt-6 pt-6 border-t border-white/10 space-y-3">
+              {/* Contact & Social Channels */}
+              <div className="mt-6 pt-6 border-t border-white/10 space-y-4">
                 <div className="flex items-center space-x-3 text-sm">
-                  <Phone className="w-4 h-4 text-brand-red shrink-0" />
+                  <div className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-brand-red shrink-0">
+                    <Phone className="w-4 h-4 text-brand-red" />
+                  </div>
                   <a
                     href={`tel:${BUSINESS.phoneClean}`}
                     className="font-mono text-metallic-200 hover:text-white transition-colors"
@@ -76,7 +89,9 @@ export const LocationSection: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-3 text-sm">
-                  <Mail className="w-4 h-4 text-brand-red shrink-0" />
+                  <div className="w-10 h-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-brand-red shrink-0">
+                    <Mail className="w-4 h-4 text-brand-red" />
+                  </div>
                   <a
                     href={`mailto:${BUSINESS.email}`}
                     className="font-mono text-xs sm:text-sm text-metallic-200 hover:text-white transition-colors break-all"
@@ -86,15 +101,20 @@ export const LocationSection: React.FC = () => {
                 </div>
 
                 <div className="flex items-center space-x-3 text-sm">
-                  <InstagramIcon className="w-4 h-4 text-brand-red shrink-0" />
-                  <a
-                    href={BUSINESS.instagramUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-mono text-metallic-200 hover:text-white transition-colors"
-                  >
-                    {BUSINESS.instagram}
-                  </a>
+                  <div className="w-12 h-12 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-brand-red shrink-0 hover:scale-110 hover:border-brand-red/50 transition-all duration-300">
+                    <InstagramIcon className="w-5 h-5 text-brand-red" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] font-mono text-metallic-400 uppercase tracking-widest block">INSTAGRAM</span>
+                    <a
+                      href="https://www.instagram.com/3mcarcareomr"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-mono text-xs sm:text-sm text-metallic-200 hover:text-white transition-colors font-semibold"
+                    >
+                      @3mcarcareomr
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -103,14 +123,14 @@ export const LocationSection: React.FC = () => {
             <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-3">
               <a
                 href={`tel:${BUSINESS.phoneClean}`}
-                className="flex items-center justify-center space-x-2 py-3 px-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-colors"
+                className="flex items-center justify-center space-x-2 py-3 px-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-colors shadow-lg"
               >
                 <Phone className="w-3.5 h-3.5" />
                 <span>Call Now</span>
               </a>
 
               <a
-                href={BUSINESS.mapQueryUrl}
+                href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-2 py-3 px-4 rounded-sm bg-dark-850 hover:bg-dark-800 text-metallic-200 hover:text-white border border-white/15 font-mono text-xs tracking-wider uppercase transition-colors"
@@ -129,7 +149,7 @@ export const LocationSection: React.FC = () => {
                 <span>GPS COORDINATES // CHENNAI OMR CORRIDOR</span>
               </span>
               <a
-                href={BUSINESS.mapQueryUrl}
+                href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1 text-white hover:text-brand-red transition-colors"

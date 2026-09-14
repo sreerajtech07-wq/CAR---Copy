@@ -143,3 +143,52 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     tag: "DETAIL PROTOCOLS",
   },
 ];
+
+export interface AdditionalServiceItem {
+  id: string;
+  title: string;
+  badge: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+  link: string;
+}
+
+export const additionalServices: AdditionalServiceItem[] = [
+  {
+    id: "paint-correction",
+    title: "Paint Correction",
+    badge: "Gloss Restoration",
+    description: "Multi-stage rotary and dual-action compounding to eliminate swirl marks, spider webbing, and deep buffer trails.",
+    features: ["Swirl & Scratches Removed", "Orange Peel Reduction", "Clear Coat Density Preserved"],
+    ctaText: "Inquire Correction",
+    link: "/car-detailing.html",
+  },
+  {
+    id: "car-wrapping",
+    title: "Car Wrapping",
+    badge: "Custom Styling",
+    description: "Premium vinyl wraps and accent styling offering total color transformation with paint protection underneath.",
+    features: ["Cast Vinyl Films", "Seamless Panel Tucking", "Completely Reversible"],
+    ctaText: "Inquire Wrap Specs",
+    link: "/ppf.html",
+  },
+  {
+    id: "interior-exterior-cleaning",
+    title: "Interior & Exterior Cleaning",
+    badge: "Deep Reconditioning",
+    description: "Complete studio sanitization featuring 3M GermKleen fabric extraction, leather conditioning, and underbody decontamination.",
+    features: ["3M GermKleen Sanitization", "Leather & Vinyl Conditioning", "Underchassis Flush"],
+    ctaText: "Book Deep Clean",
+    link: "/additional-services.html",
+  },
+  {
+    id: "foam-wash",
+    title: "Foam Wash & Decontamination",
+    badge: "Maintenance Care",
+    description: "Touchless pH-neutral pre-soak snow foam followed by twin-bucket wash and blow dry to prevent wash-induced swirls.",
+    features: ["pH-Neutral Snow Foam", "Iron & Tar Decontamination", "Streak-Free Hydrophobic Finish"],
+    ctaText: "Book Wash",
+    link: "/additional-services.html",
+  },
+];

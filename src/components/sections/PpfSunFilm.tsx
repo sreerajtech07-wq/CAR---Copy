@@ -4,7 +4,7 @@ import { getWhatsAppInquiryUrl } from "../../utils/whatsapp";
 
 export const PpfSunFilm: React.FC = () => {
   return (
-    <section className="relative w-full bg-transparent py-24 sm:py-32 border-b border-white/10">
+    <section className="relative w-full bg-transparent py-12 md:py-16 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Tag */}
         <div className="flex items-center space-x-2.5 mb-3">

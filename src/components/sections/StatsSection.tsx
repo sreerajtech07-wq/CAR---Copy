@@ -72,12 +72,12 @@ export const StatsSection: React.FC = () => {
                 {metric.isRating && (
                   <div className="mt-2.5 flex items-center gap-1" aria-label="Five star customer rating">
                     {Array.from({ length: 5 }).map((_, index) => (
-                      <Star key={index} className="h-3.5 w-3.5 fill-brand-red text-brand-red" aria-hidden="true" />
+                      <Star key={index} className="h-3.5 w-3.5 fill-[#F5BD47] text-[#F5BD47]" aria-hidden="true" />
                     ))}
                   </div>
                 )}
               </div>
-              <div className="mt-4 inline-block px-3 py-1 bg-brand-red/15 border border-brand-red/30 rounded-sm font-mono text-[11px] sm:text-xs font-bold tracking-widest text-brand-red uppercase">
+              <div className="mt-4 inline-block px-3.5 py-1.5 rounded-sm bg-[#F5BD47]/10 border border-[#F5BD47]/40 font-mono text-xs font-bold tracking-[0.2em] text-[#F5BD47] uppercase shadow-sm shadow-[#F5BD47]/10">
                 {metric.label}
               </div>
             </div>

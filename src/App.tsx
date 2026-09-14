@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Preloader } from "./components/Preloader";
 import { CursorEffect } from "./components/common/CursorEffect";
 import { FlowBackground } from "./components/common/FlowBackground";
 import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
@@ -11,10 +12,10 @@ import { ServicesSection } from "./components/sections/ServicesSection";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
 import { AdvancedProtection } from "./components/sections/AdvancedProtection";
 import { PpfSunFilm } from "./components/sections/PpfSunFilm";
+import { StudioCare } from "./components/sections/StudioCare";
 import { BookingSection } from "./components/sections/BookingSection";
 import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
-import { LocationSection } from "./components/sections/LocationSection";
 import { Footer } from "./components/sections/Footer";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { BookingModal } from "./components/common/BookingModal";
@@ -25,6 +26,8 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
+      {/* Luxury Entrance Preloader */}
+      <Preloader />
 
       {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
@@ -52,11 +55,9 @@ export const App: React.FC = () => {
         {/* 04. CORE SERVICES & TREATMENTS */}
         <ServicesSection />
         <BeforeAfter />
-        <AdvancedProtection />
         <PpfSunFilm />
-
-        {/* 05. STUDIO PROTOCOL / BOOKING DIRECTIVE FORM */}
-        <BookingSection />
+        <AdvancedProtection />
+        <StudioCare />
 
         {/* 06. FREQUENTLY ASKED QUESTIONS */}
         <FAQSection />
@@ -67,8 +68,8 @@ export const App: React.FC = () => {
         {/* 09. CTA / BOOKING */}
         <FinalCTA onOpenBooking={() => setIsBookingOpen(true)} />
 
-        {/* 10. CONTACT */}
-        <LocationSection />
+        {/* 10. STUDIO BOOKING FORM */}
+        <BookingSection />
       </main>
 
       {/* Modern Minimalist Footer */}

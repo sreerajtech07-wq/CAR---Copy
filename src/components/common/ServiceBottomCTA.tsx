@@ -20,7 +20,7 @@ export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName 
   return (
     <section className="py-16 sm:py-20 bg-dark-900 border-b border-white/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center relative z-10">
-        <h2 className="font-cinematic text-2xl sm:text-4xl font-extrabold text-white uppercase tracking-wider">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide text-white text-center leading-tight">
           SCHEDULE A {serviceName.toUpperCase()} ASSESSMENT
         </h2>
         <p className="mt-3 text-sm sm:text-base text-neutral-300 max-w-2xl font-light leading-relaxed">
@@ -35,7 +35,7 @@ export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName 
             className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded bg-[#b3141a] hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-950/50 active:scale-95"
           >
             <Phone className="w-4 h-4 fill-current" />
-            <span>CALL +91 76019 33555</span>
+            <span>CALL +91 76019 33555 / 666</span>
           </a>
 
           {/* 2. Green WhatsApp Button */}
