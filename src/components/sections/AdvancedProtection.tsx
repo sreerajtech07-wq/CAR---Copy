@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckCircle } from "lucide-react";
-import { BUSINESS } from "../../data/business";
+import { getWhatsAppInquiryUrl } from "../../utils/whatsapp";
 
 export const AdvancedProtection: React.FC = () => {
   const protectionTiers = [
@@ -132,7 +132,9 @@ export const AdvancedProtection: React.FC = () => {
                     Studio Application // OMR
                   </span>
                   <a
-                    href={`tel:${BUSINESS.phoneClean}`}
+                    href={getWhatsAppInquiryUrl(tier.name, "inquire")}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="font-mono text-xs text-brand-red hover:text-white uppercase tracking-wider font-semibold transition-colors"
                   >
                     Inquire Spec →

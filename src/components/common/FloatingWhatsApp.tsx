@@ -2,7 +2,7 @@ import React from "react";
 
 export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl =
-    "https://wa.me/917601933555?text=Hi%2C%20I%27d%20like%20a%20quote%20for%20Ceramic%20Coating%2FPPF%20on%20my%20car";
+    "https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20the%20services%3F";
 
   return (
     <a

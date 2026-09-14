@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Star } from "lucide-react";
@@ -7,33 +7,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 interface TrustMetric {
   readonly id: string;
-  readonly value: number;
-  readonly suffix: string;
+  readonly displayValue: string;
   readonly label: string;
   readonly isRating?: boolean;
 }
 
 const TRUST_METRICS: readonly TrustMetric[] = [
-  { id: "experience", value: 10, suffix: "+", label: "YEARS EXPERIENCE" },
-  { id: "detailed", value: 500, suffix: "+", label: "CARS DETAILED" },
-  { id: "rating", value: 4.9, suffix: "", label: "CUSTOMER RATING", isRating: true },
-  { id: "attention", value: 100, suffix: "%", label: "ATTENTION TO DETAIL" },
+  { id: "cars", displayValue: "15,000+", label: "CARS PROTECTED" },
+  { id: "customers", displayValue: "13,000+", label: "HAPPY CUSTOMERS" },
+  { id: "experience", displayValue: "12+", label: "YEARS EXPERIENCE" },
+  { id: "rating", displayValue: "4.5 ★", label: "2,200+ GOOGLE REVIEWS", isRating: true },
 ];
-
 
 export const StatsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [visibleValues, setVisibleValues] = useState<Record<string, number>>({});
 
   useLayoutEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
-      setVisibleValues(Object.fromEntries(TRUST_METRICS.map((metric) => [metric.id, metric.value])));
-      return;
-    }
-
     const context = gsap.context(() => {
-      const counters = Object.fromEntries(TRUST_METRICS.map((metric) => [metric.id, 0]));
       gsap.from(".trust-reveal", {
         y: 24,
         autoAlpha: 0,
@@ -42,17 +32,6 @@ export const StatsSection: React.FC = () => {
         stagger: 0.08,
         ease: "power2.out",
         scrollTrigger: { trigger: sectionRef.current, start: "top 78%", toggleActions: "play none none reverse" },
-      });
-      gsap.to(counters, {
-        experience: 10,
-        detailed: 500,
-        rating: 4.9,
-        attention: 100,
-        duration: 1.6,
-        delay: 0.15,
-        ease: "power2.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 78%", toggleActions: "play none none reset" },
-        onUpdate: () => setVisibleValues(Object.fromEntries(Object.entries(counters).map(([id, value]) => [id, id === "rating" ? Number(value.toFixed(1)) : Math.round(value)]))),
       });
     }, sectionRef);
     return () => context.revert();
@@ -87,9 +66,8 @@ export const StatsSection: React.FC = () => {
               <div>
                 <div className="flex items-baseline gap-1">
                   <span className="font-sans text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-none">
-                    {metric.isRating ? (visibleValues[metric.id] ?? 0).toFixed(1) : (visibleValues[metric.id] ?? 0).toLocaleString()}
+                    {metric.displayValue}
                   </span>
-                  <span className="font-sans text-2xl sm:text-3xl font-bold text-brand-red leading-none">{metric.suffix}</span>
                 </div>
                 {metric.isRating && (
                   <div className="mt-2.5 flex items-center gap-1" aria-label="Five star customer rating">

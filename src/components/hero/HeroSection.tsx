@@ -226,38 +226,16 @@ export const HeroSection: React.FC = () => {
             </p>
           </div>
 
-          <div className="w-full flex flex-col md:flex-row items-start md:items-end justify-between gap-4 sm:gap-6 mb-2 sm:mb-4 pointer-events-auto">
-            <div className="glass-badge bg-black/50 backdrop-blur-md border border-white/10 p-4 sm:p-5 md:p-6 rounded-2xl w-full max-w-[92vw] md:max-w-md text-left shadow-2xl">
-              <div className="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-white/10 pb-1.5 mb-2 font-mono">
-                ── THE COMPLETE ARMOR STACK ──
-              </div>
-              <ul className="space-y-1.5 sm:space-y-2 text-[11px] sm:text-xs md:text-sm text-gray-200 font-medium font-mono">
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500 font-bold">[01]</span> 70% Solar Rejection Sunfilm
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500 font-bold">[02]</span> 10H Graphene Molecular Shield
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500 font-bold">[03]</span> 9H Ceramic Hydrophobic Armor
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-red-500 font-bold">[04]</span> 200-Micron Self-Healing TPU PPF
-                </li>
-              </ul>
-            </div>
-
-            <div className="w-full md:w-auto flex flex-col items-start md:items-end justify-start md:justify-end">
-              <a
-                href="#services"
-                className="cta-glow w-full md:w-auto text-center px-6 py-3.5 sm:px-8 sm:py-4 bg-red-600 hover:bg-red-500 text-white font-black uppercase text-xs sm:text-sm tracking-wider rounded-xl transition duration-300 shadow-lg shadow-red-600/30 font-mono"
-              >
-                EXPLORE SERVICES →
-              </a>
-              <div className="mt-3 flex items-center justify-center md:justify-end gap-2 text-[11px] font-mono tracking-widest text-gray-400 uppercase opacity-75 w-full md:w-auto">
-                <span>SCROLL TO EXPLORE</span>
-                <span className="animate-bounce">↓</span>
-              </div>
+          <div className="w-full flex flex-col items-start justify-end mb-2 sm:mb-4 pointer-events-auto">
+            <a
+              href="#services"
+              className="cta-glow text-center px-6 py-3.5 sm:px-8 sm:py-4 bg-red-600 hover:bg-red-500 text-white font-black uppercase text-xs sm:text-sm tracking-wider rounded-xl transition duration-300 shadow-lg shadow-red-600/30 font-mono"
+            >
+              EXPLORE SERVICES →
+            </a>
+            <div className="mt-3 flex items-center justify-start gap-2 text-[11px] font-mono tracking-widest text-gray-400 uppercase opacity-75">
+              <span>SCROLL TO EXPLORE</span>
+              <span className="animate-bounce">↓</span>
             </div>
           </div>
         </div>

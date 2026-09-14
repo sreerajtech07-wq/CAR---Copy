@@ -1,102 +1,110 @@
 import React from "react";
-import { Star, ExternalLink } from "lucide-react";
-import { BUSINESS } from "../../data/business";
+import { Star, ExternalLink, Edit3 } from "lucide-react";
 
 export interface VerifiedReview {
-  id: string;
-  initial: string;
-  avatarBg: string;
-  rating: number;
-  headline: string;
-  body: string;
+  id: number;
   author: string;
-  subtitle: string;
+  rating: number;
+  relativeTime: string;
+  service: string;
+  carModel: string;
+  text: string;
+  initial: string;
+  bgColor: string;
 }
 
-const VERIFIED_REVIEWS: VerifiedReview[] = [
-  // ROW 1
+export const GOOGLE_REVIEWS: VerifiedReview[] = [
   {
-    id: "1",
-    initial: "R",
-    avatarBg: "bg-[#d49e35]",
+    id: 1,
+    author: "Karthik Subramanian",
     rating: 5,
-    headline: "Exceptional Clarity & Finish",
-    body: "The level of transparency and finish on my BMW 330Li was top tier. They eliminated factory buffer swirls and locked it under Scotchgard PPF. Not a single exposed edge or bubble visible.",
-    author: "Rajesh K.",
-    subtitle: "BMW 330Li · Sholinganallur",
+    relativeTime: "3 weeks ago",
+    service: "Paint Protection Film (PPF)",
+    carModel: "Land Rover Defender",
+    text: "Got full PPF installed for my Defender here. The edge tucking and panel alignment are phenomenal. The staff explained the entire heat-gun application and post-care process patiently. Highly recommend their studio finish!",
+    initial: "K",
+    bgColor: "#1a73e8", // Blue
   },
   {
-    id: "2",
-    initial: "M",
-    avatarBg: "bg-[#1e3a5f]",
+    id: 2,
+    author: "சரவணன் குமார்",
     rating: 5,
-    headline: "Superb Heat Rejection (CR70)",
-    body: "Chennai veyilluku CR70 sunfilm pottadhum cabin semma cool aachu. AC load bayangarama koranjuruku. Highly satisfied with Raju and the team's polite approach.",
-    author: "Manojkumar V.",
-    subtitle: "Hyundai Creta · Perungudi OMR",
+    relativeTime: "1 month ago",
+    service: "9H Ceramic Coating",
+    carModel: "Hyundai Creta",
+    text: "காரை டெலிவரி எடுத்த உடனே இங்கே செராமிக் கோட்டிங் செய்தேன். ஃபினிஷிங் வேற லெவல்! வாட்டர் பீடிங் எஃபெக்ட் மற்றும் கிளாஸ் லுக் ரொம்ப நல்லா வந்திருக்கு. வேலை ரொம்ப நேர்த்தியா பண்ணி கொடுத்தாங்க.",
+    initial: "ச",
+    bgColor: "#188038", // Green
   },
   {
-    id: "3",
+    id: 3,
+    author: "Anand Venkatesh",
+    rating: 5,
+    relativeTime: "1 month ago",
+    service: "3M CR70 Sunfilm",
+    carModel: "Toyota Fortuner",
+    text: "Installed 3M CR70 crystalline sun film on windshield and all windows. The heat rejection inside the cabin is instantly noticeable even in peak Chennai noon heat. Clear visibility at night without any haze.",
     initial: "A",
-    avatarBg: "bg-[#2d7a4f]",
-    rating: 5,
-    headline: "Flawless Ceramic Shield",
-    body: "Safari Dark Edition ceramic coating panninen. Mirror gloss pakka finish, no buffer trails even under harsh studio LED lights. Salt water spray from ECR hasn't affected the shine at all.",
-    author: "Anandharaj R.",
-    subtitle: "Tata Safari Dark Edition · Akkarai",
+    bgColor: "#d93025", // Red
   },
   {
-    id: "4",
-    initial: "I",
-    avatarBg: "bg-[#3b4b5c]",
+    id: 4,
+    author: "விஜய் பாலாஜி",
     rating: 5,
-    headline: "Surgical Interior Clean",
-    body: "Prompt delivery and genuine 3M electronic warranty issued on spot. The GermKleen interior treatment completely removed moisture smell and left the leather seats factory-matte.",
-    author: "Isaivani S.",
-    subtitle: "Mercedes-Benz C-Class · ECR",
-  },
-  // ROW 2
-  {
-    id: "5",
-    initial: "K",
-    avatarBg: "bg-[#d9532f]",
-    rating: 5,
-    headline: "Delivered on Time",
-    body: "3M OMR-ல் என் வண்டிக்கு PPF செய்தேன். வேலை மிக நேர்த்தியாகவும் ஃபினிஷிங் பிரமாதமாகவும் உள்ளது. டீமின் அணுகுமுறை அருமை!",
-    author: "Karthik Raja",
-    subtitle: "Mahindra Thar · Thoraipakkam",
+    relativeTime: "2 months ago",
+    service: "Paint Correction & Polish",
+    carModel: "Kia Seltos",
+    text: "காரில் இருந்த ஸ்கிராட்ச் மற்றும் ஸ்வர்ல் மார்க்ஸ் எல்லாம் போயிட்டு இப்போ புது கார் மாதிரி பலபளன்னு இருக்கு. டீடெய்லிங் வேலை ரொம்ப திருப்தியா இருந்தது. 3M டீமுக்கு என் பாராட்டுக்கள்!",
+    initial: "வி",
+    bgColor: "#f29900", // Amber
   },
   {
-    id: "6",
-    initial: "S",
-    avatarBg: "bg-[#d4a017]",
+    id: 5,
+    author: "Rajesh Kannan",
     rating: 5,
-    headline: "Proper Detailing Studio",
-    body: "செராமிக் கோட்டிங் செய்த பிறகு வண்டியின் பளபளப்பு புதுசு போல் மின்னுகிறது. 3M மெட்டீரியல் தரம் மற்றும் வாடிக்கையாளர் சேவைக்கு முழு திருப்தி.",
-    author: "Saravanan P.",
-    subtitle: "Kia Seltos Facelift · Navalur",
+    relativeTime: "2 months ago",
+    service: "Interior GermKleen & Detailing",
+    carModel: "Tata Harrier",
+    text: "Opted for complete interior foam wash and GermKleen treatment. Removed deep coffee stains from upholstery and the AC vents smell completely fresh. Studio cleanliness and transparency are top-notch.",
+    initial: "R",
+    bgColor: "#9334e6", // Purple
   },
   {
-    id: "7",
+    id: 6,
+    author: "தினேஷ் ராஜ்",
+    rating: 5,
+    relativeTime: "3 months ago",
+    service: "Underbody Anti-Rust & Sunfilm",
+    carModel: "Mahindra Thar",
+    text: "ஈசிஆர் பக்கத்துல இருக்கிறதால உப்பு காத்து பட்டு கார் அடியில் துரு பிடிக்காம இருக்க அண்டர்பாடி கோட்டிங் பண்ணேன். 5 வருஷ வாரண்டி கார்டு கொடுத்தாங்க. சர்வீஸ் மற்றும் வாடிக்கையாளர் கவனிப்பு சூப்பர்.",
+    initial: "தி",
+    bgColor: "#1a73e8", // Blue
+  },
+  {
+    id: 7,
+    author: "Deepak Sundaram",
+    rating: 5,
+    relativeTime: "3 months ago",
+    service: "Graphene Matrix Coating",
+    carModel: "BMW 3 Series",
+    text: "Outstanding gloss and hydrophobicity. The swirl marks from my earlier improper washes are 100% gone. Team delivered the car right on promised delivery time. 5 stars without a doubt!",
+    initial: "D",
+    bgColor: "#188038", // Green
+  },
+  {
+    id: 8,
+    author: "Manoj Swaminathan",
+    rating: 5,
+    relativeTime: "4 months ago",
+    service: "Foam Wash & Wax",
+    carModel: "Skoda Slavia",
+    text: "Great experience with their specialized pH-neutral foam wash and paint synthetic sealant. Staff doesn't cut corners and pays attention to wheel wells and badges. Excellent customer lounge as well.",
     initial: "M",
-    avatarBg: "bg-[#1e3a5f]",
-    rating: 5,
-    headline: "Reliable & Trustworthy",
-    body: "Professional staff who don't force unnecessary packages. Inspected my clearcoat depth first and recommended only 2-stage correction instead of expensive coating. Honesty is appreciated!",
-    author: "Mrs. Meenakshi",
-    subtitle: "Honda City · Medavakkam",
-  },
-  {
-    id: "8",
-    initial: "K",
-    avatarBg: "bg-[#287a55]",
-    rating: 5,
-    headline: "Best PPF Work in OMR",
-    body: "கிராபீன் மேட்ரிக்ஸ் கோட்டிங் ஃபினிஷ் அருமை. பெயிண்ட் ப்ரொடக்ஷன் மற்றும் வாட்டர் ரிப்பல்லன்சி சூப்பராக வேலை செய்கிறது.",
-    author: "Kishore Kumar",
-    subtitle: "Volkswagen Virtus GT · OMR",
+    bgColor: "#d93025", // Red
   },
 ];
+
+const MAPS_REVIEW_URL = "https://maps.app.goo.gl/RJH95HUy9Wpaapd46";
 
 export const GoogleReviews: React.FC = () => {
   const renderStars = (count: number) =>
@@ -108,12 +116,12 @@ export const GoogleReviews: React.FC = () => {
     <section id="reviews" className="relative w-full bg-transparent py-12 md:py-16 border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 pb-6 border-b border-white/10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
           <div>
             <div className="flex items-center space-x-2.5 mb-2">
               <span className="w-6 h-[1px] bg-brand-red" />
               <span className="font-mono text-xs font-semibold text-brand-red tracking-widest uppercase">
-                VERIFIED GOOGLE REVIEWS // CHENNAI OMR STUDIO
+                4.5 ★ OVER 2,200+ GOOGLE REVIEWS IN OMR / CHENNAI
               </span>
             </div>
             <h2 className="font-cinematic text-3xl sm:text-4xl md:text-5xl font-extrabold text-white uppercase">
@@ -122,9 +130,9 @@ export const GoogleReviews: React.FC = () => {
           </div>
 
           {/* Rating Summary */}
-          <div className="mt-6 md:mt-0 flex items-center gap-4 font-mono text-xs text-metallic-300">
+          <div className="flex items-center gap-4 font-mono text-xs text-metallic-300 shrink-0">
             <div className="flex items-center gap-2">
-              <span className="font-display text-3xl font-extrabold text-white">4.9</span>
+              <span className="font-display text-3xl font-extrabold text-white">4.5</span>
               <div className="flex items-center gap-0.5">{renderStars(5)}</div>
             </div>
             <div className="h-8 w-px bg-white/15" />
@@ -138,67 +146,84 @@ export const GoogleReviews: React.FC = () => {
                 </svg>
                 Google Verified Studio
               </span>
-              <span className="text-[10px] text-metallic-400">150+ Verified Reviews</span>
+              <span className="text-[10px] text-metallic-400">2,200+ Verified Google Reviews</span>
             </div>
           </div>
         </div>
 
         {/* 8-Card Grid (2 rows x 4 columns) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 pt-6">
-          {VERIFIED_REVIEWS.map((review) => (
+          {GOOGLE_REVIEWS.map((review) => (
             <div
               key={review.id}
               className="relative bg-neutral-950/80 border border-neutral-900/80 rounded-2xl p-6 pt-10 text-center flex flex-col justify-between shadow-xl transition-all duration-300 hover:border-brand-red/50 hover:bg-neutral-900/60 group"
             >
-              {/* Circular Avatar Badge Overlapping Top Center */}
+              {/* Google Initial Circle Avatar Overlapping Top Center */}
               <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20">
                 <div
-                  className={`w-12 h-12 rounded-full border-2 border-white ${review.avatarBg} text-white font-display font-extrabold text-base flex items-center justify-center shadow-xl uppercase select-none`}
+                  style={{ backgroundColor: review.bgColor }}
+                  className="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center text-white font-bold text-lg shadow-xl select-none font-sans uppercase"
                 >
                   {review.initial}
                 </div>
               </div>
 
               <div>
-                {/* 5-Star Rating */}
-                <div className="flex items-center justify-center gap-1 mb-2 pt-1">
-                  {renderStars(review.rating)}
+                {/* 5-Star Rating & Relative Time */}
+                <div className="flex items-center justify-center gap-2 mb-2 pt-1">
+                  <div className="flex items-center gap-0.5">{renderStars(review.rating)}</div>
+                  <span className="text-[10px] font-mono text-metallic-400">• {review.relativeTime}</span>
                 </div>
 
-                {/* Headline */}
-                <h3 className="font-display text-base font-bold text-white mb-2 leading-snug">
-                  "{review.headline}"
-                </h3>
+                {/* Service Badge & Car Model */}
+                <div className="mb-2">
+                  <span className="inline-block text-[10px] font-mono font-bold text-brand-red uppercase tracking-wider bg-brand-red/10 border border-brand-red/20 px-2 py-0.5 rounded">
+                    {review.service}
+                  </span>
+                  <div className="text-[11px] font-mono text-metallic-400 mt-1 font-semibold">
+                    {review.carModel}
+                  </div>
+                </div>
 
                 {/* Body */}
-                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 font-light">
-                  "{review.body}"
+                <p className="text-gray-300 text-xs sm:text-sm leading-relaxed mb-4 font-light italic">
+                  "{review.text}"
                 </p>
               </div>
 
-              {/* Author & Subtitle */}
+              {/* Author */}
               <div className="pt-3 border-t border-white/5">
                 <div className="font-display font-bold text-white text-sm">
                   {review.author}
                 </div>
-                <div className="font-mono text-[11px] text-metallic-400 mt-0.5">
-                  {review.subtitle}
+                <div className="font-mono text-[10px] text-metallic-400 mt-0.5 uppercase tracking-wider">
+                  Verified Google Customer
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Section Footer Link */}
-        <div className="mt-14 flex justify-center">
+        {/* Section Action Links */}
+        <div className="mt-14 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
           <a
-            href={BUSINESS.mapQueryUrl}
+            href={MAPS_REVIEW_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm font-bold tracking-wider text-brand-red hover:text-white transition-colors uppercase group"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-brand-red hover:bg-red-700 text-white font-mono text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 shadow-lg shadow-red-950/40 hover:scale-105"
           >
-            <span>Read all 150+ verified 5-star customer reviews on Google Maps</span>
-            <ExternalLink className="w-4 h-4 text-brand-red group-hover:translate-x-1 transition-transform" />
+            <span>READ ALL 2,200+ VERIFIED CUSTOMER REVIEWS ON GOOGLE MAPS</span>
+            <ExternalLink className="w-4 h-4 text-white" />
+          </a>
+
+          <a
+            href={MAPS_REVIEW_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-white/20 hover:border-white/40 bg-white/5 hover:bg-white/10 text-white font-mono text-xs sm:text-sm font-bold tracking-wider uppercase transition-all duration-300 hover:scale-105"
+          >
+            <Edit3 className="w-4 h-4 text-brand-red" />
+            <span>WRITE A REVIEW ON GOOGLE ✍</span>
           </a>
         </div>
       </div>

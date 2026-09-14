@@ -1,6 +1,6 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
-import { BUSINESS } from "../../data/business";
+import { getWhatsAppInquiryUrl } from "../../utils/whatsapp";
 
 export const PpfSunFilm: React.FC = () => {
   return (
@@ -79,7 +79,9 @@ export const PpfSunFilm: React.FC = () => {
                   Custom & Full Body Coverage
                 </span>
                 <a
-                  href={`tel:${BUSINESS.phoneClean}`}
+                  href={getWhatsAppInquiryUrl("Paint Protection Film (PPF)", "consult")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-mono text-xs text-white hover:text-brand-red uppercase tracking-wider font-semibold transition-colors"
                 >
                   Consult PPF Coverage →
@@ -140,7 +142,9 @@ export const PpfSunFilm: React.FC = () => {
                   High Optical Clarity Glass
                 </span>
                 <a
-                  href={`tel:${BUSINESS.phoneClean}`}
+                  href={getWhatsAppInquiryUrl("Automotive Sun Film", "inquire")}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-mono text-xs text-white hover:text-brand-amber uppercase tracking-wider font-semibold transition-colors"
                 >
                   Inquire Film Specs →

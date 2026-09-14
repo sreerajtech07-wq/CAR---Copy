@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
 import { BUSINESS } from "../../data/business";
+import { VehicleSelector } from "../common/VehicleSelector";
 
 export const BookingSection: React.FC = () => {
   // Client Identity & Contacts
@@ -20,7 +21,7 @@ export const BookingSection: React.FC = () => {
   // Vehicle Specifications
   const [vehicleMake, setVehicleMake] = useState("");
   const [vehicleModel, setVehicleModel] = useState("");
-  const [regYear, setRegYear] = useState("2026");
+  const [regYear, setRegYear] = useState("");
 
   const primaryServices = [
     "Paint Protection Film (3M Scotchgard™ PPF)",
@@ -118,7 +119,7 @@ ${scopeText}
           {/* 1. Client Identity & Contacts */}
           <div className="space-y-4">
             <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
-              01 // CONTACT DETAILS
+              CONTACT DETAILS
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="sm:col-span-2">
@@ -165,7 +166,7 @@ ${scopeText}
           {/* 2. Priority Service Selection */}
           <div className="space-y-4 pt-2 border-t border-neutral-900">
             <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
-              02 // SELECT TREATMENTS
+              SELECT TREATMENTS
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {primaryServices.map((service, idx) => {
@@ -239,7 +240,7 @@ ${scopeText}
           {/* 3. Slot / Contact Preference */}
           <div className="space-y-3 pt-2 border-t border-neutral-900">
             <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
-              03 // SLOT / CONTACT PREFERENCE
+              SLOT / CONTACT PREFERENCE
             </h3>
             <div className="flex flex-wrap gap-2.5 sm:gap-3">
               {slotOptions.map((option) => (
@@ -262,52 +263,16 @@ ${scopeText}
           {/* 4. Vehicle Specifications */}
           <div className="space-y-4 pt-2 border-t border-neutral-900">
             <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
-              04 // VEHICLE SPECIFICATIONS
+              VEHICLE SPECIFICATIONS
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-              <div>
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
-                  MAKE *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. BMW / Thar"
-                  value={vehicleMake}
-                  onChange={(e) => setVehicleMake(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
-                  MODEL *
-                </label>
-                <input
-                  type="text"
-                  required
-                  placeholder="e.g. M340i / Roxx"
-                  value={vehicleModel}
-                  onChange={(e) => setVehicleModel(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
-                  YEAR *
-                </label>
-                <select
-                  value={regYear}
-                  onChange={(e) => setRegYear(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
-                >
-                  <option value="Brand New Delivery">Brand New Delivery</option>
-                  <option value="2026">2026</option>
-                  <option value="2025">2025</option>
-                  <option value="2024">2024</option>
-                  <option value="2023 or Older / Classic">2023 or Older / Classic</option>
-                </select>
-              </div>
-            </div>
+            <VehicleSelector
+              brand={vehicleMake}
+              model={vehicleModel}
+              year={regYear}
+              onBrandChange={setVehicleMake}
+              onModelChange={setVehicleModel}
+              onYearChange={setRegYear}
+            />
           </div>
 
           {/* Action Button */}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { X, CheckCircle2, ChevronRight, ChevronLeft, Calendar, Car, User } from "lucide-react";
 import { BUSINESS } from "../../data/business";
+import { VehicleSelector } from "./VehicleSelector";
 
 export interface BookingModalProps {
   isOpen: boolean;
@@ -153,40 +154,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
               <span>Enter Vehicle Information:</span>
             </div>
 
-            <div className="space-y-3">
-              <div>
-                <label className="font-mono text-xs text-metallic-400 block mb-1">Make / Brand (e.g. BMW, Mercedes, Audi, Tata)</label>
-                <input
-                  type="text"
-                  placeholder="e.g. BMW"
-                  value={vehicle.brand}
-                  onChange={(e) => setVehicle({ ...vehicle, brand: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-950 border border-white/15 rounded-sm text-white text-sm focus:border-brand-red focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="font-mono text-xs text-metallic-400 block mb-1">Model (e.g. 3 Series, C-Class, Harrier)</label>
-                <input
-                  type="text"
-                  placeholder="e.g. 3 Series M Sport"
-                  value={vehicle.model}
-                  onChange={(e) => setVehicle({ ...vehicle, model: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-950 border border-white/15 rounded-sm text-white text-sm focus:border-brand-red focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="font-mono text-xs text-metallic-400 block mb-1">Vehicle Year / Variant</label>
-                <input
-                  type="text"
-                  placeholder="e.g. 2024"
-                  value={vehicle.year}
-                  onChange={(e) => setVehicle({ ...vehicle, year: e.target.value })}
-                  className="w-full px-4 py-3 bg-dark-950 border border-white/15 rounded-sm text-white text-sm focus:border-brand-red focus:outline-none"
-                />
-              </div>
-            </div>
+            <VehicleSelector
+              brand={vehicle.brand}
+              model={vehicle.model}
+              year={vehicle.year}
+              onBrandChange={(b) => setVehicle((prev) => ({ ...prev, brand: b }))}
+              onModelChange={(m) => setVehicle((prev) => ({ ...prev, model: m }))}
+              onYearChange={(y) => setVehicle((prev) => ({ ...prev, year: y }))}
+            />
           </div>
         )}
 

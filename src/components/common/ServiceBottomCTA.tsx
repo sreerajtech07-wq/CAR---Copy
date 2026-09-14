@@ -13,9 +13,9 @@ interface ServiceBottomCTAProps {
 }
 
 export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName }) => {
-  const whatsappUrl = `https://wa.me/917601933555?text=Hi%2C%20I%27d%20like%20to%20schedule%20a%20${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
     serviceName
-  )}%20assessment%20at%203M%20Car%20Care%20Studio%20OMR.`;
+  )}%3F`;
 
   return (
     <section className="py-16 sm:py-20 bg-dark-900 border-b border-white/10 relative overflow-hidden">

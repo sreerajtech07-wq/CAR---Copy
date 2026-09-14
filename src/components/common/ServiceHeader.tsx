@@ -19,9 +19,9 @@ export const ServiceHeader: React.FC<ServiceHeaderProps> = ({
   nextServiceHref,
   nextServiceLabel,
 }) => {
-  const whatsappUrl = `https://wa.me/917601933555?text=Hi%2C%20I%27d%20like%20information%20and%20pricing%20for%20${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
     serviceName
-  )}%20at%203M%20Car%20Care%20Studio%20OMR.`;
+  )}%3F`;
 
   return (
     <header className="sticky top-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-white/10 py-3 px-4 sm:px-6 lg:px-8">
