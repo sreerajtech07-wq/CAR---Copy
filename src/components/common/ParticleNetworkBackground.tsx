@@ -44,6 +44,20 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     let animationFrameId: number | null = null;
     let isReducedMotion = reducedMotionQuery.matches;
 
+    // Active scroll detection for FPS optimization
+    let isScrolling = false;
+    let isScrollingTimeout: ReturnType<typeof setTimeout>;
+
+    const onScroll = () => {
+      isScrolling = true;
+      clearTimeout(isScrollingTimeout);
+      isScrollingTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     const getParticleCount = () => {
       const w = width;
       if (w < 768) return 60;       // Mobile: 60
@@ -90,7 +104,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     };
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = Math.floor(width * dpr);
@@ -99,10 +113,10 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
       canvas.style.height = `${height}px`;
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
       createParticles();
-      draw();
+      draw(false);
     };
 
-    const draw = () => {
+    const draw = (updatePhysics: boolean = true) => {
       context.clearRect(0, 0, width, height);
 
       const connectionDist = width < 768 ? 120 : 155;
@@ -111,7 +125,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
       for (let index = 0; index < particles.length; index += 1) {
         const particle = particles[index];
 
-        if (!isReducedMotion) {
+        if (!isReducedMotion && updatePhysics) {
           particle.x += particle.vx;
           particle.y += particle.vy;
 
@@ -122,7 +136,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
         }
 
         // Mouse interaction
-        if (pointer.active && !coarsePointerQuery.matches && !isReducedMotion) {
+        if (pointer.active && !coarsePointerQuery.matches && !isReducedMotion && updatePhysics) {
           const pointerDx = pointer.x - particle.x;
           const pointerDy = pointer.y - particle.y;
           const pointerDistSq = pointerDx * pointerDx + pointerDy * pointerDy;
@@ -193,7 +207,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     };
 
     const animate = () => {
-      draw();
+      draw(!isScrolling);
       animationFrameId = window.requestAnimationFrame(animate);
     };
 
@@ -212,7 +226,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
       if (isReducedMotion) {
         if (animationFrameId !== null) window.cancelAnimationFrame(animationFrameId);
         animationFrameId = null;
-        draw();
+        draw(false);
       } else if (animationFrameId === null) {
         animate();
       }
@@ -230,6 +244,8 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
 
     return () => {
       if (animationFrameId !== null) window.cancelAnimationFrame(animationFrameId);
+      clearTimeout(isScrollingTimeout);
+      window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
@@ -241,7 +257,7 @@ export const ParticleNetworkBackground: React.FC<ParticleNetworkBackgroundProps>
     <canvas
       ref={canvasRef}
       aria-hidden="true"
-      className="fixed inset-0 pointer-events-none z-0"
+      className="fixed inset-0 pointer-events-none z-0 particle-canvas"
       style={{ opacity: canvasOpacity }}
     />
   );

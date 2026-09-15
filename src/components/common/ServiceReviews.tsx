@@ -79,7 +79,7 @@ export const ServiceReviews: React.FC<ServiceReviewsProps> = ({ category }) => {
         {reviews.map((rev) => (
           <div
             key={rev.id}
-            className="relative bg-[#121212]/90 border border-white/10 rounded-2xl p-6 shadow-xl backdrop-blur-md flex flex-col justify-between hover:border-brand-red/40 transition-all duration-300 group"
+            className="relative bg-[#0e0e0e]/92 border border-white/10 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-brand-red/40 transition-all duration-300 group"
           >
             <div>
               {/* Header: Avatar, Author, Rating */}

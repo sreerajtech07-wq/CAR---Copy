@@ -161,7 +161,7 @@ export const AdditionalServicesPage: React.FC = () => {
             ].map((item, idx) => (
               <div
                 key={idx}
-                className="p-5 sm:p-6 rounded-sm bg-[#121212]/80 backdrop-blur-sm relative z-10 border border-white/10 flex flex-col justify-between"
+                className="p-5 sm:p-6 rounded-sm bg-[#0e0e0e]/92 relative z-10 border border-white/10 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center space-x-2 text-brand-red mb-3">
@@ -202,7 +202,7 @@ export const AdditionalServicesPage: React.FC = () => {
             {galleryImages.map((img, i) => (
               <div
                 key={i}
-                className="group relative rounded-sm overflow-hidden bg-[#121212]/80 backdrop-blur-sm relative z-10 border border-white/10 aspect-video sm:aspect-square"
+                className="group relative rounded-sm overflow-hidden bg-[#0e0e0e]/92 relative z-10 border border-white/10 aspect-video sm:aspect-square"
               >
                 <img
                   src={img.src}
@@ -242,7 +242,7 @@ export const AdditionalServicesPage: React.FC = () => {
               return (
                 <div
                   key={idx}
-                  className="rounded-sm bg-[#121212]/80 backdrop-blur-md border border-white/10 overflow-hidden transition-colors relative z-10"
+                  className="rounded-sm bg-[#0e0e0e]/92 border border-white/10 overflow-hidden transition-colors relative z-10"
                 >
                   <button
                     type="button"

@@ -22,9 +22,18 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  .particle-canvas,
+  canvas {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    pointer-events: none;
   }
 
   .font-tamil {

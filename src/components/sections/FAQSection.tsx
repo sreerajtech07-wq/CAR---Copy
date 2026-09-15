@@ -62,7 +62,7 @@ export const FAQSection: React.FC = () => {
             return (
               <div
                 key={index}
-                className="border border-neutral-800 rounded-lg bg-neutral-950/80 backdrop-blur-sm overflow-hidden transition-colors duration-200 hover:border-neutral-700"
+                className="border border-neutral-800 rounded-lg bg-[#0e0e0e]/92 overflow-hidden transition-colors duration-200 hover:border-neutral-700"
               >
                 <button
                   type="button"
