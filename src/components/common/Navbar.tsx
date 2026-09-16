@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Calendar } from "lucide-react";
-import logoImg from "../../assets/logo/IMG_5288.PNG";
+import logoImg from "../../assets/logo/3m.png";
 import { BUSINESS } from "../../data/business";
 
 export interface NavbarProps {
