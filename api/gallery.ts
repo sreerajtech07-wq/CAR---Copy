@@ -57,6 +57,11 @@ export default async function handler(req: any, res: any) {
         secureUrl = secureUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/");
       }
 
+      let posterUrl = "";
+      if (isVideo && secureUrl.includes("/upload/")) {
+        posterUrl = secureUrl.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg");
+      }
+
       return {
         id: resource.asset_id || resource.public_id,
         public_id: resource.public_id,
@@ -65,6 +70,7 @@ export default async function handler(req: any, res: any) {
         category: isVideo ? "Studio Execution" : "Precision Craft",
         src: secureUrl,
         url: secureUrl,
+        poster: posterUrl,
         type: resource.resource_type, // 'image' or 'video'
         format: resource.format,
         width: resource.width,

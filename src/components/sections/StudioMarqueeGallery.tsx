@@ -284,6 +284,12 @@ export const StudioMarqueeGallery: React.FC = () => {
                 ? itemUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/")
                 : itemUrl;
 
+            const videoPoster =
+              item.poster ||
+              (itemUrl.includes("/upload/")
+                ? itemUrl.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg")
+                : itemUrl.replace(/\.[^/.]+$/, ".jpg"));
+
             return (
               <div
                 key={`${item.id}-${index}`}
@@ -293,10 +299,12 @@ export const StudioMarqueeGallery: React.FC = () => {
                 {item.type === "video" ? (
                   <video
                     src={optimizedUrl}
+                    poster={videoPoster}
+                    autoPlay
                     muted
                     loop
                     playsInline
-                    preload="none"
+                    preload="auto"
                     onMouseEnter={handleMouseEnterVideo}
                     onMouseLeave={handleMouseLeaveVideo}
                     className="w-full h-full object-cover pointer-events-none"

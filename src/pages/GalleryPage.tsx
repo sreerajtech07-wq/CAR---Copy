@@ -10,7 +10,6 @@ import { staticGalleryData, type GalleryMediaItem } from "../components/sections
 
 export const GalleryPage: React.FC = () => {
   const [items, setItems] = useState<GalleryMediaItem[]>(staticGalleryData);
-  const [activeFilter, setActiveFilter] = useState<string>("ALL");
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedMedia, setSelectedMedia] = useState<GalleryMediaItem | null>(null);
 
@@ -69,18 +68,6 @@ export const GalleryPage: React.FC = () => {
     };
   }, [selectedMedia]);
 
-  // Filter items based on active category tag
-  const filteredItems = items.filter((item) => {
-    if (activeFilter === "ALL") return true;
-    if (activeFilter === "VIDEOS") return item.type === "video";
-    if (activeFilter === "PPF") return item.category.toUpperCase().includes("ARMOR") || item.title.toUpperCase().includes("PPF") || item.name?.toUpperCase().includes("PPF");
-    if (activeFilter === "CERAMIC") return item.category.toUpperCase().includes("SURFACE") || item.title.toUpperCase().includes("CERAMIC") || item.title.toUpperCase().includes("GRAPHENE");
-    if (activeFilter === "DETAILING") return item.category.toUpperCase().includes("DETAILING") || item.title.toUpperCase().includes("PAINT") || item.category.toUpperCase().includes("RESTORATION");
-    return true;
-  });
-
-  const categories = ["ALL", "VIDEOS", "PPF", "CERAMIC", "DETAILING"];
-
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden bg-[#050505]">
       <CursorEffect />
@@ -132,24 +119,6 @@ export const GalleryPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Filter Tags Navigation */}
-          <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => setActiveFilter(cat)}
-                className={`px-5 py-2 rounded-full font-mono text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                  activeFilter === cat
-                    ? "bg-brand-red text-white shadow-[0_0_15px_rgba(220,38,38,0.5)] border border-brand-red"
-                    : "bg-[#0e0e0e]/92 text-metallic-300 border border-white/10 hover:border-white/30 hover:text-white"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
           {/* Full Showcase Masonry / Grid */}
           {isLoading && items.length === 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
@@ -162,40 +131,48 @@ export const GalleryPage: React.FC = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredItems.map((item, index) => (
-                <div
-                  key={`${item.id}-${index}`}
-                  onClick={() => setSelectedMedia(item)}
-                  className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
-                >
-                  {item.type === "video" ? (
-                    <div className="relative w-full h-full">
-                      <video
-                        src={item.url || item.src}
-                        muted
-                        loop
-                        playsInline
-                        preload="none"
-                        onMouseEnter={(e) => e.currentTarget.play().catch(() => {})}
-                        onMouseLeave={(e) => e.currentTarget.pause()}
-                        className="w-full h-full object-cover pointer-events-none"
-                      />
-                      <div className="absolute top-3 right-3 bg-brand-red/90 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10">
-                        VIDEO
-                      </div>
-                    </div>
-                  ) : (
-                    <img
-                      src={item.url || item.src}
-                      alt={item.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
+              {items.map((item, index) => {
+                const videoSrc = item.url || item.src || "";
+                const videoPoster =
+                  item.poster ||
+                  (videoSrc.includes("/upload/")
+                    ? videoSrc.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg")
+                    : videoSrc.replace(/\.[^/.]+$/, ".jpg"));
 
-                </div>
-              ))}
+                return (
+                  <div
+                    key={`${item.id}-${index}`}
+                    onClick={() => setSelectedMedia(item)}
+                    className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    {item.type === "video" ? (
+                      <div className="relative w-full h-full">
+                        <video
+                          src={videoSrc}
+                          poster={videoPoster}
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="auto"
+                          className="w-full h-full object-cover pointer-events-none"
+                        />
+                        <div className="absolute top-3 right-3 bg-brand-red/90 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10">
+                          VIDEO
+                        </div>
+                      </div>
+                    ) : (
+                      <img
+                        src={item.url || item.src}
+                        alt={item.title}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
