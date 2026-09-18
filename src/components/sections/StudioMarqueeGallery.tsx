@@ -3,7 +3,7 @@ import { BUSINESS } from "../../data/business";
 import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "../common/Icons";
 
-interface GalleryMediaItem {
+export interface GalleryMediaItem {
   id: string;
   name?: string;
   type: "video" | "image";
@@ -17,7 +17,7 @@ interface GalleryMediaItem {
   aspectRatio?: string;
 }
 
-export const galleryData: GalleryMediaItem[] = [
+export const staticGalleryData: GalleryMediaItem[] = [
   {
     id: "3m-services",
     name: "3M Services",
@@ -25,7 +25,8 @@ export const galleryData: GalleryMediaItem[] = [
     category: "Precision Detailing",
     type: "video" as const,
     url: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282617/3M_OMR_Services.mp4",
-    aspect: "16/9"
+    src: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282617/3M_OMR_Services.mp4",
+    aspect: "16/9",
   },
   {
     id: "ppf-treatment",
@@ -34,7 +35,8 @@ export const galleryData: GalleryMediaItem[] = [
     category: "Armor Defense",
     type: "video" as const,
     url: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282558/PPF.mp4",
-    aspect: "16/9"
+    src: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282558/PPF.mp4",
+    aspect: "16/9",
   },
   {
     id: "sunfilm-shield",
@@ -43,7 +45,8 @@ export const galleryData: GalleryMediaItem[] = [
     category: "Thermal Protection",
     type: "video" as const,
     url: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282533/Sunfilm.mp4",
-    aspect: "16/9"
+    src: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282533/Sunfilm.mp4",
+    aspect: "16/9",
   },
   {
     id: "ceramic-coating",
@@ -52,28 +55,93 @@ export const galleryData: GalleryMediaItem[] = [
     category: "Surface Defense",
     type: "video" as const,
     url: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282597/Graphene_or_Ceramic_coating.mp4",
-    aspect: "16/9"
+    src: "https://res.cloudinary.com/ljrerns0/video/upload/v1789282597/Graphene_or_Ceramic_coating.mp4",
+    aspect: "16/9",
   },
   {
     id: "gallery-ceramic-corr-02",
     name: "Multi-Stage Paint Correction",
     type: "image",
     url: "/assets/services/ceramic.jpg",
+    src: "/assets/services/ceramic.jpg",
     title: "Multi-Stage Paint Correction",
     category: "SURFACE RESTORATION",
-    aspect: "16/9"
-  }
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-ppf-installation",
+    name: "PPF Installation",
+    type: "image",
+    url: "/assets/services/ppf.jpg",
+    src: "/assets/services/ppf.jpg",
+    title: "Custom Cut PPF Application",
+    category: "ARMOR DEFENSE",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-borophene-shield",
+    name: "Borophene Shield",
+    type: "image",
+    url: "/assets/services/borophene.jpg",
+    src: "/assets/services/borophene.jpg",
+    title: "2D Borophene Atomic Layer",
+    category: "SURFACE RESTORATION",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-sunfilm-install",
+    name: "Sunfilm Protection",
+    type: "image",
+    url: "/assets/services/sunfilm.jpg",
+    src: "/assets/services/sunfilm.jpg",
+    title: "3M Crystalline Solar Defense",
+    category: "THERMAL SHIELD",
+    aspect: "16/9",
+  },
 ];
 
-const GALLERY_ITEMS = galleryData;
+export const galleryData = staticGalleryData;
 
 export const StudioMarqueeGallery: React.FC = () => {
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const [items, setItems] = useState<GalleryMediaItem[]>(staticGalleryData);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [selectedMedia, setSelectedMedia] = useState<GalleryMediaItem | null>(null);
+
+  // Fetch dynamic gallery items count & list from serverless API endpoint
+  useEffect(() => {
+    let isMounted = true;
+    const fetchGalleryMedia = async () => {
+      try {
+        const response = await fetch("/api/gallery");
+        if (response.ok) {
+          const data = await response.json();
+          if (isMounted && data.success && Array.isArray(data.items) && data.items.length > 0) {
+            const merged = [
+              ...staticGalleryData,
+              ...data.items.filter((cItem: any) => {
+                const cUrl = cItem.url || cItem.src;
+                return !staticGalleryData.some(
+                  (sItem) => (sItem.url || sItem.src) === cUrl || sItem.id === cItem.id
+                );
+              }),
+            ];
+            setItems(merged);
+          }
+        }
+      } catch (err) {
+        console.warn("Could not fetch Cloudinary dynamic gallery, using local default fallback.", err);
+      }
+    };
+
+    fetchGalleryMedia();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // Auto-scrolling marquee effect
   useEffect(() => {
@@ -93,7 +161,7 @@ export const StudioMarqueeGallery: React.FC = () => {
 
     animationFrameId = requestAnimationFrame(scrollStep);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [isHovered, isDragging, selectedMedia]);
+  }, [isHovered, isDragging, selectedMedia, items]);
 
   // Safe body scroll lock cleanup on modal state change / unmount
   useEffect(() => {
@@ -156,6 +224,9 @@ export const StudioMarqueeGallery: React.FC = () => {
     setSelectedMedia(item);
   };
 
+  // Duplicate items for continuous auto-scrolling loop
+  const displayItems = items.length > 0 ? [...items, ...items] : [];
+
   return (
     <section
       id="gallery"
@@ -178,11 +249,21 @@ export const StudioMarqueeGallery: React.FC = () => {
               Drag horizontally to explore • Click card to preview media • Hover video cards to preview studio execution
             </p>
           </div>
+
+          {/* Header Action Link to Dedicated Full Showcase Page */}
+          <div className="shrink-0">
+            <a
+              href="/gallery.html"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-red-500/40 bg-red-500/10 hover:bg-red-600 hover:text-white text-red-400 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.2)] hover:scale-105 active:scale-95"
+            >
+              <span>VIEW FULL GALLERY ({items.length || "ALL"}) ↗</span>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Horizontal Continuous Auto-Scrolling Marquee Track */}
-      <div 
+      <div
         className="relative w-full overflow-hidden group/marquee"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -196,45 +277,42 @@ export const StudioMarqueeGallery: React.FC = () => {
           onMouseMove={handleMouseMove}
           className="flex gap-6 overflow-x-auto scrollbar-none cursor-grab active:cursor-grabbing select-none px-6 md:px-12 py-4"
         >
-          {[...GALLERY_ITEMS, ...GALLERY_ITEMS].map((item, index) => (
-            <div
-              key={index}
-              onClick={() => handleCardClick(item)}
-              className="gallery-card w-[300px] sm:w-[380px] md:w-[440px] aspect-[16/10] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 relative cursor-pointer group shadow-2xl transition-all duration-500 hover:border-red-600/60 hover:scale-[1.02]"
-            >
-              {item.type === "video" ? (
-                <video
-                  src={item.url || item.src}
-                  muted
-                  loop
-                  playsInline
-                  autoPlay
-                  preload="metadata"
-                  onMouseEnter={handleMouseEnterVideo}
-                  onMouseLeave={handleMouseLeaveVideo}
-                  className="w-full h-full object-cover pointer-events-none"
-                />
-              ) : (
-                <img
-                  src={item.url || item.src}
-                  alt={item.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              )}
+          {displayItems.map((item, index) => {
+            const itemUrl = item.url || item.src || "";
+            const optimizedUrl =
+              item.type === "image" && itemUrl.includes("/upload/") && !itemUrl.includes("/w_800")
+                ? itemUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/")
+                : itemUrl;
 
-              {/* Overlay UI */}
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              <div className="pointer-events-none absolute bottom-4 left-5 right-5 z-10">
-                <span className="text-[10px] text-red-400 font-bold tracking-widest uppercase block mb-1 font-mono">
-                  {item.category}
-                </span>
-                <h3 className="text-sm md:text-base font-bold text-white font-heading line-clamp-1">
-                  {item.title}
-                </h3>
+            return (
+              <div
+                key={`${item.id}-${index}`}
+                onClick={() => handleCardClick(item)}
+                className="gallery-card w-[300px] sm:w-[380px] md:w-[440px] aspect-[16/10] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 relative cursor-pointer group shadow-2xl transition-all duration-500 hover:border-red-600/60 hover:scale-[1.02]"
+              >
+                {item.type === "video" ? (
+                  <video
+                    src={optimizedUrl}
+                    muted
+                    loop
+                    playsInline
+                    preload="none"
+                    onMouseEnter={handleMouseEnterVideo}
+                    onMouseLeave={handleMouseLeaveVideo}
+                    className="w-full h-full object-cover pointer-events-none"
+                  />
+                ) : (
+                  <img
+                    src={optimizedUrl}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -277,9 +355,9 @@ export const StudioMarqueeGallery: React.FC = () => {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              const currentIndex = GALLERY_ITEMS.findIndex((item) => item.id === selectedMedia.id);
-              const prevIndex = (currentIndex - 1 + GALLERY_ITEMS.length) % GALLERY_ITEMS.length;
-              setSelectedMedia(GALLERY_ITEMS[prevIndex]);
+              const currentIndex = items.findIndex((item) => item.id === selectedMedia.id);
+              const prevIndex = (currentIndex - 1 + items.length) % items.length;
+              setSelectedMedia(items[prevIndex]);
             }}
             className="fixed left-4 top-1/2 -translate-y-1/2 z-[10000] p-3 bg-neutral-900/80 hover:bg-red-600 text-white rounded-full border border-neutral-700 transition-all cursor-pointer hidden sm:flex"
             aria-label="Previous Media"
@@ -291,9 +369,9 @@ export const StudioMarqueeGallery: React.FC = () => {
             type="button"
             onClick={(e) => {
               e.stopPropagation();
-              const currentIndex = GALLERY_ITEMS.findIndex((item) => item.id === selectedMedia.id);
-              const nextIndex = (currentIndex + 1) % GALLERY_ITEMS.length;
-              setSelectedMedia(GALLERY_ITEMS[nextIndex]);
+              const currentIndex = items.findIndex((item) => item.id === selectedMedia.id);
+              const nextIndex = (currentIndex + 1) % items.length;
+              setSelectedMedia(items[nextIndex]);
             }}
             className="fixed right-4 top-1/2 -translate-y-1/2 z-[10000] p-3 bg-neutral-900/80 hover:bg-red-600 text-white rounded-full border border-neutral-700 transition-all cursor-pointer hidden sm:flex"
             aria-label="Next Media"
@@ -308,7 +386,7 @@ export const StudioMarqueeGallery: React.FC = () => {
           >
             {selectedMedia.type === "video" ? (
               <video
-                key={selectedMedia.url}
+                key={selectedMedia.url || selectedMedia.src}
                 src={selectedMedia.url || selectedMedia.src}
                 controls
                 autoPlay
