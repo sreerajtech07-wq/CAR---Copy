@@ -16,8 +16,8 @@ export const BEFORE_AFTER_ITEMS: readonly BeforeAfterItem[] = [
     title: "Surface restoration, made visible",
     description:
       "Compare the character of an active detailing process with a protected, presentation-ready finish.",
-    beforeImage: "https://still-driven.com/img/before-1.webp",
-    afterImage: "https://still-driven.com/img/after-1.webp",
+    beforeImage: "https://res.cloudinary.com/ljrerns0/image/upload/v1789912671/before.jpg",
+    afterImage: "https://res.cloudinary.com/ljrerns0/image/upload/v1789912673/after.jpg",
     beforeAlt: "Automotive detailing process reference",
     afterAlt: "Gloss-finished automotive surface reference",
     status: "STUDIO REFERENCE / NOT A CUSTOMER CLAIM",

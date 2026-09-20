@@ -180,39 +180,39 @@ export const Coating10HPage: React.FC = () => {
               Diamond-grade 10H hardness liquid matrix forming an unyielding clearcoat barrier against micro-scratches, wash marring, acidic fallout, and coastal weather oxidation.
             </p>
 
-            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="mt-6 grid grid-cols-2 sm:flex sm:flex-wrap items-center gap-2.5 sm:gap-4">
               <a
                 href="#service-quote"
                 onClick={handleScrollToQuote}
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg shadow-brand-red/30 cursor-pointer"
+                className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all shadow-lg shadow-brand-red/30 cursor-pointer text-center"
               >
-                <Sparkles className="w-4 h-4" />
-                <span>Get a Quote</span>
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">Get a Quote</span>
               </a>
               <a
                 href={`https://wa.me/${BUSINESS.phoneClean}?text=Hi%203M%20Car%20Care%20Studio%20OMR,%20I'm%20interested%20in%203M%2010H%20Coating.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-[#25d366] hover:bg-emerald-600 text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
+                className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-6 py-3.5 rounded-sm bg-[#25d366] hover:bg-emerald-600 text-white font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all shadow-lg text-center"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
-                <span>WhatsApp Us</span>
+                <MessageSquare className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 fill-current" />
+                <span className="truncate">WhatsApp Us</span>
               </a>
               <a
                 href={`tel:${BUSINESS.phoneClean}`}
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
+                className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all text-center"
               >
-                <Phone className="w-4 h-4" />
-                <span>Call Studio</span>
+                <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+                <span className="truncate">Call Studio</span>
               </a>
               <a
                 href={BUSINESS.mapQueryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
+                className="inline-flex items-center justify-center space-x-1.5 sm:space-x-2 px-3 sm:px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-[11px] sm:text-xs font-bold tracking-wider uppercase transition-all text-center"
               >
-                <Compass className="w-4 h-4 text-brand-amber" />
-                <span>Studio Directions</span>
+                <Compass className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-brand-amber shrink-0" />
+                <span className="truncate">Studio Directions</span>
               </a>
             </div>
           </div>
