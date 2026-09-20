@@ -85,7 +85,7 @@ export const BookingSection: React.FC = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       }).catch(() => {});
-    } catch (err) {
+    } catch {
       // Ignore background post errors
     }
 

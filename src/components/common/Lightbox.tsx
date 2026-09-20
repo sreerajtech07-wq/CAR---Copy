@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 export interface LightboxMediaItem {
@@ -71,16 +71,8 @@ export const Lightbox: React.FC<LightboxProps> = ({
   const mediaList = items || images || [];
   const touchStartXRef = useRef<number | null>(null);
   const touchStartYRef = useRef<number | null>(null);
-  const [animKey, setAnimKey] = useState<number>(0);
-
   const isOpen = currentIndex !== null && currentIndex >= 0 && currentIndex < mediaList.length;
   const currentItem = isOpen ? mediaList[currentIndex] : null;
-
-  useEffect(() => {
-    if (currentIndex !== null) {
-      setAnimKey((prev) => prev + 1);
-    }
-  }, [currentIndex]);
 
   // Keyboard controls and body scroll lock
   useEffect(() => {
@@ -208,7 +200,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
 
         {/* Media Preview Box */}
         <div
-          key={animKey}
+          key={currentIndex ?? 0}
           className="relative max-w-full max-h-[75vh] sm:max-h-[80vh] flex items-center justify-center rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black animate-fade-in"
         >
           {currentItem.type === "video" ? (

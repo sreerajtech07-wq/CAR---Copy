@@ -22,24 +22,26 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
   onVehicleTypeChange,
 }) => {
   const [brandQuery, setBrandQuery] = useState(brand);
-  const [brandSuggestions, setBrandSuggestions] = useState<string[]>(POPULAR_BRANDS);
   const [showBrandDropdown, setShowBrandDropdown] = useState(false);
 
   const [modelQuery, setModelQuery] = useState(model);
-  const [modelSuggestions, setModelSuggestions] = useState<string[]>([]);
   const [showModelDropdown, setShowModelDropdown] = useState(false);
 
   const brandRef = useRef<HTMLDivElement>(null);
   const modelRef = useRef<HTMLDivElement>(null);
 
-  // Sync external props if updated from parent
-  useEffect(() => {
-    setBrandQuery(brand);
-  }, [brand]);
+  const [prevBrandProp, setPrevBrandProp] = useState(brand);
+  const [prevModelProp, setPrevModelProp] = useState(model);
 
-  useEffect(() => {
+  if (brand !== prevBrandProp) {
+    setPrevBrandProp(brand);
+    setBrandQuery(brand);
+  }
+
+  if (model !== prevModelProp) {
+    setPrevModelProp(model);
     setModelQuery(model);
-  }, [model]);
+  }
 
   // Handle outside clicks to close dropdowns
   useEffect(() => {
@@ -55,37 +57,23 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Filter Brand suggestions
-  useEffect(() => {
-    const normalizedQuery = brandQuery.toLowerCase().trim();
-    if (!normalizedQuery) {
-      setBrandSuggestions(POPULAR_BRANDS);
-      return;
-    }
-    const matches = POPULAR_BRANDS.filter((b) =>
-      b.toLowerCase().includes(normalizedQuery)
-    );
-    setBrandSuggestions(matches);
-  }, [brandQuery]);
+  // Derive filtered brand suggestions during render
+  const normalizedBrandQuery = brandQuery.toLowerCase().trim();
+  const brandSuggestions = !normalizedBrandQuery
+    ? POPULAR_BRANDS
+    : POPULAR_BRANDS.filter((b) => b.toLowerCase().includes(normalizedBrandQuery));
 
   // Derive model list based on selected brand
   const currentBrandData = COMPREHENSIVE_VEHICLES.find(
-    (v) => v.make.toLowerCase() === brandQuery.toLowerCase().trim()
+    (v) => v.make.toLowerCase() === normalizedBrandQuery
   );
   const availableModels = currentBrandData ? currentBrandData.models : [];
 
-  // Filter Model suggestions
-  useEffect(() => {
-    const normalizedQuery = modelQuery.toLowerCase().trim();
-    if (!normalizedQuery) {
-      setModelSuggestions(availableModels);
-      return;
-    }
-    const matches = availableModels.filter((m) =>
-      m.toLowerCase().includes(normalizedQuery)
-    );
-    setModelSuggestions(matches);
-  }, [modelQuery, availableModels]);
+  // Derive filtered model suggestions during render
+  const normalizedModelQuery = modelQuery.toLowerCase().trim();
+  const modelSuggestions = !normalizedModelQuery
+    ? availableModels
+    : availableModels.filter((m) => m.toLowerCase().includes(normalizedModelQuery));
 
   const handleSelectBrand = (selected: string) => {
     setBrandQuery(selected);
