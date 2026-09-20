@@ -46,10 +46,23 @@ export default async function handler(req: any, res: any) {
       const isVideo = resource.resource_type === "video";
       const publicId = resource.public_id;
       const fileName = resource.filename || publicId.split("/").pop() || publicId;
-      const cleanTitle = fileName
+      let cleanTitle = fileName
         .replace(/[-_]/g, " ")
         .replace(/\.[^/.]+$/, "")
         .replace(/\b\w/g, (l: string) => l.toUpperCase());
+
+      // If title contains camera timestamp strings or Videoshot, generate a contextual studio title
+      if (/videoshot|img[_-]|dsc[_-]|vid[_-]|\d{6,}/i.test(cleanTitle)) {
+        const lower = (cleanTitle + " " + publicId).toLowerCase();
+        if (lower.includes("ppf")) cleanTitle = "3M Scotchgard™ PPF Protection";
+        else if (lower.includes("ceramic")) cleanTitle = "3M Ceramic Coating Glaze";
+        else if (lower.includes("graphene")) cleanTitle = "3M Graphene Paint Shield";
+        else if (lower.includes("sunfilm") || lower.includes("tint")) cleanTitle = "3M Crystalline Solar Sunfilm";
+        else if (lower.includes("borophene")) cleanTitle = "3M Borophene Nano Defense";
+        else if (lower.includes("rust") || lower.includes("underbody")) cleanTitle = "3M Anti-Rust Underbody Defense";
+        else if (lower.includes("wash") || lower.includes("detail")) cleanTitle = "3M Precision Paint Correction";
+        else cleanTitle = isVideo ? "3M Official Studio Video Execution" : "3M Precision Studio Detailing";
+      }
 
       // Apply lightweight transformation for image previews: w_800,c_limit,f_auto,q_auto
       let secureUrl = resource.secure_url;

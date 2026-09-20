@@ -2,8 +2,20 @@ import React from "react";
 import { Star, Edit3 } from "lucide-react";
 import { GOOGLE_REVIEWS, type VerifiedReview } from "../sections/GoogleReviews";
 
+export type ReviewCategory = 
+  | "ppf" 
+  | "ceramic" 
+  | "graphene" 
+  | "10h" 
+  | "borophene" 
+  | "sunfilm" 
+  | "anti-glare" 
+  | "antirust" 
+  | "germ-kleen" 
+  | "detailing";
+
 interface ServiceReviewsProps {
-  category: "ppf" | "ceramic" | "sunfilm" | "detailing";
+  category: ReviewCategory | string;
 }
 
 const MAPS_REVIEW_URL = "https://maps.app.goo.gl/RJH95HUy9Wpaapd46";
@@ -19,25 +31,33 @@ export const ServiceReviews: React.FC<ServiceReviewsProps> = ({ category }) => {
             r.service.toLowerCase().includes("paint protection film")
         );
       case "ceramic":
+      case "graphene":
+      case "10h":
+      case "borophene":
         return GOOGLE_REVIEWS.filter(
           (r) =>
             r.service.toLowerCase().includes("ceramic") ||
             r.service.toLowerCase().includes("graphene") ||
+            r.service.toLowerCase().includes("coating") ||
             r.service.toLowerCase().includes("anti-rust")
         );
       case "sunfilm":
+      case "anti-glare":
         return GOOGLE_REVIEWS.filter(
           (r) =>
             r.service.toLowerCase().includes("sunfilm") ||
             r.text.toLowerCase().includes("sun film") ||
             r.text.toLowerCase().includes("heat")
         );
+      case "antirust":
+      case "germ-kleen":
       case "detailing":
         return GOOGLE_REVIEWS.filter(
           (r) =>
             r.service.toLowerCase().includes("paint correction") ||
             r.service.toLowerCase().includes("germkleen") ||
-            r.service.toLowerCase().includes("foam wash")
+            r.service.toLowerCase().includes("wash") ||
+            r.service.toLowerCase().includes("detailing")
         );
       default:
         return GOOGLE_REVIEWS.slice(0, 3);

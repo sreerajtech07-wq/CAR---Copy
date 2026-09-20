@@ -1,6 +1,18 @@
 import React, { useState } from "react";
 import { BUSINESS } from "../data/business";
-import { Phone, Compass, CheckCircle2, ChevronDown } from "lucide-react";
+import {
+  Phone,
+  Compass,
+  CheckCircle2,
+  ChevronDown,
+  ShieldCheck,
+  Award,
+  Sparkles,
+  Eye,
+  Sun,
+  Check,
+  MessageSquare,
+} from "lucide-react";
 import { CursorEffect } from "../components/common/CursorEffect";
 import { Background3D } from "../components/common/Background3D";
 import { FlowBackground } from "../components/common/FlowBackground";
@@ -8,41 +20,96 @@ import { ParticleNetworkBackground } from "../components/common/ParticleNetworkB
 import { ServiceHeader } from "../components/common/ServiceHeader";
 import { ServiceBottomCTA } from "../components/common/ServiceBottomCTA";
 import { ServiceReviews } from "../components/common/ServiceReviews";
+import { ServiceQuoteWidget } from "../components/common/ServiceQuoteWidget";
+import { RelatedServicesNav } from "../components/common/RelatedServicesNav";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 
 export const AntiGlareFilmPage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
 
+  const trustPoints = [
+    { label: "Night Headlight Glare Diffusion", desc: "Reduces blinding high-beam LED glare" },
+    { label: "High Definition Optical Clarity", desc: "Zero distortion night & daytime vision" },
+    { label: "UV & Solar Heat Control", desc: "99% UV rejection & glare reduction" },
+    { label: "100% Authentic 3M Optics", desc: "Verifiable studio warranty backing" },
+  ];
+
+  const executionSteps = [
+    {
+      step: "01",
+      title: "Windshield Glass Razor Cleansing",
+      desc: "Deep razor decontamination and alcohol wipe to eliminate stubborn oily films and bug splatters.",
+    },
+    {
+      step: "02",
+      title: "Precision Micro-Cut Template Plotting",
+      desc: "Custom CAD digital template cut for windshield glass dimensions without razor blades touching glass edges.",
+    },
+    {
+      step: "03",
+      title: "Cleanroom Thermal Heat Shrinking",
+      desc: "Precision heat moulding over windshield compound curvature in dust-controlled cleanroom bays.",
+    },
+    {
+      step: "04",
+      title: "Slip Solution Micro-Squeegee Fitment",
+      desc: "Hydro-fitment using ultra-soft lint-free squeegees for zero optical haze or water pocket trapping.",
+    },
+    {
+      step: "05",
+      title: "Night LED Glare Inspection Audit",
+      desc: "High-intensity multi-angle light tunnel audit to verify zero visual distortion and 100% edge bonding.",
+    },
+  ];
+
+  const decisionFactors = [
+    {
+      type: "BEST FOR",
+      items: [
+        "Frequent night drivers exposed to blinding high-beam LED headlights along OMR and ECR",
+        "Drivers experiencing eye strain and fatigue during prolonged nighttime commutes",
+        "Vehicles seeking maximum windshield clarity with heat and UV rejection",
+        "Infotainment touchscreens and digital dash clusters prone to sun reflections",
+      ],
+    },
+    {
+      type: "CONSIDER ALTERNATIVES IF",
+      items: [
+        "You seek full side and rear window tinting for maximum cabin privacy and overall heat blocking (Choose 3M Sunfilm)",
+      ],
+    },
+  ];
+
   const galleryImages = [
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647922/Videoshot_20260917_175216.jpg",
-      title: "Night Glare Reduction Installation",
+      src: "https://images.unsplash.com/photo-1708586314624-bed5b5be4187?auto=format&fit=crop&w=1200&q=80",
+      title: "Night Glare Reduction & High Clarity",
       category: "OPTICAL CLARITY",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
-      title: "Headlight Glare Diffusion",
+      src: "https://images.unsplash.com/photo-1690739934131-a4b3b0d6d9c0?auto=format&fit=crop&w=1200&q=80",
+      title: "Opposing Headlight Scattering Shield",
       category: "FACILITY ATELIER",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647911/Videoshot_20260917_175223.jpg",
-      title: "High Definition Glass Clarity",
+      src: "https://images.unsplash.com/photo-1649808007457-ed88108b9186?auto=format&fit=crop&w=1200&q=80",
+      title: "High Definition Windshield Tinting",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647690/Videoshot_20260917_175046.jpg",
-      title: "Eye Strain Mitigation Shield",
+      src: "https://images.unsplash.com/photo-1696276938996-34c9104bc27f?auto=format&fit=crop&w=1200&q=80",
+      title: "Eye Strain Mitigation & Night Visibility",
       category: "OPTICAL TEST",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
-      title: "Combined Glass & Surface Protection",
-      category: "COMBO PROTECTION",
+      src: "https://images.unsplash.com/photo-1694807226968-4962d411f4b0?auto=format&fit=crop&w=1200&q=80",
+      title: "Scratch-Resistant Polymeric Film",
+      category: "SURFACE PROTECTION",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647691/Videoshot_20260917_175042.jpg",
-      title: "Driver Comfort & Safety",
-      category: "CLIMATE CONTROL",
+      src: "https://images.unsplash.com/photo-1656583156878-d45aeff486b6?auto=format&fit=crop&w=1200&q=80",
+      title: "Driver Safety & Fatigue Reduction",
+      category: "DRIVER SAFETY",
     },
   ];
 
@@ -65,6 +132,14 @@ export const AntiGlareFilmPage: React.FC = () => {
     },
   ];
 
+  const handleScrollToQuote = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById("service-quote");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden">
       <CursorEffect />
@@ -79,7 +154,7 @@ export const AntiGlareFilmPage: React.FC = () => {
       />
 
       <main className="relative z-10">
-        {/* Hero Banner */}
+        {/* Step 1: Hero Banner */}
         <section className="relative py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex items-center space-x-2.5 mb-4">
@@ -94,6 +169,7 @@ export const AntiGlareFilmPage: React.FC = () => {
               <span className="block text-metallic-silver">HEADLIGHT DIFFUSION SHIELD</span>
             </h1>
 
+            {/* TWO-TIER POSTER PRICING BLOCK */}
             <div className="mt-5 p-4 sm:p-5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md inline-block max-w-xs transition-all">
               <div className="flex flex-col">
                 <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-1 font-mono">
@@ -109,17 +185,34 @@ export const AntiGlareFilmPage: React.FC = () => {
               </div>
             </div>
 
-            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
-              Specialized optical clarity film designed to diffuse headlight glare, reduce eye strain during night driving, and optimize interior screen visibility for total cabin comfort.
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
+              Specialized high-definition optical film designed to diffuse blinding oncoming LED/Xenon headlight glare, reduce eye strain, and protect digital touchscreens from reflections.
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href="#service-quote"
+                onClick={handleScrollToQuote}
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg shadow-brand-red/30 cursor-pointer"
+              >
+                <Sparkles className="w-4 h-4" />
+                <span>Get a Quote</span>
+              </a>
+              <a
+                href={`https://wa.me/${BUSINESS.phoneClean}?text=Hi%203M%20Car%20Care%20Studio%20OMR,%20I'm%20interested%20in%203M%20Anti-Glare%20Film.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-[#25d366] hover:bg-emerald-600 text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
+              >
+                <MessageSquare className="w-4 h-4 fill-current" />
+                <span>WhatsApp Us</span>
+              </a>
               <a
                 href={`tel:${BUSINESS.phoneClean}`}
-                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
               >
                 <Phone className="w-4 h-4" />
-                <span>Call Studio // {BUSINESS.phone}</span>
+                <span>Call Studio</span>
               </a>
               <a
                 href={BUSINESS.mapQueryUrl}
@@ -128,21 +221,83 @@ export const AntiGlareFilmPage: React.FC = () => {
                 className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
               >
                 <Compass className="w-4 h-4 text-brand-amber" />
-                <span>Get Studio Directions</span>
+                <span>Studio Directions</span>
               </a>
             </div>
           </div>
         </section>
 
-        {/* Capabilities */}
+        {/* Step 2: Minimal Trust Strip */}
+        <section className="py-6 border-b border-white/10 bg-[#0e0e0e]/80 backdrop-blur-sm relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+              {trustPoints.map((item, idx) => (
+                <div key={idx} className="flex items-start space-x-3 p-3 rounded-sm bg-white/[0.02] border border-white/5">
+                  <ShieldCheck className="w-5 h-5 text-brand-amber shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-display text-xs sm:text-sm font-bold text-white uppercase tracking-tight">{item.label}</h4>
+                    <p className="text-[11px] text-metallic-400 font-mono leading-tight mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Step 3: Technology Overview - What is Anti-Glare Film? */}
         <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7">
+                <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
+                  OPTICAL SAFETY INNOVATION
+                </div>
+                <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
+                  What is 3M Anti-Glare Film Technology?
+                </h2>
+                <p className="mt-4 text-sm sm:text-base text-metallic-300 font-light leading-relaxed">
+                  3M Anti-Glare Film employs advanced light refraction micro-patterns to scatter blinding high-beam LED headlight spikes into soft, comfortable illumination without lowering overall optical clarity.
+                </p>
+                <p className="mt-3 text-sm sm:text-base text-metallic-300 font-light leading-relaxed">
+                  Engineered specifically for night driving on unlit or high-traffic stretches along OMR and ECR, it protects driver vision and reduces eye fatigue significantly.
+                </p>
+              </div>
+
+              <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+                <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
+                  <Eye className="w-8 h-8 text-brand-amber mx-auto mb-2" />
+                  <div className="font-mono text-xl font-bold text-white">Glare Diffusion</div>
+                  <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">High-Beam Protection</div>
+                </div>
+                <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
+                  <Sun className="w-8 h-8 text-brand-amber mx-auto mb-2" />
+                  <div className="font-mono text-xl font-bold text-white">HD Clarity</div>
+                  <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">Non-Distorting Optics</div>
+                </div>
+                <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
+                  <Sparkles className="w-8 h-8 text-brand-amber mx-auto mb-2" />
+                  <div className="font-mono text-xl font-bold text-white">Eye Relief</div>
+                  <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">Reduced Strain</div>
+                </div>
+                <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
+                  <Award className="w-8 h-8 text-brand-amber mx-auto mb-2" />
+                  <div className="font-mono text-xl font-bold text-white">3M Warranty</div>
+                  <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">Studio Certified</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Step 4: Official Capabilities Breakdown */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8">
               <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
                 OFFICIAL SERVICE SCOPE
               </div>
               <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-                Verified 3M Anti-Glare Film Properties
+                Verified Anti-Glare Properties
               </h2>
             </div>
 
@@ -150,27 +305,27 @@ export const AntiGlareFilmPage: React.FC = () => {
               {[
                 {
                   title: "Headlight Glare Diffusion",
-                  desc: "Diffuses high-intensity LED and Xenon high-beam glare from oncoming night traffic.",
+                  desc: "Diffuses intense oncoming LED/Xenon headlight glare for safer nighttime driving visual comfort.",
                 },
                 {
-                  title: "High Optical Clarity",
-                  desc: "Crystal-clear optical substrate preserving sharp road visibility and contrast.",
+                  title: "High Definition Glass Clarity",
+                  desc: "Preserves crystal-clear daytime and nighttime optical transmission without haze or visual distortion.",
                 },
                 {
-                  title: "Driver Eye Strain Reduction",
-                  desc: "Reduces fatigue and eye strain during long nighttime commutes along OMR and ECR.",
+                  title: "Eye Strain Mitigation",
+                  desc: "Dramatically reduces driver eye fatigue and squinting during long nighttime highway journeys.",
                 },
                 {
-                  title: "Screen & Display Compatibility",
-                  desc: "Ideal for protecting digital dashboards and center consoles from sunlight reflections.",
+                  title: "Touchscreen & Display Anti-Reflection",
+                  desc: "Optional precision application for digital dashboard clusters and center infotainment screens.",
                 },
                 {
-                  title: "Scratch-Resistant Coating",
-                  desc: "Durable surface layer that resists wipers, micro-dust, and cleaning abrasions.",
+                  title: "UV & Solar Heat Control",
+                  desc: "Provides integrated UV radiation rejection to protect cabin occupants and interior components.",
                 },
                 {
-                  title: "Professional Studio Fitment",
-                  desc: "Custom template cutting and bubble-free installation by 3M certified applicators.",
+                  title: "Dust-Controlled Cleanroom Application",
+                  desc: "Meticulously applied in our enclosed, dust-filtered studio bays with temperature stabilization and precision LED inspection.",
                 },
               ].map((item, idx) => (
                 <div
@@ -181,7 +336,7 @@ export const AntiGlareFilmPage: React.FC = () => {
                     <div className="flex items-center space-x-2 text-brand-red mb-3">
                       <CheckCircle2 className="w-4 h-4 shrink-0" />
                       <span className="font-mono text-[11px] uppercase tracking-wider">
-                        PROPERTY 0{idx + 1}
+                        CAPABILITY 0{idx + 1}
                       </span>
                     </div>
                     <h3 className="font-display text-lg font-bold text-white">{item.title}</h3>
@@ -195,7 +350,72 @@ export const AntiGlareFilmPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Gallery */}
+        {/* Step 5: Decision Guide - Is This Right for Your Car? */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8">
+              <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
+                DECISION GUIDE
+              </div>
+              <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
+                Is 3M Anti-Glare Film Right for Your Vehicle?
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {decisionFactors.map((group, idx) => (
+                <div key={idx} className="p-6 sm:p-8 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between">
+                  <div>
+                    <span className={`font-mono text-xs tracking-widest uppercase px-3 py-1 rounded-xs inline-block mb-4 ${
+                      idx === 0 ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                    }`}>
+                      {group.type}
+                    </span>
+                    <ul className="space-y-3">
+                      {group.items.map((item, i) => (
+                        <li key={i} className="flex items-start space-x-3">
+                          <Check className={`w-4 h-4 shrink-0 mt-1 ${idx === 0 ? "text-emerald-400" : "text-amber-400"}`} />
+                          <span className="text-xs sm:text-sm text-metallic-300 font-light leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Step 6: 5-Stage Execution Process */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-10 text-center">
+              <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
+                WORKFLOW EXCELLENCE
+              </div>
+              <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
+                Our 5-Stage Anti-Glare Execution Process
+              </h2>
+              <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
+                Executed in temperature and dust-controlled cleanroom bays at 3M OMR
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+              {executionSteps.map((step, idx) => (
+                <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
+                  <div>
+                    <div className="font-mono text-2xl font-black text-brand-red mb-2">{step.step}</div>
+                    <h3 className="font-display font-bold text-white text-sm mb-2">{step.title}</h3>
+                    <p className="text-xs text-metallic-400 font-light leading-relaxed">{step.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Step 7: Anti-Glare Photo Gallery */}
         <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-white/10">
@@ -204,11 +424,11 @@ export const AntiGlareFilmPage: React.FC = () => {
                   STUDIO PORTFOLIO
                 </div>
                 <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-                  Anti-Glare Showcase
+                  Anti-Glare Film Gallery
                 </h2>
               </div>
               <p className="font-mono text-xs text-metallic-400 mt-2 md:mt-0">
-                NIGHT SAFETY AT METTUKUPPAM STUDIO
+                NIGHT VISION PROTECTION AT METTUKUPPAM STUDIO
               </p>
             </div>
 
@@ -220,26 +440,24 @@ export const AntiGlareFilmPage: React.FC = () => {
                 >
                   <img
                     src={img.src}
-                    alt={img.title}
+                    alt={img.title || "3M Anti-Glare Film"}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <span className="font-mono text-[10px] text-brand-amber tracking-widest uppercase">
-                      {img.category}
-                    </span>
-                    <div className="font-display font-semibold text-white text-sm mt-0.5">
-                      {img.title}
-                    </div>
-                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* FAQs */}
-        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
+        {/* Step 8: Category Verified Reviews */}
+        <ServiceReviews category="anti-glare" />
+
+        {/* Step 9: Vehicle Quote Widget */}
+        <ServiceQuoteWidget serviceName="3M Anti-Glare Film" />
+
+        {/* Step 10: Anti-Glare FAQs */}
+        <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
@@ -284,10 +502,14 @@ export const AntiGlareFilmPage: React.FC = () => {
           </div>
         </section>
 
-        <ServiceReviews category="sunfilm" />
+        {/* Step 11: Explore Related Services */}
+        <RelatedServicesNav currentServiceId="anti-glare" />
+
+        {/* Bottom CTA Section */}
         <ServiceBottomCTA serviceName="3M Anti-Glare Film" />
       </main>
 
+      {/* Footer */}
       <footer className="py-8 bg-transparent relative z-10 text-center font-mono text-xs text-metallic-500">
         <p>
           {BUSINESS.name} • {BUSINESS.address.full}

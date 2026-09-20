@@ -6,6 +6,7 @@ import { Background3D } from "../components/common/Background3D";
 import { FlowBackground } from "../components/common/FlowBackground";
 import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
+import { Lightbox } from "../components/common/Lightbox";
 import { staticGalleryData, type GalleryMediaItem } from "../components/sections/StudioMarqueeGallery";
 
 export const GalleryPage: React.FC = () => {
@@ -178,61 +179,21 @@ export const GalleryPage: React.FC = () => {
         </div>
       </main>
 
-      {/* ISOLATED LIGHTBOX PREVIEW MODAL */}
-      {selectedMedia && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 md:p-8 animate-fadeIn"
-          onClick={() => setSelectedMedia(null)}
-        >
-          {/* Top-Left BACK Button */}
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedMedia(null);
-            }}
-            className="fixed top-5 left-5 z-[10000] flex items-center gap-2 px-5 py-2.5 bg-neutral-900/90 hover:bg-brand-red text-white rounded-full border border-neutral-700 shadow-2xl transition-all cursor-pointer group"
-            aria-label="Close Preview"
-          >
-            <span className="text-sm font-bold text-white group-hover:-translate-x-1 transition-transform">←</span>
-            <span className="text-xs font-mono font-bold tracking-widest text-white">CLOSE</span>
-          </button>
-
-          {/* Active Media Container */}
-          <div
-            className="w-full max-w-4xl max-h-[80vh] flex flex-col items-center justify-center relative"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {selectedMedia.type === "video" ? (
-              <video
-                key={selectedMedia.url || selectedMedia.src}
-                src={selectedMedia.url || selectedMedia.src}
-                controls
-                autoPlay
-                playsInline
-                preload="auto"
-                className="w-full max-h-[75vh] md:max-h-[80vh] rounded-xl object-contain shadow-2xl bg-black border border-neutral-800 mx-auto"
-              >
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <img
-                src={selectedMedia.url || selectedMedia.src}
-                alt={selectedMedia.title}
-                className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-2xl border border-neutral-800"
-              />
-            )}
-            <div className="mt-4 text-center">
-              <span className="text-xs text-brand-red font-mono font-bold tracking-widest uppercase block mb-1">
-                {selectedMedia.category}
-              </span>
-              <h3 className="text-base sm:text-lg font-bold text-white font-heading">
-                {selectedMedia.title}
-              </h3>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* UNIFIED ENHANCED LIGHTBOX MODAL */}
+      <Lightbox
+        items={items}
+        currentIndex={
+          selectedMedia
+            ? items.findIndex(
+                (item) =>
+                  item.id === selectedMedia.id ||
+                  (item.url || item.src) === (selectedMedia.url || selectedMedia.src)
+              )
+            : null
+        }
+        onClose={() => setSelectedMedia(null)}
+        onNavigate={(newIdx) => setSelectedMedia(items[newIdx])}
+      />
 
       {/* Footer */}
       <footer className="py-8 bg-transparent relative z-10 text-center font-mono text-xs text-metallic-500 border-t border-white/5">
