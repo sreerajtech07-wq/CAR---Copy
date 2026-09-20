@@ -21,21 +21,26 @@ export const BookingSection: React.FC = () => {
   // Vehicle Specifications
   const [vehicleMake, setVehicleMake] = useState("");
   const [vehicleModel, setVehicleModel] = useState("");
-  const [regYear, setRegYear] = useState("");
+  const [vehicleType, setVehicleType] = useState("Sedan");
 
   const primaryServices = [
     "Paint Protection Film (3M Scotchgard™ PPF)",
     "Ceramic Coating (9H Multi-Stage Glass)",
     "Graphene Coating (Hyper-Gloss Hydrophobic Shield)",
-    "Borophene Coating (Extreme Thermal & Scratch Defense)",
+    "10H Coating (Diamond-Grade Defense)",
     "Sunfilm (3M™ Crystalline Heat Shield)",
   ];
 
   const additionalServices = [
-    "Interior Deep Detailing & GermKleen Sanitization",
-    "Multi-Stage Paint Correction & Swirl Removal",
-    "Windshield Hydrophobic Rain Repellent",
-    "Underbody Anti-Rust Treatment",
+    "3M Antirust Coating",
+    "3M Underbody Coating",
+    "3M Interior Cleansing",
+    "3M Germ Kleen Sterilization",
+    "3M Polish & Paint Refinement",
+    "3M Teflon Polish Sealant",
+    "3M CR70 Solar Film",
+    "3M XP70 Glare Shield",
+    "3M IM70 Thermal Guard",
   ];
 
   const slotOptions = [
@@ -56,18 +61,18 @@ export const BookingSection: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!fullName || !phone || !vehicleMake || !vehicleModel) {
-      alert("Please fill in your Name, Phone Number, Vehicle Make, and Vehicle Model.");
+    if (!fullName || !phone || !vehicleMake) {
+      alert("Please fill in your Name, Phone Number, and Vehicle Brand.");
       return;
     }
 
+    const vehicleFormatted = vehicleModel ? `${vehicleMake} ${vehicleModel}`.trim() : vehicleMake;
     const payload = {
       timestamp: new Date().toISOString(),
       name: fullName,
       email: email || "N/A",
       phone: phone,
-      vehicle: `${vehicleMake} ${vehicleModel}`,
-      year: regYear,
+      vehicle: `${vehicleFormatted} (${vehicleType})`,
       services: selectedServices.join(", "),
       preference: contactPreference,
     };
@@ -90,7 +95,7 @@ export const BookingSection: React.FC = () => {
 • Name: ${fullName}
 • Phone: ${phone}
 • Email: ${email || "N/A"}
-• Vehicle: ${vehicleMake} ${vehicleModel} (${regYear})
+• Vehicle: ${vehicleFormatted} (${vehicleType})
 • Services Requested:
 ${scopeText}
 • Preference: ${contactPreference}`;
@@ -268,10 +273,10 @@ ${scopeText}
             <VehicleSelector
               brand={vehicleMake}
               model={vehicleModel}
-              year={regYear}
-              onBrandChange={setVehicleMake}
+              vehicleType={vehicleType}
+              onBrandChange={(b) => { setVehicleMake(b); setVehicleModel(""); }}
               onModelChange={setVehicleModel}
-              onYearChange={setRegYear}
+              onVehicleTypeChange={setVehicleType}
             />
           </div>
 

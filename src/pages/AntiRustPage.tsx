@@ -85,7 +85,7 @@ export const AntiRustPage: React.FC = () => {
 
       <main className="relative z-10">
         {/* Hero Banner */}
-        <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
+        <section className="relative py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="flex items-center space-x-2.5 mb-4">
               <span className="w-6 h-[1px] bg-brand-red" />
@@ -94,38 +94,53 @@ export const AntiRustPage: React.FC = () => {
               </span>
             </div>
 
-          <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
-            ANTI-RUST / ANTI-CORROSION COATING &
-            <span className="block text-metallic-silver">CHASSIS DEFENSE</span>
-          </h1>
+            <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
+              ANTI-RUST / ANTI-CORROSION COATING &
+              <span className="block text-metallic-silver">CHASSIS DEFENSE</span>
+            </h1>
 
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
-            Heavy-duty protective underbody treatment guarding vehicle chassis components and vulnerable steel from coastal saline exposure, moisture, and road contaminants.
-          </p>
+            <div className="mt-5 p-4 sm:p-5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md inline-block max-w-xs transition-all">
+              <div className="flex flex-col">
+                <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-1 font-mono">
+                  STARTING FROM
+                </span>
+                <div className="flex items-baseline gap-1 text-amber-400 font-mono">
+                  <span className="text-lg md:text-xl font-bold">₹</span>
+                  <span className="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    2,900
+                  </span>
+                  <span className="text-xs text-zinc-400 ml-1 font-medium">onwards</span>
+                </div>
+              </div>
+            </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-            <a
-              href={`tel:${BUSINESS.phoneClean}`}
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call Studio // {BUSINESS.phone}</span>
-            </a>
-            <a
-              href={BUSINESS.mapQueryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
-            >
-              <Compass className="w-4 h-4 text-brand-amber" />
-              <span>Get Studio Directions</span>
-            </a>
+            <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
+              Heavy-duty protective underbody treatment guarding vehicle chassis components and vulnerable steel from coastal saline exposure, moisture, and road contaminants.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href={`tel:${BUSINESS.phoneClean}`}
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call Studio // {BUSINESS.phone}</span>
+              </a>
+              <a
+                href={BUSINESS.mapQueryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
+              >
+                <Compass className="w-4 h-4 text-brand-amber" />
+                <span>Get Studio Directions</span>
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Official Capabilities Breakdown */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
+        {/* Official Capabilities Breakdown */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
@@ -186,7 +201,7 @@ export const AntiRustPage: React.FC = () => {
       </section>
 
       {/* Anti-Rust Photo Gallery */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
+      <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-white/10">
             <div>
@@ -229,7 +244,7 @@ export const AntiRustPage: React.FC = () => {
       </section>
 
       {/* Anti-Rust FAQs */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
+      <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">

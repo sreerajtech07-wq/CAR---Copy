@@ -2,16 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { OFFICIAL_SERVICES } from "../../data/services";
 import { ArrowRight } from "lucide-react";
 
-const SERVICE_PAGE_MAP: Record<string, string> = {
-  "car-detailing": "/car-detailing.html",
-  "ceramic-coating": "/ceramic-coating.html",
-  "graphene-coating": "/graphene-coating.html",
-  "borophene-coating": "/borophene-coating.html",
-  "ppf": "/ppf.html",
-  "sun-film": "/sun-film.html",
-  "anti-rust": "/anti-rust.html",
-  "additional-services": "/additional-services.html",
-};
+
 
 const ServiceMarquee: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -92,11 +83,10 @@ const ServiceMarquee: React.FC = () => {
       onBlurCapture={resume}
     >
       {[...OFFICIAL_SERVICES, ...OFFICIAL_SERVICES].map((service, index) => {
-        const servicePageUrl = SERVICE_PAGE_MAP[service.id];
         return (
           <a
             key={`${service.id}-${index}`}
-            href={servicePageUrl}
+            href={service.route}
             onClick={handleCardClick}
             draggable={false}
             className="group relative flex h-[21rem] w-[17rem] shrink-0 select-none flex-col overflow-hidden rounded-sm border border-white/10 bg-dark-950 shadow-2xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red"
@@ -104,6 +94,7 @@ const ServiceMarquee: React.FC = () => {
             <div className="relative h-36 shrink-0 overflow-hidden bg-dark-900">
               <img src={service.image} alt={service.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading={index < OFFICIAL_SERVICES.length ? "eager" : "lazy"} />
               <span className="absolute left-3 top-3 border border-white/15 bg-dark-950/80 px-2 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
+              <span className="absolute right-3 top-3 border border-brand-red/40 bg-brand-red/90 px-2 py-0.5 font-mono text-[9px] font-bold text-white">{service.priceDisplay}</span>
             </div>
             <div className="flex flex-1 flex-col p-4">
               <span className="font-mono text-[10px] tracking-widest text-brand-red">0{(index % OFFICIAL_SERVICES.length) + 1} / SERVICES</span>

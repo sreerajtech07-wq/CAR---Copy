@@ -66,55 +66,40 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Column 2 - TREATMENTS (All 9 Services) */}
+          {/* Column 2 - TREATMENTS (6 Core 3M Services) */}
           <div className="md:col-span-3 lg:col-span-3 space-y-4">
             <h3 className="text-white font-mono font-bold text-xs tracking-widest uppercase border-b border-neutral-900 pb-2">
               TREATMENTS
             </h3>
             <ul className="space-y-2 text-xs sm:text-sm text-neutral-400">
               <li>
-                <a href="/ppf.html" className="hover:text-white transition-colors duration-200">
-                  Paint Protection Film
-                </a>
-              </li>
-              <li>
-                <a href="/sun-film.html" className="hover:text-white transition-colors duration-200">
-                  Sunfilm
-                </a>
-              </li>
-              <li>
                 <a href="/ceramic-coating.html" className="hover:text-white transition-colors duration-200">
-                  Ceramic Coating
+                  3M Ceramic Coating
                 </a>
               </li>
               <li>
                 <a href="/graphene-coating.html" className="hover:text-white transition-colors duration-200">
-                  Graphene Coating
+                  3M Graphene Coating
                 </a>
               </li>
               <li>
-                <a href="/borophene-coating.html" className="hover:text-white transition-colors duration-200">
-                  Borophene Coating
-                </a>
-              </li>
-              <li>
-                <a href="/car-detailing.html" className="hover:text-white transition-colors duration-200">
-                  Paint Correction
+                <a href="/10h-coating.html" className="hover:text-white transition-colors duration-200">
+                  3M 10H Coating
                 </a>
               </li>
               <li>
                 <a href="/ppf.html" className="hover:text-white transition-colors duration-200">
-                  Car Wrapping
+                  3M PPF (Paint Protection Film)
                 </a>
               </li>
               <li>
-                <a href="/additional-services.html" className="hover:text-white transition-colors duration-200">
-                  Interior and Exterior Cleaning
+                <a href="/sun-film.html" className="hover:text-white transition-colors duration-200">
+                  3M Sunfilm
                 </a>
               </li>
               <li>
-                <a href="/additional-services.html" className="hover:text-white transition-colors duration-200">
-                  Foam Wash
+                <a href="/anti-glare-film.html" className="hover:text-white transition-colors duration-200">
+                  3M Anti-Glare Film
                 </a>
               </li>
             </ul>

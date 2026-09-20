@@ -16,7 +16,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
 }) => {
   const [step, setStep] = useState<number>(1);
   const [selectedService, setSelectedService] = useState<string>(initialService || "Ceramic Coating");
-  const [vehicle, setVehicle] = useState({ brand: "", model: "", year: "" });
+  const [vehicle, setVehicle] = useState({ brand: "", model: "", vehicleType: "Sedan" });
   const [bookingDate, setBookingDate] = useState<string>("");
   const [contact, setContact] = useState({ name: "", phone: "", whatsapp: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -46,7 +46,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       if (!validateStep4()) return;
 
       // Direct lead ingestion via formatted WhatsApp message
-      const vehicleInfo = vehicle.brand ? `${vehicle.brand} ${vehicle.model} (${vehicle.year})` : "Not specified";
+      const vehicleName = vehicle.model ? `${vehicle.brand} ${vehicle.model}`.trim() : vehicle.brand;
+      const vehicleInfo = vehicle.brand ? `${vehicleName} (${vehicle.vehicleType})` : "Not specified";
       const message = `New Inquiry from Website:\nName: ${contact.name}\nPhone: ${contact.phone}\nService: ${selectedService}\nVehicle: ${vehicleInfo}\nPreferred Date: ${bookingDate || "Flexible"}`;
       const waUrl = `https://wa.me/917601933555?text=${encodeURIComponent(message)}`;
       window.open(waUrl, "_blank", "noopener,noreferrer");
@@ -61,7 +62,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const resetForm = () => {
     setStep(1);
     setSelectedService("Ceramic Coating");
-    setVehicle({ brand: "", model: "", year: "" });
+    setVehicle({ brand: "", model: "", vehicleType: "Sedan" });
     setBookingDate("");
     setContact({ name: "", phone: "", whatsapp: "" });
     setErrors({});
@@ -157,10 +158,10 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             <VehicleSelector
               brand={vehicle.brand}
               model={vehicle.model}
-              year={vehicle.year}
-              onBrandChange={(b) => setVehicle((prev) => ({ ...prev, brand: b }))}
+              vehicleType={vehicle.vehicleType}
+              onBrandChange={(b) => setVehicle((prev) => ({ ...prev, brand: b, model: "" }))}
               onModelChange={(m) => setVehicle((prev) => ({ ...prev, model: m }))}
-              onYearChange={(y) => setVehicle((prev) => ({ ...prev, year: y }))}
+              onVehicleTypeChange={(t) => setVehicle((prev) => ({ ...prev, vehicleType: t }))}
             />
           </div>
         )}
@@ -261,7 +262,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             {/* Summary Box */}
             <div className="p-4 rounded-sm bg-dark-950 border border-white/10 text-left max-w-md mx-auto font-mono text-xs space-y-1.5 text-metallic-300">
               <div><span className="text-white">Service:</span> {selectedService}</div>
-              {vehicle.brand && <div><span className="text-white">Vehicle:</span> {vehicle.brand} {vehicle.model} ({vehicle.year})</div>}
+              {vehicle.brand && <div><span className="text-white">Vehicle:</span> {vehicle.brand} ({vehicle.vehicleType})</div>}
               {bookingDate && <div><span className="text-white">Date:</span> {bookingDate}</div>}
               <div><span className="text-white">Contact:</span> {contact.phone}</div>
               <div><span className="text-white">Studio Location:</span> Mettukuppam, OMR, Chennai</div>

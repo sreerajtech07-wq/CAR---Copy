@@ -90,108 +90,124 @@ export const CeramicPage: React.FC = () => {
 
       <main className="relative z-10">
         {/* Hero Banner */}
-      <section className="relative py-16 sm:py-24 md:py-28 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex items-center space-x-2.5 mb-4">
-            <span className="w-6 h-[1px] bg-brand-red" />
-            <span className="font-mono text-xs text-brand-red tracking-super-wide uppercase">
-              MOLECULAR PROTECTION // 3M CAR CARE STUDIO – OMR / ECR
-            </span>
-          </div>
-
-          <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
-            PREMIUM CERAMIC COATING &
-            <span className="block text-metallic-silver">SURFACE DEFENSE</span>
-          </h1>
-
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
-            Advanced liquid polymer bonding delivering intense liquid gloss, dynamic hydrophobic water beading, and persistent clearcoat defense against Chennai's coastal environment.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-            <a
-              href={`tel:${BUSINESS.phoneClean}`}
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
-            >
-              <Phone className="w-4 h-4" />
-              <span>Call Studio // {BUSINESS.phone}</span>
-            </a>
-            <a
-              href={BUSINESS.mapQueryUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
-            >
-              <Compass className="w-4 h-4 text-brand-amber" />
-              <span>Get Studio Directions</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Official Capabilities Breakdown */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-12">
-            <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
-              OFFICIAL SERVICE SCOPE
+        <section className="relative py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="flex items-center space-x-2.5 mb-4">
+              <span className="w-6 h-[1px] bg-brand-red" />
+              <span className="font-mono text-xs text-brand-red tracking-super-wide uppercase">
+                MOLECULAR PROTECTION // 3M CAR CARE STUDIO – OMR / ECR
+              </span>
             </div>
-            <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-              Verified Ceramic Coating Properties
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Premium Ceramic Coating",
-                desc: "High-density SiO2 polymer formulation engineered to bond chemically with automotive clearcoat for persistent surface defense.",
-              },
-              {
-                title: "Paint Protection",
-                desc: "Shields delicate factory automotive paintwork from environmental fallout, acid rain, bird droppings, and tree sap etching.",
-              },
-              {
-                title: "Gloss Enhancement",
-                desc: "Generates an intense wet-look, candy-like optical reflection that magnifies metallic flake and basecoat color richness.",
-              },
-              {
-                title: "Hydrophobic Protection",
-                desc: "Creates ultra-high water contact angles, causing water and road grime to bead up and sheet off the surface effortlessly.",
-              },
-              {
-                title: "Long-lasting Surface Protection",
-                desc: "Durable covalent molecular bonding engineered to withstand repeated wash cycles, high heat, and coastal atmospheric moisture.",
-              },
-              {
-                title: "Dust-Controlled Cleanroom Application",
-                desc: "Meticulously applied in our enclosed, dust-filtered studio bays with temperature stabilization and precision LED inspection.",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 sm:p-6 rounded-sm bg-[#0e0e0e]/92 relative z-10 border border-white/10 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center space-x-2 text-brand-red mb-3">
-                    <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span className="font-mono text-[11px] uppercase tracking-wider">
-                      CAPABILITY 0{idx + 1}
-                    </span>
-                  </div>
-                  <h3 className="font-display text-lg font-bold text-white">{item.title}</h3>
-                  <p className="mt-2 text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">
-                    {item.desc}
-                  </p>
+            <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
+              3M CERAMIC COATING &
+              <span className="block text-metallic-silver">SURFACE DEFENSE</span>
+            </h1>
+
+            {/* TWO-TIER POSTER PRICING BLOCK */}
+            <div className="mt-5 p-4 sm:p-5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 backdrop-blur-md inline-block max-w-xs transition-all">
+              <div className="flex flex-col">
+                <span className="text-xs uppercase tracking-widest text-zinc-400 font-semibold mb-1 font-mono">
+                  STARTING FROM
+                </span>
+                <div className="flex items-baseline gap-1 text-amber-400 font-mono">
+                  <span className="text-lg md:text-xl font-bold">₹</span>
+                  <span className="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
+                    20,000
+                  </span>
+                  <span className="text-xs text-zinc-400 ml-1 font-medium">onwards</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            </div>
 
-      {/* Ceramic Coating Photo Gallery */}
-      <section className="py-16 sm:py-24 border-b border-white/10 bg-transparent relative z-10">
+            <p className="mt-4 sm:mt-5 text-sm sm:text-base md:text-lg text-metallic-300 max-w-3xl font-light leading-relaxed">
+              Advanced liquid polymer bonding delivering intense liquid gloss, dynamic hydrophobic water beading, and persistent clearcoat defense against Chennai's coastal environment.
+            </p>
+
+            <div className="mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href={`tel:${BUSINESS.phoneClean}`}
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs tracking-wider uppercase transition-all shadow-lg"
+              >
+                <Phone className="w-4 h-4" />
+                <span>Call Studio // {BUSINESS.phone}</span>
+              </a>
+              <a
+                href={BUSINESS.mapQueryUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-sm bg-white/10 hover:bg-white/15 text-white border border-white/20 font-mono text-xs tracking-wider uppercase transition-all"
+              >
+                <Compass className="w-4 h-4 text-brand-amber" />
+                <span>Get Studio Directions</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Official Capabilities Breakdown */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8">
+              <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
+                OFFICIAL SERVICE SCOPE
+              </div>
+              <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
+                Verified Ceramic Coating Properties
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  title: "Premium Ceramic Coating",
+                  desc: "High-density SiO2 polymer formulation engineered to bond chemically with automotive clearcoat for persistent surface defense.",
+                },
+                {
+                  title: "Paint Protection",
+                  desc: "Shields delicate factory automotive paintwork from environmental fallout, acid rain, bird droppings, and tree sap etching.",
+                },
+                {
+                  title: "Gloss Enhancement",
+                  desc: "Generates an intense wet-look, candy-like optical reflection that magnifies metallic flake and basecoat color richness.",
+                },
+                {
+                  title: "Hydrophobic Protection",
+                  desc: "Creates ultra-high water contact angles, causing water and road grime to bead up and sheet off the surface effortlessly.",
+                },
+                {
+                  title: "Long-lasting Surface Protection",
+                  desc: "Durable covalent molecular bonding engineered to withstand repeated wash cycles, high heat, and coastal atmospheric moisture.",
+                },
+                {
+                  title: "Dust-Controlled Cleanroom Application",
+                  desc: "Meticulously applied in our enclosed, dust-filtered studio bays with temperature stabilization and precision LED inspection.",
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="p-5 sm:p-6 rounded-sm bg-[#0e0e0e]/92 relative z-10 border border-white/10 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="flex items-center space-x-2 text-brand-red mb-3">
+                      <CheckCircle2 className="w-4 h-4 shrink-0" />
+                      <span className="font-mono text-[11px] uppercase tracking-wider">
+                        CAPABILITY 0{idx + 1}
+                      </span>
+                    </div>
+                    <h3 className="font-display text-lg font-bold text-white">{item.title}</h3>
+                    <p className="mt-2 text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Ceramic Coating Photo Gallery */}
+        <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-white/10">
             <div>

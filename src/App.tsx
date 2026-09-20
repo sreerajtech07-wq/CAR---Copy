@@ -10,9 +10,7 @@ import { StatsSection } from "./components/sections/StatsSection";
 import { StudioMarqueeGallery } from "./components/sections/StudioMarqueeGallery";
 import { ServicesSection } from "./components/sections/ServicesSection";
 import { BeforeAfter } from "./components/sections/BeforeAfter";
-import { AdvancedProtection } from "./components/sections/AdvancedProtection";
-import { PpfSunFilm } from "./components/sections/PpfSunFilm";
-import { StudioCare } from "./components/sections/StudioCare";
+import { AllServicesSection } from "./components/sections/AllServicesSection";
 import { BookingSection } from "./components/sections/BookingSection";
 import { FAQSection } from "./components/sections/FAQSection";
 import { GoogleReviews } from "./components/sections/GoogleReviews";
@@ -55,9 +53,7 @@ export const App: React.FC = () => {
         {/* 04. CORE SERVICES & TREATMENTS */}
         <ServicesSection />
         <BeforeAfter />
-        <PpfSunFilm />
-        <AdvancedProtection />
-        <StudioCare />
+        <AllServicesSection />
 
         {/* 06. FREQUENTLY ASKED QUESTIONS */}
         <FAQSection />
