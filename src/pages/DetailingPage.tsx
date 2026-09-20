@@ -19,32 +19,32 @@ export const DetailingPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "/assets/services/detailing.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647918/Videoshot_20260917_175215.jpg",
       title: "Paint Correction & Dual-Action Compounding",
       category: "EXTERIOR RESTORATION",
     },
     {
-      src: "/assets/hero/car_stationary.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647916/Videoshot_20260917_175213.jpg",
       title: "Studio Inspection & Gloss Evaluation",
       category: "INSPECTION BAY",
     },
     {
-      src: "/assets/services/studio.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
       title: "Cleanroom Detailing Bay",
       category: "FACILITY ATELIER",
     },
     {
-      src: "/assets/hero/car_low_front.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
       title: "Aerodynamic Splitter & Frontal Refinement",
       category: "DETAIL FINISH",
     },
     {
-      src: "/assets/services/ppf.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647685/Videoshot_20260917_175050.jpg",
       title: "Surface Preparation & Edge Polishing",
       category: "PRECISION CRAFT",
     },
     {
-      src: "/assets/hero/car_driver_exit.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647691/Videoshot_20260917_175042.jpg",
       title: "Interior Cabin Deep Detailing",
       category: "CABIN EXTRACTION",
     },

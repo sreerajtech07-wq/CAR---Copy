@@ -15,32 +15,32 @@ export const AntiGlareFilmPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "/assets/services/studio.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647922/Videoshot_20260917_175216.jpg",
       title: "Night Glare Reduction Installation",
       category: "OPTICAL CLARITY",
     },
     {
-      src: "/assets/services/sunfilm.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
       title: "Headlight Glare Diffusion",
       category: "FACILITY ATELIER",
     },
     {
-      src: "/assets/hero/car_stationary.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647911/Videoshot_20260917_175223.jpg",
       title: "High Definition Glass Clarity",
       category: "PRECISION CRAFT",
     },
     {
-      src: "/assets/hero/car_low_front.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647690/Videoshot_20260917_175046.jpg",
       title: "Eye Strain Mitigation Shield",
       category: "OPTICAL TEST",
     },
     {
-      src: "/assets/services/ppf.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
       title: "Combined Glass & Surface Protection",
       category: "COMBO PROTECTION",
     },
     {
-      src: "/assets/hero/car_driver_exit.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647691/Videoshot_20260917_175042.jpg",
       title: "Driver Comfort & Safety",
       category: "CLIMATE CONTROL",
     },

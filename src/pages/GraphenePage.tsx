@@ -20,32 +20,32 @@ export const GraphenePage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "/assets/services/graphene.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647916/Videoshot_20260917_175213.jpg",
       title: "Molecular Shield Bonding",
       category: "COATING MATRIX",
     },
     {
-      src: "/assets/hero/car_stationary.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647918/Videoshot_20260917_175215.jpg",
       title: "Deep Candy Mirror Reflection",
       category: "OPTICAL GLOSS",
     },
     {
-      src: "/assets/services/ceramic.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647685/Videoshot_20260917_175050.jpg",
       title: "Graphene-Enhanced Polymer Layer",
       category: "COATING APPLICATION",
     },
     {
-      src: "/assets/services/studio.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
       title: "Dust-Controlled Cleanroom Application",
       category: "FACILITY ATELIER",
     },
     {
-      src: "/assets/hero/car_low_front.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
       title: "Multi-Angle Clearcoat Depth",
       category: "INSPECTION TUNNEL",
     },
     {
-      src: "/assets/services/borophene.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647922/Videoshot_20260917_175216.jpg",
       title: "Surface Durability & Chemical Shield",
       category: "CURING STAGE",
     },

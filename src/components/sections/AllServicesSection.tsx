@@ -27,7 +27,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Moisture Barrier",
       "Long-Term Protection",
     ],
-    image: "/assets/services/antirust.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643192/Videoshot_20260917_162739.jpg",
     route: "/anti-rust.html",
   },
   {
@@ -43,7 +43,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Sound Dampening",
       "Anti-Corrosion",
     ],
-    image: "/assets/services/antirust.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643193/Videoshot_20260917_162730.jpg",
     route: "/anti-rust.html",
   },
   {
@@ -59,7 +59,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Trim Revitalization",
       "Stain Removal",
     ],
-    image: "/assets/services/detailing.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647691/Videoshot_20260917_175042.jpg",
     route: "/additional-services.html",
   },
   {
@@ -75,7 +75,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Allergen Neutralization",
       "Odor Elimination",
     ],
-    image: "/assets/services/studio.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647690/Videoshot_20260917_175046.jpg",
     route: "/additional-services.html",
   },
   {
@@ -91,7 +91,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Clearcoat Refinement",
       "Mirror Finish",
     ],
-    image: "/assets/services/ceramic.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647918/Videoshot_20260917_175215.jpg",
     route: "/car-detailing.html",
   },
   {
@@ -107,7 +107,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Environmental Shield",
       "High Reflective Gloss",
     ],
-    image: "/assets/services/borophene.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647916/Videoshot_20260917_175213.jpg",
     route: "/additional-services.html",
   },
   {
@@ -123,7 +123,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Non-Metallized (Zero Signal Drop)",
       "Optical Clarity",
     ],
-    image: "/assets/services/sunfilm.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
     route: "/sun-film.html",
   },
   {
@@ -139,7 +139,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "UV Rejection",
       "Clear Day/Night Vision",
     ],
-    image: "/assets/services/sunfilm.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647922/Videoshot_20260917_175216.jpg",
     route: "/sun-film.html",
   },
   {
@@ -155,7 +155,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Privacy Guard",
       "Durable Multi-Ply",
     ],
-    image: "/assets/services/sunfilm.jpg",
+    image: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647911/Videoshot_20260917_175223.jpg",
     route: "/sun-film.html",
   },
 ];

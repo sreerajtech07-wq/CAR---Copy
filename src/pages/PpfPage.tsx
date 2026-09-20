@@ -20,32 +20,32 @@ export const PpfPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "/assets/services/ppf.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
       title: "Paint Protection Film Installation",
       category: "PROTECTION INSTALLATION",
     },
     {
-      src: "/assets/hero/car_stationary.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647685/Videoshot_20260917_175050.jpg",
       title: "Precision Cutting & Wrapping",
       category: "FACILITY ATELIER",
     },
     {
-      src: "/assets/services/studio.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647690/Videoshot_20260917_175046.jpg",
       title: "Edge Sealing & Finishing",
       category: "PRECISION CRAFT",
     },
     {
-      src: "/assets/hero/car_low_front.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647918/Videoshot_20260917_175215.jpg",
       title: "High-Impact Area Coverage",
       category: "PROTECTION ZONES",
     },
     {
-      src: "/assets/services/borophene.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647916/Videoshot_20260917_175213.jpg",
       title: "Combined PPF & Graphene",
       category: "COMBO PROTECTION",
     },
     {
-      src: "/assets/hero/car_driver_exit.jpg",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
       title: "Long-Term Durability",
       category: "PERFORMANCE TEST",
     },
