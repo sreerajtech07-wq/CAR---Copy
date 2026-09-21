@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..900;1,300..900&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,16 +5,20 @@
 @layer base {
   :root {
     color-scheme: light;
-    --font-primary: 'Nunito', sans-serif;
-    --bg-canvas: #050505;
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --font-display: 'Syne', sans-serif;
+    --color-3m-red: #ED1C24;
+    --bg-canvas: #0A0A0A;
     --bg-card: #0D0D10;
     --border-subtle: rgba(255, 255, 255, 0.1);
-    --text-primary: #F5F5F5;
-    --text-secondary: #D4D4D4;
-    --text-muted: #A3A3A3;
-    --accent-blue: #B5121B;
+    --text-primary: #E2E8F0;
+    --text-secondary: #CBD5E1;
+    --text-muted: #94A3B8;
+    --accent-blue: #ED1C24;
     --accent-blue-hover: #D71920;
-    --cta-amber: #D71920;
+    --cta-amber: #ED1C24;
     --cta-amber-hover: #B5121B;
     --cta-text: #FFFFFF;
     --cursor-x: 50vw;
@@ -24,7 +26,9 @@
   }
 
   body, html {
-    font-family: 'Nunito', sans-serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #E2E8F0;
+    background-color: #0A0A0A;
   }
 
   html {
@@ -32,27 +36,9 @@
     -webkit-overflow-scrolling: touch;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
-    font-family: 'Nunito', sans-serif !important;
   }
 
-  /* Base Nunito utility rule */
-  [class*="nunito-"] {
-    font-family: "Nunito", sans-serif;
-    font-optical-sizing: auto;
-  }
-
-  .nunito-light { font-family: "Nunito", sans-serif; font-weight: 300; font-style: normal; }
-  .nunito-regular { font-family: "Nunito", sans-serif; font-weight: 400; font-style: normal; }
-  .nunito-medium { font-family: "Nunito", sans-serif; font-weight: 500; font-style: normal; }
-  .nunito-bold { font-family: "Nunito", sans-serif; font-weight: 700; font-style: normal; }
-
-  /* Keep legacy utility aliases pointing to primary font */
-  .ubuntu-light { font-family: "Nunito", sans-serif; font-weight: 300; font-style: normal; }
-  .ubuntu-regular { font-family: "Nunito", sans-serif; font-weight: 400; font-style: normal; }
-  .ubuntu-medium { font-family: "Nunito", sans-serif; font-weight: 500; font-style: normal; }
-  .ubuntu-bold { font-family: "Nunito", sans-serif; font-weight: 700; font-style: normal; }
-
-  /* Brand Text: Perfectly locked inline baseline */
+  /* Reusable brand text utility: strictly inherits baseline and size */
   .text-3m-red {
     color: #ED1C24 !important;
     font-family: inherit !important;
@@ -63,6 +49,27 @@
     display: inline !important;
     vertical-align: baseline !important;
     margin-right: 0.25ch !important;
+  }
+
+  /* Paragraphs & Descriptions: Boost weight to 500 for crisp readability */
+  p, .text-secondary, [data-description] {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 500 !important;
+    line-height: 1.6;
+    color: #E2E8F0 !important;
+  }
+
+  /* Minute / Tiny Captions, Badges, and Micro-copy: Bump weight */
+  .text-xs, [class*="tracking-widest"] {
+    font-weight: 600 !important;
+  }
+
+  .text-sm {
+    font-weight: 500 !important;
+  }
+
+  [class*="font-mono"] {
+    font-weight: 600;
   }
 
   /* Force standard lining numerals and neutral baselines across all typography */
@@ -78,30 +85,11 @@
 
   /* Dedicated global class to guarantee 3M is completely flat and level */
   .brand-3m, [data-brand="3m"] {
-    font-family: "Nunito", sans-serif !important;
+    font-family: inherit !important;
     font-weight: inherit;
     letter-spacing: normal;
     display: inline;
     vertical-align: baseline;
-  }
-
-  .particle-canvas,
-  canvas {
-    transform: translateZ(0);
-    will-change: transform;
-    backface-visibility: hidden;
-    pointer-events: none;
-  }
-
-  .font-tamil {
-    font-family: "Nirmala UI", "Noto Sans Tamil", "Latha", sans-serif;
-  }
-
-  /* Standard natural paragraph styles without exaggerated sizes */
-  p, .text-secondary {
-    font-weight: 400;
-    line-height: 1.6;
-    color: #D4D4D4;
   }
 
   body {
