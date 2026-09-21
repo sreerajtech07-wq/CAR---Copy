@@ -257,9 +257,10 @@ export const StudioMarqueeGallery: React.FC = () => {
             </span>
             <h2
               id="gallery-title"
-              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-heading tracking-wide uppercase"
+              className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-heading tracking-wide uppercase leading-tight"
             >
-              3M OMR GALLERY
+              <span className="text-3m-red">3M</span>
+              <span>OMR GALLERY</span>
             </h2>
             <p className="text-xs text-neutral-400 mt-1 font-sans">
               Drag horizontally to explore • Click card to preview media • Hover video cards to preview studio execution

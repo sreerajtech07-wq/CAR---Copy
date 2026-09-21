@@ -70,7 +70,7 @@ export const ServiceQuoteWidget: React.FC<ServiceQuoteWidgetProps> = ({ serviceN
               <button
                 type="button"
                 onClick={handleWhatsAppQuote}
-                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-8 py-4 rounded-sm bg-[#25d366] hover:bg-emerald-600 text-white font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-lg shadow-emerald-950/40 active:scale-95 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center space-x-2.5 px-8 py-3.5 sm:py-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-mono text-xs sm:text-sm font-bold uppercase tracking-wider transition-all shadow-lg shadow-emerald-950/40 active:scale-95 cursor-pointer"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>Get My Quote on WhatsApp</span>

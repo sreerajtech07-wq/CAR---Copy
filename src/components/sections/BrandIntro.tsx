@@ -1,6 +1,7 @@
 import React from "react";
 import { BUSINESS } from "../../data/business";
 import { ShieldCheck, MapPin, Clock } from "lucide-react";
+import { renderWith3MLogo } from "../common/Brand3MLogo";
 
 export const BrandIntro: React.FC = () => {
   return (
@@ -60,8 +61,8 @@ export const BrandIntro: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-metallic-300" />
                 <span className="tracking-widest uppercase">AUTHORITATIVE STANDARDS</span>
               </div>
-              <div className="text-metallic-200 text-sm">
-                Authentic 3M automotive science, dedicated dust-controlled lighting bays, and precision detailing protocols.
+              <div className="text-metallic-200 text-sm flex items-center">
+                {renderWith3MLogo("Authentic 3M automotive science, dedicated dust-controlled lighting bays, and precision detailing protocols.")}
               </div>
             </div>
           </div>

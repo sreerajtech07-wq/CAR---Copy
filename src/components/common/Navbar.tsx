@@ -60,19 +60,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand Link (Local 3M Logo Asset + Text Lockup) */}
-        <a href="#hero" className="flex items-center gap-3 shrink-0 mr-6 md:mr-10 select-none group">
+        <a href="#hero" className="flex items-center gap-2.5 sm:gap-3 shrink-0 mr-4 md:mr-10 select-none group whitespace-nowrap">
           <img
             src={logoImg}
             alt="3M Logo"
             style={{ mixBlendMode: "screen" }}
-            className="h-8 md:h-9 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-200"
+            className="h-7 sm:h-8 md:h-9 w-auto object-contain shrink-0 group-hover:scale-105 transition-transform duration-200"
             loading="eager"
           />
-          <div className="flex flex-col justify-center -space-y-0.5 border-l border-white/20 pl-2.5">
-            <span className="text-xs md:text-sm font-black tracking-wider text-white uppercase leading-none font-display group-hover:text-brand-amber transition-colors">
+          <div className="flex flex-col justify-center -space-y-0.5 border-l border-white/20 pl-2 sm:pl-2.5 shrink-0">
+            <span className="text-xs sm:text-xs md:text-sm font-black tracking-wider text-white uppercase leading-none font-display group-hover:text-brand-amber transition-colors whitespace-nowrap">
               CAR CARE STUDIO
             </span>
-            <span className="text-[9px] tracking-widest text-neutral-400 uppercase font-bold font-mono">
+            <span className="text-[9px] tracking-widest text-neutral-400 uppercase font-bold font-mono whitespace-nowrap">
               OMR • CHENNAI
             </span>
           </div>

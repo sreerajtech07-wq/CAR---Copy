@@ -26,41 +26,42 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
         </p>
 
         {/* Action Buttons */}
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 w-full max-w-2xl mx-auto mt-6">
           {onOpenBooking && (
             <button
+              type="button"
               onClick={onOpenBooking}
-              className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-medium text-sm tracking-wider uppercase transition-all duration-300 shadow-xl shadow-red-950/50 hover:scale-105"
+              className="w-full sm:w-auto py-3 sm:py-3.5 px-6 rounded-xl bg-[#A50E14] hover:bg-[#8e0c11] text-white font-heading font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 transition-colors shadow-md cursor-pointer"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Book Studio Consultation</span>
+              <Calendar className="w-4 h-4 shrink-0" />
+              <span className="leading-tight">BOOK STUDIO CONSULTATION</span>
             </button>
           )}
 
           <a
-            href="tel:+917601933555"
-            className="flex items-center space-x-3 px-8 py-4 rounded-sm bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/40 font-medium text-sm tracking-wider uppercase backdrop-blur-md transition-all duration-300 hover:scale-105 shadow-lg min-h-[44px]"
+            href={`tel:${BUSINESS.phoneClean}`}
+            className="w-full sm:w-auto py-3 sm:py-3.5 px-6 rounded-xl bg-[#0F8A5F] hover:bg-[#0c724e] text-white font-heading font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2.5 transition-colors shadow-md text-center"
           >
-            <Phone className="w-4 h-4 text-white animate-pulse" />
-            <span>Call Studio: +91 76019 33555</span>
+            <Phone className="w-4 h-4 shrink-0" />
+            <span className="leading-tight">CALL STUDIO: +91 76019 33555</span>
           </a>
 
           <a
             href={`mailto:${BUSINESS.email}`}
-            className="flex items-center space-x-3 px-6 py-4 rounded-sm bg-dark-900 hover:bg-dark-850 text-metallic-200 hover:text-white border border-white/10 font-medium text-sm tracking-wider uppercase transition-all duration-300"
+            className="w-full sm:w-auto py-3 sm:py-3.5 px-5 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 border border-neutral-800 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-colors text-center"
           >
-            <Mail className="w-4 h-4" />
-            <span>Send Email</span>
+            <Mail className="w-4 h-4 shrink-0" />
+            <span className="leading-tight">SEND EMAIL</span>
           </a>
 
           <a
-            href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+            href={BUSINESS.mapQueryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-3 px-6 py-4 rounded-sm bg-dark-900 hover:bg-dark-850 text-metallic-200 hover:text-white border border-white/10 font-medium text-sm tracking-wider uppercase transition-all duration-300"
+            className="w-full sm:w-auto py-3 sm:py-3.5 px-5 rounded-xl bg-white/5 hover:bg-white/10 text-neutral-300 border border-neutral-800 font-heading font-bold text-xs sm:text-sm tracking-wider uppercase flex items-center justify-center gap-2 transition-colors text-center"
           >
-            <Navigation className="w-4 h-4 text-brand-amber" />
-            <span>Get Directions</span>
+            <Navigation className="w-4 h-4 text-amber-400 shrink-0" />
+            <span className="leading-tight">GET DIRECTIONS</span>
           </a>
         </div>
 

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300..900;1,300..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,6 +7,7 @@
 @layer base {
   :root {
     color-scheme: light;
+    --font-primary: 'Nunito', sans-serif;
     --bg-canvas: #050505;
     --bg-card: #0D0D10;
     --border-subtle: rgba(255, 255, 255, 0.1);
@@ -20,12 +23,46 @@
     --cursor-y: 50vh;
   }
 
+  body, html {
+    font-family: 'Nunito', sans-serif !important;
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     background-color: var(--bg-canvas);
     color: var(--text-primary);
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Nunito', sans-serif !important;
+  }
+
+  /* Base Nunito utility rule */
+  [class*="nunito-"] {
+    font-family: "Nunito", sans-serif;
+    font-optical-sizing: auto;
+  }
+
+  .nunito-light { font-family: "Nunito", sans-serif; font-weight: 300; font-style: normal; }
+  .nunito-regular { font-family: "Nunito", sans-serif; font-weight: 400; font-style: normal; }
+  .nunito-medium { font-family: "Nunito", sans-serif; font-weight: 500; font-style: normal; }
+  .nunito-bold { font-family: "Nunito", sans-serif; font-weight: 700; font-style: normal; }
+
+  /* Keep legacy utility aliases pointing to primary font */
+  .ubuntu-light { font-family: "Nunito", sans-serif; font-weight: 300; font-style: normal; }
+  .ubuntu-regular { font-family: "Nunito", sans-serif; font-weight: 400; font-style: normal; }
+  .ubuntu-medium { font-family: "Nunito", sans-serif; font-weight: 500; font-style: normal; }
+  .ubuntu-bold { font-family: "Nunito", sans-serif; font-weight: 700; font-style: normal; }
+
+  /* Brand Text: Perfectly locked inline baseline */
+  .text-3m-red {
+    color: #ED1C24 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    line-height: inherit !important;
+    letter-spacing: inherit !important;
+    display: inline !important;
+    vertical-align: baseline !important;
+    margin-right: 0.25ch !important;
   }
 
   /* Force standard lining numerals and neutral baselines across all typography */
@@ -41,7 +78,7 @@
 
   /* Dedicated global class to guarantee 3M is completely flat and level */
   .brand-3m, [data-brand="3m"] {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-family: "Nunito", sans-serif !important;
     font-weight: inherit;
     letter-spacing: normal;
     display: inline;
@@ -58,6 +95,13 @@
 
   .font-tamil {
     font-family: "Nirmala UI", "Noto Sans Tamil", "Latha", sans-serif;
+  }
+
+  /* Standard natural paragraph styles without exaggerated sizes */
+  p, .text-secondary {
+    font-weight: 400;
+    line-height: 1.6;
+    color: #D4D4D4;
   }
 
   body {
@@ -247,4 +291,24 @@
 .animate-marquee {
   animation: marquee 35s linear infinite;
 }
+
+/* Ensure mobile headings have crisp contrast and clear weight */
+@media (max-width: 768px) {
+  p, li, span {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Prevent tiny subtexts from becoming unreadable */
+  .text-xs {
+    font-size: 0.8125rem; /* 13px minimum for legibility */
+    font-weight: 600;
+  }
+
+  .text-sm {
+    font-size: 0.9375rem; /* 15px */
+    font-weight: 500;
+  }
+}
+
 

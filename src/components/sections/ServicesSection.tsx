@@ -1,6 +1,7 @@
 import React from "react";
 import { OFFICIAL_SERVICES } from "../../data/services";
 import { ArrowRight } from "lucide-react";
+import { renderWith3MLogo } from "../common/Brand3MLogo";
 
 const ServiceShowcase: React.FC = () => {
   return (
@@ -23,7 +24,9 @@ const ServiceShowcase: React.FC = () => {
                 <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
                 <span className="lg:hidden font-mono text-xs font-bold text-brand-amber">{service.priceDisplay}</span>
               </div>
-              <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-none tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">{service.categoryName}</h3>
+              <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-tight tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
+                {renderWith3MLogo(service.categoryName, "text-3m-red")}
+              </h3>
               <p className="mt-3 max-w-xl text-sm md:text-base leading-relaxed text-gray-200 font-light transition-colors duration-500 group-hover:text-white lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-24 lg:group-hover:opacity-100">{service.shortDescription}</p>
               <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-semibold transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
             </div>

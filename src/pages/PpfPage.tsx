@@ -23,6 +23,7 @@ import { ServiceReviews } from "../components/common/ServiceReviews";
 import { ServiceQuoteWidget } from "../components/common/ServiceQuoteWidget";
 import { RelatedServicesNav } from "../components/common/RelatedServicesNav";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
+import { renderWith3MLogo } from "../components/common/Brand3MLogo";
 
 export const PpfPage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -160,9 +161,8 @@ export const PpfPage: React.FC = () => {
               </span>
             </div>
 
-            <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
-              3M PPF (PAINT PROTECTION FILM) &
-              <span className="block text-metallic-silver">PHYSICAL ARMOR</span>
+            <h1 className="text-white font-extrabold text-2xl sm:text-3xl md:text-5xl uppercase tracking-tight leading-snug">
+              <span className="text-3m-red">3M</span>PPF (PAINT PROTECTION FILM) &amp; PHYSICAL ARMOR
             </h1>
 
             {/* TWO-TIER POSTER PRICING BLOCK */}
@@ -248,8 +248,8 @@ export const PpfPage: React.FC = () => {
                 <div className="font-mono text-xs text-brand-red tracking-widest uppercase mb-2">
                   PHYSICAL SURFACE PROTECTION
                 </div>
-                <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
-                  What is 3M Paint Protection Film (PPF)?
+                <h2 className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide leading-tight">
+                  WHAT IS <span className="text-3m-red">3M</span>PAINT PROTECTION FILM (PPF)?
                 </h2>
                 <p className="mt-4 text-sm sm:text-base text-metallic-300 font-light leading-relaxed">
                   3M Paint Protection Film (PPF) is an elastic, high-grade Thermoplastic Polyurethane (TPU) film applied directly over painted body panels. Unlike liquid coatings, PPF forms a physical shock-absorbing barrier.
@@ -277,7 +277,9 @@ export const PpfPage: React.FC = () => {
                 </div>
                 <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
                   <Award className="w-8 h-8 text-brand-amber mx-auto mb-2" />
-                  <div className="font-mono text-xl font-bold text-white">3M Warranty</div>
+                  <div className="font-mono text-xl font-bold text-white flex items-center justify-center">
+                    {renderWith3MLogo("3M Warranty")}
+                  </div>
                   <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">Studio Certified</div>
                 </div>
               </div>
@@ -393,7 +395,7 @@ export const PpfPage: React.FC = () => {
                 Our 5-Stage PPF Installation Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
-                Executed in temperature and dust-controlled cleanroom bays at 3M OMR
+                Executed in temperature and dust-controlled cleanroom bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
@@ -402,8 +404,8 @@ export const PpfPage: React.FC = () => {
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>
                     <div className="font-mono text-2xl font-black text-brand-red mb-2">{step.step}</div>
-                    <h3 className="font-display font-bold text-white text-sm mb-2">{step.title}</h3>
-                    <p className="text-xs text-metallic-400 font-light leading-relaxed">{step.desc}</p>
+                    <h3 className="font-display font-bold text-white text-base sm:text-lg mb-1.5">{step.title}</h3>
+                    <p className="text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">{renderWith3MLogo(step.desc)}</p>
                   </div>
                 </div>
               ))}

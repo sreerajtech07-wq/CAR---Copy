@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { X, CheckCircle2, ChevronRight, ChevronLeft, Calendar, Car, User } from "lucide-react";
 import { BUSINESS } from "../../data/business";
 import { VehicleSelector } from "./VehicleSelector";
+import { Brand3MLogo } from "./Brand3MLogo";
 
 export interface BookingModalProps {
   isOpen: boolean;
@@ -84,8 +85,8 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between pb-5 border-b border-white/10 mb-6">
           <div className="flex items-center space-x-3">
-            <div className="w-7 h-7 rounded-sm bg-brand-red flex items-center justify-center text-white font-bold text-xs">
-              3M
+            <div className="w-8 h-8 rounded-sm bg-brand-red flex items-center justify-center text-white font-bold p-1">
+              <Brand3MLogo className="h-full w-auto object-contain" />
             </div>
             <div>
               <span className="font-mono text-[10px] text-brand-red tracking-super-wide uppercase block">

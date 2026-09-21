@@ -23,6 +23,7 @@ import { ServiceReviews } from "../components/common/ServiceReviews";
 import { ServiceQuoteWidget } from "../components/common/ServiceQuoteWidget";
 import { RelatedServicesNav } from "../components/common/RelatedServicesNav";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
+import { renderWith3MLogo } from "../components/common/Brand3MLogo";
 
 export const Coating10HPage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -156,7 +157,7 @@ export const Coating10HPage: React.FC = () => {
             </div>
 
             <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
-              3M 10H COATING &
+              <span className="text-3m-red">3M</span> 10H COATING &
               <span className="block text-metallic-silver">DIAMOND HARDNESS SHIELD</span>
             </h1>
 
@@ -244,7 +245,7 @@ export const Coating10HPage: React.FC = () => {
                   HARDNESS ADVANCEMENT
                 </div>
                 <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
-                  What is 3M 10H Coating?
+                  WHAT IS <span className="text-3m-red">3M</span>10H COATING?
                 </h2>
                 <p className="mt-4 text-sm sm:text-base text-metallic-300 font-light leading-relaxed">
                   3M 10H Coating represents the pinnacle of ceramic liquid polymer hardness, achieving a 10H rating on the pencil hardness scale. It bonds directly with the factory clearcoat to create an uncompromising quartz armor layer.
@@ -272,7 +273,9 @@ export const Coating10HPage: React.FC = () => {
                 </div>
                 <div className="p-5 rounded-sm bg-[#0e0e0e]/90 border border-white/10 text-center">
                   <Award className="w-8 h-8 text-brand-amber mx-auto mb-2" />
-                  <div className="font-mono text-xl font-bold text-white">3M Warranty</div>
+                  <div className="font-mono text-xl font-bold text-white flex items-center justify-center">
+                    {renderWith3MLogo("3M Warranty")}
+                  </div>
                   <div className="font-mono text-[11px] text-metallic-400 uppercase mt-1">Studio Certified</div>
                 </div>
               </div>
@@ -388,7 +391,7 @@ export const Coating10HPage: React.FC = () => {
                 Our 5-Stage 10H Execution Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
-                Executed in temperature and dust-controlled cleanroom bays at 3M OMR
+                Executed in temperature and dust-controlled cleanroom bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
@@ -397,8 +400,8 @@ export const Coating10HPage: React.FC = () => {
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>
                     <div className="font-mono text-2xl font-black text-brand-red mb-2">{step.step}</div>
-                    <h3 className="font-display font-bold text-white text-sm mb-2">{step.title}</h3>
-                    <p className="text-xs text-metallic-400 font-light leading-relaxed">{step.desc}</p>
+                    <h3 className="font-display font-bold text-white text-base sm:text-lg mb-1.5">{step.title}</h3>
+                    <p className="text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">{renderWith3MLogo(step.desc)}</p>
                   </div>
                 </div>
               ))}

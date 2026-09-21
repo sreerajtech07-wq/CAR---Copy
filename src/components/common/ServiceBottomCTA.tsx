@@ -1,6 +1,7 @@
 import React from "react";
 import { Phone, Navigation } from "lucide-react";
 import { BUSINESS } from "../../data/business";
+import { renderWith3MLogo } from "./Brand3MLogo";
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -21,7 +22,7 @@ export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName 
     <section className="py-16 sm:py-20 bg-dark-900 border-b border-white/10 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center relative z-10">
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-wide text-white text-center leading-tight">
-          SCHEDULE A {serviceName.toUpperCase()} ASSESSMENT
+          SCHEDULE A {renderWith3MLogo(serviceName.toUpperCase())} ASSESSMENT
         </h2>
         <p className="mt-3 text-sm sm:text-base text-neutral-300 max-w-2xl font-light leading-relaxed">
           Visit our dedicated inspection bay opposite AKDR Golf Village on Rajiv Gandhi Salai, OMR.

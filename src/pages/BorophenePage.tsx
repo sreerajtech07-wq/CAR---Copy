@@ -23,6 +23,7 @@ import { ServiceReviews } from "../components/common/ServiceReviews";
 import { ServiceQuoteWidget } from "../components/common/ServiceQuoteWidget";
 import { RelatedServicesNav } from "../components/common/RelatedServicesNav";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
+import { renderWith3MLogo } from "../components/common/Brand3MLogo";
 
 export const BorophenePage: React.FC = () => {
   const [activeFaq, setActiveFaq] = useState<number | null>(0);
@@ -166,7 +167,7 @@ export const BorophenePage: React.FC = () => {
             </div>
 
             <h1 className="font-cinematic text-3xl sm:text-5xl md:text-6xl font-bold uppercase tracking-tight text-white leading-tight">
-              3M BOROPHENE COATING &
+              <span className="text-3m-red">3M</span> BOROPHENE COATING &
               <span className="block text-metallic-silver">SURFACE DEFENSE</span>
             </h1>
 
@@ -254,7 +255,7 @@ export const BorophenePage: React.FC = () => {
                   2D NANOMATERIAL BREAKTHROUGH
                 </div>
                 <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase tracking-tight">
-                  What is Borophene Coating?
+                  WHAT IS <span className="text-3m-red">3M</span>BOROPHENE COATING?
                 </h2>
                 <p className="mt-4 text-sm sm:text-base text-metallic-300 font-light leading-relaxed">
                   Borophene is an ultra-strong 2D boron atomic matrix possessing higher tensile strength and flexibility than graphene. Integrated into liquid polymer formulations, it establishes a dense, chemical-resistant shield over clearcoat.
@@ -398,7 +399,7 @@ export const BorophenePage: React.FC = () => {
                 Our 5-Stage Borophene Execution Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
-                Executed in temperature and dust-controlled cleanroom bays at 3M OMR
+                Executed in temperature and dust-controlled cleanroom bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
@@ -407,8 +408,8 @@ export const BorophenePage: React.FC = () => {
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>
                     <div className="font-mono text-2xl font-black text-brand-red mb-2">{step.step}</div>
-                    <h3 className="font-display font-bold text-white text-sm mb-2">{step.title}</h3>
-                    <p className="text-xs text-metallic-400 font-light leading-relaxed">{step.desc}</p>
+                    <h3 className="font-display font-bold text-white text-base sm:text-lg mb-1.5">{step.title}</h3>
+                    <p className="text-xs sm:text-sm text-metallic-400 font-light leading-relaxed">{renderWith3MLogo(step.desc)}</p>
                   </div>
                 </div>
               ))}

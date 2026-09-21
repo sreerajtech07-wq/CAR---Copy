@@ -1,5 +1,6 @@
 import React from "react";
 import { AlertTriangle, CheckCircle } from "lucide-react";
+import { renderWith3MLogo } from "../common/Brand3MLogo";
 
 export const WhyProfessional: React.FC = () => {
   const comparisons = [
@@ -75,7 +76,7 @@ export const WhyProfessional: React.FC = () => {
                   <div className="p-4 rounded-sm bg-emerald-950/20 border border-emerald-900/30">
                     <div className="flex items-center space-x-2 text-emerald-400 font-mono text-xs uppercase mb-1.5 font-semibold">
                       <CheckCircle className="w-3.5 h-3.5 shrink-0" />
-                      <span>3M Studio Standard</span>
+                      <span className="flex items-center">{renderWith3MLogo("3M Studio Standard")}</span>
                     </div>
                     <p className="text-xs text-metallic-300 font-light leading-relaxed">
                       {item.studio}

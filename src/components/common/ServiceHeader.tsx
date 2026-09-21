@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowLeft, Phone } from "lucide-react";
 import { BUSINESS } from "../../data/business";
+import { renderWith3MLogo } from "./Brand3MLogo";
 
 const WhatsAppIcon: React.FC<{ className?: string }> = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -41,13 +42,15 @@ export const ServiceHeader: React.FC<ServiceHeaderProps> = ({
           {nextServiceHref && nextServiceLabel ? (
             <a
               href={nextServiceHref}
-              className="hidden lg:inline-block text-xs font-mono font-medium uppercase tracking-wider text-neutral-400 hover:text-white transition-colors mr-2"
+              className="hidden lg:inline-flex items-center text-xs font-mono font-medium uppercase tracking-wider text-neutral-400 hover:text-white transition-colors mr-2"
             >
-              {nextServiceLabel} →
+              <span>{renderWith3MLogo(nextServiceLabel)}</span>
+              <span className="ml-1">→</span>
             </a>
           ) : (
-            <span className="hidden lg:inline-block text-xs font-mono font-semibold uppercase tracking-wider text-brand-amber mr-2">
-              {serviceName.toUpperCase()} →
+            <span className="hidden lg:inline-flex items-center text-xs font-mono font-semibold uppercase tracking-wider text-brand-amber mr-2">
+              <span>{renderWith3MLogo(serviceName.toUpperCase())}</span>
+              <span className="ml-1">→</span>
             </span>
           )}
 

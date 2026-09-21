@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowRight, Shield, Sparkles, Sun, Layers } from "lucide-react";
+import { renderWith3MLogo } from "./Brand3MLogo";
 
 interface RelatedServicesNavProps {
   currentServiceId: string;
@@ -62,16 +63,14 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
   return (
     <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10">
-          <div>
-            <span className="font-mono text-xs text-brand-red tracking-widest uppercase block mb-1">
-              STUDIO PORTFOLIO EXPLORER
-            </span>
-            <h3 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-              Explore Related 3M Services
-            </h3>
-          </div>
-          <p className="font-mono text-xs text-metallic-400 mt-2 md:mt-0">
+        <div className="mb-8 pb-4 border-b border-white/10">
+          <span className="font-mono text-xs text-brand-red tracking-widest uppercase block mb-1">
+            STUDIO PORTFOLIO EXPLORER
+          </span>
+          <h3 className="font-heading font-extrabold text-white text-2xl sm:text-3xl md:text-4xl tracking-wide uppercase leading-tight">
+            EXPLORE RELATED <span className="text-3m-red">3M</span> SERVICES
+          </h3>
+          <p className="font-mono text-xs text-metallic-400 mt-1 uppercase tracking-wide">
             COMPLEMENTARY PROTECTIVE TREATMENTS
           </p>
         </div>
@@ -95,8 +94,8 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
                     </span>
                   </div>
 
-                  <h4 className="font-display text-lg font-bold text-white group-hover:text-brand-red transition-colors">
-                    {service.name}
+                  <h4 className="font-display text-lg font-bold text-white group-hover:text-brand-red transition-colors flex items-center">
+                    {renderWith3MLogo(service.name)}
                   </h4>
                   <p className="mt-2 text-xs text-metallic-400 font-light leading-relaxed">
                     {service.desc}

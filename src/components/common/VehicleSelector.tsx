@@ -100,10 +100,10 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
   return (
     <div className="space-y-4">
       {/* BRAND & MODEL INPUT ROW */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
         {/* 1. VEHICLE BRAND */}
         <div className="relative" ref={brandRef}>
-          <label className="block text-xs font-mono font-bold text-metallic-400 mb-1.5 uppercase tracking-wider">
+          <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 block">
             VEHICLE BRAND *
           </label>
           <div className="relative">
@@ -118,20 +118,20 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
                 setShowBrandDropdown(true);
               }}
               onFocus={() => setShowBrandDropdown(true)}
-              className="w-full min-h-[44px] bg-[#141414] border border-white/15 text-sm text-white px-4 py-3 rounded-sm focus:border-brand-red focus:ring-1 focus:ring-brand-red focus:outline-none transition-colors font-sans"
+              className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors font-sans"
             />
-            <ChevronDown className="w-4 h-4 text-neutral-500 absolute right-3 top-3.5 pointer-events-none" />
+            <ChevronDown className="w-4 h-4 text-neutral-400 absolute right-3.5 top-3.5 pointer-events-none" />
           </div>
 
           {/* Brand Floating Dropdown */}
           {showBrandDropdown && (
-            <div className="absolute left-0 right-0 mt-1.5 bg-[#181818] border border-white/15 rounded-sm shadow-2xl backdrop-blur-md max-h-48 overflow-y-auto z-50 py-1">
+            <div className="absolute left-0 right-0 mt-1.5 bg-[#181818] border border-neutral-800 rounded-lg shadow-2xl backdrop-blur-md max-h-48 overflow-y-auto z-50 py-1">
               {brandSuggestions.length > 0 ? (
                 brandSuggestions.map((item, idx) => (
                   <div
                     key={idx}
                     onClick={() => handleSelectBrand(item)}
-                    className="hover:bg-brand-red/20 hover:text-white cursor-pointer px-4 py-2.5 text-xs text-neutral-200 font-medium transition font-mono"
+                    className="hover:bg-red-600/20 hover:text-white cursor-pointer px-4 py-2.5 text-xs sm:text-sm text-neutral-200 font-medium transition"
                   >
                     {item}
                   </div>
@@ -139,7 +139,7 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
               ) : (
                 <div
                   onClick={() => setShowBrandDropdown(false)}
-                  className="px-4 py-2.5 text-xs text-neutral-400 italic font-mono cursor-pointer"
+                  className="px-4 py-2.5 text-xs text-neutral-400 italic cursor-pointer"
                 >
                   Use custom brand "{brandQuery}"
                 </div>
@@ -150,7 +150,7 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
 
         {/* 2. VEHICLE NAME / MODEL */}
         <div className="relative" ref={modelRef}>
-          <label className="block text-xs font-mono font-bold text-metallic-400 mb-1.5 uppercase tracking-wider">
+          <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 block">
             VEHICLE NAME / MODEL *
           </label>
           <div className="relative">
@@ -168,20 +168,20 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
                 setShowModelDropdown(true);
               }}
               onFocus={() => setShowModelDropdown(true)}
-              className="w-full min-h-[44px] bg-[#141414] border border-white/15 text-sm text-white px-4 py-3 rounded-sm focus:border-brand-red focus:ring-1 focus:ring-brand-red focus:outline-none transition-colors font-sans"
+              className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors font-sans"
             />
-            <ChevronDown className="w-4 h-4 text-neutral-500 absolute right-3 top-3.5 pointer-events-none" />
+            <ChevronDown className="w-4 h-4 text-neutral-400 absolute right-3.5 top-3.5 pointer-events-none" />
           </div>
 
           {/* Model Floating Dropdown */}
           {showModelDropdown && (
-            <div className="absolute left-0 right-0 mt-1.5 bg-[#181818] border border-white/15 rounded-sm shadow-2xl backdrop-blur-md max-h-48 overflow-y-auto z-50 py-1">
+            <div className="absolute left-0 right-0 mt-1.5 bg-[#181818] border border-neutral-800 rounded-lg shadow-2xl backdrop-blur-md max-h-48 overflow-y-auto z-50 py-1">
               {modelSuggestions.length > 0 ? (
                 modelSuggestions.map((item, idx) => (
                   <div
                     key={idx}
                     onClick={() => handleSelectModel(item)}
-                    className="hover:bg-brand-red/20 hover:text-white cursor-pointer px-4 py-2.5 text-xs text-neutral-200 font-medium transition font-mono"
+                    className="hover:bg-red-600/20 hover:text-white cursor-pointer px-4 py-2.5 text-xs sm:text-sm text-neutral-200 font-medium transition"
                   >
                     {item}
                   </div>
@@ -189,7 +189,7 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
               ) : (
                 <div
                   onClick={() => setShowModelDropdown(false)}
-                  className="px-4 py-2.5 text-xs text-neutral-400 italic font-mono cursor-pointer"
+                  className="px-4 py-2.5 text-xs text-neutral-400 italic cursor-pointer"
                 >
                   {modelQuery
                     ? `Use model "${modelQuery}"`
@@ -204,11 +204,11 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
       </div>
 
       {/* 3. VEHICLE TYPE SELECTOR */}
-      <div>
-        <label className="block text-xs font-mono font-bold text-metallic-400 mb-1.5 uppercase tracking-wider">
+      <div className="w-full">
+        <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2 block">
           VEHICLE TYPE *
         </label>
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-3 gap-2.5 w-full">
           {vehicleTypes.map((type) => {
             const isSelected = vehicleType.toLowerCase() === type.toLowerCase();
             return (
@@ -216,10 +216,10 @@ export const VehicleSelector: React.FC<VehicleSelectorProps> = ({
                 key={type}
                 type="button"
                 onClick={() => onVehicleTypeChange(type)}
-                className={`py-3 px-2 text-center rounded-sm font-mono text-xs font-bold uppercase tracking-wider transition-all duration-200 border cursor-pointer ${
+                className={`w-full py-2.5 px-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-lg border transition-colors duration-150 text-center truncate flex items-center justify-center cursor-pointer ${
                   isSelected
-                    ? "bg-brand-red text-white border-brand-red shadow-[0_0_15px_rgba(220,38,38,0.5)] scale-[1.02]"
-                    : "bg-[#141414] text-metallic-300 border-white/15 hover:border-white/30 hover:text-white"
+                    ? "bg-[#ED1C24] text-white border-[#ED1C24] shadow-sm"
+                    : "bg-[#141414] text-neutral-300 border-neutral-800 hover:border-neutral-700"
                 }`}
               >
                 {type}

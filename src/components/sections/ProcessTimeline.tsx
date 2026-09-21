@@ -92,7 +92,7 @@ export const ProcessTimeline: React.FC = () => {
                   <h3 className="font-display text-lg sm:text-xl font-bold text-gray-900 tracking-wide">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+                  <p className="mt-3 text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
                     {step.detail}
                   </p>
                 </div>

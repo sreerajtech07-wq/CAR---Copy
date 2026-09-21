@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CheckCircle2, ChevronDown, ChevronUp } from "lucide-react";
+import { CheckCircle2, ChevronDown, ChevronUp, MessageSquare } from "lucide-react";
 import { BUSINESS } from "../../data/business";
 import { VehicleSelector } from "../common/VehicleSelector";
 
@@ -77,7 +77,6 @@ export const BookingSection: React.FC = () => {
       preference: contactPreference,
     };
 
-    // Asynchronous POST request to Google Apps Script Web App (silent no-cors)
     try {
       fetch("https://script.google.com/macros/s/AKfycbz_YOUR_APPS_SCRIPT_ID/exec", {
         method: "POST",
@@ -89,7 +88,6 @@ export const BookingSection: React.FC = () => {
       // Ignore background post errors
     }
 
-    // Direct WhatsApp redirect
     const scopeText = selectedServices.length > 0 ? selectedServices.map((s) => `• ${s}`).join("\n") : "• General Studio Consultation";
     const textMessage = `3M OMR STUDIO BOOKING DIRECTIVE:
 • Name: ${fullName}
@@ -106,7 +104,7 @@ ${scopeText}
 
   return (
     <section id="booking" className="relative w-full bg-black py-10 md:py-16 px-4 sm:px-6 overflow-hidden border-t border-neutral-900 font-sans">
-      <div className="max-w-3xl w-full mx-auto p-5 sm:p-8 md:p-10 my-0 bg-[#0d0d0d] border border-neutral-800/90 rounded-2xl shadow-2xl">
+      <div className="max-w-3xl w-full mx-auto p-5 sm:p-6 rounded-xl bg-neutral-900/80 border border-neutral-800 shadow-2xl">
         {/* Header */}
         <div className="text-left mb-6 sm:mb-8 pb-4 border-b border-neutral-900">
           <span className="text-[11px] font-mono font-bold tracking-[0.2em] text-red-500 uppercase block mb-1">
@@ -116,19 +114,19 @@ ${scopeText}
             STUDIO BOOKING FORM
           </h2>
           <p className="text-xs sm:text-sm text-neutral-400 mt-1">
-            Fill in your vehicle and contact details to secure your slot at 3M Car Care OMR.
+            Fill in your vehicle and contact details to secure your slot at <span className="text-3m-red">3M</span> Car Care Studio OMR.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* 1. Client Identity & Contacts */}
-          <div className="space-y-4">
-            <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
+          <div className="space-y-3">
+            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
               CONTACT DETAILS
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div className="sm:col-span-2">
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
+                <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 block">
                   FULL NAME *
                 </label>
                 <input
@@ -137,11 +135,11 @@ ${scopeText}
                   placeholder="e.g. Rahul Sharma"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
+                  className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
+                <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 block">
                   PHONE / WHATSAPP NUMBER *
                 </label>
                 <input
@@ -150,11 +148,11 @@ ${scopeText}
                   placeholder="+91 76019 33555"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
+                  className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors"
                 />
               </div>
               <div>
-                <label className="block text-xs font-medium text-neutral-400 mb-1">
+                <label className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-1.5 block">
                   EMAIL ADDRESS (OPTIONAL)
                 </label>
                 <input
@@ -162,15 +160,15 @@ ${scopeText}
                   placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full min-h-[44px] bg-[#141414] border border-neutral-800 text-sm text-white px-4 py-3 rounded-lg focus:border-red-600 focus:outline-none transition-colors"
+                  className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors"
                 />
               </div>
             </div>
           </div>
 
           {/* 2. Priority Service Selection */}
-          <div className="space-y-4 pt-2 border-t border-neutral-900">
-            <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
+          <div className="space-y-3 pt-2 border-t border-neutral-900">
+            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
               SELECT TREATMENTS
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -244,7 +242,7 @@ ${scopeText}
 
           {/* 3. Slot / Contact Preference */}
           <div className="space-y-3 pt-2 border-t border-neutral-900">
-            <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
+            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
               SLOT / CONTACT PREFERENCE
             </h3>
             <div className="flex flex-wrap gap-2.5 sm:gap-3">
@@ -267,7 +265,7 @@ ${scopeText}
 
           {/* 4. Vehicle Specifications */}
           <div className="space-y-4 pt-2 border-t border-neutral-900">
-            <h3 className="text-xs font-mono font-bold tracking-widest text-neutral-300 uppercase">
+            <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">
               VEHICLE SPECIFICATIONS
             </h3>
             <VehicleSelector
@@ -283,9 +281,10 @@ ${scopeText}
           {/* Action Button */}
           <button
             type="submit"
-            className="w-full min-h-[48px] mt-6 py-4 bg-red-600 hover:bg-red-700 active:scale-[0.99] text-white font-bold text-xs sm:text-sm tracking-wider uppercase rounded-xl transition-all shadow-lg shadow-red-600/20 cursor-pointer flex items-center justify-center gap-2"
+            className="w-full min-h-[44px] mt-6 py-3.5 px-5 bg-[#25D366] hover:bg-[#20bd5a] text-black font-extrabold text-sm sm:text-base tracking-wider uppercase rounded-xl transition-all shadow-lg shadow-[#25D366]/20 cursor-pointer flex items-center justify-center gap-2"
           >
-            <span>CONFIRM BOOKING VIA WHATSAPP →</span>
+            <MessageSquare className="w-5 h-5 shrink-0 fill-current" />
+            <span>GET MY QUOTE ON WHATSAPP</span>
           </button>
         </form>
       </div>
