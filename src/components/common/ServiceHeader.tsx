@@ -25,7 +25,7 @@ export const ServiceHeader: React.FC<ServiceHeaderProps> = ({
   )}%3F`;
 
   return (
-    <header className="sticky top-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-white/10 py-3 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 bg-dark-950/95 backdrop-blur-md border-b border-white/10 py-3.5 sm:py-4 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-2">
         {/* Left: Back to Home */}
         <a

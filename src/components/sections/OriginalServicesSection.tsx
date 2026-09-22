@@ -94,7 +94,18 @@ const ServiceMarquee: React.FC = () => {
             <div className="relative h-36 shrink-0 overflow-hidden bg-dark-900">
               <img src={service.image} alt={service.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" loading={index < OFFICIAL_SERVICES.length ? "eager" : "lazy"} />
               <span className="absolute left-3 top-3 border border-white/15 bg-dark-950/80 px-2 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
-              <span className="absolute right-3 top-3 border border-brand-red/40 bg-brand-red/90 px-2 py-0.5 font-mono text-[9px] font-bold text-white">{service.priceDisplay}</span>
+              <span 
+                className="absolute right-3 top-3 inline-flex items-center px-3 py-1 text-xs font-bold font-mono tracking-wider rounded shadow-md z-20"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  background: '#FFFFFF',
+                  color: '#B8860B',
+                  border: '1px solid rgba(184, 134, 11, 0.4)',
+                  zIndex: 20
+                }}
+              >
+                {service.priceDisplay}
+              </span>
             </div>
             <div className="flex flex-1 flex-col p-4">
               <span className="font-mono text-[10px] tracking-widest text-brand-red">0{(index % OFFICIAL_SERVICES.length) + 1} / SERVICES</span>

@@ -77,11 +77,11 @@ export const GalleryPage: React.FC = () => {
       <ParticleNetworkBackground />
 
       {/* Top Header & Navigation */}
-      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0c0c0c]/90 border-b border-white/10 py-4">
+      <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0c0c0c]/95 border-b border-white/10 py-3 sm:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 text-white font-mono text-xs uppercase tracking-wider border border-white/15 transition-all group"
+            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-white font-mono text-xs uppercase tracking-wider border border-white/20 transition-all group z-30 cursor-pointer"
           >
             <ArrowLeft className="w-4 h-4 text-brand-red group-hover:-translate-x-1 transition-transform" />
             <span>BACK TO HOME</span>
@@ -98,7 +98,7 @@ export const GalleryPage: React.FC = () => {
 
           <a
             href={`tel:${BUSINESS.phoneClean}`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs uppercase tracking-wider transition-all shadow-md"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-sm bg-brand-red hover:bg-brand-crimson text-white font-mono text-xs uppercase tracking-wider transition-all shadow-md z-30"
           >
             <Phone className="w-3.5 h-3.5" />
             <span className="hidden md:inline">CALL STUDIO</span>
@@ -106,7 +106,7 @@ export const GalleryPage: React.FC = () => {
         </div>
       </header>
 
-      <main className="relative z-10 pt-28 pb-20">
+      <main className="relative z-10 pt-24 sm:pt-32 pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <span className="font-mono text-xs text-brand-red font-bold uppercase tracking-widest block mb-2">

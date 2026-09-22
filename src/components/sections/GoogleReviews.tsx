@@ -27,13 +27,13 @@ export const GOOGLE_REVIEWS: VerifiedReview[] = [
   },
   {
     id: 2,
-    author: "சரவணன் குமார்",
+    author: "Saravanan Kumar",
     rating: 5,
     relativeTime: "1 month ago",
     service: "9H Ceramic Coating",
     carModel: "Hyundai Creta",
-    text: "காரை டெலிவரி எடுத்த உடனே இங்கே செராமிக் கோட்டிங் செய்தேன். ஃபினிஷிங் வேற லெவல்! வாட்டர் பீடிங் எஃபெக்ட் மற்றும் கிளாஸ் லுக் ரொம்ப நல்லா வந்திருக்கு. வேலை ரொம்ப நேர்த்தியா பண்ணி கொடுத்தாங்க.",
-    initial: "ச",
+    text: "Got 3M ceramic coating done right after taking car delivery. The glass finish and hydrophobic water-beading effect are next level! The team executed the paint correction with extreme precision.",
+    initial: "S",
     bgColor: "#188038", // Green
   },
   {
@@ -49,13 +49,13 @@ export const GOOGLE_REVIEWS: VerifiedReview[] = [
   },
   {
     id: 4,
-    author: "விஜய் பாலாஜி",
+    author: "Vijay Balaji",
     rating: 5,
     relativeTime: "2 months ago",
     service: "Paint Correction & Polish",
     carModel: "Kia Seltos",
-    text: "காரில் இருந்த ஸ்கிராட்ச் மற்றும் ஸ்வர்ல் மார்க்ஸ் எல்லாம் போயிட்டு இப்போ புது கார் மாதிரி பலபளன்னு இருக்கு. டீடெய்லிங் வேலை ரொம்ப திருப்தியா இருந்தது. 3M டீமுக்கு என் பாராட்டுக்கள்!",
-    initial: "வி",
+    text: "All heavy scratches and swirl marks on my black Seltos were completely eliminated. Looks brand new right out of the showroom! Exceptional detailing craftsmanship by the 3M OMR team.",
+    initial: "V",
     bgColor: "#f29900", // Amber
   },
   {
@@ -71,13 +71,13 @@ export const GOOGLE_REVIEWS: VerifiedReview[] = [
   },
   {
     id: 6,
-    author: "தினேஷ் ராஜ்",
+    author: "Dinesh Raj",
     rating: 5,
     relativeTime: "3 months ago",
     service: "Underbody Anti-Rust & Sunfilm",
     carModel: "Mahindra Thar",
-    text: "ஈசிஆர் பக்கத்துல இருக்கிறதால உப்பு காத்து பட்டு கார் அடியில் துரு பிடிக்காம இருக்க அண்டர்பாடி கோட்டிங் பண்ணேன். 5 வருஷ வாரண்டி கார்டு கொடுத்தாங்க. சர்வீஸ் மற்றும் வாடிக்கையாளர் கவனிப்பு சூப்பர்.",
-    initial: "தி",
+    text: "Living near ECR, salt air oxidation was a big concern for underbody rust. Got the 3M anti-rust coating done with a 5-year warranty card. Comprehensive work and fantastic customer service!",
+    initial: "D",
     bgColor: "#1a73e8", // Blue
   },
   {

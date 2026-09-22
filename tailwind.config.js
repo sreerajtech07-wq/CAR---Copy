@@ -34,10 +34,11 @@ export default {
         }
       },
       fontFamily: {
-        display: ['"Outfit"', '"Syne"', '"Space Grotesk"', 'sans-serif'],
-        cinematic: ['"Outfit"', '"Syne"', 'sans-serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        display: ['"Oswald"', 'sans-serif'],
+        cinematic: ['"Oswald"', 'sans-serif'],
+        sans: ['"Oswald"', 'sans-serif'],
+        heading: ['"Oswald"', 'sans-serif'],
+        mono: ['"Oswald"', 'sans-serif'],
       },
       letterSpacing: {
         'super-wide': '0.35em',

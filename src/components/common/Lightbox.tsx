@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
 
 export interface LightboxMediaItem {
   id?: string;
@@ -148,34 +148,39 @@ export const Lightbox: React.FC<LightboxProps> = ({
   return (
     <div
       className="fixed inset-0 z-[99999] flex flex-col justify-between bg-black/95 backdrop-blur-2xl p-3 sm:p-6 text-white select-none pointer-events-auto transition-opacity duration-300"
-      onClick={onClose}
+      onClick={() => onClose()}
       role="dialog"
       aria-modal="true"
       aria-label="3M Studio Media Viewer"
     >
-      {/* Top Bar: Title, Count, Close CTA */}
+      {/* Top Bar Controls Below Navbar Clearance (top-16 sm:top-20) */}
       <div
-        className="flex items-center justify-between z-[100002] w-full max-w-7xl mx-auto pointer-events-auto shrink-0 py-2"
+        className="flex items-center justify-between z-[100002] w-full max-w-7xl mx-auto pointer-events-auto shrink-0 pt-16 sm:pt-20 pb-2 px-1 sm:px-4"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center space-x-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-brand-red animate-pulse" />
-          <span className="font-mono text-xs tracking-widest uppercase text-metallic-300 font-bold hidden xs:inline">
-            3M STUDIO MEDIA VAULT
-          </span>
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <button
+            type="button"
+            onClick={() => onClose()}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/70 hover:bg-black/90 border border-white/20 text-white font-mono text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-2xl transition-all cursor-pointer active:scale-95"
+            aria-label="Back to Homepage"
+          >
+            <ArrowLeft className="w-4 h-4 text-[#ED1C24]" />
+            <span>BACK</span>
+          </button>
           <span className="font-mono text-xs text-metallic-400 bg-white/5 border border-white/10 px-2.5 py-1 rounded-full font-bold">
             {currentIndex + 1} / {mediaList.length}
           </span>
         </div>
 
         <button
-          onClick={onClose}
+          onClick={() => onClose()}
           type="button"
-          className="flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-red hover:bg-brand-crimson text-white transition-all duration-300 focus:outline-none font-mono text-xs font-bold uppercase tracking-wider border border-white/20 shadow-2xl cursor-pointer active:scale-95 z-[100002]"
+          className="flex items-center space-x-2 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-xl bg-black/70 hover:bg-black/90 border border-white/20 text-white backdrop-blur-md transition-all duration-300 focus:outline-none font-mono text-xs font-bold uppercase tracking-wider shadow-2xl cursor-pointer active:scale-95 z-[100002]"
           aria-label="Close fullscreen lightbox"
         >
-          <X className="w-4 h-4" />
-          <span>CLOSE</span>
+          <X className="w-4 h-4 text-white" />
+          <span className="hidden sm:inline">CLOSE</span>
         </button>
       </div>
 

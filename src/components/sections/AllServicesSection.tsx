@@ -213,13 +213,19 @@ export const AllServicesSection: React.FC = () => {
                   </span>
                 )}
 
-                {/* Top Gold Price Badge */}
-                <div className="absolute top-4 right-4 font-mono px-3 py-1 rounded-sm bg-black/85 backdrop-blur-md border border-amber-500/40 shadow-lg shadow-amber-950/40 flex items-baseline gap-1 text-amber-400">
-                  <span className="text-[10px] font-bold">₹</span>
-                  <span className="text-sm font-extrabold tracking-tight">
-                    {srv.price.replace(/^₹/, "")}
-                  </span>
-                </div>
+                {/* Top White Gold Price Badge */}
+                <span 
+                  className="absolute top-4 right-4 inline-flex items-center px-3 py-1 text-xs sm:text-sm font-bold font-mono tracking-wider rounded shadow-md z-20"
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    background: '#FFFFFF',
+                    color: '#B8860B',
+                    border: '1px solid rgba(184, 134, 11, 0.4)',
+                    zIndex: 20
+                  }}
+                >
+                  {srv.price}
+                </span>
               </div>
 
               {/* Card Content Body */}

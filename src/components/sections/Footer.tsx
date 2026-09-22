@@ -57,15 +57,13 @@ export const Footer: React.FC = () => {
             {/* Integrated Google Map Iframe */}
             <div className="w-full h-64 md:h-72 rounded-xl overflow-hidden border border-white/10 shadow-2xl relative mt-4">
               <iframe
-                title="3M Car Care Studio OMR Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.5861110058375!2d80.2378912!3d12.9342938!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525c57b7705463%3A0xc3f7a637dbf2d721!2s3M%20Car%20Care%20Studio%20-%20Car%20Detailing%2C%20Ceramic%20Coating%20and%20PPF%2C%20OMR%20Mettukuppam!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.537206042319!2d80.23001667620262!3d12.937439183098869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525c631f4a9e11%3A0x95d201f8ce08e478!2s3M%20Car%20Care%20Studio%20-%20Car%20Detailing%2C%20Ceramic%20Coating%20and%20PPF%2C%20OMR%2F%20ECR!5e0!3m2!1sen!2sin!4v1790042596353!5m2!1sen!2sin"
                 className="w-full h-full rounded-lg border border-neutral-800 filter grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
-                allowFullScreen={false}
+                style={{ border: 0 }}
+                allowFullScreen
                 loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="3M Car Care Studio OMR/ECR Location"
               />
             </div>
           </div>

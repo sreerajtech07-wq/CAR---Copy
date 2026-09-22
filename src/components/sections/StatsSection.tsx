@@ -13,8 +13,7 @@ interface TrustMetric {
 }
 
 const TRUST_METRICS: readonly TrustMetric[] = [
-  { id: "cars", displayValue: "15,000+", label: "CARS PROTECTED" },
-  { id: "customers", displayValue: "13,000+", label: "HAPPY CUSTOMERS" },
+  { id: "cars", displayValue: "16,000+", label: "CARS SERVICED" },
   { id: "experience", displayValue: "12+", label: "YEARS EXPERIENCE" },
   { id: "rating", displayValue: "4.5 ★", label: "2,200+ GOOGLE REVIEWS", isRating: true },
 ];
@@ -60,9 +59,9 @@ export const StatsSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="trust-reveal grid grid-cols-1 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="trust-reveal grid grid-cols-1 rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 sm:grid-cols-3 lg:grid-cols-3">
           {TRUST_METRICS.map((metric) => (
-            <div key={metric.id} className="group border-b border-white/10 px-6 py-8 sm:px-7 sm:py-10 sm:[&:nth-child(even)]:border-l lg:border-b-0 lg:border-l first:lg:border-l-0 last:border-b-0 flex flex-col items-start justify-between">
+            <div key={metric.id} className="group border-b border-white/10 px-6 py-8 sm:px-7 sm:py-10 sm:border-b-0 sm:border-l first:sm:border-l-0 last:border-b-0 flex flex-col items-start justify-between">
               <div>
                 <div className="flex items-baseline gap-1">
                   <span className="font-sans text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-none">

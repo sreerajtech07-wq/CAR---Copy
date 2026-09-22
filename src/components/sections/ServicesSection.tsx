@@ -17,12 +17,22 @@ const ServiceShowcase: React.FC = () => {
             <div className="order-2 relative h-48 shrink-0 overflow-hidden bg-dark-900 lg:order-1 lg:h-52 lg:w-1/2">
               <img src={service.image} alt={`${service.title} service showcase`} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]" loading={index < 2 ? "eager" : "lazy"} />
               <span className="absolute left-4 top-4 border border-white/20 bg-dark-950/80 px-2.5 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
-              <span className="absolute right-4 top-4 border border-brand-red/40 bg-brand-red/90 px-2.5 py-1 font-mono text-[10px] font-bold tracking-wider text-white shadow-lg">{service.priceDisplay}</span>
+              <span 
+                className="absolute right-4 top-4 inline-flex items-center px-3 py-1 text-xs sm:text-sm font-bold font-mono tracking-wider rounded shadow-md z-20"
+                style={{
+                  backgroundColor: '#FFFFFF',
+                  background: '#FFFFFF',
+                  color: '#B8860B',
+                  border: '1px solid rgba(184, 134, 11, 0.4)',
+                  zIndex: 20
+                }}
+              >
+                {service.priceDisplay}
+              </span>
             </div>
             <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
-                <span className="lg:hidden font-mono text-xs font-bold text-brand-amber">{service.priceDisplay}</span>
               </div>
               <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-tight tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
                 {renderWith3MLogo(service.categoryName, "text-3m-red")}

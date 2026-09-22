@@ -13,8 +13,7 @@ interface TrustMetric {
 }
 
 const TRUST_METRICS: readonly TrustMetric[] = [
-  { id: "protected", value: 15000, suffix: "+", label: "CARS PROTECTED", note: "Official studio metric" },
-  { id: "customers", value: 13000, suffix: "+", label: "HAPPY CUSTOMERS", note: "Official studio metric" },
+  { id: "protected", value: 16000, suffix: "+", label: "CARS SERVICED", note: "Official studio metric" },
   { id: "experience", value: 12, suffix: "+", label: "YEARS EXPERIENCE", note: "Official studio metric" },
   { id: "services", value: 8, suffix: "", label: "OFFICIAL SERVICES", note: "Current service catalogue" },
 ];
@@ -28,9 +27,8 @@ export const TrustSection: React.FC = () => {
       const counters = Object.fromEntries(TRUST_METRICS.map((metric) => [metric.id, 0]));
       const animation = gsap.to(counters, {
         protected: TRUST_METRICS[0].value,
-        customers: TRUST_METRICS[1].value,
-        experience: TRUST_METRICS[2].value,
-        services: TRUST_METRICS[3].value,
+        experience: TRUST_METRICS[1].value,
+        services: TRUST_METRICS[2].value,
         duration: 1.8,
         ease: "power2.out",
         scrollTrigger: {
@@ -63,7 +61,7 @@ export const TrustSection: React.FC = () => {
           <p className="mt-4 max-w-md font-mono text-xs tracking-wider text-slate-500 md:mt-0 md:text-right">A STUDIO RECORD BUILT AROUND CAREFUL WORK AND CONSISTENT PROTECTION</p>
         </div>
 
-        <div className="grid grid-cols-1 divide-y divide-slate-200 border-y border-slate-200 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+        <div className="grid grid-cols-1 divide-y divide-slate-200 border-y border-slate-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0 lg:grid-cols-3">
           {TRUST_METRICS.map((metric) => (
             <div key={metric.id} className="group px-2 py-8 sm:px-7 sm:py-10 lg:px-8">
               <div className="font-display text-5xl font-bold tracking-tight text-slate-900 sm:text-6xl">
