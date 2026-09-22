@@ -69,6 +69,23 @@ export const ServicesSection: React.FC = () => {
           </p>
         </div>
 
+        {/* Enhanced Mobile Swipe Indicator */}
+        <div className="flex items-center justify-end gap-2 px-4 pt-1 pb-3 md:hidden">
+          <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center gap-2 drop-shadow-sm">
+            SWIPE TO EXPLORE
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </div>
+
         <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
           <ServiceShowcase />
         </div>

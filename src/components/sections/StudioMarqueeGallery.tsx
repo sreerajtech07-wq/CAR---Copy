@@ -167,7 +167,7 @@ export const StudioMarqueeGallery: React.FC = () => {
     let animationFrameId: number;
     const scrollStep = () => {
       if (!isHovered && !isDragging && !selectedMedia && track) {
-        track.scrollLeft += 1;
+        track.scrollLeft += 2;
         if (track.scrollLeft >= track.scrollWidth / 2) {
           track.scrollLeft = 0;
         }
