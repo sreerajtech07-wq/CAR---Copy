@@ -75,16 +75,17 @@ export const HeroSection: React.FC = () => {
           gsap.set(layer2, { autoAlpha: alpha2 });
         }
 
-        // Layer 3: Ceramic Coating (Frames 76 – 100 | ~51% – 66%)
+        // Layer 3: Ceramic Coating (Frames 76 – 100 | ~50% – 64%)
         if (layer3) {
-          const alpha3 = calcAlpha(p, 0.51, 0.55, 0.62, 0.66);
+          const alpha3 = calcAlpha(p, 0.50, 0.54, 0.60, 0.64);
           gsap.set(layer3, { autoAlpha: alpha3 });
         }
 
-        // Layer 4: Graphene Infusion (Frames 101 – 120 | ~67% – 79%)
+        // Layer 4: Graphene Matrix Coating (Frames 101 – 120 | ~60% – 79%)
+        // Direct linear crossfade mapping starting at 0.60 (overlapping with Ceramic fade-out) for unbroken zero-lag motion
         if (layer4) {
-          const alpha4 = calcAlpha(p, 0.67, 0.70, 0.76, 0.79);
-          const scale4 = 0.95 + 0.05 * Math.min(1, Math.max(0, (p - 0.67) / 0.03));
+          const alpha4 = calcAlpha(p, 0.60, 0.64, 0.76, 0.79);
+          const scale4 = gsap.utils.mapRange(0.60, 0.64, 0.95, 1.0, Math.min(0.64, Math.max(0.60, p)));
           gsap.set(layer4, { autoAlpha: alpha4, scale: scale4 });
         }
 
