@@ -42,7 +42,7 @@ export const getCleanMediaTitle = (item?: LightboxMediaItem | null): string => {
   if (category.includes("PPF") || category.includes("ARMOR")) {
     return "3M Scotchgard™ PPF Protection";
   }
-  if (category.includes("CERAMIC") || category.includes("GRAPHENE") || category.includes("10H") || category.includes("SURFACE")) {
+  if (category.includes("CERAMIC") || category.includes("GRAPHENE") || category.includes("SURFACE")) {
     return "3M Ceramic & Graphene Coating";
   }
   if (category.includes("SUNFILM") || category.includes("THERMAL")) {

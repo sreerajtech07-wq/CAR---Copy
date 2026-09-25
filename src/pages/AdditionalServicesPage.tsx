@@ -56,11 +56,6 @@ export const AdditionalServicesPage: React.FC = () => {
       title: "Engine Bay Degreasing & Dressing",
       desc: "Precision waterless degreasing and non-tacky protective dressing of engine bay plastics.",
     },
-    {
-      step: "05",
-      title: "Final Hygiene & Gloss Quality Audit",
-      desc: "Quality assurance walkthrough verifying clean air vent output and crystal glass transparency.",
-    },
   ];
 
   const decisionFactors = [
@@ -179,7 +174,7 @@ export const AdditionalServicesPage: React.FC = () => {
                 <div className="flex items-baseline gap-1 text-amber-400 font-mono">
                   <span className="text-lg md:text-xl font-bold">₹</span>
                   <span className="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                    1,800
+                    1,800*
                   </span>
                   <span className="text-xs text-zinc-400 ml-1 font-medium">onwards</span>
                 </div>
@@ -397,14 +392,14 @@ export const AdditionalServicesPage: React.FC = () => {
                 WORKFLOW EXCELLENCE
               </div>
               <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-                Our 5-Stage Detail Execution Process
+                Our 4-Stage Detail Execution Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
                 Executed in temperature and dust-controlled bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {executionSteps.map((step, idx) => (
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>

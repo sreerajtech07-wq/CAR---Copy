@@ -27,7 +27,6 @@ export const BookingSection: React.FC = () => {
     "Paint Protection Film (3M Scotchgard™ PPF)",
     "Ceramic Coating (9H Multi-Stage Glass)",
     "Graphene Coating (Hyper-Gloss Hydrophobic Shield)",
-    "10H Coating (Diamond-Grade Defense)",
     "Sunfilm (3M™ Crystalline Heat Shield)",
   ];
 

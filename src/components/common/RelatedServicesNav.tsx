@@ -14,7 +14,7 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
       href: "/ceramic-coating.html",
       icon: Sparkles,
       desc: "9H SiO2 optical gloss & hydrophobic shield",
-      price: "₹20,000",
+      price: "₹20,000*",
     },
     {
       id: "graphene",
@@ -22,15 +22,7 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
       href: "/graphene-coating.html",
       icon: Layers,
       desc: "High thermal dissipation carbon matrix",
-      price: "₹23,000",
-    },
-    {
-      id: "10h",
-      name: "3M 10H Coating",
-      href: "/10h-coating.html",
-      icon: Shield,
-      desc: "Diamond-grade clearcoat hardness armor",
-      price: "₹20,000",
+      price: "₹23,000*",
     },
     {
       id: "ppf",
@@ -38,7 +30,7 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
       href: "/ppf.html",
       icon: Shield,
       desc: "Self-healing TPU physical stone-chip barrier",
-      price: "₹600",
+      price: "₹600*",
     },
     {
       id: "sunfilm",
@@ -46,7 +38,7 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
       href: "/sun-film.html",
       icon: Sun,
       desc: "99% UV rejection & infrared heat shield",
-      price: "₹4,500",
+      price: "₹4,500*",
     },
     {
       id: "anti-glare",
@@ -54,7 +46,7 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
       href: "/anti-glare-film.html",
       icon: Sun,
       desc: "Night driving headlight glare diffusion",
-      price: "₹4,500",
+      price: "₹4,500*",
     },
   ];
 

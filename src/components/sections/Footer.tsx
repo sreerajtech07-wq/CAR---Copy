@@ -85,11 +85,6 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="/10h-coating.html" className="hover:text-white transition-colors duration-200 block">
-                  3M 10H Coating
-                </a>
-              </li>
-              <li>
                 <a href="/ppf.html" className="hover:text-white transition-colors duration-200 block">
                   3M PPF (Paint Protection Film)
                 </a>

@@ -56,11 +56,6 @@ export const CeramicPage: React.FC = () => {
       title: "Cleanroom Ceramic Coating Application",
       desc: "Cross-hatch manual application of 3M Ceramic liquid polymer in enclosed dust-filtered cleanroom bays.",
     },
-    {
-      step: "05",
-      title: "IR Curing & Quality Audit",
-      desc: "Shortwave infrared lamp baking and multi-angle gloss inspection to guarantee flawless cross-linking and surface hardness.",
-    },
   ];
 
   const decisionFactors = [
@@ -179,7 +174,7 @@ export const CeramicPage: React.FC = () => {
                 <div className="flex items-baseline gap-1 text-amber-400 font-mono">
                   <span className="text-lg md:text-xl font-bold">₹</span>
                   <span className="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                    20,000
+                    20,000*
                   </span>
                   <span className="text-xs text-zinc-400 ml-1 font-medium">onwards</span>
                 </div>
@@ -389,7 +384,7 @@ export const CeramicPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Step 6: 5-Step Studio Execution Process */}
+        {/* Step 6: 4-Step Studio Execution Process */}
         <section className="py-10 sm:py-14 border-b border-white/10 bg-transparent relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 text-center">
@@ -397,14 +392,14 @@ export const CeramicPage: React.FC = () => {
                 WORKFLOW EXCELLENCE
               </div>
               <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-                Our 5-Stage Ceramic Execution Process
+                Our 4-Stage Ceramic Execution Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
                 Executed in temperature and dust-controlled cleanroom bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {executionSteps.map((step, idx) => (
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>

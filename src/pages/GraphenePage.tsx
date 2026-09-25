@@ -57,11 +57,6 @@ export const GraphenePage: React.FC = () => {
       title: "Cleanroom Graphene Coating Application",
       desc: "Cross-hatch manual application of 3M Graphene matrix liquid in enclosed dust-filtered cleanroom bays.",
     },
-    {
-      step: "05",
-      title: "IR Curing & Quality Audit",
-      desc: "Shortwave infrared lamp baking and multi-angle gloss inspection to guarantee flawless cross-linking and surface hardness.",
-    },
   ];
 
   const decisionFactors = [
@@ -147,8 +142,8 @@ export const GraphenePage: React.FC = () => {
       {/* Top Sticky Header */}
       <ServiceHeader
         serviceName="Graphene Coating"
-        nextServiceHref="/10h-coating.html"
-        nextServiceLabel="3M 10H Coating"
+        nextServiceHref="/ppf.html"
+        nextServiceLabel="3M PPF"
       />
       <main className="relative z-10">
         {/* Step 1: Hero Banner */}
@@ -174,7 +169,7 @@ export const GraphenePage: React.FC = () => {
                 <div className="flex items-baseline gap-1 text-amber-400 font-mono">
                   <span className="text-lg md:text-xl font-bold">₹</span>
                   <span className="text-4xl md:text-5xl font-black tracking-tight text-white drop-shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                    23,000
+                    23,000*
                   </span>
                   <span className="text-xs text-zinc-400 ml-1 font-medium">onwards</span>
                 </div>
@@ -392,14 +387,14 @@ export const GraphenePage: React.FC = () => {
                 WORKFLOW EXCELLENCE
               </div>
               <h2 className="font-cinematic text-2xl sm:text-4xl font-bold text-white uppercase">
-                Our 5-Stage Graphene Execution Process
+                Our 4-Stage Graphene Execution Process
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-metallic-400 max-w-xl mx-auto font-mono">
                 Executed in temperature and dust-controlled cleanroom bays at <span className="text-3m-red">3M</span> OMR
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {executionSteps.map((step, idx) => (
                 <div key={idx} className="p-5 rounded-sm bg-[#0e0e0e]/92 border border-white/10 flex flex-col justify-between relative group">
                   <div>

@@ -17,7 +17,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "antirust",
     name: "3M Antirust Coating",
-    price: "₹2,900",
+    price: "₹2,900*",
     badge: "CORROSION BARRIER",
     description:
       "Heavy-duty anti-corrosion barrier engineered to shield internal body panels and chassis from coastal saline humidity.",
@@ -33,7 +33,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "underbody",
     name: "3M Underbody Coating",
-    price: "₹2,900",
+    price: "₹2,900*",
     badge: "UNDERCHASSIS SHIELD",
     description:
       "Thick bituminous underbody armor shielding vehicle undercarriage against stone chipping, road grime, and water contact.",
@@ -49,7 +49,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "interior",
     name: "3M Interior",
-    price: "₹1,650",
+    price: "₹1,650*",
     badge: "CABIN RECONDITIONING",
     description:
       "Complete deep-clean cabin treatment restoring upholstery, trim surfaces, dashboard, and carpets.",
@@ -65,7 +65,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "germ-kleen",
     name: "3M Germ Kleen",
-    price: "₹2,850",
+    price: "₹2,850*",
     badge: "99.9% STERILIZATION",
     description:
       "Medical-grade antimicrobial interior fumigation and contact sterilization eliminating 99.9% of bacteria and allergens.",
@@ -81,7 +81,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "polish",
     name: "3M Polish",
-    price: "₹4,600",
+    price: "₹4,600*",
     badge: "PAINT REFINEMENT",
     description:
       "Multi-stage machine paint refinement polishing out micro-swirls and restoring factory paint gloss.",
@@ -97,7 +97,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "teflon-polish",
     name: "3M Teflon Polish",
-    price: "₹4,600",
+    price: "₹4,600*",
     badge: "FLUOROPOLYMER SHIELD",
     description:
       "Fluoropolymer synthetic sealant imparting an ultra-smooth hydrophobic barrier and intense shine.",
@@ -113,7 +113,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "cr70",
     name: "3M CR70",
-    price: "₹12,000",
+    price: "₹12,000*",
     badge: "CRYSTALLINE SOLAR",
     description:
       "3M Crystalline 70 multilayer optical solar film rejecting up to 97% infrared heat while retaining factory transparency.",
@@ -129,7 +129,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "xp70",
     name: "3M XP70",
-    price: "₹4,500",
+    price: "₹4,500*",
     badge: "BALANCED SOLAR HEAT",
     description:
       "High-performance architectural & automotive solar rejection tint for balanced heat defense and glare reduction.",
@@ -145,7 +145,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
   {
     id: "im70",
     name: "3M IM70",
-    price: "₹7,000",
+    price: "₹7,000*",
     badge: "HYBRID THERMAL RAY",
     description:
       "Intermediate metallic hybrid solar shielding blocking harsh thermal rays and boosting interior cooling efficiency.",

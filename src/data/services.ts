@@ -22,8 +22,8 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     id: "ceramic-coating",
     title: "3M Ceramic Coating",
     categoryName: "3M CERAMIC COATING",
-    startingPrice: "₹20,000",
-    priceDisplay: "Starting at ₹20,000",
+    startingPrice: "₹20,000*",
+    priceDisplay: "Starting at ₹20,000*",
     shortDescription:
       "Ultra-hydrophobic SiO2 optical gloss shell providing multi-year paint protection, chemical resistance, and high-gloss depth.",
     includedServices: [
@@ -41,8 +41,8 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     id: "graphene-coating",
     title: "3M Graphene Coating",
     categoryName: "3M GRAPHENE COATING",
-    startingPrice: "₹23,000",
-    priceDisplay: "Starting at ₹23,000",
+    startingPrice: "₹23,000*",
+    priceDisplay: "Starting at ₹23,000*",
     shortDescription:
       "Advanced graphene matrix infusion delivering high thermal dissipation, antistatic dust repellency, and heavy-duty water-spot prevention.",
     includedServices: [
@@ -56,29 +56,11 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     route: "/graphene-coating.html",
   },
   {
-    id: "10h-coating",
-    title: "3M 10H Coating",
-    categoryName: "3M 10H COATING",
-    startingPrice: "₹20,000",
-    priceDisplay: "Starting at ₹20,000",
-    shortDescription:
-      "Diamond-grade 10H surface hardness defense engineered for superior scratch resistance and long-lasting optical shield durability.",
-    includedServices: [
-      "10H Diamond-Grade Hardness",
-      "Micro-Scratch Prevention",
-      "High Hydrophobic Sheen",
-      "Chemical & Acid Rain Defense",
-    ],
-    image: "https://images.unsplash.com/photo-1620584898989-d39f7f9ed1b7?auto=format&fit=crop&w=1200&q=80",
-    tag: "10H HARDNESS",
-    route: "/10h-coating.html",
-  },
-  {
     id: "ppf",
     title: "3M PPF (Paint Protection Film)",
     categoryName: "3M PPF (PAINT PROTECTION FILM)",
-    startingPrice: "₹600",
-    priceDisplay: "Starting at ₹600",
+    startingPrice: "₹600*",
+    priceDisplay: "Starting at ₹600*",
     shortDescription:
       "Self-healing thermoplastic polyurethane (TPU) barrier protecting high-impact zones against rock chips, scratches, and harsh road debris.",
     includedServices: [
@@ -96,8 +78,8 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     id: "sun-film",
     title: "3M Sunfilm",
     categoryName: "3M SUNFILM",
-    startingPrice: "₹4,500",
-    priceDisplay: "Starting at ₹4,500",
+    startingPrice: "₹4,500*",
+    priceDisplay: "Starting at ₹4,500*",
     shortDescription:
       "Premium automotive solar rejection films blocking up to 99% UV rays and heavy infrared heat to maintain a cool, protected cabin.",
     includedServices: [
@@ -114,8 +96,8 @@ export const OFFICIAL_SERVICES: readonly ServiceCategory[] = [
     id: "anti-glare-film",
     title: "3M Anti-Glare Film",
     categoryName: "3M ANTI-GLARE FILM",
-    startingPrice: "₹4,500",
-    priceDisplay: "Starting at ₹4,500",
+    startingPrice: "₹4,500*",
+    priceDisplay: "Starting at ₹4,500*",
     shortDescription:
       "Specialized optical clarity film designed to diffuse headlight glare, reduce eye strain during night driving, and optimize interior screen visibility.",
     includedServices: [

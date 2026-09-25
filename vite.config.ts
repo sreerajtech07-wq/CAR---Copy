@@ -38,7 +38,6 @@ export default defineConfig({
         main: resolve(import.meta.dirname, 'index.html'),
         ceramic: resolve(import.meta.dirname, 'ceramic-coating.html'),
         'graphene-coating': resolve(import.meta.dirname, 'graphene-coating.html'),
-        '10h-coating': resolve(import.meta.dirname, '10h-coating.html'),
         ppf: resolve(import.meta.dirname, 'ppf.html'),
         'sun-film': resolve(import.meta.dirname, 'sun-film.html'),
         'anti-glare-film': resolve(import.meta.dirname, 'anti-glare-film.html'),

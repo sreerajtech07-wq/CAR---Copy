@@ -6,7 +6,6 @@ export type ReviewCategory =
   | "ppf" 
   | "ceramic" 
   | "graphene" 
-  | "10h" 
   | "borophene" 
   | "sunfilm" 
   | "anti-glare" 
@@ -32,7 +31,6 @@ export const ServiceReviews: React.FC<ServiceReviewsProps> = ({ category }) => {
         );
       case "ceramic":
       case "graphene":
-      case "10h":
       case "borophene":
         return GOOGLE_REVIEWS.filter(
           (r) =>
