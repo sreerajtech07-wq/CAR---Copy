@@ -1,48 +1,99 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { OFFICIAL_SERVICES } from "../../data/services";
 import { ArrowRight } from "lucide-react";
 import { renderWith3MLogo } from "../common/Brand3MLogo";
 
 const ServiceShowcase: React.FC = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const total = OFFICIAL_SERVICES.length;
+
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const container = scrollRef.current;
+    const scrollLeft = container.scrollLeft;
+    const itemWidth = container.firstElementChild?.clientWidth || container.clientWidth * 0.86;
+    const newIndex = Math.min(
+      total - 1,
+      Math.max(0, Math.round(scrollLeft / itemWidth))
+    );
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
+  };
+
   return (
-    <div className="service-showcase flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:gap-6 lg:block lg:overflow-visible lg:pb-0">
-      {OFFICIAL_SERVICES.map((service, index) => {
-        return (
-          <a
-            key={service.id}
-            href={service.route}
-            draggable={false}
-            className="group relative flex min-h-[25rem] w-[min(86vw,30rem)] shrink-0 snap-start flex-col overflow-hidden border border-white/10 bg-dark-950/70 transition-colors duration-500 hover:border-brand-red/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red focus-visible:outline-offset-4 lg:min-h-0 lg:w-full lg:flex-row lg:items-stretch lg:border-x-0 lg:border-t-0 lg:bg-transparent lg:py-8 first:lg:border-t"
-          >
-            <div className="order-2 relative h-48 shrink-0 overflow-hidden bg-dark-900 lg:order-1 lg:h-52 lg:w-1/2">
-              <img src={service.image} alt={`${service.title} service showcase`} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]" loading={index < 2 ? "eager" : "lazy"} />
-              <span className="absolute left-4 top-4 border border-white/20 bg-dark-950/80 px-2.5 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
-              <span 
-                className="absolute right-4 top-4 inline-flex items-center px-3 py-1 text-xs sm:text-sm font-bold font-mono tracking-wider rounded shadow-md z-20"
-                style={{
-                  backgroundColor: '#FFFFFF',
-                  background: '#FFFFFF',
-                  color: '#B8860B',
-                  border: '1px solid rgba(184, 134, 11, 0.4)',
-                  zIndex: 20
-                }}
-              >
-                {service.priceDisplay}
-              </span>
-            </div>
-            <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
+    <div className="relative">
+      {/* Mobile Sticky Counter Indicator Bar */}
+      <div className="flex lg:hidden items-center justify-between px-1 pb-3 mb-1">
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono font-bold tracking-wider uppercase text-white flex items-center gap-1.5">
+            SWIPE TO EXPLORE
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="w-4 h-4 text-brand-red animate-pulse shrink-0" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth={2.5}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </span>
+        </div>
+
+        {/* Dynamic 1/N Counter Badge */}
+        <div className="flex items-center space-x-2 bg-black/70 border border-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono tracking-wider shadow-lg">
+          <span className="text-brand-red font-bold">{activeIndex + 1}</span>
+          <span className="text-zinc-500">/</span>
+          <span className="text-metallic-300">{total}</span>
+        </div>
+      </div>
+
+      <div 
+        ref={scrollRef}
+        onScroll={handleScroll}
+        className="service-showcase flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 sm:gap-6 lg:block lg:overflow-visible lg:pb-0 scrollbar-none"
+        style={{ scrollbarWidth: "none" }}
+      >
+        {OFFICIAL_SERVICES.map((service, index) => {
+          return (
+            <a
+              key={service.id}
+              href={service.route}
+              draggable={false}
+              className="group relative flex min-h-[25rem] w-[min(86vw,30rem)] shrink-0 snap-start flex-col overflow-hidden border border-white/10 bg-dark-950/70 transition-colors duration-500 hover:border-brand-red/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-red focus-visible:outline-offset-4 lg:min-h-0 lg:w-full lg:flex-row lg:items-stretch lg:border-x-0 lg:border-t-0 lg:bg-transparent lg:py-8 first:lg:border-t"
+            >
+              <div className="order-2 relative h-48 shrink-0 overflow-hidden bg-dark-900 lg:order-1 lg:h-52 lg:w-1/2">
+                <img src={service.image} alt={`${service.title} service showcase`} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.04]" loading={index < 2 ? "eager" : "lazy"} />
+                <span className="absolute left-4 top-4 border border-white/20 bg-dark-950/80 px-2.5 py-1 font-mono text-[9px] tracking-widest text-white">{service.tag}</span>
+                <span 
+                  className="absolute right-4 top-4 inline-flex items-center px-3 py-1 text-xs sm:text-sm font-bold font-mono tracking-wider rounded shadow-md z-20"
+                  style={{
+                    backgroundColor: '#FFFFFF',
+                    background: '#FFFFFF',
+                    color: '#B8860B',
+                    border: '1px solid rgba(184, 134, 11, 0.4)',
+                    zIndex: 20
+                  }}
+                >
+                  {service.priceDisplay}
+                </span>
               </div>
-              <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-tight tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
-                {renderWith3MLogo(service.categoryName, "text-3m-red")}
-              </h3>
-              <p className="mt-3 max-w-xl text-sm md:text-base leading-relaxed text-gray-200 font-light transition-colors duration-500 group-hover:text-white lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-24 lg:group-hover:opacity-100">{service.shortDescription}</p>
-              <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-semibold transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
-            </div>
-          </a>
-        );
-      })}
+              <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
+                </div>
+                <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-tight tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
+                  {renderWith3MLogo(service.categoryName, "text-3m-red")}
+                </h3>
+                <p className="mt-3 max-w-xl text-sm md:text-base leading-relaxed text-gray-200 font-light transition-colors duration-500 group-hover:text-white lg:max-h-0 lg:overflow-hidden lg:opacity-0 lg:transition-all lg:duration-500 lg:group-hover:max-h-24 lg:group-hover:opacity-100">{service.shortDescription}</p>
+                <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-white font-semibold transition-colors group-hover:text-brand-red">Explore service <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" /></span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -67,23 +118,6 @@ export const ServicesSection: React.FC = () => {
           <p className="mt-2 md:mt-0 font-mono text-[11px] sm:text-xs text-metallic-400 max-w-md md:text-right tracking-wider">
             AUTHORITATIVE AUTOMOTIVE DETAILING, SURFACE COATINGS & ADVANCED FILMS
           </p>
-        </div>
-
-        {/* Enhanced Mobile Swipe Indicator */}
-        <div className="flex items-center justify-end gap-2 px-4 pt-1 pb-3 md:hidden">
-          <span className="text-xs sm:text-sm font-bold tracking-wider uppercase text-white flex items-center gap-2 drop-shadow-sm">
-            SWIPE TO EXPLORE
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="w-4 h-4 sm:w-5 sm:h-5 text-white animate-pulse shrink-0" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor" 
-              strokeWidth={2.5}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </span>
         </div>
 
         <div className="relative -mx-4 px-4 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
