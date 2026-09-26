@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import logoImg from "../assets/logo/3m.png";
 
 export const Preloader: React.FC = () => {
   const [isVisible, setIsVisible] = useState(true);
@@ -25,11 +26,14 @@ export const Preloader: React.FC = () => {
         isFadingOut ? "opacity-0 -translate-y-5" : "opacity-100 translate-y-0"
       }`}
     >
-      {/* 1. Circular 3M Badge */}
-      <div className="w-24 h-24 rounded-full border border-white/10 bg-[#121212] flex items-center justify-center shadow-2xl animate-pulse">
-        <span className="text-white font-black text-2xl tracking-tighter font-cinematic">
-          3M
-        </span>
+      {/* 1. Circular 3M Emblem / Badge with Official Logo Asset */}
+      <div className="w-24 h-24 rounded-full border border-white/15 bg-[#121212] flex items-center justify-center shadow-2xl animate-pulse p-4">
+        <img
+          src={logoImg}
+          alt="3M Official Emblem"
+          style={{ mixBlendMode: "screen" }}
+          className="w-full h-auto object-contain"
+        />
       </div>
 
       {/* 2. Brand Typography */}
