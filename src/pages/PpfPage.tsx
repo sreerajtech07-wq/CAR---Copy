@@ -89,19 +89,24 @@ export const PpfPage: React.FC = () => {
       category: "FACILITY ATELIER",
     },
     {
-      src: "https://images.unsplash.com/photo-1770700391793-22fc46041c2b?auto=format&fit=crop&w=1200&q=80",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790356982/Videoshot_20260925_183651.jpg",
       title: "High-Gloss Self-Healing Barrier",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?auto=format&fit=crop&w=1200&q=80",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790401491/Videoshot_20260925_183630.jpg",
       title: "Full Bonnet Armor Coverage",
       category: "PROTECTION ZONES",
     },
     {
-      src: "https://images.unsplash.com/photo-1626737953167-d25b9474e74f?auto=format&fit=crop&w=1200&q=80",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790401491/Videoshot_20260925_183627.jpg",
       title: "Computer-Cut Template Fitment",
       category: "TEMPLATE ACCURACY",
+    },
+    {
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790401491/Videoshot_20260925_183639.jpg",
+      title: "3M PPF Clear Shield Protection",
+      category: "CLEAR SHIELD",
     },
   ];
 

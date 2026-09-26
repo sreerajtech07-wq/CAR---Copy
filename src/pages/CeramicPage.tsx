@@ -84,23 +84,23 @@ export const CeramicPage: React.FC = () => {
       category: "SURFACE DEFENSE",
     },
     {
-      src: "https://images.unsplash.com/photo-1658244500543-47f32dc51dc2?auto=format&fit=crop&w=1200&q=80",
-      title: "Deep Candy Mirror Reflection",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974878/IMG-20260921-WA0061.jpg",
+      title: "Deep Gloss Paint Protection",
       category: "OPTICAL GLOSS",
     },
     {
-      src: "https://images.unsplash.com/photo-1714434087671-06325b90f26a?auto=format&fit=crop&w=1200&q=80",
-      title: "Molecular SiO2 Shield Bonding",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790356981/ceramic_coating.jpg",
+      title: "3M Ceramic Coating Matrix",
       category: "COATING MATRIX",
     },
     {
-      src: "https://images.unsplash.com/photo-1711512972607-06928bf7a7fa?auto=format&fit=crop&w=1200&q=80",
-      title: "Dust-Controlled Cleanroom Application",
-      category: "FACILITY ATELIER",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790356981/graphene_coating.jpg",
+      title: "Hydrophobic Surface Shield",
+      category: "SURFACE DEFENSE",
     },
     {
-      src: "https://images.unsplash.com/photo-1609505864735-f0c0c0314a42?auto=format&fit=crop&w=1200&q=80",
-      title: "Multi-Angle Clearcoat Depth Inspection",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1790356982/Videoshot_20260925_183501.jpg",
+      title: "Cleanroom Ceramic Inspection",
       category: "INSPECTION TUNNEL",
     },
   ];

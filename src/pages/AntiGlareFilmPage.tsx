@@ -78,34 +78,19 @@ export const AntiGlareFilmPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://images.unsplash.com/photo-1708586314624-bed5b5be4187?auto=format&fit=crop&w=1200&q=80",
-      title: "Night Glare Reduction & High Clarity",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974871/IMG-20260921-WA0052.jpg",
+      title: "Night Glare Reduction & Windshield Shield",
       category: "OPTICAL CLARITY",
     },
     {
-      src: "https://images.unsplash.com/photo-1690739934131-a4b3b0d6d9c0?auto=format&fit=crop&w=1200&q=80",
-      title: "Opposing Headlight Scattering Shield",
-      category: "FACILITY ATELIER",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1649808007457-ed88108b9186?auto=format&fit=crop&w=1200&q=80",
-      title: "High Definition Windshield Tinting",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974875/IMG-20260921-WA0046.jpg",
+      title: "High Definition Anti-Glare Clarity",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://images.unsplash.com/photo-1696276938996-34c9104bc27f?auto=format&fit=crop&w=1200&q=80",
-      title: "Eye Strain Mitigation & Night Visibility",
+      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974878/IMG-20260921-WA0061.jpg",
+      title: "Opposing Headlight Diffusion Shield",
       category: "OPTICAL TEST",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1694807226968-4962d411f4b0?auto=format&fit=crop&w=1200&q=80",
-      title: "Scratch-Resistant Polymeric Film",
-      category: "SURFACE PROTECTION",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1656583156878-d45aeff486b6?auto=format&fit=crop&w=1200&q=80",
-      title: "Driver Safety & Fatigue Reduction",
-      category: "DRIVER SAFETY",
     },
   ];
 
