@@ -148,16 +148,29 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Sub-Footer Bar */}
-        <div className="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-          <div className="flex items-center">
-            © 2026 3M Car Care Studio. All rights reserved.
+        <div className="pt-8 border-t border-neutral-900 flex flex-col md:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <span>© 2026 3M Car Care Studio. All rights reserved.</span>
+            <span className="hidden md:inline">•</span>
+            <span className="text-neutral-500">Mettukuppam, OMR, Chennai</span>
           </div>
-          <div>
-            <a
-              href="#developers"
-              className="text-neutral-500 hover:text-neutral-300 transition-colors duration-200"
-            >
-              meet the developers
+          
+          {/* Legal Compliance Links */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] font-mono text-neutral-400">
+            <a href="#privacy" className="hover:text-white transition-colors">
+              Privacy Policy
+            </a>
+            <span>•</span>
+            <a href="#terms" className="hover:text-white transition-colors">
+              Terms &amp; Conditions
+            </a>
+            <span>•</span>
+            <a href="#cookies" className="hover:text-white transition-colors">
+              Cookie Policy
+            </a>
+            <span>•</span>
+            <a href="#cancellation" className="hover:text-white transition-colors">
+              Refund &amp; Cancellation
             </a>
           </div>
         </div>

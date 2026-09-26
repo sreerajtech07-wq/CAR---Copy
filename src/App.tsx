@@ -18,6 +18,7 @@ import { Footer } from "./components/sections/Footer";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { BookingModal } from "./components/common/BookingModal";
 import { FloatingWhatsApp } from "./components/common/FloatingWhatsApp";
+import { CookieConsent } from "./components/common/CookieConsent";
 
 export const App: React.FC = () => {
   const [isBookingOpen, setIsBookingOpen] = useState<boolean>(false);
@@ -79,6 +80,9 @@ export const App: React.FC = () => {
 
       {/* Intelligent Floating WhatsApp Access */}
       <FloatingWhatsApp />
+
+      {/* Cookie & Data Privacy Transparency Banner */}
+      <CookieConsent />
     </div>
   );
 };
