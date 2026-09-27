@@ -22,17 +22,21 @@ export const GalleryPage: React.FC = () => {
         if (response.ok) {
           const data = await response.json();
           if (isMounted && data.success && Array.isArray(data.items)) {
-            const fetchedItems: GalleryMediaItem[] = data.items;
-            const merged = [
-              ...staticGalleryData,
-              ...fetchedItems.filter((fItem) => {
-                const fUrl = fItem.url || fItem.src;
-                return !staticGalleryData.some(
-                  (sItem) => (sItem.url || sItem.src) === fUrl || sItem.id === fItem.id
-                );
-              }),
-            ];
-            setItems(merged);
+            const getCleanUrlKey = (urlStr?: string) =>
+              (urlStr || "").split("?")[0].replace(/\/+$/, "").toLowerCase();
+
+            const staticKeys = new Set(
+              staticGalleryData.map((sItem) => getCleanUrlKey(sItem.url || sItem.src))
+            );
+
+            const uniqueFetched = data.items.filter((fItem: any) => {
+              const fKey = getCleanUrlKey(fItem.url || fItem.src);
+              if (!fKey || staticKeys.has(fKey)) return false;
+              staticKeys.add(fKey);
+              return true;
+            });
+
+            setItems([...staticGalleryData, ...uniqueFetched]);
           }
         }
       } catch (err) {

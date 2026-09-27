@@ -136,16 +136,21 @@ export const StudioMarqueeGallery: React.FC = () => {
         if (response.ok) {
           const data = await response.json();
           if (isMounted && data.success && Array.isArray(data.items) && data.items.length > 0) {
-            const merged = [
-              ...staticGalleryData,
-              ...data.items.filter((cItem: any) => {
-                const cUrl = cItem.url || cItem.src;
-                return !staticGalleryData.some(
-                  (sItem) => (sItem.url || sItem.src) === cUrl || sItem.id === cItem.id
-                );
-              }),
-            ];
-            setItems(merged);
+            const getCleanUrlKey = (urlStr?: string) =>
+              (urlStr || "").split("?")[0].replace(/\/+$/, "").toLowerCase();
+
+            const staticKeys = new Set(
+              staticGalleryData.map((sItem) => getCleanUrlKey(sItem.url || sItem.src))
+            );
+
+            const uniqueFetched = data.items.filter((cItem: any) => {
+              const cKey = getCleanUrlKey(cItem.url || cItem.src);
+              if (!cKey || staticKeys.has(cKey)) return false;
+              staticKeys.add(cKey);
+              return true;
+            });
+
+            setItems([...staticGalleryData, ...uniqueFetched]);
           }
         }
       } catch (err) {
