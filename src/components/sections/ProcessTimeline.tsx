@@ -78,7 +78,13 @@ export const ProcessTimeline: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-6">
-                    <span className="font-mono text-xl font-bold text-gray-900 group-hover:text-brand-red transition-colors">
+                    <span 
+                      className={`font-mono text-2xl font-black transition-colors ${
+                        step.num === "03" 
+                          ? "text-[#F5D58A] drop-shadow-[0_0_8px_rgba(245,213,138,0.4)]" 
+                          : "text-gray-900 group-hover:text-brand-red"
+                      }`}
+                    >
                       {step.num}
                     </span>
                     <div className="p-2.5 rounded-sm bg-gray-100 border border-gray-200 text-gray-700">
