@@ -43,10 +43,12 @@ const ServiceShowcase: React.FC = () => {
         </div>
 
         {/* Dynamic 1/N Counter Badge */}
-        <div className="flex items-center space-x-2 bg-black/70 border border-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-mono tracking-wider shadow-lg">
-          <span className="text-brand-red font-bold">{activeIndex + 1}</span>
+        <div className="flex items-center space-x-2 bg-black/70 border border-white/15 backdrop-blur-md px-3.5 py-1.5 rounded-full text-xs font-mono tracking-wider shadow-lg">
+          <span className="text-sm font-black text-[#F5D58A] drop-shadow-[0_2px_6px_rgba(245,213,138,0.4)]" style={{ color: "#F5D58A" }}>
+            {String(activeIndex + 1).padStart(2, "0")}
+          </span>
           <span className="text-zinc-500">/</span>
-          <span className="text-metallic-300">{total}</span>
+          <span className="text-metallic-300 font-semibold">{String(total).padStart(2, "0")}</span>
         </div>
       </div>
 
@@ -82,7 +84,15 @@ const ServiceShowcase: React.FC = () => {
               </div>
               <div className="order-1 flex flex-1 flex-col justify-center p-5 lg:order-2 lg:px-10 lg:py-4">
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-xs tracking-[0.28em] text-brand-red font-bold">{String(index + 1).padStart(2, "0")} / SERVICES</span>
+                  <span className="font-mono text-xs tracking-[0.28em] font-bold flex items-center gap-1.5">
+                    <span className="text-base sm:text-lg font-black text-[#F5D58A] drop-shadow-[0_2px_8px_rgba(245,213,138,0.4)]" style={{ color: "#F5D58A" }}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="text-zinc-400 font-medium">/</span>
+                    <span className="text-xs sm:text-sm font-extrabold tracking-[0.28em] text-[#F5D58A] uppercase" style={{ color: "#F5D58A" }}>
+                      SERVICES
+                    </span>
+                  </span>
                 </div>
                 <h3 className="mt-3 max-w-xl font-cinematic text-2xl font-bold uppercase leading-tight tracking-wide text-white transition-transform duration-500 group-hover:translate-x-2 sm:text-3xl">
                   {renderWith3MLogo(service.categoryName, "text-3m-red")}

@@ -125,23 +125,6 @@ export const HeroSection: React.FC = () => {
           }
 
           gsap.set(stage3, { autoAlpha: a3, scale: scale3, y: y3 });
-
-          // Stagger bullets sequential entrance matching stone impact rhythm
-          const bullets = stage3.querySelectorAll(".ppf-bullet");
-          bullets.forEach((bullet, idx) => {
-            const triggerFrame = 41 + idx * 3;
-            let bAlpha = 0;
-            let bY = 10;
-            if (frame >= triggerFrame) {
-              const bProg = Math.min(1, (frame - triggerFrame) / 3);
-              bAlpha = bProg;
-              bY = 10 * (1 - bProg);
-            }
-            if (frame > 50) {
-              bAlpha = Math.max(0, 1 - (frame - 50) / 3);
-            }
-            gsap.set(bullet, { autoAlpha: bAlpha, y: bY });
-          });
         }
 
         // =========================================================================
@@ -232,7 +215,6 @@ export const HeroSection: React.FC = () => {
 
           let ctaX = 30;
           let ctaAlpha = 0;
-          let highlightSweepProg = 0;
 
           if (p >= 0.86) {
             // Line 1: YOUR CAR DESERVES LAYERS
@@ -246,9 +228,6 @@ export const HeroSection: React.FC = () => {
             aLine2 = prog2;
             yLine2 = 30 * (1 - prog2);
             blurLine2 = 8 * (1 - prog2);
-
-            // Highlight sweep
-            highlightSweepProg = Math.min(1, Math.max(0, (p - 0.88) / 0.06));
 
             // CTA glides into position
             const ctaProg = Math.min(1, Math.max(0, (p - 0.89) / 0.05));
@@ -267,7 +246,6 @@ export const HeroSection: React.FC = () => {
               autoAlpha: aLine2,
               y: yLine2,
               filter: `blur(${blurLine2}px)`,
-              backgroundPosition: `${(1 - highlightSweepProg) * 200}% 0%`,
             });
           }
 
@@ -319,7 +297,7 @@ export const HeroSection: React.FC = () => {
 
         {/* -------------------------------------------------------------------------
             STAGE 01: PROTECT WHAT YOU DRIVE. (Frames 001 - 015)
-            Color: Metallic Champagne #FFF8EA + Warm Gold #F5D58A Gradient Fill
+            Gradient: Neon Cyan to Deep Teal (#22D3EE -> #0EA5E9)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage1Ref}
@@ -327,33 +305,22 @@ export const HeroSection: React.FC = () => {
           className="absolute inset-0 flex items-center justify-center text-center px-4 pointer-events-none opacity-0 z-20"
         >
           <h1
-            className="font-black uppercase font-cinematic tracking-wider transition-all duration-300 !text-transparent"
+            className="font-black uppercase font-cinematic tracking-wider transition-all duration-300"
             style={{
               fontSize: "clamp(2rem, 5.5vw, 4.5rem)",
-              background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 60%, #D9A441 100%)",
+              backgroundImage: "linear-gradient(135deg, #67E8F9 0%, #22D3EE 45%, #0EA5E9 100%)",
               WebkitBackgroundClip: "text",
-              backgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              filter: "drop-shadow(0 4px 14px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(245, 213, 138, 0.25))",
+              filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 28px rgba(34, 211, 238, 0.4))",
             }}
           >
-            PROTECT WHAT YOU{" "}
-            <span
-              style={{
-                background: "linear-gradient(135deg, #F5D58A 0%, #D9A441 100%)",
-                WebkitBackgroundClip: "text",
-                backgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              DRIVE.
-            </span>
+            PROTECT WHAT YOU DRIVE.
           </h1>
         </div>
 
         {/* -------------------------------------------------------------------------
             STAGE 02: NOT JUST CLEAN. PROTECTED. (Frames 016 - 038)
-            Color: Metallic Champagne #FFF8EA + Rich Gold Accent #F5D58A
+            Gradient: Neon Cyan to Deep Teal (#22D3EE -> #0EA5E9)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage2Ref}
@@ -365,39 +332,20 @@ export const HeroSection: React.FC = () => {
               className="font-black uppercase font-cinematic tracking-tight mb-3"
               style={{
                 fontSize: "clamp(1.8rem, 4.8vw, 4rem)",
-                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(245, 213, 138, 0.2))",
+                backgroundImage: "linear-gradient(135deg, #A5F3FC 0%, #22D3EE 50%, #0EA5E9 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(34, 211, 238, 0.35))",
               }}
             >
-              <span
-                className="!text-transparent"
-                style={{
-                  background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 100%)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                NOT JUST CLEAN.{" "}
-              </span>
-              <span
-                className="relative inline-block !text-transparent"
-                style={{
-                  background: "linear-gradient(135deg, #F5D58A 0%, #D9A441 100%)",
-                  WebkitBackgroundClip: "text",
-                  backgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                PROTECTED.
-              </span>
+              NOT JUST CLEAN. PROTECTED.
             </h2>
 
             <p
-              className="stage2-subtext text-xs sm:text-sm md:text-base font-semibold tracking-[0.25em] uppercase font-mono mt-1 opacity-0 !text-transparent"
+              className="stage2-subtext text-xs sm:text-sm md:text-base font-semibold tracking-[0.25em] uppercase font-mono mt-1 opacity-0"
               style={{
-                background: "linear-gradient(135deg, #F5D58A 0%, #FFF8EA 100%)",
+                backgroundImage: "linear-gradient(135deg, #A5F3FC 0%, #38BDF8 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.95))",
               }}
@@ -409,39 +357,32 @@ export const HeroSection: React.FC = () => {
 
         {/* -------------------------------------------------------------------------
             STAGE 03: PAINT PROTECTION FILM (Frames 039 - 053)
-            Color: Metallic Champagne #FFF8EA + Warm Gold #F5D58A
+            Gradient: Sunset Gold to Deep Amber (#FDE047 -> #F59E0B)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage3Ref}
           id="stage-03"
           className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pointer-events-none opacity-0 z-20"
         >
-          <div className="p-6 sm:p-8 rounded-2xl border border-[#F5D58A]/30 bg-black/60 backdrop-blur-md transition-all duration-300 shadow-[0_0_35px_rgba(0,0,0,0.8)] max-w-2xl">
-            <div className="w-10 h-1 bg-gradient-to-r from-[#F5D58A] to-[#D9A441] rounded-full mx-auto mb-3 shadow-[0_0_10px_rgba(245,213,138,0.5)]" />
+          <div className="flex flex-col items-center max-w-4xl mx-auto relative">
             <h3
-              className="font-black uppercase font-cinematic tracking-wider mb-4 !text-transparent"
+              className="font-black uppercase font-cinematic tracking-widest"
               style={{
-                fontSize: "clamp(1.6rem, 4vw, 3.2rem)",
-                background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 50%, #D9A441 100%)",
+                fontSize: "clamp(1.8rem, 4.8vw, 4rem)",
+                backgroundImage: "linear-gradient(135deg, #FEF08A 0%, #FDE047 45%, #F59E0B 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(245, 213, 138, 0.2))",
+                filter: "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 28px rgba(245, 158, 11, 0.45))",
               }}
             >
               PAINT PROTECTION FILM
             </h3>
-            <ul className="space-y-2 text-xs sm:text-sm font-mono tracking-widest uppercase font-semibold">
-              <li className="ppf-bullet opacity-0 text-[#FFF8EA] text-shadow-[0_2px_6px_rgba(0,0,0,0.9)] opacity-95">• Instant Self-Healing TPU</li>
-              <li className="ppf-bullet opacity-0 text-[#FFF8EA] text-shadow-[0_2px_6px_rgba(0,0,0,0.9)] opacity-95">• High-Velocity Stone Chip Defense</li>
-              <li className="ppf-bullet opacity-0 text-[#F5D58A] text-shadow-[0_2px_6px_rgba(0,0,0,0.9)] font-bold">• 10-Year Warranty</li>
-            </ul>
           </div>
         </div>
 
         {/* -------------------------------------------------------------------------
             STAGE 04: 9H CERAMIC COATING (Frames 054 - 074)
-            Color: Metallic Champagne #FFF8EA + Warm Gold #F5D58A
+            Gradient: Emerald Green to Electric Lime-Cyan (#34D399 -> #06B6D4)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage5Ref}
@@ -450,17 +391,16 @@ export const HeroSection: React.FC = () => {
         >
           <div className="flex flex-col items-center max-w-4xl mx-auto relative">
             {/* HUD Tracker Line */}
-            <div className="ceramic-tracker-line w-48 h-0.5 bg-gradient-to-r from-transparent via-[#F5D58A] to-transparent mb-4 shadow-[0_0_12px_rgba(245,213,138,0.6)]" />
+            <div className="ceramic-tracker-line w-48 h-0.5 bg-gradient-to-r from-transparent via-[#34D399] to-transparent mb-4 shadow-[0_0_12px_rgba(52,211,153,0.7)]" />
 
             <h2
-              className="font-black uppercase tracking-tight font-cinematic !text-transparent"
+              className="font-black uppercase tracking-tight font-cinematic"
               style={{
                 fontSize: "clamp(1.8rem, 4.8vw, 4rem)",
-                background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 60%, #D9A441 100%)",
+                backgroundImage: "linear-gradient(135deg, #A7F3D0 0%, #34D399 50%, #06B6D4 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(245, 213, 138, 0.25))",
+                filter: "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 28px rgba(52, 211, 153, 0.45))",
               }}
             >
               9H CERAMIC COATING
@@ -470,7 +410,7 @@ export const HeroSection: React.FC = () => {
 
         {/* -------------------------------------------------------------------------
             STAGE 05: GRAPHENE MATRIX COATING (Frames 075 - 101)
-            Color: Metallic Champagne #FFF8EA + Warm Gold #F5D58A
+            Gradient: Emerald Green to Electric Lime-Cyan (#34D399 -> #06B6D4)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage6Ref}
@@ -479,14 +419,13 @@ export const HeroSection: React.FC = () => {
         >
           <div className="flex flex-col items-center max-w-4xl mx-auto">
             <h2
-              className="font-black uppercase tracking-wider font-cinematic !text-transparent"
+              className="font-black uppercase tracking-wider font-cinematic"
               style={{
                 fontSize: "clamp(1.8rem, 4.8vw, 4rem)",
-                background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 60%, #D9A441 100%)",
+                backgroundImage: "linear-gradient(135deg, #6EE7B7 0%, #10B981 45%, #06B6D4 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 25px rgba(245, 213, 138, 0.25))",
+                filter: "drop-shadow(0 4px 20px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 30px rgba(16, 185, 129, 0.5))",
               }}
             >
               GRAPHENE MATRIX COATING
@@ -496,7 +435,7 @@ export const HeroSection: React.FC = () => {
 
         {/* -------------------------------------------------------------------------
             STAGE 06: FINAL ARMOR STACK + CTA (Frames 104 - 151)
-            Layout: Top-Left Headline + Bottom-Left CTA & Scroll Indicator
+            Gradient: Sunset Gold-Bronze (#FDE047 -> #D97706)
            ------------------------------------------------------------------------- */}
         <div
           ref={stage7Ref}
@@ -505,31 +444,29 @@ export const HeroSection: React.FC = () => {
         >
           {/* Top-Left Editorial Headline - Mobile Navbar Top Spacing Added (pt-28 sm:pt-16 mt-6 sm:mt-0) */}
           <div className="stage7-header w-full text-left pt-28 sm:pt-16 md:pt-12 max-w-2xl">
-            {/* Line 1: YOUR CAR DESERVES LAYERS, (Pearl Titanium Champagne) */}
+            {/* Line 1: YOUR CAR DESERVES LAYERS, (Sunset Gold Gradient) */}
             <h2
-              className="stage7-line1 font-black uppercase tracking-tight font-cinematic leading-[1.1] mb-2 opacity-0 !text-transparent"
+              className="stage7-line1 font-black uppercase tracking-tight font-cinematic leading-[1.1] mb-2 opacity-0"
               style={{
                 fontSize: "clamp(1.6rem, 4.2vw, 3.5rem)",
-                background: "linear-gradient(135deg, #FFF8EA 0%, #F5D58A 100%)",
+                backgroundImage: "linear-gradient(135deg, #FEF08A 0%, #FDE047 50%, #F59E0B 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(245, 213, 138, 0.2))",
+                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 20px rgba(253, 224, 71, 0.3))",
               }}
             >
               YOUR CAR DESERVES LAYERS,
             </h2>
 
-            {/* Line 2: MORE THAN JUST A WASH. (Warm Metallic Gold Accent) */}
+            {/* Line 2: MORE THAN JUST A WASH. (Sunset Gold-Bronze Gradient) */}
             <p
-              className="stage7-line2 font-extrabold uppercase font-cinematic mb-4 opacity-0 !text-transparent"
+              className="stage7-line2 font-extrabold uppercase font-cinematic mb-4 opacity-0"
               style={{
                 fontSize: "clamp(1.4rem, 3.5vw, 2.8rem)",
-                background: "linear-gradient(135deg, #F5D58A 0%, #D9A441 50%, #B47818 100%)",
+                backgroundImage: "linear-gradient(135deg, #FDE047 0%, #F59E0B 60%, #D97706 100%)",
                 WebkitBackgroundClip: "text",
-                backgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 22px rgba(217, 164, 65, 0.3))",
+                filter: "drop-shadow(0 4px 16px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 22px rgba(245, 158, 11, 0.35))",
               }}
             >
               MORE THAN JUST A WASH.
@@ -537,16 +474,36 @@ export const HeroSection: React.FC = () => {
 
             {/* Subdued, Theme-matched Armor Badges */}
             <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs font-mono tracking-widest uppercase">
-              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-white/10 text-[#FFF8EA] border border-white/10 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-amber-950/40 border border-amber-500/30 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, #FEF08A, #F59E0B)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}>
                 PPF
               </span>
-              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-white/10 text-[#FFF8EA] border border-white/10 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-amber-950/40 border border-amber-500/30 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, #FEF08A, #F59E0B)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}>
                 CERAMIC
               </span>
-              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-white/10 text-[#FFF8EA] border border-white/10 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-amber-950/40 border border-amber-500/30 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, #FEF08A, #F59E0B)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}>
                 GRAPHENE
               </span>
-              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-white/10 text-[#FFF8EA] border border-white/10 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]">
+              <span className="spec-stack-item px-3 py-1 text-xs font-medium tracking-wider uppercase rounded bg-amber-950/40 border border-amber-500/30 opacity-0 text-shadow-[0_1px_3px_rgba(0,0,0,0.8)]"
+                    style={{
+                      backgroundImage: "linear-gradient(135deg, #FEF08A, #F59E0B)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}>
                 COMPLETE PROTECTION
               </span>
             </div>
@@ -557,25 +514,30 @@ export const HeroSection: React.FC = () => {
             {/* Solid Navbar Brand Red Theme CTA Button */}
             <a
               href="#services"
-              className="group relative px-8 py-4 rounded-xl font-black uppercase text-xs sm:text-sm tracking-[0.2em] text-[#FFF8EA] transition-all duration-300 hover:scale-105 font-mono overflow-hidden flex items-center space-x-3 shadow-2xl backdrop-blur-md bg-[#B5121B] hover:bg-[#7A0C14] border border-red-500/30"
+              className="group relative px-8 py-4 rounded-xl font-black uppercase text-xs sm:text-sm tracking-[0.2em] text-[#FEF08A] transition-all duration-300 hover:scale-105 font-mono overflow-hidden flex items-center space-x-3 shadow-2xl backdrop-blur-md bg-[#B5121B] hover:bg-[#7A0C14] border border-red-500/30"
               style={{
                 backgroundColor: "#B5121B",
                 border: "1px solid rgba(220, 38, 38, 0.4)",
-                boxShadow: "0 0 25px rgba(181, 18, 27, 0.5), inset 0 0 10px rgba(255, 248, 234, 0.1)",
+                boxShadow: "0 0 25px rgba(181, 18, 27, 0.5), inset 0 0 10px rgba(254, 240, 138, 0.15)",
               }}
             >
-              <span className="relative z-10 font-bold transition-colors duration-300 group-hover:text-[#F5D58A]">
+              <span className="relative z-10 font-bold transition-colors duration-300 group-hover:text-[#FDE047]">
                 EXPLORE SERVICES
               </span>
-              <span className="relative z-10 transform transition-transform duration-300 group-hover:translate-x-2 text-[#F5D58A]">
+              <span className="relative z-10 transform transition-transform duration-300 group-hover:translate-x-2 text-[#FDE047]">
                 →
               </span>
             </a>
 
             {/* Scroll Indicator */}
-            <div className="flex items-center space-x-2 text-[11px] sm:text-xs font-mono tracking-[0.25em] text-[#F5D58A] uppercase font-semibold">
-              <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
-              <span className="text-[#F5D58A] text-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">SCROLL TO EXPLORE ↓</span>
+            <div className="flex items-center space-x-2 text-[11px] sm:text-xs font-mono tracking-[0.25em] uppercase font-semibold"
+                 style={{
+                   backgroundImage: "linear-gradient(135deg, #FEF08A, #F59E0B)",
+                   WebkitBackgroundClip: "text",
+                   WebkitTextFillColor: "transparent",
+                 }}>
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-ping" />
+              <span className="text-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">SCROLL TO EXPLORE ↓</span>
             </div>
           </div>
         </div>

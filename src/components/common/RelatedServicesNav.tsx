@@ -98,9 +98,11 @@ export const RelatedServicesNav: React.FC<RelatedServicesNavProps> = ({ currentS
 
           {/* Dynamic 1/N Counter Badge for Mobile View */}
           <div className="flex md:hidden items-center space-x-2 bg-black/60 border border-white/15 backdrop-blur-md px-3 py-1.5 rounded-full font-mono text-xs shadow-lg shrink-0">
-            <span className="text-brand-red font-bold">{activeIndex + 1}</span>
+            <span className="text-sm font-black text-[#F5D58A] drop-shadow-[0_2px_6px_rgba(245,213,138,0.4)]" style={{ color: "#F5D58A" }}>
+              {String(activeIndex + 1).padStart(2, "0")}
+            </span>
             <span className="text-zinc-500">/</span>
-            <span className="text-metallic-300">{total}</span>
+            <span className="text-metallic-300 font-semibold">{String(total).padStart(2, "0")}</span>
           </div>
         </div>
 
