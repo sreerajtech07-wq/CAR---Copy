@@ -27,7 +27,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Moisture Barrier",
       "Long-Term Protection",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914717/antirust.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/antirust.jpg",
     route: "/anti-rust.html",
   },
   {
@@ -43,7 +43,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Sound Dampening",
       "Anti-Corrosion",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914719/underbody.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
     route: "/anti-rust.html",
   },
   {
@@ -59,7 +59,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Trim Revitalization",
       "Stain Removal",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789647922/Videoshot_20260917_175216.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175216.jpg?updatedAt=1790496301478",
     route: "/additional-services.html",
   },
   {
@@ -75,7 +75,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Allergen Neutralization",
       "Odor Elimination",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789915140/Germkleen.webp",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/Germkleen.webp",
     route: "/additional-services.html",
   },
   {
@@ -91,7 +91,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Clearcoat Refinement",
       "Mirror Finish",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789647916/Videoshot_20260917_175213.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175213.jpg",
     route: "/car-detailing.html",
   },
   {
@@ -107,7 +107,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Environmental Shield",
       "High Reflective Gloss",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914716/3M_Teflon_Polish.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_Teflon_Polish.jpg",
     route: "/additional-services.html",
   },
   {
@@ -123,7 +123,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Non-Metallized (Zero Signal Drop)",
       "Optical Clarity",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914716/3M_CR70.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_CR70.jpg",
     route: "/sun-film.html",
   },
   {
@@ -139,7 +139,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "UV Rejection",
       "Clear Day/Night Vision",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914720/3M_XP70.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_XP70.jpg",
     route: "/sun-film.html",
   },
   {
@@ -155,7 +155,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Privacy Guard",
       "Durable Multi-Ply",
     ],
-    image: "https://res.cloudinary.com/ljrerns0/image/upload/v1789914716/3M_IM70.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_IM70.jpg",
     route: "/sun-film.html",
   },
 ];

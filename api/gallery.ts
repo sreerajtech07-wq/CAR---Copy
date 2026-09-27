@@ -1,19 +1,15 @@
-import { v2 as cloudinary } from "cloudinary";
 import dotenv from "dotenv";
 import path from "path";
 
-// Force load .env.local and .env from project root if CLOUDINARY_API_KEY is not set in process.env
-if (!process.env.CLOUDINARY_API_KEY) {
+// Force load .env.local and .env from project root if IMAGEKIT_PRIVATE_KEY is not set in process.env
+if (!process.env.IMAGEKIT_PRIVATE_KEY) {
   dotenv.config({ path: path.resolve(process.cwd(), ".env.local") });
   dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 }
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME || "ljrerns0",
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-  secure: true,
-});
+const IMAGEKIT_PUBLIC_KEY = process.env.IMAGEKIT_PUBLIC_KEY || "public_/G2zNFoX42nBRSVZm0TrRv6aPbo=";
+const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "private_zD0EDMraY06csFY71c7GHNnzJ24=";
+const IMAGEKIT_URL_ENDPOINT = (process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io/wpk3ggvcqw").replace(/\/$/, "");
 
 export default async function handler(req: any, res: any) {
   // CORS Headers
@@ -26,34 +22,41 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    if (!process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
-      console.error("Cloudinary credentials missing in process.env!");
+    // Call ImageKit API v1 files list endpoint targeting /Gallerycar/ folder
+    const authHeader = `Basic ${Buffer.from(`${IMAGEKIT_PRIVATE_KEY}:`).toString("base64")}`;
+    const url = `https://api.imagekit.io/v1/files?path=/Gallerycar/&limit=100`;
+
+    const response = await fetch(url, {
+      headers: {
+        Authorization: authHeader,
+      },
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      console.warn("ImageKit API fetch notice:", response.status, errText);
       return res.status(200).json({
         success: false,
-        error: "Missing credentials",
+        error: `ImageKit API error ${response.status}`,
         items: [],
       });
     }
 
-    // Search both images and videos from Gallery folder
-    const results = await cloudinary.search
-      .expression("folder:Gallery/* OR folder:Gallery")
-      .sort_by("created_at", "desc")
-      .max_results(100)
-      .execute();
+    const files = await response.json();
+    const rawItems = Array.isArray(files) ? files : files.results || [];
 
-    const items = (results.resources || []).map((resource: any) => {
-      const isVideo = resource.resource_type === "video";
-      const publicId = resource.public_id;
-      const fileName = resource.filename || publicId.split("/").pop() || publicId;
+    const items = rawItems.map((file: any) => {
+      const isVideo = file.fileType === "video" || (file.filePath && file.filePath.endsWith(".mp4"));
+      const fileName = file.name || file.filePath?.split("/").pop() || "media";
+      
       let cleanTitle = fileName
         .replace(/[-_]/g, " ")
         .replace(/\.[^/.]+$/, "")
         .replace(/\b\w/g, (l: string) => l.toUpperCase());
 
-      // If title contains camera timestamp strings or Videoshot, generate a contextual studio title
+      // Generate contextual studio titles for generic camera/video shot filenames
       if (/videoshot|img[_-]|dsc[_-]|vid[_-]|\d{6,}/i.test(cleanTitle)) {
-        const lower = (cleanTitle + " " + publicId).toLowerCase();
+        const lower = (cleanTitle + " " + (file.filePath || "")).toLowerCase();
         if (lower.includes("ppf")) cleanTitle = "3M Scotchgard™ PPF Protection";
         else if (lower.includes("ceramic")) cleanTitle = "3M Ceramic Coating Glaze";
         else if (lower.includes("graphene")) cleanTitle = "3M Graphene Paint Shield";
@@ -64,37 +67,30 @@ export default async function handler(req: any, res: any) {
         else cleanTitle = isVideo ? "3M Official Studio Video Execution" : "3M Precision Studio Detailing";
       }
 
-      // Apply lightweight transformation for image previews: w_800,c_limit,f_auto,q_auto
-      let secureUrl = resource.secure_url;
-      if (!isVideo && secureUrl.includes("/upload/")) {
-        secureUrl = secureUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/");
-      }
-
-      let posterUrl = "";
-      if (isVideo && secureUrl.includes("/upload/")) {
-        posterUrl = secureUrl.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg");
-      }
+      // Format clean ImageKit URLs for media and posters
+      const secureUrl = file.url || `${IMAGEKIT_URL_ENDPOINT}/Gallerycar/${fileName}`;
+      const posterUrl = isVideo
+        ? `${IMAGEKIT_URL_ENDPOINT}/Gallerycar/${fileName.replace(/\.[^/.]+$/, ".jpg")}`
+        : secureUrl;
 
       return {
-        id: resource.asset_id || resource.public_id,
-        public_id: resource.public_id,
+        id: file.fileId || file.name,
         name: cleanTitle,
         title: cleanTitle || "3M Car Care Execution",
         category: isVideo ? "Studio Execution" : "Precision Craft",
         src: secureUrl,
         url: secureUrl,
         poster: posterUrl,
-        type: resource.resource_type, // 'image' or 'video'
-        format: resource.format,
-        width: resource.width,
-        height: resource.height,
+        type: isVideo ? "video" : "image",
+        width: file.width,
+        height: file.height,
         aspect: "16/9",
       };
     });
 
     return res.status(200).json({ success: true, count: items.length, items });
   } catch (error: any) {
-    console.error("Cloudinary fetch error:", error);
+    console.error("ImageKit fetch error:", error);
     return res.status(500).json({ success: false, error: error.message, items: [] });
   }
 }

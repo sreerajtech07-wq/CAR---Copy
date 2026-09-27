@@ -22,13 +22,13 @@ export const GalleryPage: React.FC = () => {
         if (response.ok) {
           const data = await response.json();
           if (isMounted && data.success && Array.isArray(data.items)) {
-            const cloudinaryItems: GalleryMediaItem[] = data.items;
+            const fetchedItems: GalleryMediaItem[] = data.items;
             const merged = [
               ...staticGalleryData,
-              ...cloudinaryItems.filter((cItem) => {
-                const cUrl = cItem.url || cItem.src;
+              ...fetchedItems.filter((fItem) => {
+                const fUrl = fItem.url || fItem.src;
                 return !staticGalleryData.some(
-                  (sItem) => (sItem.url || sItem.src) === cUrl || sItem.id === cItem.id
+                  (sItem) => (sItem.url || sItem.src) === fUrl || sItem.id === fItem.id
                 );
               }),
             ];
@@ -36,7 +36,7 @@ export const GalleryPage: React.FC = () => {
           }
         }
       } catch (err) {
-        console.warn("Could not fetch full Cloudinary vault, using static fallback items.", err);
+        console.warn("Could not fetch full ImageKit vault, using static fallback items.", err);
       } finally {
         if (isMounted) setIsLoading(false);
       }

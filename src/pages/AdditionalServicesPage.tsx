@@ -78,32 +78,32 @@ export const AdditionalServicesPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647690/Videoshot_20260917_175046.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175046.jpg",
       title: "AC Vent Cleaning & Sanitization",
       category: "INTERIOR CARE",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647691/Videoshot_20260917_175042.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175042.jpg",
       title: "Professional Car Wash",
       category: "EXTERIOR CLEANING",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647918/Videoshot_20260917_175215.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175215.jpg",
       title: "Car Polish & Restoration",
       category: "PAINT REFINEMENT",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647916/Videoshot_20260917_175213.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175213.jpg",
       title: "Interior Deep Care",
       category: "CABIN RESTORATION",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647685/Videoshot_20260917_175050.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175050.jpg",
       title: "Ceramic Boost & Maintenance",
       category: "COATING MAINTENANCE",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647923/Videoshot_20260917_175220.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175220.jpg",
       title: "Vehicle Restoration Complete",
       category: "FULL SERVICE",
     },

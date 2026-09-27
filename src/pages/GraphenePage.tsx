@@ -80,27 +80,27 @@ export const GraphenePage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974878/IMG-20260921-WA0061.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0061.jpg",
       title: "Graphene Matrix Deep Shield",
       category: "COATING MATRIX",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974880/IMG-20260921-WA0050.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0050.jpg",
       title: "High-Gloss Mirror Finish",
       category: "OPTICAL GLOSS",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974883/IMG-20260921-WA0049.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0049.jpg",
       title: "Graphene Polymer Application",
       category: "COATING APPLICATION",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974867/IMG-20260921-WA0063.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0063.jpg",
       title: "Cleanroom Bay Fitment",
       category: "FACILITY ATELIER",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/v1789974875/IMG-20260921-WA0046.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0046.jpg",
       title: "Thermal Curing & Quality Inspection",
       category: "CURING STAGE",
     },

@@ -78,32 +78,32 @@ export const AntiRustPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643192/Videoshot_20260917_162739.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_162739.jpg",
       title: "Anti-Rust Underbody Treatment",
       category: "CHASSIS DEFENSE",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643193/Videoshot_20260917_162730.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_162730.jpg",
       title: "Underbody Preparation",
       category: "FACILITY ATELIER",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643189/Videoshot_20260917_163117.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_163117.jpg",
       title: "Corrosion Prevention Application",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643179/Videoshot_20260917_162819.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_162819.jpg",
       title: "Protective Coating Coverage",
       category: "CHASSIS PROTECTION",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789647681/Videoshot_20260917_175052.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175052.jpg",
       title: "Combined Anti-Rust & PPF",
       category: "COMBO PROTECTION",
     },
     {
-      src: "https://res.cloudinary.com/ljrerns0/image/upload/f_auto,q_auto,w_1200/v1789643018/Videoshot_20260917_163120.jpg",
+      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_163120.jpg",
       title: "Long-Term Chassis Protection",
       category: "DURABILITY TEST",
     },
