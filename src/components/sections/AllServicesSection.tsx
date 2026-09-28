@@ -27,7 +27,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Moisture Barrier",
       "Long-Term Protection",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039",
     route: "/anti-rust.html",
   },
   {
@@ -199,14 +199,14 @@ export const AllServicesSection: React.FC = () => {
               {/* Card Image Header */}
               <div className="relative h-56 min-h-[14rem] w-full overflow-hidden bg-dark-900">
                 <img
-                  src={srv.image || "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg"}
+                  src={srv.image || "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039"}
                   alt={srv.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg") {
-                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg";
+                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039") {
+                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039";
                     }
                   }}
                 />

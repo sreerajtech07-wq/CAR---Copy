@@ -59,7 +59,7 @@ export const AdvancedProtection: React.FC = () => {
         "Corrosion Prevention",
         "Long-Term Vehicle Protection",
       ],
-      image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
+      image: "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039",
     },
   ];
 
@@ -93,14 +93,14 @@ export const AdvancedProtection: React.FC = () => {
             >
               <div className="relative h-60 min-h-[14rem] w-full overflow-hidden bg-dark-850">
                 <img
-                  src={tier.image || "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg"}
+                  src={tier.image || "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039"}
                   alt={tier.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg") {
-                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg";
+                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039") {
+                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039";
                     }
                   }}
                 />
