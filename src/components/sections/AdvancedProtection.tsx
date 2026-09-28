@@ -91,12 +91,18 @@ export const AdvancedProtection: React.FC = () => {
               key={tier.id}
               className="rounded-sm bg-white/[0.03] backdrop-blur-md border border-white/10 overflow-hidden flex flex-col justify-between group hover:border-white/20 transition-all duration-300"
             >
-              <div className="relative h-60 w-full overflow-hidden bg-dark-850">
+              <div className="relative h-60 min-h-[14rem] w-full overflow-hidden bg-dark-850">
                 <img
-                  src={tier.image}
+                  src={tier.image || "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg"}
                   alt={tier.name}
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg") {
+                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg";
+                    }
+                  }}
                 />
                 <div className="absolute top-4 left-4 font-mono text-[10px] px-3 py-1 rounded-sm bg-dark-950/80 backdrop-blur-md border border-white/15 text-white tracking-widest uppercase">
                   {tier.badge}

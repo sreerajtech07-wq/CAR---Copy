@@ -197,12 +197,18 @@ export const AllServicesSection: React.FC = () => {
               className="group relative rounded-sm bg-[#0e0e0e]/95 border border-white/10 overflow-hidden flex flex-col justify-between hover:border-brand-red/60 transition-all duration-300 shadow-2xl hover:scale-[1.01]"
             >
               {/* Card Image Header */}
-              <div className="relative h-56 w-full overflow-hidden bg-dark-900">
+              <div className="relative h-56 min-h-[14rem] w-full overflow-hidden bg-dark-900">
                 <img
-                  src={srv.image}
+                  src={srv.image || "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg"}
                   alt={srv.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg") {
+                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg";
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
