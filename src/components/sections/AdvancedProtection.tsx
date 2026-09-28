@@ -59,7 +59,7 @@ export const AdvancedProtection: React.FC = () => {
         "Corrosion Prevention",
         "Long-Term Vehicle Protection",
       ],
-      image: "/assets/services/antirust.jpg",
+      image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
     },
   ];
 

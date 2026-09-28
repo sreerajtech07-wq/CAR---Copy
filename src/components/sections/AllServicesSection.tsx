@@ -27,7 +27,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Moisture Barrier",
       "Long-Term Protection",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/antirust.jpg",
+    image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
     route: "/anti-rust.html",
   },
   {
