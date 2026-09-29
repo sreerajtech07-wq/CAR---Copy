@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Cookie, X } from "lucide-react";
 
 export const CookieConsent: React.FC = () => {
-  const [showBanner, setShowBanner] = useState(false);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("3m_cookie_consent");
-    if (!consent) {
-      setShowBanner(true);
-    }
-  }, []);
+  const [showBanner, setShowBanner] = useState(() => {
+    return !localStorage.getItem("3m_cookie_consent");
+  });
 
   const handleAccept = () => {
     localStorage.setItem("3m_cookie_consent", "accepted");
