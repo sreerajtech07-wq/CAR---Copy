@@ -11,12 +11,12 @@ export const HeroSection: React.FC = () => {
   const pinTargetRef = useRef<HTMLDivElement | null>(null);
 
   // Stage refs based on exact visual event sync requirements
-  const stage1Ref = useRef<HTMLDivElement | null>(null); // Stage 01: PROTECT WHAT YOU DRIVE. (001 - 015)
-  const stage2Ref = useRef<HTMLDivElement | null>(null); // Stage 02: NOT JUST CLEAN. PROTECTED. (016 - 038)
-  const stage3Ref = useRef<HTMLDivElement | null>(null); // Stage 03: PAINT PROTECTION FILM (039 - 053)
-  const stage5Ref = useRef<HTMLDivElement | null>(null); // Stage 04: 9H CERAMIC COATING* (054 - 074) - MUST finish before 075
-  const stage6Ref = useRef<HTMLDivElement | null>(null); // Stage 05: GRAPHENE MATRIX COATING* (075 - 103) - White Hyundai entrance
-  const stage7Ref = useRef<HTMLDivElement | null>(null); // Stage 06: FINAL ARMOR STACK + CTA (104 - 151) - Starts AFTER Graphene completely finishes
+  const stage1Ref = useRef<HTMLDivElement | null>(null); // Stage 01: PROTECT WHAT YOU DRIVE. (001 - 030)
+  const stage2Ref = useRef<HTMLDivElement | null>(null); // Stage 02: NOT JUST CLEAN. PROTECTED. (031 - 075)
+  const stage3Ref = useRef<HTMLDivElement | null>(null); // Stage 03: PAINT PROTECTION FILM (076 - 105)
+  const stage5Ref = useRef<HTMLDivElement | null>(null); // Stage 04: 9H CERAMIC COATING* (106 - 147) - MUST finish before 148
+  const stage6Ref = useRef<HTMLDivElement | null>(null); // Stage 05: GRAPHENE MATRIX COATING* (148 - 230) - White Hyundai entrance
+  const stage7Ref = useRef<HTMLDivElement | null>(null); // Stage 06: FINAL ARMOR STACK + CTA (231 - 300) - Starts AFTER Graphene completely finishes
 
   const [progress, setProgress] = useState<number>(0);
   const quality = useResponsiveQuality();
@@ -49,22 +49,22 @@ export const HeroSection: React.FC = () => {
         const p = self.progress;
         setProgress(p);
 
-        // Convert scroll progress (0.0 to 1.0) to 151 logical timeline frames (1 to 151)
-        const frame = 1 + p * 150;
+        // Convert scroll progress (0.0 to 1.0) to 300 logical timeline frames (1 to 300)
+        const frame = 1 + p * 299;
 
         // =========================================================================
-        // STAGE 01: FRAME 001 - 015 | PROTECT WHAT YOU DRIVE. (Mercedes Reveal)
+        // STAGE 01: FRAME 001 - 030 | PROTECT WHAT YOU DRIVE. (Mercedes Reveal)
         // =========================================================================
         if (stage1) {
           let a1 = 0;
           let ls1 = 0.05;
 
-          if (frame >= 1 && frame <= 13) {
-            const progIn = (frame - 1) / 12; // 001 -> 013 enter
+          if (frame >= 1 && frame <= 25) {
+            const progIn = (frame - 1) / 24; // 001 -> 025 enter
             a1 = progIn;
             ls1 = 0.05 + 0.13 * progIn; // 0.05em -> 0.18em
-          } else if (frame > 13 && frame <= 15) {
-            const progOut = (frame - 13) / 2;
+          } else if (frame > 25 && frame <= 30) {
+            const progOut = (frame - 25) / 5;
             a1 = 1 - progOut;
             ls1 = 0.18;
           }
@@ -73,7 +73,7 @@ export const HeroSection: React.FC = () => {
         }
 
         // =========================================================================
-        // STAGE 02: FRAME 016 - 038 | NOT JUST CLEAN. PROTECTED. (Paint Correction)
+        // STAGE 02: FRAME 031 - 075 | NOT JUST CLEAN. PROTECTED. (Paint Correction)
         // Must appear BEFORE PPF stone impact
         // =========================================================================
         if (stage2) {
@@ -82,14 +82,14 @@ export const HeroSection: React.FC = () => {
           let ySub = 12;
           let aSub = 0;
 
-          if (frame >= 16 && frame <= 35) {
-            const progIn = Math.min(1, (frame - 16) / 5); // enter by frame 21
+          if (frame >= 31 && frame <= 70) {
+            const progIn = Math.min(1, (frame - 31) / 10); // enter by frame 41
             a2 = progIn;
             x2 = -40 * (1 - progIn);
             aSub = 0.85 * progIn;
             ySub = 12 * (1 - progIn);
-          } else if (frame > 35 && frame <= 38) {
-            const progOut = (frame - 35) / 3;
+          } else if (frame > 70 && frame <= 75) {
+            const progOut = (frame - 70) / 5;
             a2 = 1 - progOut;
             x2 = 0;
             aSub = 0.85 * (1 - progOut);
@@ -104,7 +104,7 @@ export const HeroSection: React.FC = () => {
         }
 
         // =========================================================================
-        // STAGE 03: FRAME 039 - 053 | PAINT PROTECTION FILM (Debris/Impact Event)
+        // STAGE 03: FRAME 076 - 105 | PAINT PROTECTION FILM (Debris/Impact Event)
         // Triggers exactly when close-up paint/hood shot & stone impacts begin
         // =========================================================================
         if (stage3) {
@@ -112,13 +112,13 @@ export const HeroSection: React.FC = () => {
           let scale3 = 0.97;
           let y3 = 10;
 
-          if (frame >= 39 && frame <= 50) {
-            const progIn = Math.min(1, (frame - 39) / 5); // enter by frame 44
+          if (frame >= 76 && frame <= 100) {
+            const progIn = Math.min(1, (frame - 76) / 10); // enter by frame 86
             a3 = progIn;
             scale3 = 0.97 + 0.03 * progIn;
             y3 = 10 * (1 - progIn);
-          } else if (frame > 50 && frame <= 53) {
-            const progOut = (frame - 50) / 3;
+          } else if (frame > 100 && frame <= 105) {
+            const progOut = (frame - 100) / 5;
             a3 = 1 - progOut;
             scale3 = 1;
             y3 = 0;
@@ -128,8 +128,8 @@ export const HeroSection: React.FC = () => {
         }
 
         // =========================================================================
-        // STAGE 04: FRAME 054 - 074 | 9H CERAMIC COATING* (Kia Seltos Water Pour)
-        // MUST BE COMPLETELY GONE BEFORE FRAME 075 (White Hyundai entrance)
+        // STAGE 04: FRAME 106 - 147 | 9H CERAMIC COATING* (Kia Seltos Water Pour)
+        // MUST BE COMPLETELY GONE BEFORE FRAME 148 (White Hyundai entrance)
         // Bullets removed completely per spec
         // =========================================================================
         if (stage5) {
@@ -137,13 +137,13 @@ export const HeroSection: React.FC = () => {
           let scale5 = 0.97;
           let y5 = 0;
 
-          if (frame >= 54 && frame <= 70) {
-            const progIn = Math.min(1, (frame - 54) / 5); // enter by frame 59
+          if (frame >= 106 && frame <= 140) {
+            const progIn = Math.min(1, (frame - 106) / 10); // enter by frame 116
             a5 = progIn;
             scale5 = 0.97 + 0.03 * progIn;
-          } else if (frame > 70 && frame <= 74) {
-            // Fade out completely before frame 75 White Hyundai entrance
-            const progOut = (frame - 70) / 4;
+          } else if (frame > 140 && frame <= 147) {
+            // Fade out completely before frame 148 White Hyundai entrance
+            const progOut = (frame - 140) / 7;
             a5 = 1 - progOut;
             scale5 = 1;
             y5 = -8 * progOut;
@@ -154,15 +154,15 @@ export const HeroSection: React.FC = () => {
           // HUD Tracker Line Effect
           const trackerLine = stage5.querySelector(".ceramic-tracker-line");
           if (trackerLine) {
-            const lineScale = frame >= 54 && frame <= 70 ? Math.min(1, (frame - 54) / 7) : frame > 70 ? Math.max(0, 1 - (frame - 70) / 4) : 0;
+            const lineScale = frame >= 106 && frame <= 140 ? Math.min(1, (frame - 106) / 14) : frame > 140 ? Math.max(0, 1 - (frame - 140) / 7) : 0;
             gsap.set(trackerLine, { scaleX: lineScale, transformOrigin: "center center" });
           }
         }
 
         // =========================================================================
-        // STAGE 05: FRAME 075 - 116 | GRAPHENE MATRIX COATING (White Hyundai Entrance)
+        // STAGE 05: FRAME 148 - 230 | GRAPHENE MATRIX COATING (White Hyundai Entrance)
         // Extended display window so Graphene heading stays on screen for extra scroll interaction.
-        // Bullets removed completely per spec. Fade out ends by frame 116 before Final Armor begins.
+        // Bullets removed completely per spec. Fade out ends by frame 230 before Final Armor begins.
         // =========================================================================
         if (stage6) {
           let a6 = 0;
@@ -170,20 +170,20 @@ export const HeroSection: React.FC = () => {
           let blur6 = 6;
           let pulseScale = 1;
 
-          if (frame >= 75 && frame <= 110) {
-            const progIn = Math.min(1, (frame - 75) / 6); // enter by frame 81
+          if (frame >= 148 && frame <= 220) {
+            const progIn = Math.min(1, (frame - 148) / 12); // enter by frame 160
             a6 = progIn;
             scale6 = 0.96 + 0.04 * progIn;
             blur6 = 6 * (1 - progIn);
 
-            // Single controlled pulse when violet molecular lattice effect peaks (frame 87 - 90)
-            if (frame >= 87 && frame <= 90) {
-              const pulseProg = (frame - 87) / 3;
+            // Single controlled pulse when violet molecular lattice effect peaks (frame 172 - 180)
+            if (frame >= 172 && frame <= 180) {
+              const pulseProg = (frame - 172) / 8;
               pulseScale = 1 + 0.03 * Math.sin(pulseProg * Math.PI);
             }
-          } else if (frame > 110 && frame <= 116) {
-            // Smoothly fade out Graphene text by frame 116
-            const progOut = (frame - 110) / 6;
+          } else if (frame > 220 && frame <= 230) {
+            // Smoothly fade out Graphene text by frame 230
+            const progOut = (frame - 220) / 10;
             a6 = 1 - progOut;
             scale6 = 1;
             blur6 = 0;
@@ -197,12 +197,12 @@ export const HeroSection: React.FC = () => {
         }
 
         // =========================================================================
-        // STAGE 06: FRAME 123 - 151 (p: 0.86 -> 1.00) | FINAL ARMOR STACK + CTA
-        // Starts after Graphene completely fades out (p >= 0.86)
+        // STAGE 06: FRAME 231 - 300 (p: 0.82 -> 1.00) | FINAL ARMOR STACK + CTA
+        // Starts after Graphene completely fades out (p >= 0.82)
         // =========================================================================
         if (stage7) {
-          // calcAlpha equivalent for final threshold: p >= 0.86 to 0.89
-          const finalArmorOpacity = p < 0.86 ? 0 : Math.min(1, (p - 0.86) / 0.03);
+          // calcAlpha equivalent for final threshold: p >= 0.82 to 0.86
+          const finalArmorOpacity = p < 0.82 ? 0 : Math.min(1, (p - 0.82) / 0.04);
           gsap.set(stage7, { autoAlpha: finalArmorOpacity });
 
           let aLine1 = 0;
@@ -216,21 +216,21 @@ export const HeroSection: React.FC = () => {
           let ctaX = 30;
           let ctaAlpha = 0;
 
-          if (p >= 0.86) {
+          if (p >= 0.82) {
             // Line 1: YOUR CAR DESERVES LAYERS
-            const prog1 = Math.min(1, Math.max(0, (p - 0.86) / 0.04));
+            const prog1 = Math.min(1, Math.max(0, (p - 0.82) / 0.05));
             aLine1 = prog1;
             yLine1 = 30 * (1 - prog1);
             blurLine1 = 8 * (1 - prog1);
 
             // Line 2: MORE THAN JUST A WASH. (staggered)
-            const prog2 = Math.min(1, Math.max(0, (p - 0.88) / 0.04));
+            const prog2 = Math.min(1, Math.max(0, (p - 0.85) / 0.05));
             aLine2 = prog2;
             yLine2 = 30 * (1 - prog2);
             blurLine2 = 8 * (1 - prog2);
 
             // CTA glides into position
-            const ctaProg = Math.min(1, Math.max(0, (p - 0.89) / 0.05));
+            const ctaProg = Math.min(1, Math.max(0, (p - 0.88) / 0.06));
             ctaAlpha = ctaProg;
             ctaX = 30 * (1 - ctaProg);
           }
