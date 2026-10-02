@@ -46,6 +46,7 @@ export default defineConfig({
         'anti-rust': resolve(import.meta.dirname, 'anti-rust.html'),
         gallery: resolve(import.meta.dirname, 'gallery.html'),
         'additional-services': resolve(import.meta.dirname, 'additional-services.html'),
+        '404': resolve(import.meta.dirname, '404.html'),
       },
     },
   },
