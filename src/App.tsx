@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Preloader } from "./components/Preloader";
 import { CursorEffect } from "./components/common/CursorEffect";
 import { FlowBackground } from "./components/common/FlowBackground";
 import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
@@ -25,8 +24,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
-      {/* Luxury Entrance Preloader */}
-      <Preloader />
+      {/* Cursor and single shared atmospheric background system */}
 
       {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
