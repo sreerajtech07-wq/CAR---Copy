@@ -7,7 +7,7 @@ if (!process.env.IMAGEKIT_PRIVATE_KEY) {
   dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 }
 
-const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "private_zD0EDMraY06csFY71c7GHNnzJ24=";
+const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "";
 const IMAGEKIT_URL_ENDPOINT = (process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io/wpk3ggvcqw").replace(/\/$/, "");
 
 export default async function handler(req: any, res: any) {
