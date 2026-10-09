@@ -54,8 +54,8 @@ export const BUSINESS: BusinessData = {
   email: "3mcarcare.chennai.omr@gmail.com",
   instagram: "@3mcarcareomr",
   instagramUrl: "https://www.instagram.com/3mcarcareomr",
-  website: "3mcarcareomr.com",
-  websiteUrl: "https://3mcarcareomr.com",
+  website: "3mcarcarestudioomr.com",
+  websiteUrl: "https://3mcarcarestudioomr.com",
   businessHours: {
     days: "Monday – Sunday",
     hours: "9:30 AM – 8:00 PM",
@@ -64,5 +64,5 @@ export const BUSINESS: BusinessData = {
   brandMessage: "Premium Car Care. Advanced Protection.",
   shortDescription:
     "Professional automotive care and protection services in OMR, Chennai, offering premium detailing, ceramic coating, graphene coating, PPF, sun film and anti-rust protection solutions.",
-  mapQueryUrl: "https://maps.app.goo.gl/RJH95HUy9Wpaapd46",
+  mapQueryUrl: "https://share.google/spSYrdMwGcMRWzJm",
 };

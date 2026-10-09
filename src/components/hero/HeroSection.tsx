@@ -289,6 +289,9 @@ export const HeroSection: React.FC = () => {
       >
         <HeroCanvas progress={progress} quality={quality} />
 
+        {/* Accessible Main H1 for Search Engine Crawlers */}
+        <h1 className="sr-only">3M Car Care Studio OMR Chennai | Best Car Detailing &amp; PPF</h1>
+
         {/* Dark Vignette Overlay */}
         <div
           className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_58%_56%_at_72%_38%,rgba(122,12,20,0.25),transparent_72%),linear-gradient(180deg,rgba(5,5,5,0.2),transparent_42%,rgba(5,5,5,0.76))]"
