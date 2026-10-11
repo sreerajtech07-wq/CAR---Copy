@@ -104,7 +104,8 @@ export const GOOGLE_REVIEWS: VerifiedReview[] = [
   },
 ];
 
-const MAPS_REVIEW_URL = "https://maps.app.goo.gl/RJH95HUy9Wpaapd46";
+const MAPS_REVIEW_URL =
+  "https://www.google.com/maps/place/3M+Car+Care+Studio+-+Car+Detailing,+Ceramic+Coating+and+PPF,+OMR%2F+ECR/@12.937434,80.234888,16z/data=!4m14!1m7!3m6!1s0x3a525c631f4a9e11:0x95d201f8ce08e478!2s3M+Car+Care+Studio+-+Car+Detailing,+Ceramic+Coating+and+PPF,+OMR%2F+ECR!8m2!3d12.937434!4d80.2348876!16s%2Fg%2F11b5pkq6_p!3m5!1s0x3a525c631f4a9e11:0x95d201f8ce08e478!8m2!3d12.937434!4d80.2348876!16s%2Fg%2F11b5pkq6_p?hl=en&entry=ttu";
 
 export const GoogleReviews: React.FC = () => {
   const renderStars = (count: number) =>

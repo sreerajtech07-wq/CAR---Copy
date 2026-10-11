@@ -79,7 +79,7 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({ onOpenBooking }) => {
 
           {/* Card 2: LOCATION (Directly Clickable Google Maps Link) */}
           <a
-            href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+            href={BUSINESS.mapQueryUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-center flex flex-col items-center justify-center group cursor-pointer transition-all duration-300 hover:-translate-y-1"

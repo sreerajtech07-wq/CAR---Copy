@@ -125,7 +125,7 @@ export const Footer: React.FC = () => {
                   <p className="text-neutral-300 text-xs mt-0.5">Opposite AKDR Golf Village, Mettukuppam</p>
                   <p className="text-neutral-400 text-xs mt-0.5">Chennai, Tamil Nadu - 600097</p>
                   <a
-                    href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+                    href={BUSINESS.mapQueryUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-1.5 text-red-400 hover:text-white text-xs font-mono font-semibold transition-colors"

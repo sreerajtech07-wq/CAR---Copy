@@ -130,7 +130,7 @@ export const LocationSection: React.FC = () => {
               </a>
 
               <a
-                href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+                href={BUSINESS.mapQueryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center space-x-2 py-3 px-4 rounded-sm bg-dark-850 hover:bg-dark-800 text-metallic-200 hover:text-white border border-white/15 font-mono text-xs tracking-wider uppercase transition-colors"
@@ -149,7 +149,7 @@ export const LocationSection: React.FC = () => {
                 <span>GPS COORDINATES // CHENNAI OMR CORRIDOR</span>
               </span>
               <a
-                href="https://maps.app.goo.gl/RJH95HUy9Wpaapd46"
+                href={BUSINESS.mapQueryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1 text-white hover:text-brand-red transition-colors"
