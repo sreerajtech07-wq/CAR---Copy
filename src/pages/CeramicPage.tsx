@@ -84,22 +84,22 @@ export const CeramicPage: React.FC = () => {
       category: "SURFACE DEFENSE",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0061.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0061.jpg",
       title: "Deep Gloss Paint Protection",
       category: "OPTICAL GLOSS",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/ceramic_coating.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/ceramic_coating.jpg",
       title: "3M Ceramic Coating Matrix",
       category: "COATING MATRIX",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/graphene_coating.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/graphene_coating.jpg",
       title: "Hydrophobic Surface Shield",
       category: "SURFACE DEFENSE",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260925_183501.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183501.jpg",
       title: "Cleanroom Ceramic Inspection",
       category: "INSPECTION TUNNEL",
     },

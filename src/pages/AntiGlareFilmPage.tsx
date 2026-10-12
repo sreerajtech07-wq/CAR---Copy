@@ -78,17 +78,17 @@ export const AntiGlareFilmPage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0052.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0052.jpg",
       title: "Night Glare Reduction & Windshield Shield",
       category: "OPTICAL CLARITY",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0046.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0046.jpg",
       title: "High Definition Anti-Glare Clarity",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0061.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0061.jpg",
       title: "Opposing Headlight Diffusion Shield",
       category: "OPTICAL TEST",
     },

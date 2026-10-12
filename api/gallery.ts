@@ -8,7 +8,7 @@ if (!process.env.IMAGEKIT_PRIVATE_KEY) {
 }
 
 const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "";
-const IMAGEKIT_URL_ENDPOINT = (process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io/wpk3ggvcqw").replace(/\/$/, "");
+const IMAGEKIT_URL_ENDPOINT = (process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io/3mgallery").replace(/\/$/, "");
 
 export default async function handler(req: any, res: any) {
   // CORS Headers
@@ -21,9 +21,9 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // Call ImageKit API v1 files list endpoint targeting /Gallerycar/ folder
+    // Call ImageKit API v1 files list endpoint targeting /3mgallery/ folder
     const authHeader = `Basic ${Buffer.from(`${IMAGEKIT_PRIVATE_KEY}:`).toString("base64")}`;
-    const url = `https://api.imagekit.io/v1/files?path=/Gallerycar/&limit=100`;
+    const url = `https://api.imagekit.io/v1/files?path=/3mgallery/&limit=100`;
 
     const response = await fetch(url, {
       headers: {
@@ -67,9 +67,10 @@ export default async function handler(req: any, res: any) {
       }
 
       // Format clean ImageKit URLs for media and posters
-      const secureUrl = file.url || `${IMAGEKIT_URL_ENDPOINT}/Gallerycar/${fileName}`;
+      const filePathClean = file.filePath ? file.filePath.replace(/^\/+/, "") : `3mgallery/${fileName}`;
+      const secureUrl = file.url || `${IMAGEKIT_URL_ENDPOINT}/${filePathClean}`;
       const posterUrl = isVideo
-        ? `${IMAGEKIT_URL_ENDPOINT}/Gallerycar/${fileName.replace(/\.[^/.]+$/, ".jpg")}`
+        ? `${IMAGEKIT_URL_ENDPOINT}/${filePathClean.replace(/\.[^/.]+$/, ".jpg")}`
         : secureUrl;
 
       return {

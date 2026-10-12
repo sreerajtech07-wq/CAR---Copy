@@ -73,6 +73,9 @@ export const GalleryPage: React.FC = () => {
     };
   }, [selectedMedia]);
 
+  // Filter out any video entries so only valid photos are displayed
+  const validPhotos = items.filter((item) => item.type !== "video" && (item.url || item.src));
+
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden bg-[#050505]">
       <CursorEffect />
@@ -114,18 +117,18 @@ export const GalleryPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
           <div className="text-center max-w-3xl mx-auto mb-8">
             <span className="font-mono text-xs text-brand-red font-bold uppercase tracking-widest block mb-2">
-              COMPLETE STUDIO PORTFOLIO ({items.length} WORKS)
+              COMPLETE STUDIO PORTFOLIO ({validPhotos.length} WORKS)
             </span>
             <h2 className="font-cinematic text-3xl sm:text-5xl font-bold text-white uppercase tracking-tight">
               FULL WORK SHOWCASE
             </h2>
             <p className="mt-3 text-xs sm:text-sm text-metallic-300 font-light leading-relaxed">
-              Explore 100% of verified photos and studio video clips showcasing Paint Protection Film (PPF), Ceramic & Graphene Coating, Solar Sunfilm, and precision detailing executions at our OMR Chennai studio.
+              Explore 100% of verified studio photos showcasing Paint Protection Film (PPF), Ceramic & Graphene Coating, Solar Sunfilm, and precision detailing executions at our OMR Chennai studio.
             </p>
           </div>
 
           {/* Full Showcase Masonry / Grid */}
-          {isLoading && items.length === 0 ? (
+          {isLoading && validPhotos.length === 0 ? (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
               {Array.from({ length: 8 }).map((_, i) => (
                 <div
@@ -136,45 +139,21 @@ export const GalleryPage: React.FC = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {items.map((item, index) => {
-                const videoSrc = item.url || item.src || "";
-                const videoPoster =
-                  item.poster ||
-                  (videoSrc.includes("/upload/")
-                    ? videoSrc.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg")
-                    : videoSrc.replace(/\.[^/.]+$/, ".jpg"));
-
+              {validPhotos.map((item, index) => {
+                const photoSrc = item.url || item.src || "";
                 return (
                   <div
                     key={`${item.id}-${index}`}
                     onClick={() => setSelectedMedia(item)}
                     className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
                   >
-                    {item.type === "video" ? (
-                      <div className="relative w-full h-full">
-                        <video
-                          src={videoSrc}
-                          poster={videoPoster}
-                          autoPlay
-                          muted
-                          loop
-                          playsInline
-                          preload="auto"
-                          className="w-full h-full object-cover pointer-events-none"
-                        />
-                        <div className="absolute top-3 right-3 bg-brand-red/90 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded uppercase tracking-wider z-10">
-                          VIDEO
-                        </div>
-                      </div>
-                    ) : (
-                      <img
-                        src={item.url || item.src}
-                        alt={item.title}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    )}
+                    <img
+                      src={photoSrc}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                 );
               })}
@@ -185,10 +164,10 @@ export const GalleryPage: React.FC = () => {
 
       {/* UNIFIED ENHANCED LIGHTBOX MODAL */}
       <Lightbox
-        items={items}
+        items={validPhotos}
         currentIndex={
           selectedMedia
-            ? items.findIndex(
+            ? validPhotos.findIndex(
                 (item) =>
                   item.id === selectedMedia.id ||
                   (item.url || item.src) === (selectedMedia.url || selectedMedia.src)
@@ -196,7 +175,7 @@ export const GalleryPage: React.FC = () => {
             : null
         }
         onClose={() => setSelectedMedia(null)}
-        onNavigate={(newIdx) => setSelectedMedia(items[newIdx])}
+        onNavigate={(newIdx) => setSelectedMedia(validPhotos[newIdx])}
       />
 
       {/* Footer */}

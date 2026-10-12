@@ -79,32 +79,32 @@ export const BorophenePage: React.FC = () => {
 
   const galleryImages = [
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175050.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175050.jpg",
       title: "Surface Durability & Chemical Shield",
       category: "CURING STAGE",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175215.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175215.jpg",
       title: "Premium Finish Application",
       category: "FACILITY ATELIER",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175052.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175052.jpg",
       title: "Precision Surface Preparation",
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175220.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175220.jpg",
       title: "Enhanced Clearcoat Depth",
       category: "INSPECTION TUNNEL",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175046.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175046.jpg",
       title: "Edge Sealing & Finish",
       category: "PROTECTION ZONES",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175216.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175216.jpg",
       title: "Long-Lasting Performance",
       category: "DURABILITY TEST",
     },

@@ -93,22 +93,22 @@ export const SunFilmPage: React.FC = () => {
       category: "PRECISION CRAFT",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0055.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0055.jpg",
       title: "Up to 97% Infrared Solar Shield",
       category: "OPTICAL TEST",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/sunfilm1.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm1.jpg",
       title: "3M Crystalline Precision Glass Tint",
       category: "SIGNAL CLARITY",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/sunfilm3.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm3.jpg",
       title: "Cabin Climate & Glare Control",
       category: "CLIMATE CONTROL",
     },
     {
-      src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/IMG-20260921-WA0042.jpg",
+      src: "https://ik.imagekit.io/3mgallery/3mgallery/IMG-20260921-WA0042.jpg",
       title: "Non-Metallized Solar Shield",
       category: "SOLAR PROTECTION",
     },

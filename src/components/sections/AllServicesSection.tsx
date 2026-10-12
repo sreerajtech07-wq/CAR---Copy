@@ -1,6 +1,7 @@
 import React from "react";
 import { CheckCircle2 } from "lucide-react";
 import { getWhatsAppInquiryUrl } from "../../utils/whatsapp";
+import { getImageKitUrl } from "../../utils/imagekit";
 
 export interface ServiceCardData {
   id: string;
@@ -27,7 +28,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Moisture Barrier",
       "Long-Term Protection",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039",
+    image: getImageKitUrl("antirust.jpg"),
     route: "/anti-rust.html",
   },
   {
@@ -43,7 +44,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Sound Dampening",
       "Anti-Corrosion",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/underbody.jpg",
+    image: getImageKitUrl("underbody.jpg"),
     route: "/anti-rust.html",
   },
   {
@@ -59,7 +60,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Trim Revitalization",
       "Stain Removal",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175216.jpg?updatedAt=1790496301478",
+    image: getImageKitUrl("3mgallery/Videoshot_20260917_175216.jpg"),
     route: "/additional-services.html",
   },
   {
@@ -75,7 +76,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Allergen Neutralization",
       "Odor Elimination",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/Germkleen.webp",
+    image: getImageKitUrl("Germkleen.webp"),
     route: "/additional-services.html",
   },
   {
@@ -91,7 +92,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Clearcoat Refinement",
       "Mirror Finish",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175213.jpg",
+    image: getImageKitUrl("3mgallery/Videoshot_20260917_175213.jpg"),
     route: "/car-detailing.html",
   },
   {
@@ -107,7 +108,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Environmental Shield",
       "High Reflective Gloss",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_Teflon_Polish.jpg",
+    image: getImageKitUrl("3M_Teflon_Polish.jpg"),
     route: "/additional-services.html",
   },
   {
@@ -123,7 +124,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Non-Metallized (Zero Signal Drop)",
       "Optical Clarity",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_CR70.jpg",
+    image: getImageKitUrl("3M_CR70.jpg"),
     route: "/sun-film.html",
   },
   {
@@ -139,7 +140,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "UV Rejection",
       "Clear Day/Night Vision",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_XP70.jpg",
+    image: getImageKitUrl("3M_XP70.jpg"),
     route: "/sun-film.html",
   },
   {
@@ -155,7 +156,7 @@ export const ALL_9_SERVICES: ServiceCardData[] = [
       "Privacy Guard",
       "Durable Multi-Ply",
     ],
-    image: "https://ik.imagekit.io/wpk3ggvcqw/3M_IM70.jpg",
+    image: getImageKitUrl("3M_IM70.jpg"),
     route: "/sun-film.html",
   },
 ];
@@ -199,14 +200,14 @@ export const AllServicesSection: React.FC = () => {
               {/* Card Image Header */}
               <div className="relative h-56 min-h-[14rem] w-full overflow-hidden bg-dark-900">
                 <img
-                  src={srv.image || "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039"}
+                  src={srv.image || "/assets/services/antirust.jpg"}
                   alt={srv.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    if (target.src !== "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039") {
-                      target.src = "https://ik.imagekit.io/wpk3ggvcqw/antirust.jpg?updatedAt=1790498096039";
+                    if (target.src !== "/assets/services/antirust.jpg" && !target.src.endsWith("/assets/services/antirust.jpg")) {
+                      target.src = "/assets/services/antirust.jpg";
                     }
                   }}
                 />

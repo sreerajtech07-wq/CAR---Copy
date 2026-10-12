@@ -9,6 +9,8 @@ export interface BeforeAfterItem {
   readonly status: string;
 }
 
+import { getImageKitUrl } from "../utils/imagekit";
+
 // Representative studio reference imagery. Replace with approved paired customer imagery when available.
 export const BEFORE_AFTER_ITEMS: readonly BeforeAfterItem[] = [
   {
@@ -16,8 +18,8 @@ export const BEFORE_AFTER_ITEMS: readonly BeforeAfterItem[] = [
     title: "Surface restoration, made visible",
     description:
       "Compare the character of an active detailing process with a protected, presentation-ready finish.",
-    beforeImage: "https://ik.imagekit.io/wpk3ggvcqw/before.jpg",
-    afterImage: "https://ik.imagekit.io/wpk3ggvcqw/after.jpg",
+    beforeImage: getImageKitUrl("before.jpg"),
+    afterImage: getImageKitUrl("after.jpg"),
     beforeAlt: "Automotive detailing process reference",
     afterAlt: "Gloss-finished automotive surface reference",
     status: "STUDIO REFERENCE / NOT A CUSTOMER CLAIM",

@@ -20,76 +20,71 @@ export interface GalleryMediaItem {
 
 export const staticGalleryData: GalleryMediaItem[] = [
   {
-    id: "3m-services",
-    name: "3M Services",
-    title: "Official 3M Studio Execution",
-    category: "Precision Detailing",
-    type: "video" as const,
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/3M_OMR_Services.mp4",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/3M_OMR_Services.mp4",
-    poster: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/3M_OMR_Services.jpg",
-    aspect: "16/9",
-  },
-  {
-    id: "ppf-treatment",
-    name: "PPF",
-    title: "3M Scotchgard™ Paint Protection Film",
-    category: "Armor Defense",
-    type: "video" as const,
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/PPF.mp4",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/PPF.mp4",
-    poster: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/PPF.jpg",
-    aspect: "16/9",
-  },
-  {
-    id: "sunfilm-shield",
-    name: "Sunfilm",
-    title: "3M™ Crystalline Solar Infrared Shield",
-    category: "Thermal Protection",
-    type: "video" as const,
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Sunfilm.mp4",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Sunfilm.mp4",
-    poster: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Sunfilm.jpg",
-    aspect: "16/9",
-  },
-  {
-    id: "ceramic-coating",
-    name: "Graphene or Ceramic Coating",
-    title: "Optical Matrix Ceramic & Graphene Glaze",
-    category: "Surface Defense",
-    type: "video" as const,
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Graphene_or_Ceramic_coating.mp4",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Graphene_or_Ceramic_coating.mp4",
-    poster: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Graphene_or_Ceramic_coating.jpg",
-    aspect: "16/9",
-  },
-  {
-    id: "ceramic-coating-02",
+    id: "gallery-ceramic-glaze",
     name: "Ceramic Coating",
-    title: "3M SiO2 Molecular Paint Protection",
-    category: "Surface Defense",
-    type: "video" as const,
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Ceramic_Coating.mp4",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Ceramic_Coating.mp4",
-    poster: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Ceramic_Coating.jpg",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/ceramic_coating.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/ceramic_coating.jpg",
+    title: "Optical Matrix Ceramic Glaze",
+    category: "SURFACE DEFENSE",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-ppf-armor",
+    name: "PPF Installation",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183651.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183651.jpg",
+    title: "3M Scotchgard™ Paint Protection Film",
+    category: "ARMOR DEFENSE",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-graphene-shield",
+    name: "Graphene Coating",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/graphene_coating.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/graphene_coating.jpg",
+    title: "10H Graphene Matrix Protection",
+    category: "SURFACE DEFENSE",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-sunfilm-shield",
+    name: "Sunfilm Protection",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm1.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm1.jpg",
+    title: "3M™ Crystalline Solar Infrared Shield",
+    category: "THERMAL PROTECTION",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-ppf-precision",
+    name: "PPF Precision Wrap",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183630.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183630.jpg",
+    title: "Custom Edge-Wrapped PPF Execution",
+    category: "ARMOR DEFENSE",
     aspect: "16/9",
   },
   {
     id: "gallery-ceramic-corr-02",
     name: "Multi-Stage Paint Correction",
     type: "image",
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175215.jpg",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175215.jpg",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175215.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175215.jpg",
     title: "Multi-Stage Paint Correction",
     category: "SURFACE RESTORATION",
     aspect: "16/9",
   },
   {
     id: "gallery-ppf-installation",
-    name: "PPF Installation",
+    name: "PPF Custom Application",
     type: "image",
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175052.jpg",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175052.jpg",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175052.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175052.jpg",
     title: "Custom Cut PPF Application",
     category: "ARMOR DEFENSE",
     aspect: "16/9",
@@ -98,8 +93,8 @@ export const staticGalleryData: GalleryMediaItem[] = [
     id: "gallery-borophene-shield",
     name: "Borophene Shield",
     type: "image",
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175050.jpg",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175050.jpg",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175050.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175050.jpg",
     title: "2D Borophene Atomic Layer",
     category: "SURFACE RESTORATION",
     aspect: "16/9",
@@ -108,10 +103,40 @@ export const staticGalleryData: GalleryMediaItem[] = [
     id: "gallery-sunfilm-install",
     name: "Sunfilm Protection",
     type: "image",
-    url: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175220.jpg",
-    src: "https://ik.imagekit.io/wpk3ggvcqw/Gallerycar/Videoshot_20260917_175220.jpg",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175220.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175220.jpg",
     title: "3M Crystalline Solar Defense",
     category: "THERMAL SHIELD",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-sunfilm-crystalline",
+    name: "Solar Heat Rejection Film",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm3.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/sunfilm3.jpg",
+    title: "3M Optical Film Clarity",
+    category: "THERMAL SHIELD",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-detailing-craft",
+    name: "Precision Detailing Finish",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175213.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260917_175213.jpg",
+    title: "Studio High-Gloss Mirror Finish",
+    category: "PRECISION DETAILING",
+    aspect: "16/9",
+  },
+  {
+    id: "gallery-ppf-hood-wrap",
+    name: "Scotchgard Full Body Armor",
+    type: "image",
+    url: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183639.jpg",
+    src: "https://ik.imagekit.io/3mgallery/3mgallery/Videoshot_20260925_183639.jpg",
+    title: "Full Contour Seamless Fit",
+    category: "ARMOR DEFENSE",
     aspect: "16/9",
   },
 ];
@@ -229,24 +254,15 @@ export const StudioMarqueeGallery: React.FC = () => {
     trackRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  // Video hover-to-play handlers with abort error catching
-  const handleMouseEnterVideo = (e: React.MouseEvent<HTMLVideoElement>) => {
-    const video = e.currentTarget;
-    if (selectedMedia) return;
-    video.play().catch(() => {});
-  };
-
-  const handleMouseLeaveVideo = (e: React.MouseEvent<HTMLVideoElement>) => {
-    const video = e.currentTarget;
-    video.pause();
-  };
-
   const handleCardClick = (item: GalleryMediaItem) => {
     setSelectedMedia(item);
   };
 
+  // Filter out any video items so only valid photo/image cards are displayed without blank black boxes
+  const validImageItems = items.filter((item) => item.type !== "video" && (item.url || item.src));
+
   // Duplicate items for continuous auto-scrolling loop
-  const displayItems = items.length > 0 ? [...items, ...items] : [];
+  const displayItems = validImageItems.length > 0 ? [...validImageItems, ...validImageItems] : [];
 
   return (
     <section
@@ -258,7 +274,7 @@ export const StudioMarqueeGallery: React.FC = () => {
         <div className="flex flex-col justify-between border-b border-neutral-900 pb-5 md:flex-row md:items-end gap-3">
           <div>
             <span className="text-xs font-bold text-red-500 tracking-widest uppercase block mb-1 font-mono">
-              STUDIO WORK IN MOTION
+              STUDIO WORK SHOWCASE
             </span>
             <h2
               id="gallery-title"
@@ -268,7 +284,7 @@ export const StudioMarqueeGallery: React.FC = () => {
               <span>OMR GALLERY</span>
             </h2>
             <p className="text-xs text-neutral-400 mt-1 font-sans">
-              Drag horizontally to explore • Click card to preview media • Hover video cards to preview studio execution
+              Drag horizontally to explore • Click card to preview high-resolution studio execution
             </p>
           </div>
 
@@ -278,7 +294,7 @@ export const StudioMarqueeGallery: React.FC = () => {
               href="/gallery.html"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-red-500/40 bg-red-500/10 hover:bg-red-600 hover:text-white text-red-400 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.2)] hover:scale-105 active:scale-95"
             >
-              <span>VIEW FULL GALLERY ({items.length || "ALL"}) ↗</span>
+              <span>VIEW FULL GALLERY ({validImageItems.length || "ALL"}) ↗</span>
             </a>
           </div>
         </div>
@@ -302,15 +318,9 @@ export const StudioMarqueeGallery: React.FC = () => {
           {displayItems.map((item, index) => {
             const itemUrl = item.url || item.src || "";
             const optimizedUrl =
-              item.type === "image" && itemUrl.includes("/upload/") && !itemUrl.includes("/w_800")
+              itemUrl.includes("/upload/") && !itemUrl.includes("/w_800")
                 ? itemUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/")
                 : itemUrl;
-
-            const videoPoster =
-              item.poster ||
-              (itemUrl.includes("/upload/")
-                ? itemUrl.replace("/upload/", "/upload/so_0,f_jpg,q_auto,w_800/").replace(/\.[^/.]+$/, ".jpg")
-                : itemUrl.replace(/\.[^/.]+$/, ".jpg"));
 
             return (
               <div
@@ -318,28 +328,13 @@ export const StudioMarqueeGallery: React.FC = () => {
                 onClick={() => handleCardClick(item)}
                 className="gallery-card w-[300px] sm:w-[380px] md:w-[440px] aspect-[16/10] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 relative cursor-pointer group shadow-2xl transition-all duration-500 hover:border-red-600/60 hover:scale-[1.02]"
               >
-                {item.type === "video" ? (
-                  <video
-                    src={optimizedUrl}
-                    poster={videoPoster}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="auto"
-                    onMouseEnter={handleMouseEnterVideo}
-                    onMouseLeave={handleMouseLeaveVideo}
-                    className="w-full h-full object-cover pointer-events-none"
-                  />
-                ) : (
-                  <img
-                    src={optimizedUrl}
-                    alt={item.title}
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                )}
+                <img
+                  src={optimizedUrl}
+                  alt={item.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
               </div>
             );
           })}
@@ -362,10 +357,10 @@ export const StudioMarqueeGallery: React.FC = () => {
 
       {/* UNIFIED ENHANCED LIGHTBOX MODAL */}
       <Lightbox
-        items={items}
+        items={validImageItems}
         currentIndex={
           selectedMedia
-            ? items.findIndex(
+            ? validImageItems.findIndex(
                 (item) =>
                   item.id === selectedMedia.id ||
                   (item.url || item.src) === (selectedMedia.url || selectedMedia.src)
@@ -373,7 +368,7 @@ export const StudioMarqueeGallery: React.FC = () => {
             : null
         }
         onClose={() => setSelectedMedia(null)}
-        onNavigate={(newIdx) => setSelectedMedia(items[newIdx])}
+        onNavigate={(newIdx) => setSelectedMedia(validImageItems[newIdx])}
       />
     </section>
   );
