@@ -26,49 +26,12 @@ export const galleryData = staticGalleryData;
 
 export const StudioMarqueeGallery: React.FC = () => {
   const trackRef = useRef<HTMLDivElement | null>(null);
-  const [items, setItems] = useState<GalleryMediaItem[]>(staticGalleryData);
+  const items = staticGalleryData;
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [selectedMedia, setSelectedMedia] = useState<GalleryMediaItem | null>(null);
-
-  // Fetch dynamic gallery items count & list from serverless API endpoint
-  useEffect(() => {
-    let isMounted = true;
-    const fetchGalleryMedia = async () => {
-      try {
-        const response = await fetch("/api/gallery");
-        if (response.ok) {
-          const data = await response.json();
-          if (isMounted && data.success && Array.isArray(data.items) && data.items.length > 0) {
-            const getCleanUrlKey = (urlStr?: string) =>
-              (urlStr || "").split("?")[0].replace(/\/+$/, "").toLowerCase();
-
-            const staticKeys = new Set(
-              staticGalleryData.map((sItem) => getCleanUrlKey(sItem.url || sItem.src))
-            );
-
-            const uniqueFetched = data.items.filter((cItem: any) => {
-              const cKey = getCleanUrlKey(cItem.url || cItem.src);
-              if (!cKey || staticKeys.has(cKey)) return false;
-              staticKeys.add(cKey);
-              return true;
-            });
-
-            setItems([...staticGalleryData, ...uniqueFetched]);
-          }
-        }
-      } catch (err) {
-        console.warn("Could not fetch ImageKit dynamic gallery, using local default fallback.", err);
-      }
-    };
-
-    fetchGalleryMedia();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   // Auto-scrolling marquee effect
   useEffect(() => {

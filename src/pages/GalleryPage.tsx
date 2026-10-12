@@ -10,47 +10,8 @@ import { Lightbox } from "../components/common/Lightbox";
 import { staticGalleryData, type GalleryMediaItem } from "../components/sections/StudioMarqueeGallery";
 
 export const GalleryPage: React.FC = () => {
-  const [items, setItems] = useState<GalleryMediaItem[]>(staticGalleryData);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const items = staticGalleryData;
   const [selectedMedia, setSelectedMedia] = useState<GalleryMediaItem | null>(null);
-
-  useEffect(() => {
-    let isMounted = true;
-    const fetchFullGallery = async () => {
-      try {
-        const response = await fetch("/api/gallery");
-        if (response.ok) {
-          const data = await response.json();
-          if (isMounted && data.success && Array.isArray(data.items)) {
-            const getCleanUrlKey = (urlStr?: string) =>
-              (urlStr || "").split("?")[0].replace(/\/+$/, "").toLowerCase();
-
-            const staticKeys = new Set(
-              staticGalleryData.map((sItem) => getCleanUrlKey(sItem.url || sItem.src))
-            );
-
-            const uniqueFetched = data.items.filter((fItem: any) => {
-              const fKey = getCleanUrlKey(fItem.url || fItem.src);
-              if (!fKey || staticKeys.has(fKey)) return false;
-              staticKeys.add(fKey);
-              return true;
-            });
-
-            setItems([...staticGalleryData, ...uniqueFetched]);
-          }
-        }
-      } catch (err) {
-        console.warn("Could not fetch full ImageKit vault, using static fallback items.", err);
-      } finally {
-        if (isMounted) setIsLoading(false);
-      }
-    };
-
-    fetchFullGallery();
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   // Safe body scroll lock cleanup on modal state change / unmount
   useEffect(() => {
@@ -128,37 +89,26 @@ export const GalleryPage: React.FC = () => {
           </div>
 
           {/* Full Showcase Masonry / Grid */}
-          {isLoading && validPhotos.length === 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {Array.from({ length: 8 }).map((_, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            {validPhotos.map((item, index) => {
+              const photoSrc = item.url || item.src || "";
+              return (
                 <div
-                  key={i}
-                  className="w-full aspect-[16/10] rounded-2xl bg-neutral-900/80 border border-neutral-800 animate-pulse"
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-              {validPhotos.map((item, index) => {
-                const photoSrc = item.url || item.src || "";
-                return (
-                  <div
-                    key={`${item.id}-${index}`}
-                    onClick={() => setSelectedMedia(item)}
-                    className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
-                  >
-                    <img
-                      src={photoSrc}
-                      alt={item.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          )}
+                  key={`${item.id}-${index}`}
+                  onClick={() => setSelectedMedia(item)}
+                  className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <img
+                    src={photoSrc}
+                    alt={item.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </main>
 

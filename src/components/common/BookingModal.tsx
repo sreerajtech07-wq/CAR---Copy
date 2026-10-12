@@ -90,7 +90,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             </div>
             <div>
               <span className="font-mono text-[10px] text-brand-red tracking-super-wide uppercase block">
-                STUDIO RESERVATION DEMO
+                STUDIO RESERVATION
               </span>
               <h3 className="font-cinematic text-xl font-bold uppercase tracking-tight text-white">
                 Book Studio Consultation
