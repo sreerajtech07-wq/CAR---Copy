@@ -7,7 +7,7 @@ if (!process.env.IMAGEKIT_PRIVATE_KEY) {
   dotenv.config({ path: path.resolve(process.cwd(), ".env") });
 }
 
-const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "";
+const IMAGEKIT_PRIVATE_KEY = process.env.IMAGEKIT_PRIVATE_KEY || "private_CnclEjw7uWM8APF7h19bXNV0cfw=";
 const IMAGEKIT_URL_ENDPOINT = (process.env.IMAGEKIT_URL_ENDPOINT || "https://ik.imagekit.io/3mgallery").replace(/\/$/, "");
 
 export default async function handler(req: any, res: any) {
@@ -21,9 +21,9 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // Call ImageKit API v1 files list endpoint targeting /3mgallery/ folder with high limit to fetch all files
+    // Call ImageKit API v1 files list endpoint without restrictive path filter, limit=1000 to fetch all files
     const authHeader = `Basic ${Buffer.from(`${IMAGEKIT_PRIVATE_KEY}:`).toString("base64")}`;
-    const url = `https://api.imagekit.io/v1/files?path=/3mgallery/&limit=1000`;
+    const url = `https://api.imagekit.io/v1/files?limit=1000`;
 
     const response = await fetch(url, {
       headers: {
@@ -44,44 +44,25 @@ export default async function handler(req: any, res: any) {
     const files = await response.json();
     const rawItems = Array.isArray(files) ? files : files.results || [];
 
-    const items = rawItems.map((file: any) => {
-      const isVideo = file.fileType === "video" || (file.filePath && file.filePath.endsWith(".mp4"));
+    // Filter out videos, ensure all valid images are returned
+    const validImages = rawItems.filter((file: any) => {
+      const isVideo = file.fileType === "video" || (file.filePath && (file.filePath.endsWith(".mp4") || file.filePath.endsWith(".webm")));
+      return !isVideo;
+    });
+
+    const items = validImages.map((file: any) => {
       const fileName = file.name || file.filePath?.split("/").pop() || "media";
-      
-      let cleanTitle = fileName
-        .replace(/[-_]/g, " ")
-        .replace(/\.[^/.]+$/, "")
-        .replace(/\b\w/g, (l: string) => l.toUpperCase());
-
-      // Generate contextual studio titles for generic camera/video shot filenames
-      if (/videoshot|img[_-]|dsc[_-]|vid[_-]|\d{6,}/i.test(cleanTitle)) {
-        const lower = (cleanTitle + " " + (file.filePath || "")).toLowerCase();
-        if (lower.includes("ppf")) cleanTitle = "3M Scotchgard™ PPF Protection";
-        else if (lower.includes("ceramic")) cleanTitle = "3M Ceramic Coating Glaze";
-        else if (lower.includes("graphene")) cleanTitle = "3M Graphene Paint Shield";
-        else if (lower.includes("sunfilm") || lower.includes("tint")) cleanTitle = "3M Crystalline Solar Sunfilm";
-        else if (lower.includes("borophene")) cleanTitle = "3M Borophene Nano Defense";
-        else if (lower.includes("rust") || lower.includes("underbody")) cleanTitle = "3M Anti-Rust Underbody Defense";
-        else if (lower.includes("wash") || lower.includes("detail")) cleanTitle = "3M Precision Paint Correction";
-        else cleanTitle = isVideo ? "3M Official Studio Video Execution" : "3M Precision Studio Detailing";
-      }
-
-      // Format clean ImageKit URLs for media and posters
       const filePathClean = file.filePath ? file.filePath.replace(/^\/+/, "") : `3mgallery/${fileName}`;
       const secureUrl = file.url || `${IMAGEKIT_URL_ENDPOINT}/${filePathClean}`;
-      const posterUrl = isVideo
-        ? `${IMAGEKIT_URL_ENDPOINT}/${filePathClean.replace(/\.[^/.]+$/, ".jpg")}`
-        : secureUrl;
 
       return {
         id: file.fileId || file.name,
-        name: cleanTitle,
-        title: cleanTitle || "3M Car Care Execution",
-        category: isVideo ? "Studio Execution" : "Precision Craft",
+        name: fileName.replace(/\.[^/.]+$/, ""),
+        title: "3M Studio Precision Craft",
+        category: "Precision Craft",
         src: secureUrl,
         url: secureUrl,
-        poster: posterUrl,
-        type: isVideo ? "video" : "image",
+        type: "image",
         width: file.width,
         height: file.height,
         aspect: "16/9",
