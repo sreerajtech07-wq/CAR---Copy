@@ -21,9 +21,9 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // Call ImageKit API v1 files list endpoint targeting /3mgallery/ folder
+    // Call ImageKit API v1 files list endpoint targeting /3mgallery/ folder with high limit to fetch all files
     const authHeader = `Basic ${Buffer.from(`${IMAGEKIT_PRIVATE_KEY}:`).toString("base64")}`;
-    const url = `https://api.imagekit.io/v1/files?path=/3mgallery/&limit=100`;
+    const url = `https://api.imagekit.io/v1/files?path=/3mgallery/&limit=1000`;
 
     const response = await fetch(url, {
       headers: {

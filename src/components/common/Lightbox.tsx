@@ -103,7 +103,6 @@ export const Lightbox: React.FC<LightboxProps> = ({
 
   const mediaUrl = currentItem.url || currentItem.src || "";
   const cleanTitle = getCleanMediaTitle(currentItem);
-  const categoryLabel = currentItem.category ? currentItem.category.toUpperCase() : "PRECISION CRAFT";
 
   // Native Touch Swipe Handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -206,7 +205,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
         {/* Media Preview Box */}
         <div
           key={currentIndex ?? 0}
-          className="relative max-w-full max-h-[75vh] sm:max-h-[80vh] flex items-center justify-center rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black animate-fade-in"
+          className="relative max-w-full max-h-[85vh] sm:max-h-[88vh] flex items-center justify-center rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black animate-fade-in"
         >
           {currentItem.type === "video" ? (
             <video
@@ -217,7 +216,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
               autoPlay
               playsInline
               preload="auto"
-              className="max-w-full max-h-[72vh] sm:max-h-[78vh] object-contain rounded-xl bg-black shadow-2xl"
+              className="max-w-full max-h-[82vh] sm:max-h-[86vh] object-contain rounded-xl bg-black shadow-2xl"
             >
               Your browser does not support the video tag.
             </video>
@@ -226,7 +225,7 @@ export const Lightbox: React.FC<LightboxProps> = ({
               key={mediaUrl}
               src={mediaUrl}
               alt={cleanTitle}
-              className="max-w-full max-h-[72vh] sm:max-h-[78vh] object-contain rounded-xl shadow-2xl"
+              className="max-w-full max-h-[82vh] sm:max-h-[86vh] object-contain rounded-xl shadow-2xl"
             />
           )}
         </div>
@@ -241,24 +240,6 @@ export const Lightbox: React.FC<LightboxProps> = ({
           >
             <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
           </button>
-        )}
-      </div>
-
-      {/* Bottom Clean Caption Bar (Strictly No Raw Filenames) */}
-      <div
-        className="w-full max-w-3xl mx-auto text-center z-[100002] p-3 sm:p-4 rounded-xl bg-neutral-900/90 border border-white/10 backdrop-blur-xl shrink-0"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <span className="font-mono text-[10px] sm:text-xs text-brand-red font-bold tracking-widest uppercase block mb-1">
-          {categoryLabel}
-        </span>
-        <h3 className="font-cinematic text-base sm:text-2xl font-bold uppercase tracking-tight text-white leading-tight">
-          {cleanTitle}
-        </h3>
-        {currentItem.description && !isRawFilename(currentItem.description) && (
-          <p className="mt-1 text-xs text-metallic-300 max-w-xl mx-auto font-light hidden sm:block">
-            {currentItem.description}
-          </p>
         )}
       </div>
     </div>
