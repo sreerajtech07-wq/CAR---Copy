@@ -20,6 +20,9 @@ export interface BusinessData {
   readonly landmark: string;
   readonly phone: string;
   readonly phoneClean: string;
+  readonly whatsapp: string;
+  readonly whatsappClean: string;
+  readonly whatsappUrl: string;
   readonly email: string;
   readonly instagram: string;
   readonly instagramUrl: string;
@@ -49,8 +52,11 @@ export const BUSINESS: BusinessData = {
     full: "3/452E, Rajiv Gandhi Salai, OMR, Mettukuppam, Chennai – 600097, Tamil Nadu, India",
   },
   landmark: "Opposite AKDR Golf Village",
-  phone: "+91 76019 33555",
-  phoneClean: "+917601933555",
+  phone: "+91 91670 48826",
+  phoneClean: "+919167048826",
+  whatsapp: "+91 73055 41166",
+  whatsappClean: "917305541166",
+  whatsappUrl: "https://wa.me/917305541166",
   email: "3mcarcare.chennai.omr@gmail.com",
   instagram: "@3mcarcareomr",
   instagramUrl: "https://www.instagram.com/3mcarcareomr",

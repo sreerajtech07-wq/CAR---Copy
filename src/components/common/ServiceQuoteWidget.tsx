@@ -18,7 +18,7 @@ export const ServiceQuoteWidget: React.FC<ServiceQuoteWidgetProps> = ({ serviceN
       : "my car";
 
     const text = `Hi 3M Car Care Studio OMR, I'm interested in ${serviceName} for ${carDetails}. Please share the package estimate and availability. Thank you.`;
-    const waUrl = `https://wa.me/${BUSINESS.phoneClean}?text=${encodeURIComponent(text)}`;
+    const waUrl = `https://wa.me/${BUSINESS.whatsappClean}?text=${encodeURIComponent(text)}`;
     window.open(waUrl, "_blank", "noopener,noreferrer");
   };
 

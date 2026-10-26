@@ -1,8 +1,9 @@
 import React from "react";
+import { BUSINESS } from "../../data/business";
 
 export const FloatingWhatsApp: React.FC = () => {
   const whatsappUrl =
-    "https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20the%20services%3F";
+    `https://wa.me/${BUSINESS.whatsappClean}?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20the%20services%3F`;
 
   return (
     <a
@@ -10,7 +11,7 @@ export const FloatingWhatsApp: React.FC = () => {
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-2xl shadow-black/50 hover:scale-110 active:scale-95 transition-all duration-300 group select-none"
-      aria-label="Chat on WhatsApp (+91 76019 33555)"
+      aria-label={`Chat on WhatsApp (${BUSINESS.whatsapp})`}
     >
       <svg
         className="w-7 h-7 fill-white transition-transform duration-300 group-hover:scale-105"

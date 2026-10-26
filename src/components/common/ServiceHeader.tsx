@@ -15,7 +15,7 @@ export const ServiceHeader: React.FC<ServiceHeaderProps> = ({
   nextServiceHref,
   nextServiceLabel,
 }) => {
-  const whatsappUrl = `https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/${BUSINESS.whatsappClean}?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
     serviceName
   )}%3F`;
 
@@ -55,7 +55,7 @@ export const ServiceHeader: React.FC<ServiceHeaderProps> = ({
             className="inline-flex items-center space-x-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded bg-[#b3141a] hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-md active:scale-95"
           >
             <Phone className="w-3.5 h-3.5 fill-current" />
-            <span>+91 76019 33555</span>
+            <span>{BUSINESS.phone}</span>
           </a>
 
           {/* Green WhatsApp Button */}

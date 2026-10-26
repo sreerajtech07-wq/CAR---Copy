@@ -97,7 +97,7 @@ export const BookingSection: React.FC = () => {
 ${scopeText}
 • Preference: ${contactPreference}`;
 
-    const whatsappUrl = `https://wa.me/${BUSINESS.phoneClean}?text=${encodeURIComponent(textMessage)}`;
+    const whatsappUrl = `https://wa.me/${BUSINESS.whatsappClean}?text=${encodeURIComponent(textMessage)}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -144,7 +144,7 @@ ${scopeText}
                 <input
                   type="tel"
                   required
-                  placeholder="+91 76019 33555"
+                  placeholder="+91 91670 48826"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full h-11 sm:h-12 px-3.5 text-sm sm:text-base rounded-lg bg-[#141414] border border-neutral-800 text-white focus:border-red-600 focus:outline-none transition-colors"

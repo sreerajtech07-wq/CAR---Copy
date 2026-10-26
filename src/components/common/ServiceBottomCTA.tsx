@@ -9,7 +9,7 @@ interface ServiceBottomCTAProps {
 }
 
 export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName }) => {
-  const whatsappUrl = `https://wa.me/917601933555?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/${BUSINESS.whatsappClean}?text=Hi%203M%20Car%20Care%20OMR,%20can%20I%20get%20more%20info%20on%20${encodeURIComponent(
     serviceName
   )}%3F`;
 
@@ -31,7 +31,7 @@ export const ServiceBottomCTA: React.FC<ServiceBottomCTAProps> = ({ serviceName 
             className="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded bg-[#b3141a] hover:bg-red-700 text-white font-mono text-xs font-bold uppercase tracking-wider transition-all shadow-lg shadow-red-950/50 active:scale-95"
           >
             <Phone className="w-4 h-4 fill-current" />
-            <span>CALL +91 76019 33555 / 666</span>
+            <span>CALL {BUSINESS.phone}</span>
           </a>
 
           {/* 2. Green WhatsApp Button */}

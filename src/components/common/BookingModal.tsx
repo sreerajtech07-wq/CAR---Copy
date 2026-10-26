@@ -50,7 +50,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
       const vehicleName = vehicle.model ? `${vehicle.brand} ${vehicle.model}`.trim() : vehicle.brand;
       const vehicleInfo = vehicle.brand ? `${vehicleName} (${vehicle.vehicleType})` : "Not specified";
       const message = `New Inquiry from Website:\nName: ${contact.name}\nPhone: ${contact.phone}\nService: ${selectedService}\nVehicle: ${vehicleInfo}\nPreferred Date: ${bookingDate || "Flexible"}`;
-      const waUrl = `https://wa.me/917601933555?text=${encodeURIComponent(message)}`;
+      const waUrl = `https://wa.me/${BUSINESS.whatsappClean}?text=${encodeURIComponent(message)}`;
       window.open(waUrl, "_blank", "noopener,noreferrer");
     }
     setStep((prev) => Math.min(prev + 1, 5));

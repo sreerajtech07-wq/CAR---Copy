@@ -140,7 +140,7 @@ export const Footer: React.FC = () => {
                   className="inline-flex items-center gap-2 text-neutral-200 hover:text-white font-mono font-bold transition-colors duration-200"
                 >
                   <Phone className="w-3.5 h-3.5 text-brand-red" />
-                  +91 76019 33555 / 666
+                  {BUSINESS.phone}
                 </a>
               </li>
             </ul>

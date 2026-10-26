@@ -1,4 +1,4 @@
-const STUDIO_PHONE = "917601933555";
+import { BUSINESS } from "../data/business";
 
 export const getWhatsAppInquiryUrl = (serviceName: string, actionType: string = "inquire") => {
   const cleanService = serviceName.trim();
@@ -10,5 +10,5 @@ export const getWhatsAppInquiryUrl = (serviceName: string, actionType: string = 
     message = `Hi 3M Car Care OMR, can I get more info and pricing for ${cleanService}?`;
   }
 
-  return `https://wa.me/${STUDIO_PHONE}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${BUSINESS.whatsappClean}?text=${encodeURIComponent(message)}`;
 };

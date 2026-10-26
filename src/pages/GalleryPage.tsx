@@ -134,7 +134,7 @@ export const GalleryPage: React.FC = () => {
           {BUSINESS.name} • {BUSINESS.address.full}
         </p>
         <p className="mt-1">
-          Operating Hours: {BUSINESS.businessHours.display} • Direct Studio: +91 76019 33555 / 666
+          Operating Hours: {BUSINESS.businessHours.display} • Direct Studio: {BUSINESS.phone}
         </p>
       </footer>
       <FloatingWhatsApp />

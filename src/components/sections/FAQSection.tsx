@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Plus, Minus, MessageCircle } from "lucide-react";
+import { BUSINESS } from "../../data/business";
 
 interface FAQItem {
   question: string;
@@ -99,7 +100,7 @@ export const FAQSection: React.FC = () => {
             </p>
           </div>
           <a
-            href="https://wa.me/917601933555?text=Hi%2C%20I%20have%20a%20question%20regarding%20detailing%20services."
+            href={`https://wa.me/${BUSINESS.whatsappClean}?text=Hi%2C%20I%20have%20a%20question%20regarding%20detailing%20services.`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm transition-all shadow-md shadow-emerald-950/40 shrink-0"
@@ -112,5 +113,3 @@ export const FAQSection: React.FC = () => {
     </section>
   );
 };
-
-export default FAQSection;

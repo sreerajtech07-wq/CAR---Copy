@@ -81,7 +81,7 @@ export const NotFoundPage: React.FC = () => {
           </a>
 
           <a
-            href={`https://wa.me/${BUSINESS.phoneClean}?text=Hi%203M%20Car%20Care%20Studio%20OMR,%20I%20need%20help%20finding%20a%20service.`}
+            href={`https://wa.me/${BUSINESS.whatsappClean}?text=Hi%203M%20Car%20Care%20Studio%20OMR,%20I%20need%20help%20finding%20a%20service.`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 px-6 py-4 rounded-xl font-mono text-xs sm:text-sm font-bold tracking-wider uppercase text-white bg-[#25d366] hover:bg-emerald-600 transition-all shadow-md hover:scale-105"
