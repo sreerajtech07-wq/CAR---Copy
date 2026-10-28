@@ -25,11 +25,17 @@ export const Background3D: React.FC = () => {
     camera.position.set(0, 40, 400);
 
     // Renderer setup
-    const renderer = new THREE.WebGLRenderer({
-      alpha: true,
-      antialias: true,
-      powerPreference: "high-performance",
-    });
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true,
+        powerPreference: "high-performance",
+      });
+    } catch {
+      // Graceful fallback when WebGL context cannot be created
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x050505, 0);
