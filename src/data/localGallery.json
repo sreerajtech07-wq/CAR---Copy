@@ -5,9 +5,12 @@
     "title": "3M Ceramic Coating Precision",
     "category": "Ceramic Coating",
     "type": "image",
-    "url": "/3mgallery/ceramic_coating.jpg",
-    "src": "/3mgallery/ceramic_coating.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/ceramic_coating.webp",
+    "src": "/3mgallery/ceramic_coating.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/ceramic_coating-thumb.webp",
+    "previewUrl": "/3mgallery/ceramic_coating-thumb.webp",
+    "fallbackUrl": "/3mgallery/ceramic_coating.jpg"
   },
   {
     "id": "local-3m-1",
@@ -15,9 +18,12 @@
     "title": "3M Graphene Matrix Shield",
     "category": "Graphene Matrix",
     "type": "image",
-    "url": "/3mgallery/graphene_coating.jpg",
-    "src": "/3mgallery/graphene_coating.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/graphene_coating.webp",
+    "src": "/3mgallery/graphene_coating.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/graphene_coating-thumb.webp",
+    "previewUrl": "/3mgallery/graphene_coating-thumb.webp",
+    "fallbackUrl": "/3mgallery/graphene_coating.jpg"
   },
   {
     "id": "local-3m-2",
@@ -25,9 +31,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0042.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0042.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0042.webp",
+    "src": "/3mgallery/IMG-20260921-WA0042.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0042-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0042-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0042.jpg"
   },
   {
     "id": "local-3m-3",
@@ -35,9 +44,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0043.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0043.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0043.webp",
+    "src": "/3mgallery/IMG-20260921-WA0043.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0043-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0043-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0043.jpg"
   },
   {
     "id": "local-3m-4",
@@ -45,9 +57,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0044.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0044.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0044.webp",
+    "src": "/3mgallery/IMG-20260921-WA0044.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0044-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0044-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0044.jpg"
   },
   {
     "id": "local-3m-5",
@@ -55,9 +70,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0045.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0045.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0045.webp",
+    "src": "/3mgallery/IMG-20260921-WA0045.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0045-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0045-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0045.jpg"
   },
   {
     "id": "local-3m-6",
@@ -65,9 +83,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0046.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0046.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0046.webp",
+    "src": "/3mgallery/IMG-20260921-WA0046.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0046-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0046-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0046.jpg"
   },
   {
     "id": "local-3m-7",
@@ -75,9 +96,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0047.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0047.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0047.webp",
+    "src": "/3mgallery/IMG-20260921-WA0047.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0047-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0047-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0047.jpg"
   },
   {
     "id": "local-3m-8",
@@ -85,9 +109,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0048.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0048.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0048.webp",
+    "src": "/3mgallery/IMG-20260921-WA0048.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0048-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0048-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0048.jpg"
   },
   {
     "id": "local-3m-9",
@@ -95,9 +122,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0049.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0049.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0049.webp",
+    "src": "/3mgallery/IMG-20260921-WA0049.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0049-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0049-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0049.jpg"
   },
   {
     "id": "local-3m-10",
@@ -105,9 +135,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0050.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0050.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0050.webp",
+    "src": "/3mgallery/IMG-20260921-WA0050.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0050-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0050-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0050.jpg"
   },
   {
     "id": "local-3m-11",
@@ -115,9 +148,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0051.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0051.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0051.webp",
+    "src": "/3mgallery/IMG-20260921-WA0051.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0051-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0051-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0051.jpg"
   },
   {
     "id": "local-3m-12",
@@ -125,9 +161,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0052.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0052.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0052.webp",
+    "src": "/3mgallery/IMG-20260921-WA0052.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0052-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0052-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0052.jpg"
   },
   {
     "id": "local-3m-13",
@@ -135,9 +174,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0053.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0053.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0053.webp",
+    "src": "/3mgallery/IMG-20260921-WA0053.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0053-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0053-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0053.jpg"
   },
   {
     "id": "local-3m-14",
@@ -145,9 +187,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0054.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0054.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0054.webp",
+    "src": "/3mgallery/IMG-20260921-WA0054.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0054-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0054-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0054.jpg"
   },
   {
     "id": "local-3m-15",
@@ -155,9 +200,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0055.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0055.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0055.webp",
+    "src": "/3mgallery/IMG-20260921-WA0055.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0055-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0055-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0055.jpg"
   },
   {
     "id": "local-3m-16",
@@ -165,9 +213,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0056.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0056.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0056.webp",
+    "src": "/3mgallery/IMG-20260921-WA0056.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0056-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0056-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0056.jpg"
   },
   {
     "id": "local-3m-17",
@@ -175,9 +226,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0057.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0057.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0057.webp",
+    "src": "/3mgallery/IMG-20260921-WA0057.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0057-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0057-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0057.jpg"
   },
   {
     "id": "local-3m-18",
@@ -185,9 +239,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0058.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0058.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0058.webp",
+    "src": "/3mgallery/IMG-20260921-WA0058.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0058-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0058-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0058.jpg"
   },
   {
     "id": "local-3m-19",
@@ -195,9 +252,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0059.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0059.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0059.webp",
+    "src": "/3mgallery/IMG-20260921-WA0059.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0059-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0059-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0059.jpg"
   },
   {
     "id": "local-3m-20",
@@ -205,9 +265,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0060.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0060.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0060.webp",
+    "src": "/3mgallery/IMG-20260921-WA0060.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0060-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0060-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0060.jpg"
   },
   {
     "id": "local-3m-21",
@@ -215,9 +278,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0061.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0061.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0061.webp",
+    "src": "/3mgallery/IMG-20260921-WA0061.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0061-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0061-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0061.jpg"
   },
   {
     "id": "local-3m-22",
@@ -225,9 +291,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0062.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0062.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0062.webp",
+    "src": "/3mgallery/IMG-20260921-WA0062.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0062-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0062-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0062.jpg"
   },
   {
     "id": "local-3m-23",
@@ -235,9 +304,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0063.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0063.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0063.webp",
+    "src": "/3mgallery/IMG-20260921-WA0063.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0063-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0063-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0063.jpg"
   },
   {
     "id": "local-3m-24",
@@ -245,9 +317,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0064.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0064.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0064.webp",
+    "src": "/3mgallery/IMG-20260921-WA0064.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0064-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0064-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0064.jpg"
   },
   {
     "id": "local-3m-25",
@@ -255,9 +330,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG-20260921-WA0065.jpg",
-    "src": "/3mgallery/IMG-20260921-WA0065.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG-20260921-WA0065.webp",
+    "src": "/3mgallery/IMG-20260921-WA0065.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG-20260921-WA0065-thumb.webp",
+    "previewUrl": "/3mgallery/IMG-20260921-WA0065-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG-20260921-WA0065.jpg"
   },
   {
     "id": "local-3m-26",
@@ -265,9 +343,12 @@
     "title": "3M Studio Precision Craft",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/IMG_20260731_231723_659.JPG.jpg",
-    "src": "/3mgallery/IMG_20260731_231723_659.JPG.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/IMG_20260731_231723_659.JPG.webp",
+    "src": "/3mgallery/IMG_20260731_231723_659.JPG.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/IMG_20260731_231723_659.JPG-thumb.webp",
+    "previewUrl": "/3mgallery/IMG_20260731_231723_659.JPG-thumb.webp",
+    "fallbackUrl": "/3mgallery/IMG_20260731_231723_659.JPG.jpg"
   },
   {
     "id": "local-3m-27",
@@ -275,9 +356,12 @@
     "title": "3M Crystalline Sunfilm Installation",
     "category": "Sunfilm",
     "type": "image",
-    "url": "/3mgallery/sunfilm1.jpg",
-    "src": "/3mgallery/sunfilm1.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/sunfilm1.webp",
+    "src": "/3mgallery/sunfilm1.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/sunfilm1-thumb.webp",
+    "previewUrl": "/3mgallery/sunfilm1-thumb.webp",
+    "fallbackUrl": "/3mgallery/sunfilm1.jpg"
   },
   {
     "id": "local-3m-28",
@@ -285,9 +369,12 @@
     "title": "3M Crystalline Sunfilm Installation",
     "category": "Sunfilm",
     "type": "image",
-    "url": "/3mgallery/sunfilm3.jpg",
-    "src": "/3mgallery/sunfilm3.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/sunfilm3.webp",
+    "src": "/3mgallery/sunfilm3.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/sunfilm3-thumb.webp",
+    "previewUrl": "/3mgallery/sunfilm3-thumb.webp",
+    "fallbackUrl": "/3mgallery/sunfilm3.jpg"
   },
   {
     "id": "local-3m-29",
@@ -295,9 +382,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_162728.jpg",
-    "src": "/3mgallery/Videoshot_20260917_162728.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_162728.webp",
+    "src": "/3mgallery/Videoshot_20260917_162728.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_162728-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_162728-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_162728.jpg"
   },
   {
     "id": "local-3m-30",
@@ -305,9 +395,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_162730.jpg",
-    "src": "/3mgallery/Videoshot_20260917_162730.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_162730.webp",
+    "src": "/3mgallery/Videoshot_20260917_162730.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_162730-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_162730-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_162730.jpg"
   },
   {
     "id": "local-3m-31",
@@ -315,9 +408,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_162739.jpg",
-    "src": "/3mgallery/Videoshot_20260917_162739.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_162739.webp",
+    "src": "/3mgallery/Videoshot_20260917_162739.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_162739-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_162739-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_162739.jpg"
   },
   {
     "id": "local-3m-32",
@@ -325,9 +421,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_162819.jpg",
-    "src": "/3mgallery/Videoshot_20260917_162819.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_162819.webp",
+    "src": "/3mgallery/Videoshot_20260917_162819.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_162819-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_162819-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_162819.jpg"
   },
   {
     "id": "local-3m-33",
@@ -335,9 +434,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175042.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175042.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175042.webp",
+    "src": "/3mgallery/Videoshot_20260917_175042.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175042-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175042-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175042.jpg"
   },
   {
     "id": "local-3m-34",
@@ -345,9 +447,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175046.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175046.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175046.webp",
+    "src": "/3mgallery/Videoshot_20260917_175046.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175046-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175046-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175046.jpg"
   },
   {
     "id": "local-3m-35",
@@ -355,9 +460,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175050.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175050.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175050.webp",
+    "src": "/3mgallery/Videoshot_20260917_175050.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175050-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175050-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175050.jpg"
   },
   {
     "id": "local-3m-36",
@@ -365,9 +473,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175052.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175052.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175052.webp",
+    "src": "/3mgallery/Videoshot_20260917_175052.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175052-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175052-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175052.jpg"
   },
   {
     "id": "local-3m-37",
@@ -375,9 +486,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175213.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175213.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175213.webp",
+    "src": "/3mgallery/Videoshot_20260917_175213.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175213-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175213-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175213.jpg"
   },
   {
     "id": "local-3m-38",
@@ -385,9 +499,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175215.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175215.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175215.webp",
+    "src": "/3mgallery/Videoshot_20260917_175215.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175215-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175215-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175215.jpg"
   },
   {
     "id": "local-3m-39",
@@ -395,9 +512,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175216.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175216.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175216.webp",
+    "src": "/3mgallery/Videoshot_20260917_175216.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175216-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175216-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175216.jpg"
   },
   {
     "id": "local-3m-40",
@@ -405,9 +525,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175220.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175220.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175220.webp",
+    "src": "/3mgallery/Videoshot_20260917_175220.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175220-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175220-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175220.jpg"
   },
   {
     "id": "local-3m-41",
@@ -415,9 +538,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260917_175223.jpg",
-    "src": "/3mgallery/Videoshot_20260917_175223.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260917_175223.webp",
+    "src": "/3mgallery/Videoshot_20260917_175223.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260917_175223-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260917_175223-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260917_175223.jpg"
   },
   {
     "id": "local-3m-42",
@@ -425,9 +551,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "Precision Detailing",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260925_183501.jpg",
-    "src": "/3mgallery/Videoshot_20260925_183501.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260925_183501.webp",
+    "src": "/3mgallery/Videoshot_20260925_183501.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260925_183501-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260925_183501-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260925_183501.jpg"
   },
   {
     "id": "local-3m-43",
@@ -435,9 +564,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "PPF Protection",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260925_183627.jpg",
-    "src": "/3mgallery/Videoshot_20260925_183627.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260925_183627.webp",
+    "src": "/3mgallery/Videoshot_20260925_183627.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260925_183627-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260925_183627-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260925_183627.jpg"
   },
   {
     "id": "local-3m-44",
@@ -445,9 +577,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "PPF Protection",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260925_183630.jpg",
-    "src": "/3mgallery/Videoshot_20260925_183630.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260925_183630.webp",
+    "src": "/3mgallery/Videoshot_20260925_183630.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260925_183630-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260925_183630-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260925_183630.jpg"
   },
   {
     "id": "local-3m-45",
@@ -455,9 +590,12 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "PPF Protection",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260925_183639.jpg",
-    "src": "/3mgallery/Videoshot_20260925_183639.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260925_183639.webp",
+    "src": "/3mgallery/Videoshot_20260925_183639.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260925_183639-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260925_183639-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260925_183639.jpg"
   },
   {
     "id": "local-3m-46",
@@ -465,8 +603,11 @@
     "title": "3M Studio Detailing & Paint Protection",
     "category": "PPF Protection",
     "type": "image",
-    "url": "/3mgallery/Videoshot_20260925_183651.jpg",
-    "src": "/3mgallery/Videoshot_20260925_183651.jpg",
-    "aspect": "16/9"
+    "url": "/3mgallery/Videoshot_20260925_183651.webp",
+    "src": "/3mgallery/Videoshot_20260925_183651.webp",
+    "aspect": "16/9",
+    "thumbnail": "/3mgallery/Videoshot_20260925_183651-thumb.webp",
+    "previewUrl": "/3mgallery/Videoshot_20260925_183651-thumb.webp",
+    "fallbackUrl": "/3mgallery/Videoshot_20260925_183651.jpg"
   }
 ]

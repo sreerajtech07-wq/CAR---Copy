@@ -200,14 +200,14 @@ export const AllServicesSection: React.FC = () => {
               {/* Card Image Header */}
               <div className="relative h-56 min-h-[14rem] w-full overflow-hidden bg-dark-900">
                 <img
-                  src={srv.image || "/3mgallery/ceramic_coating.jpg"}
+                  src={srv.image || "/3mgallery/ceramic_coating.webp"}
                   alt={srv.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                   loading="lazy"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    if (target.src !== "/3mgallery/ceramic_coating.jpg" && !target.src.endsWith("/3mgallery/ceramic_coating.jpg")) {
-                      target.src = "/3mgallery/ceramic_coating.jpg";
+                    if (target.src !== "/3mgallery/ceramic_coating.webp" && !target.src.endsWith("/3mgallery/ceramic_coating.webp")) {
+                      target.src = "/3mgallery/ceramic_coating.webp";
                     }
                   }}
                 />

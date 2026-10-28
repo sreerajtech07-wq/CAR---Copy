@@ -10,6 +10,8 @@ export interface GalleryMediaItem {
   type: "video" | "image";
   url: string;
   previewUrl?: string;
+  thumbnail?: string;
+  fallbackUrl?: string;
   src?: string;
   poster?: string;
   title: string;
@@ -105,8 +107,9 @@ export const StudioMarqueeGallery: React.FC = () => {
   // Filter out any video items so only valid photo/image cards are displayed without blank black boxes
   const validImageItems = items.filter((item) => item.type !== "video" && (item.url || item.src));
 
-  // Duplicate items for continuous auto-scrolling loop
-  const displayItems = validImageItems.length > 0 ? [...validImageItems, ...validImageItems] : [];
+  // Curated slice of representative studio executions for seamless continuous marquee loop
+  const marqueeItems = validImageItems.slice(0, 14);
+  const displayItems = marqueeItems.length > 0 ? [...marqueeItems, ...marqueeItems] : [];
 
   return (
     <section
@@ -160,11 +163,7 @@ export const StudioMarqueeGallery: React.FC = () => {
           className="flex gap-6 overflow-x-auto scrollbar-none cursor-grab active:cursor-grabbing select-none px-6 md:px-12 py-4"
         >
           {displayItems.map((item, index) => {
-            const itemUrl = item.url || item.src || "";
-            const optimizedUrl =
-              itemUrl.includes("/upload/") && !itemUrl.includes("/w_800")
-                ? itemUrl.replace("/upload/", "/upload/w_800,c_limit,f_auto,q_auto/")
-                : itemUrl;
+            const cardThumb = item.thumbnail || item.previewUrl || item.url || item.src || "";
 
             return (
               <div
@@ -173,10 +172,12 @@ export const StudioMarqueeGallery: React.FC = () => {
                 className="gallery-card w-[300px] sm:w-[380px] md:w-[440px] aspect-[16/10] shrink-0 rounded-2xl overflow-hidden bg-neutral-900 border border-neutral-800 relative cursor-pointer group shadow-2xl transition-all duration-500 hover:border-red-600/60 hover:scale-[1.02]"
               >
                 <img
-                  src={optimizedUrl}
+                  src={cardThumb}
                   alt={item.title}
                   loading="lazy"
                   decoding="async"
+                  width={440}
+                  height={275}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>

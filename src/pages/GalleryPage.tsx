@@ -88,10 +88,11 @@ export const GalleryPage: React.FC = () => {
             </p>
           </div>
 
-          {/* Full Showcase Masonry / Grid */}
+          {/* Full Showcase Masonry / Grid with Lazy Loaded Thumbnails */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {validPhotos.map((item, index) => {
               const photoSrc = item.url || item.src || "";
+              const thumbSrc = item.thumbnail || item.previewUrl || photoSrc;
               return (
                 <div
                   key={`${item.id}-${index}`}
@@ -99,10 +100,12 @@ export const GalleryPage: React.FC = () => {
                   className="group relative aspect-[16/10] rounded-2xl overflow-hidden bg-[#0e0e0e]/92 border border-white/10 hover:border-brand-red/60 shadow-xl cursor-pointer transition-all duration-300 hover:scale-[1.02]"
                 >
                   <img
-                    src={photoSrc}
+                    src={thumbSrc}
                     alt={item.title}
                     loading="lazy"
                     decoding="async"
+                    width={400}
+                    height={250}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
