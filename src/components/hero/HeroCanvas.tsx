@@ -20,6 +20,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
   const currentTimeRef = useRef<number>(0);
   const isSeekingRef = useRef<boolean>(false);
   const rafIdRef = useRef<number | null>(null);
+  const hasRenderedFirstFrameRef = useRef<boolean>(false);
 
   // High-performance canvas frame painter with full-bleed cover scaling & studio vignette
   const drawFrame = useCallback(() => {
@@ -37,6 +38,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
     const videoH = video.videoHeight || 1080;
 
     if (video.readyState >= 2) {
+      hasRenderedFirstFrameRef.current = true;
       const hRatio = width / videoW;
       const vRatio = height / videoH;
       const ratio = Math.max(hRatio, vRatio);
@@ -68,7 +70,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       bottomGrad.addColorStop(1, "rgba(5, 6, 7, 0.95)");
       ctx.fillStyle = bottomGrad;
       ctx.fillRect(0, height * 0.85, width, height * 0.15);
-    } else {
+    } else if (!hasRenderedFirstFrameRef.current) {
       ctx.fillStyle = "#050505";
       ctx.fillRect(0, 0, width, height);
     }
@@ -84,6 +86,40 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       }
     }
   }, [progress]);
+
+  // Load video via Blob URL for 100% reliable random-access frame seeking across all CDNs
+  useEffect(() => {
+    let isCancelled = false;
+    let blobUrl: string | null = null;
+
+    const loadVideoBlob = async () => {
+      try {
+        const response = await fetch("/hero.mp4");
+        if (!response.ok) return;
+        const blob = await response.blob();
+        if (isCancelled) return;
+
+        blobUrl = URL.createObjectURL(blob);
+        const video = videoRef.current;
+        if (video) {
+          video.src = blobUrl;
+          video.load();
+        }
+      } catch (err) {
+        // Fall back to direct stream URL
+        console.warn("Direct blob loading fallback to standard source:", err);
+      }
+    };
+
+    loadVideoBlob();
+
+    return () => {
+      isCancelled = true;
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
+      }
+    };
+  }, []);
 
   // Self-contained ScrollTrigger fallback on #hero container
   useEffect(() => {
@@ -177,7 +213,15 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
         // Apply to video currentTime if not currently seeking
         if (!isSeekingRef.current && Math.abs(video.currentTime - currentTimeRef.current) > 0.02) {
           isSeekingRef.current = true;
-          video.currentTime = currentTimeRef.current;
+          try {
+            video.currentTime = currentTimeRef.current;
+          } catch {
+            isSeekingRef.current = false;
+          }
+          // Safety fallback to prevent seeking lock if seeked event is delayed
+          setTimeout(() => {
+            isSeekingRef.current = false;
+          }, 150);
         }
 
         // Keep canvas in sync with HTML5 video frame
