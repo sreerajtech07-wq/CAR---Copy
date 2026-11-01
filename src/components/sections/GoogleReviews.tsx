@@ -114,8 +114,15 @@ export const GoogleReviews: React.FC = () => {
     ));
 
   return (
-    <section id="reviews" className="relative w-full bg-transparent py-12 md:py-16 border-b border-white/10 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="reviews"
+      aria-label="Customer Reviews"
+      className="relative w-full py-12 md:py-16 border-b border-white/10 overflow-hidden"
+      style={{
+        background: "radial-gradient(circle at 50% 30%, rgba(135, 12, 24, 0.42) 0%, rgba(26, 4, 8, 0.88) 55%, rgba(5, 2, 4, 0.82) 100%)",
+      }}
+    >
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 pb-6 border-b border-white/10 gap-6">
           <div>

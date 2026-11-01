@@ -1,16 +1,20 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, forwardRef, useImperativeHandle } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { QualityConfig } from "../../hooks/useResponsiveQuality";
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface HeroCanvasProps {
+export interface HeroCanvasHandle {
+  setProgress: (p: number) => void;
+}
+
+export interface HeroCanvasProps {
   progress?: number;
   quality?: QualityConfig;
 }
 
-export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => {
+export const HeroCanvas = forwardRef<HeroCanvasHandle, HeroCanvasProps>(({ progress, quality }, ref) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -20,7 +24,24 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
   const currentTimeRef = useRef<number>(0);
   const isSeekingRef = useRef<boolean>(false);
   const rafIdRef = useRef<number | null>(null);
+  const isLoopRunningRef = useRef<boolean>(false);
+  const isIntersectingRef = useRef<boolean>(true);
+  const isVisibleRef = useRef<boolean>(typeof document !== "undefined" ? !document.hidden : true);
   const hasRenderedFirstFrameRef = useRef<boolean>(false);
+  const isSettledRef = useRef<boolean>(false);
+
+  // Gradient caching refs to eliminate per-frame GC allocations
+  const cachedGradientsRef = useRef<{
+    width: number;
+    height: number;
+    vignette: CanvasGradient | null;
+    bottom: CanvasGradient | null;
+  }>({
+    width: 0,
+    height: 0,
+    vignette: null,
+    bottom: null,
+  });
 
   // High-performance canvas frame painter with full-bleed cover scaling & studio vignette
   const drawFrame = useCallback(() => {
@@ -33,6 +54,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
     const width = canvas.width;
     const height = canvas.height;
+    if (width === 0 || height === 0) return;
 
     const videoW = video.videoWidth || 1920;
     const videoH = video.videoHeight || 1080;
@@ -50,42 +72,191 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
       ctx.drawImage(video, 0, 0, videoW, videoH, offsetX, offsetY, renderWidth, renderHeight);
 
-      // Studio vignette overlay
-      const gradVignette = ctx.createRadialGradient(
-        width / 2,
-        height / 2,
-        Math.min(width, height) * 0.45,
-        width / 2,
-        height / 2,
-        Math.max(width, height) * 0.8
-      );
-      gradVignette.addColorStop(0, "rgba(5, 6, 7, 0)");
-      gradVignette.addColorStop(1, "rgba(5, 6, 7, 0.7)");
-      ctx.fillStyle = gradVignette;
-      ctx.fillRect(0, 0, width, height);
+      // Cached studio vignette overlay
+      let gradients = cachedGradientsRef.current;
+      if (gradients.width !== width || gradients.height !== height || !gradients.vignette || !gradients.bottom) {
+        const gradVignette = ctx.createRadialGradient(
+          width / 2,
+          height / 2,
+          Math.min(width, height) * 0.45,
+          width / 2,
+          height / 2,
+          Math.max(width, height) * 0.8
+        );
+        gradVignette.addColorStop(0, "rgba(5, 6, 7, 0)");
+        gradVignette.addColorStop(1, "rgba(5, 6, 7, 0.7)");
+
+        const bottomGrad = ctx.createLinearGradient(0, height * 0.85, 0, height);
+        bottomGrad.addColorStop(0, "rgba(5, 6, 7, 0)");
+        bottomGrad.addColorStop(1, "rgba(5, 6, 7, 0.95)");
+
+        cachedGradientsRef.current = {
+          width,
+          height,
+          vignette: gradVignette,
+          bottom: bottomGrad,
+        };
+        gradients = cachedGradientsRef.current;
+      }
+
+      if (gradients.vignette) {
+        ctx.fillStyle = gradients.vignette;
+        ctx.fillRect(0, 0, width, height);
+      }
 
       // Bottom transition gradient
-      const bottomGrad = ctx.createLinearGradient(0, height * 0.85, 0, height);
-      bottomGrad.addColorStop(0, "rgba(5, 6, 7, 0)");
-      bottomGrad.addColorStop(1, "rgba(5, 6, 7, 0.95)");
-      ctx.fillStyle = bottomGrad;
-      ctx.fillRect(0, height * 0.85, width, height * 0.15);
+      if (gradients.bottom) {
+        ctx.fillStyle = gradients.bottom;
+        ctx.fillRect(0, height * 0.85, width, height * 0.15);
+      }
     } else if (!hasRenderedFirstFrameRef.current) {
       ctx.fillStyle = "#050505";
       ctx.fillRect(0, 0, width, height);
     }
   }, []);
 
-  // Update target time whenever the parent progress prop changes (if controlled by HeroSection)
-  useEffect(() => {
-    if (typeof progress === "number") {
+  // Loop control
+  const wakeUpdateLoop = useCallback(() => {
+    if (isLoopRunningRef.current) return;
+    if (!isIntersectingRef.current || !isVisibleRef.current) return;
+
+    isLoopRunningRef.current = true;
+
+    const loop = () => {
+      if (!isLoopRunningRef.current) return;
+
       const video = videoRef.current;
       if (video && video.duration && !Number.isNaN(video.duration)) {
-        const clamped = Math.max(0, Math.min(1, progress));
-        targetTimeRef.current = clamped * video.duration;
+        const target = targetTimeRef.current;
+        const current = currentTimeRef.current;
+        const delta = target - current;
+
+        const prefersReducedMotion =
+          typeof window !== "undefined" &&
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        // Smooth lerp or direct snap for reduced motion
+        if (prefersReducedMotion) {
+          currentTimeRef.current = target;
+        } else if (Math.abs(delta) > 0.003) {
+          currentTimeRef.current += delta * 0.25;
+        } else {
+          currentTimeRef.current = target;
+        }
+
+        // Apply to video currentTime if not currently seeking
+        if (!isSeekingRef.current && Math.abs(video.currentTime - currentTimeRef.current) > 0.02) {
+          isSeekingRef.current = true;
+          try {
+            video.currentTime = currentTimeRef.current;
+          } catch {
+            isSeekingRef.current = false;
+          }
+          setTimeout(() => {
+            isSeekingRef.current = false;
+          }, 150);
+        }
+
+        // Draw frame if ready
+        if (video.readyState >= 2) {
+          drawFrame();
+        }
+
+        // Settle detection: if delta is negligible and video has caught up, pause loop until next scroll
+        if (
+          Math.abs(delta) <= 0.003 &&
+          !isSeekingRef.current &&
+          Math.abs(video.currentTime - currentTimeRef.current) <= 0.02
+        ) {
+          isSettledRef.current = true;
+          isLoopRunningRef.current = false;
+          rafIdRef.current = null;
+          return;
+        }
       }
+
+      rafIdRef.current = requestAnimationFrame(loop);
+    };
+
+    rafIdRef.current = requestAnimationFrame(loop);
+  }, [drawFrame]);
+
+  const pauseUpdateLoop = useCallback(() => {
+    isLoopRunningRef.current = false;
+    if (rafIdRef.current !== null) {
+      cancelAnimationFrame(rafIdRef.current);
+      rafIdRef.current = null;
     }
-  }, [progress]);
+  }, []);
+
+  // Update target time and wake loop
+  const updateTargetTime = useCallback((p: number) => {
+    const video = videoRef.current;
+    if (video && video.duration && !Number.isNaN(video.duration)) {
+      const clamped = Math.max(0, Math.min(1, p));
+      targetTimeRef.current = clamped * video.duration;
+      isSettledRef.current = false;
+      wakeUpdateLoop();
+    }
+  }, [wakeUpdateLoop]);
+
+  // Expose imperative handle for zero-rerender parent driving
+  useImperativeHandle(ref, () => ({
+    setProgress: (p: number) => {
+      updateTargetTime(p);
+    },
+  }), [updateTargetTime]);
+
+  // Update target time whenever the parent progress prop changes (if controlled by prop)
+  useEffect(() => {
+    if (typeof progress === "number") {
+      updateTargetTime(progress);
+    }
+  }, [progress, updateTargetTime]);
+
+  // IntersectionObserver to pause loop when Hero is out of viewport
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === "undefined") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        const intersecting = entry ? entry.isIntersecting : true;
+        isIntersectingRef.current = intersecting;
+        if (intersecting) {
+          wakeUpdateLoop();
+        } else {
+          pauseUpdateLoop();
+        }
+      },
+      { rootMargin: "150px 0px 150px 0px" }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [wakeUpdateLoop, pauseUpdateLoop]);
+
+  // Page Visibility API to pause rendering when tab is hidden
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      const visible = !document.hidden;
+      isVisibleRef.current = visible;
+      if (visible && isIntersectingRef.current) {
+        wakeUpdateLoop();
+      } else {
+        pauseUpdateLoop();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [wakeUpdateLoop, pauseUpdateLoop]);
 
   // Load video via Blob URL for 100% reliable random-access frame seeking across all CDNs
   useEffect(() => {
@@ -106,7 +277,6 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
           video.load();
         }
       } catch (err) {
-        // Fall back to direct stream URL
         console.warn("Direct blob loading fallback to standard source:", err);
       }
     };
@@ -118,8 +288,9 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       if (blobUrl) {
         URL.revokeObjectURL(blobUrl);
       }
+      pauseUpdateLoop();
     };
-  }, []);
+  }, [pauseUpdateLoop]);
 
   // Self-contained ScrollTrigger fallback on #hero container
   useEffect(() => {
@@ -142,8 +313,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
         scrub: 0.3,
         onUpdate: (self) => {
           if (typeof progress !== "number") {
-            const p = Math.max(0, Math.min(1, self.progress));
-            targetTimeRef.current = p * video.duration;
+            updateTargetTime(self.progress);
           }
         },
       });
@@ -158,20 +328,19 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
     return () => {
       if (trigger) trigger.kill();
     };
-  }, [progress]);
+  }, [progress, updateTargetTime]);
 
-  // Video seeking & frame updates
+  // Video seeking & frame updates (stable listeners, does not re-subscribe on progress)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
     const handleLoadedMetadata = () => {
       if (video.duration) {
-        const initP = typeof progress === "number" ? Math.max(0, Math.min(1, progress)) : 0;
-        targetTimeRef.current = initP * video.duration;
         video.currentTime = targetTimeRef.current;
       }
       drawFrame();
+      wakeUpdateLoop();
     };
 
     const handleSeeked = () => {
@@ -188,60 +357,7 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       video.removeEventListener("seeked", handleSeeked);
       video.removeEventListener("canplay", drawFrame);
     };
-  }, [drawFrame, progress]);
-
-  // RequestAnimationFrame continuous interpolation loop for ultra-smooth video scrubbing
-  useEffect(() => {
-    let isRunning = true;
-
-    const updateLoop = () => {
-      if (!isRunning) return;
-
-      const video = videoRef.current;
-      if (video && video.duration && !Number.isNaN(video.duration)) {
-        const target = targetTimeRef.current;
-        const current = currentTimeRef.current;
-        const delta = target - current;
-
-        // Smooth lerp interpolation without stutter
-        if (Math.abs(delta) > 0.005) {
-          currentTimeRef.current += delta * 0.25;
-        } else {
-          currentTimeRef.current = target;
-        }
-
-        // Apply to video currentTime if not currently seeking
-        if (!isSeekingRef.current && Math.abs(video.currentTime - currentTimeRef.current) > 0.02) {
-          isSeekingRef.current = true;
-          try {
-            video.currentTime = currentTimeRef.current;
-          } catch {
-            isSeekingRef.current = false;
-          }
-          // Safety fallback to prevent seeking lock if seeked event is delayed
-          setTimeout(() => {
-            isSeekingRef.current = false;
-          }, 150);
-        }
-
-        // Keep canvas in sync with HTML5 video frame
-        if (video.readyState >= 2) {
-          drawFrame();
-        }
-      }
-
-      rafIdRef.current = requestAnimationFrame(updateLoop);
-    };
-
-    rafIdRef.current = requestAnimationFrame(updateLoop);
-
-    return () => {
-      isRunning = false;
-      if (rafIdRef.current) {
-        cancelAnimationFrame(rafIdRef.current);
-      }
-    };
-  }, [drawFrame]);
+  }, [drawFrame, wakeUpdateLoop]);
 
   // Canvas Resize & DevicePixelRatio handling
   useEffect(() => {
@@ -254,6 +370,9 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
 
       canvas.width = Math.floor(rect.width * dpr);
       canvas.height = Math.floor(rect.height * dpr);
+
+      // Invalidate cached gradients on resize
+      cachedGradientsRef.current.width = 0;
 
       drawFrame();
     };
@@ -291,6 +410,8 @@ export const HeroCanvas: React.FC<HeroCanvasProps> = ({ progress, quality }) => 
       />
     </div>
   );
-};
+});
+
+HeroCanvas.displayName = "HeroCanvas";
 
 export default HeroCanvas;

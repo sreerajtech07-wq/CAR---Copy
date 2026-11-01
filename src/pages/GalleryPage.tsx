@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BUSINESS } from "../data/business";
 import { ArrowLeft, Phone } from "lucide-react";
 import { CursorEffect } from "../components/common/CursorEffect";
-import { Background3D } from "../components/common/Background3D";
+import { StudioParticleBackground } from "../components/common/StudioParticleBackground";
 import { FlowBackground } from "../components/common/FlowBackground";
-import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 import { Lightbox } from "../components/common/Lightbox";
 import { staticGalleryData, type GalleryMediaItem } from "../components/sections/StudioMarqueeGallery";
@@ -40,9 +39,8 @@ export const GalleryPage: React.FC = () => {
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden bg-[#050505]">
       <CursorEffect />
-      <Background3D />
+      <StudioParticleBackground className="fixed inset-0 pointer-events-none z-0" opacity={0.85} density="medium" />
       <FlowBackground />
-      <ParticleNetworkBackground />
 
       {/* Top Header & Navigation */}
       <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-[#0c0c0c]/95 border-b border-white/10 py-3 sm:py-4">

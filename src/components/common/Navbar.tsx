@@ -13,7 +13,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      const nextScrolled = window.scrollY > 40;
+      setScrolled((prev) => (prev !== nextScrolled ? nextScrolled : prev));
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);

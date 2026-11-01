@@ -169,7 +169,7 @@
 }
 
 /* Transparent section backgrounds for seamless continuous background visibility */
-.studio-atmosphere main > section {
+.studio-atmosphere main > section:not(#reviews) {
   background: transparent !important;
   background-color: transparent !important;
   background-image: none !important;

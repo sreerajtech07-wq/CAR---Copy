@@ -3,7 +3,7 @@ import { ArrowLeft, Home, MessageSquare, Phone, Compass, AlertTriangle } from "l
 import { BUSINESS } from "../data/business";
 import { CursorEffect } from "../components/common/CursorEffect";
 import { FlowBackground } from "../components/common/FlowBackground";
-import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
+import { StudioParticleBackground } from "../components/common/StudioParticleBackground";
 import { Footer } from "../components/sections/Footer";
 import { FloatingWhatsApp } from "../components/common/FloatingWhatsApp";
 
@@ -13,7 +13,7 @@ export const NotFoundPage: React.FC = () => {
       {/* Background Interactive Effects */}
       <CursorEffect />
       <FlowBackground />
-      <ParticleNetworkBackground />
+      <StudioParticleBackground className="fixed inset-0 pointer-events-none z-0" opacity={0.85} density="medium" />
 
       {/* Film Grain Ambient Overlay */}
       <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-5" />

@@ -12,6 +12,11 @@ export const CursorEffect: React.FC = () => {
     const sparkleContainer = sparkleContainerRef.current;
     if (!cursor || !sparkleContainer) return;
 
+    // Only enable cursor sparkles on desktop devices with fine pointer and no reduced motion
+    const finePointer = window.matchMedia("(pointer: fine)");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (!finePointer.matches || reducedMotion.matches) return;
+
     const createSparkle = (x: number, y: number) => {
       const sparkle = document.createElement("span");
       sparkle.className = "sparkle-particle";

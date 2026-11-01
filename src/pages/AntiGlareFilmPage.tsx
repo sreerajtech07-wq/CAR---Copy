@@ -14,9 +14,8 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { CursorEffect } from "../components/common/CursorEffect";
-import { Background3D } from "../components/common/Background3D";
+import { StudioParticleBackground } from "../components/common/StudioParticleBackground";
 import { FlowBackground } from "../components/common/FlowBackground";
-import { ParticleNetworkBackground } from "../components/common/ParticleNetworkBackground";
 import { ServiceHeader } from "../components/common/ServiceHeader";
 import { ServiceBottomCTA } from "../components/common/ServiceBottomCTA";
 import { ServiceReviews } from "../components/common/ServiceReviews";
@@ -124,9 +123,8 @@ export const AntiGlareFilmPage: React.FC = () => {
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink antialiased overflow-x-hidden">
       <CursorEffect />
-      <Background3D />
+      <StudioParticleBackground className="fixed inset-0 pointer-events-none z-0" opacity={0.85} density="medium" />
       <FlowBackground />
-      <ParticleNetworkBackground />
 
       <ServiceHeader
         serviceName="3M Anti-Glare Film"

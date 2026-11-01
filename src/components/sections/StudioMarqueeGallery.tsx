@@ -35,24 +35,74 @@ export const StudioMarqueeGallery: React.FC = () => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [selectedMedia, setSelectedMedia] = useState<GalleryMediaItem | null>(null);
 
-  // Auto-scrolling marquee effect
+  // Auto-scrolling marquee effect with viewport & visibility throttling
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
 
-    let animationFrameId: number;
+    let animationFrameId: number | null = null;
+    let isIntersecting = false;
+    let isVisible = typeof document !== "undefined" ? !document.hidden : true;
+
     const scrollStep = () => {
-      if (!isHovered && !isDragging && !selectedMedia && track) {
+      if (isIntersecting && isVisible && !isHovered && !isDragging && !selectedMedia && track) {
         track.scrollLeft += 4;
         if (track.scrollLeft >= track.scrollWidth / 2) {
           track.scrollLeft = 0;
         }
       }
-      animationFrameId = requestAnimationFrame(scrollStep);
+      if (isIntersecting && isVisible) {
+        animationFrameId = requestAnimationFrame(scrollStep);
+      } else {
+        animationFrameId = null;
+      }
     };
 
-    animationFrameId = requestAnimationFrame(scrollStep);
-    return () => cancelAnimationFrame(animationFrameId);
+    const startMarquee = () => {
+      if (animationFrameId === null && isIntersecting && isVisible) {
+        animationFrameId = requestAnimationFrame(scrollStep);
+      }
+    };
+
+    const stopMarquee = () => {
+      if (animationFrameId !== null) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isIntersecting = entry ? entry.isIntersecting : false;
+        if (isIntersecting) {
+          startMarquee();
+        } else {
+          stopMarquee();
+        }
+      },
+      { rootMargin: "100px 0px 100px 0px" }
+    );
+
+    const sectionEl = document.getElementById("gallery") || track;
+    observer.observe(sectionEl);
+
+    const handleVisibilityChange = () => {
+      isVisible = !document.hidden;
+      if (isVisible) {
+        startMarquee();
+      } else {
+        stopMarquee();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      stopMarquee();
+      observer.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, [isHovered, isDragging, selectedMedia, items]);
 
   // Safe body scroll lock cleanup on modal state change / unmount

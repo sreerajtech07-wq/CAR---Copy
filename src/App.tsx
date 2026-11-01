@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { CursorEffect } from "./components/common/CursorEffect";
 import { FlowBackground } from "./components/common/FlowBackground";
-import { ParticleNetworkBackground } from "./components/common/ParticleNetworkBackground";
+import { StudioParticleBackground } from "./components/common/StudioParticleBackground";
+
 import { CinematicScroll } from "./components/common/CinematicScroll";
 import { Navbar } from "./components/common/Navbar";
 import { HeroSection } from "./components/hero/HeroSection";
@@ -25,11 +26,9 @@ export const App: React.FC = () => {
   return (
     <div className="studio-atmosphere relative min-h-screen text-studio-ink selection:bg-brand-red selection:text-white antialiased overflow-x-hidden">
       {/* Cursor and single shared atmospheric background system */}
-
-      {/* Cursor and single shared atmospheric background system */}
       <CursorEffect />
       <FlowBackground />
-      <ParticleNetworkBackground />
+      <StudioParticleBackground className="fixed inset-0 pointer-events-none z-0" density="medium" opacity={0.85} />
 
       {/* Fixed Ambient Film Grain Overlay */}
       <div className="fixed inset-0 pointer-events-none z-40 film-grain opacity-5" />

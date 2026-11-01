@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HeroCanvas } from "./HeroCanvas";
+import { HeroCanvas, type HeroCanvasHandle } from "./HeroCanvas";
 import { useResponsiveQuality } from "../../hooks/useResponsiveQuality";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +18,7 @@ export const HeroSection: React.FC = () => {
   const stage6Ref = useRef<HTMLDivElement | null>(null); // Stage 05: GRAPHENE MATRIX COATING* (148 - 230) - White Hyundai entrance
   const stage7Ref = useRef<HTMLDivElement | null>(null); // Stage 06: FINAL ARMOR STACK + CTA (231 - 300) - Starts AFTER Graphene completely finishes
 
-  const [progress, setProgress] = useState<number>(0);
+  const heroCanvasRef = useRef<HeroCanvasHandle | null>(null);
   const quality = useResponsiveQuality();
 
   const scrollDistance = quality.isMobile ? 2400 : 3500;
@@ -47,7 +47,7 @@ export const HeroSection: React.FC = () => {
       scrub: quality.isMobile ? 0.8 : 1,
       onUpdate: (self) => {
         const p = self.progress;
-        setProgress(p);
+        heroCanvasRef.current?.setProgress(p);
 
         // Convert scroll progress (0.0 to 1.0) to 300 logical timeline frames (1 to 300)
         const frame = 1 + p * 299;
@@ -287,7 +287,7 @@ export const HeroSection: React.FC = () => {
         ref={pinTargetRef}
         className="relative top-0 h-[100svh] min-h-[600px] w-full overflow-hidden select-none bg-transparent flex items-center justify-center"
       >
-        <HeroCanvas progress={progress} quality={quality} />
+        <HeroCanvas ref={heroCanvasRef} quality={quality} />
 
         {/* Accessible Main H1 for Search Engine Crawlers */}
         <h1 className="sr-only">3M Car Care Studio OMR Chennai | Best Car Detailing &amp; PPF</h1>
