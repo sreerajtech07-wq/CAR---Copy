@@ -1,0 +1,2 @@
+# Cloudflare Workers static assets redirect configuration
+# Only relative URL path rules (e.g. /old-path /new-path 301) are supported in this file.
